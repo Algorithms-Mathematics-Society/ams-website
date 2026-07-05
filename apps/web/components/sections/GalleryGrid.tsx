@@ -26,9 +26,9 @@ export function GalleryGrid({ limit }: Props) {
             <li key={item.label}>
               {/* Stagger by column so each row reads as one left-to-right sweep. */}
               <Reveal delay={(index % 4) * 70}>
-                {/* Thumbnails only here (~640w when real) — full-res belongs in a lightbox. */}
+                {/* Thumbnails only here (~640w when real); full-res belongs in a lightbox. */}
                 <PhotoPlaceholder
-                  label={`Photo — ${item.label}`}
+                  label={`Photo · ${item.label}`}
                   aspect="aspect-[4/3]"
                   rounded="rounded-lg"
                   className="p-3"

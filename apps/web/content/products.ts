@@ -13,7 +13,7 @@ export const PRODUCTS: Product[] = [
     body: "Probability, markets, and mathematical reasoning under the clock.",
     href: "/derive",
     screenshotLabel:
-      "Screenshot — Derive contest page, live timer visible · real UI only",
+      "Screenshot · Derive contest page, live timer visible · real UI only",
   },
   {
     eyebrow: "Ascent",
@@ -21,7 +21,7 @@ export const PRODUCTS: Product[] = [
     body: "C++, optimization, and performance engineering. Winter edition.",
     href: "/ascent",
     screenshotLabel:
-      "Screenshot — Ascent leaderboard, real standings · real UI only",
+      "Screenshot · Ascent leaderboard, real standings · real UI only",
   },
   {
     eyebrow: "Access",
@@ -29,6 +29,6 @@ export const PRODUCTS: Product[] = [
     body: "Proctored assessments benchmarked against India's competitive elite.",
     href: "/access",
     screenshotLabel:
-      "Screenshot — Access proctored exam view (Tauri app) · real UI only",
+      "Screenshot · Access proctored exam view (Tauri app) · real UI only",
   },
 ];

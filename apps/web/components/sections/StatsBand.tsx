@@ -3,7 +3,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { STATS } from "@/content/stats";
 
 /**
- * Dark full-width band. The design backs this with a wide keynote photo —
+ * Dark full-width band. The design backs this with a wide keynote photo;
  * when it lands, layer it under the overlay without changing band height.
  */
 export function StatsBand() {

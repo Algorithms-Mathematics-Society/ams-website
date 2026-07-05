@@ -5,7 +5,7 @@ import { cn } from "@/lib/cn";
 
 /**
  * Sticky wrapper that hides the header on scroll-down and reveals it on
- * scroll-up. Client leaf — the header content itself stays server-rendered
+ * scroll-up. Client leaf; the header content itself stays server-rendered
  * and is passed through as children.
  */
 export function HeaderShell({ children }: { children: React.ReactNode }) {

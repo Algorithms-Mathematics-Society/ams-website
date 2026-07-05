@@ -1,7 +1,7 @@
 import { cn } from "@/lib/cn";
 
 interface Props {
-  /** Shot description from the design, e.g. "Hero photo — finalists on stage". */
+  /** Shot description from the design, e.g. "Hero photo · finalists on stage". */
   label: string;
   /** Tailwind aspect class so the box reserves its final dimensions (CLS). */
   aspect?: string;
@@ -11,7 +11,7 @@ interface Props {
 
 /**
  * Dashed photo slot matching the Figma reference. Swap for <next/image> as real
- * CONVERGENCE-shoot photos land — the box dimensions must not change when they do.
+ * CONVERGENCE-shoot photos land; the box dimensions must not change when they do.
  */
 export function PhotoPlaceholder({
   label,

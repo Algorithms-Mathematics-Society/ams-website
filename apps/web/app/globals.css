@@ -49,7 +49,7 @@ body {
   outline-offset: 2px;
 }
 
-/* On-load entrance (hero and page titles) — pure CSS so the first paint
+/* On-load entrance (hero and page titles): pure CSS so the first paint
    never waits for hydration. Staggered via .rise-2/-3/-4. */
 @keyframes rise {
   from {
@@ -76,7 +76,7 @@ body {
 }
 
 /* Scroll reveal (below the fold, driven by components/ui/Reveal).
-   Hidden state only applies once JS has stamped html.js — without JS
+   Hidden state only applies once JS has stamped html.js; without JS
    everything simply renders visible. */
 html.js .reveal {
   opacity: 0;

@@ -17,7 +17,7 @@ export function TeamGrid() {
             <li key={`${member.name}-${member.role}`}>
               <Reveal delay={index * 70}>
                 <PhotoPlaceholder
-                  label={`Portrait — ${member.role}, formal, cream backdrop`}
+                  label={`Portrait · ${member.role}, formal, cream backdrop`}
                   aspect="aspect-[4/5]"
                   rounded="rounded-lg"
                   className="p-3"

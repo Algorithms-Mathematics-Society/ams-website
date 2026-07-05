@@ -10,7 +10,7 @@ export const SITE = {
   tagline:
     "Contests in quant and competitive programming. Assessment that means something.",
   description:
-    "National contests in quantitative finance and competitive programming — and Access, the platform that turns performance into verified hiring signal.",
+    "National contests in quantitative finance and competitive programming, plus Access, the platform that turns performance into verified hiring signal.",
   copyright: "© 2026 AMS · amsociety.in · amsderive.in · amsaccess.com",
 } as const;
 

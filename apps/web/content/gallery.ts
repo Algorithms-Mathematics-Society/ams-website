@@ -5,7 +5,7 @@ export interface GalleryItem {
   src?: string;
 }
 
-/** 12 slots — populate from the CONVERGENCE shoot; candids over posed (design note). */
+/** 12 slots: populate from the CONVERGENCE shoot; candids over posed (design note). */
 export const GALLERY: GalleryItem[] = [
   { label: "Registration desk, lanyards being handed out" },
   { label: "Opening ceremony, mark on the big screen" },

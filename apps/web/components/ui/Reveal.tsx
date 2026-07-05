@@ -6,7 +6,7 @@ import { cn } from "@/lib/cn";
 interface Props {
   children: React.ReactNode;
   className?: string;
-  /** Stagger offset in ms — keep small (≤ 360) so it reads as one gesture. */
+  /** Stagger offset in ms; keep small (≤ 360) so it reads as one gesture. */
   delay?: number;
 }
 

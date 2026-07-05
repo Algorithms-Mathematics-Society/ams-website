@@ -1,10 +1,10 @@
-# AMS Website — Engineering Guide
+# AMS Website - Engineering Guide
 
 Read this before writing the first line of code. It defines how the AMS marketing site
 (amsociety.in) is structured, built, and kept fast. The Figma reference lives at
 `website-figma-reference.png`; brand assets live in `media/source-svg` and `media/source-png`.
 
-**What this site is:** a content-driven, photo-heavy marketing site — hero, sponsors, stats,
+**What this site is:** a content-driven, photo-heavy marketing site - hero, sponsors, stats,
 about, three product cards (Derive / Ascent / Access), experience, gallery, testimonials,
 team, footer. Almost nothing is dynamic. That single fact drives every decision below:
 **static-first, ship as little JavaScript as possible, treat images as the main performance risk.**
@@ -17,7 +17,7 @@ team, footer. Almost nothing is dynamic. That single fact drives every decision 
 | --------------- | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Framework       | **Next.js (App Router), static output**                                  | Matches the rest of the AMS org's tooling; built-in `next/image`, `next/font`, per-route code splitting.                                          |
 | Language        | TypeScript, `strict: true`                                               | Non-negotiable. Catch prop mistakes at build time.                                                                                                |
-| Styling         | Tailwind CSS + CSS variables for brand tokens                            | Utility classes for layout speed; tokens (`--color-maroon`, `--color-cream`, spacing, type scale) so the palette is defined in exactly one place. |
+| Styling         | Tailwind CSS + CSS variables for brand tokens                            | Utility classes for layout speed; tokens (`--color-burgundy`, `--color-cream`, spacing, type scale) so the palette is defined in exactly one place. |
 | Package manager | pnpm                                                                     | Org standard.                                                                                                                                     |
 | Hosting         | Static export behind a CDN (Vercel / Cloudflare Pages / GCS + Cloud CDN) | See §4.                                                                                                                                           |
 
@@ -33,9 +33,9 @@ Rules that follow from this:
 
 ```
 apps/web/
-├── app/                        # Routes ONLY — thin files that compose sections
+├── app/                        # Routes ONLY - thin files that compose sections
 │   ├── layout.tsx              # Root layout: fonts, metadata, <Header/>, <Footer/>
-│   ├── page.tsx                # Home — ~30 lines, just stacks <Section/> components
+│   ├── page.tsx                # Home - ~30 lines, just stacks <Section/> components
 │   ├── derive/page.tsx
 │   ├── ascent/page.tsx
 │   ├── access/page.tsx
@@ -45,7 +45,7 @@ apps/web/
 │   └── robots.ts
 ├── components/
 │   ├── ui/                     # Primitives: Button, Card, SectionHeading, Eyebrow,
-│   │   │                       # Container, Stat, Badge — pure, prop-driven, no data
+│   │   │                       # Container, Stat, Badge - pure, prop-driven, no data
 │   │   ├── Button.tsx
 │   │   ├── Card.tsx
 │   │   └── ...
@@ -61,7 +61,7 @@ apps/web/
 │       ├── Testimonials.tsx
 │       ├── TeamGrid.tsx
 │       └── ...
-├── content/                    # ALL copy and data as typed TS/JSON — never inline in JSX
+├── content/                    # ALL copy and data as typed TS/JSON - never inline in JSX
 │   ├── site.ts                 # Nav links, footer links, social, contact
 │   ├── stats.ts                # { value: "2,500+", label: "Students, year one" }[]
 │   ├── products.ts             # Derive / Ascent / Access card content
@@ -84,7 +84,7 @@ apps/web/
    that belongs in `components/sections/` is leaking into it.
 
    ```tsx
-   // app/page.tsx — this is the whole file, and that's the point
+   // app/page.tsx - this is the whole file, and that's the point
    export default function HomePage() {
      return (
        <>
@@ -105,7 +105,7 @@ apps/web/
 2. **One component per file, named the same as the file.** No `index.tsx` barrel files
    with five components inside; no `misc.tsx`. If you need a second component, make a
    second file. Small private helpers (a `<StatDivider/>` used only by `StatsBand`) may
-   live unexported in the same file — the moment anything else needs it, extract it.
+   live unexported in the same file - the moment anything else needs it, extract it.
 
 3. **Three component tiers, dependency flows one way:**
    `sections → ui/layout → (nothing)`. A `ui/` primitive never imports from `sections/`.
@@ -117,7 +117,7 @@ apps/web/
    finalist count" a one-line diff instead of a JSX hunt, and it keeps copy reviewable
    by non-engineers.
 
-5. **Props over forks.** `ProductCard` takes `{ eyebrow, title, body, href, image }` —
+5. **Props over forks.** `ProductCard` takes `{ eyebrow, title, body, href, image }` -
    there is no `DeriveCard.tsx`, `AscentCard.tsx`, `AccessCard.tsx`. Duplicate a
    component only when the variants genuinely diverge in structure, not just content.
 
@@ -135,7 +135,7 @@ apps/web/
   of unknown shape.
 - **No prop drilling past two levels.** This site should need zero global state; if you
   find yourself wanting context or a store, re-check whether the component tree is wrong.
-- **Client components are leaves.** `MobileNav`, `Lightbox`, `Carousel` — each isolated
+- **Client components are leaves.** `MobileNav`, `Lightbox`, `Carousel` - each isolated
   in its own file so its JS is code-split and the rest of the page ships as HTML.
 - **Every image goes through `next/image`** with real `width`/`height` (or `fill` +
   sized container) and honest `alt` text. Never a bare `<img>` for content photos.
@@ -162,11 +162,11 @@ Browser ──▶ CDN edge (static HTML/CSS/JS/images, cache-forever hashed asse
   database, no cold starts, nothing to scale, nothing to get paged for. A traffic spike
   after a contest announcement is the CDN's problem, not ours.
 - **The only dynamic surface is intake forms** ("Talk to us", sponsor contact). Handle
-  with a single serverless function or a form service — do not stand up a backend for
+  with a single serverless function or a form service - do not stand up a backend for
   this. Validate + rate-limit + honeypot; deliver to email/Sheet.
 - **"Compete" / "Enter Derive '26" link out** to the existing contest platform (Access).
   This site never touches contest infrastructure, auth, or candidate data. Keep that
-  boundary absolute — it's what lets the marketing site deploy on a whim while the
+  boundary absolute - it's what lets the marketing site deploy on a whim while the
   platform stays locked down.
 - **Content updates = git commits.** Stats, gallery photos, testimonials change a few
   times a year; a CMS is overhead we don't need yet. Revisit only if non-engineers must
@@ -175,14 +175,14 @@ Browser ──▶ CDN edge (static HTML/CSS/JS/images, cache-forever hashed asse
   `Cache-Control: public, max-age=31536000, immutable`. HTML → short TTL
   (`max-age=0, must-revalidate` or CDN-managed) so deploys show up immediately.
 - **Analytics:** one lightweight, privacy-respecting script (Plausible-class), loaded
-  deferred. No tag-manager pileups — every third-party script is a latency decision
+  deferred. No tag-manager pileups - every third-party script is a latency decision
   (see §5) and must be argued for.
 
 ---
 
 ## 5. Latency & speed
 
-### Budgets (mobile, mid-range device, 4G — measured in Lighthouse/PageSpeed)
+### Budgets (mobile, mid-range device, 4G - measured in Lighthouse/PageSpeed)
 
 | Metric                  | Budget           |
 | ----------------------- | ---------------- |
@@ -201,19 +201,19 @@ A PR that blows a budget doesn't merge until it's explained or fixed.
    - Serve AVIF/WebP via `next/image`; author `sizes` honestly per breakpoint so phones
      don't download desktop crops.
    - **Hero image:** `priority` (preloaded), tightly compressed (a 1600w hero JPEG/AVIF
-     should be well under 200 KB), and it is the LCP element — nothing may lazy-load it
+     should be well under 200 KB), and it is the LCP element - nothing may lazy-load it
      or render above it late.
-   - **Everything below the fold lazy-loads** (default `next/image` behavior — don't
+   - **Everything below the fold lazy-loads** (default `next/image` behavior - don't
      sprinkle `priority` around).
    - Gallery grid renders thumbnails (~640w); full-res only on lightbox open.
-   - Source photos get resized/compressed before entering the repo — never commit a
+   - Source photos get resized/compressed before entering the repo - never commit a
      camera original into `public/`.
    - Logos and the AMS mark: use the SVGs from `media/source-svg`, inline the header
      mark if small.
 
-2. **Fonts.** The design leans on a display serif — a classic render-blocking trap.
+2. **Fonts.** The design leans on a display serif - a classic render-blocking trap.
    - Self-host via `next/font` (zero layout shift, no third-party request, preloaded).
-   - Two families max (serif for display, sans for body), subset weights — every extra
+   - Two families max (serif for display, sans for body), subset weights - every extra
      weight is ~20–40 KB before first paint.
    - `display: swap` so text is never invisible waiting on a font.
 
@@ -222,7 +222,7 @@ A PR that blows a budget doesn't merge until it's explained or fixed.
    - Animations in CSS (transitions, `@keyframes`, scroll-driven where supported)
      before reaching for a JS animation library.
    - If a heavy widget is unavoidable (e.g. a map), load it with `next/dynamic` on
-     interaction/visibility — never in the critical path.
+     interaction/visibility - never in the critical path.
 
 4. **CLS discipline.** Every image has reserved space; stat numbers don't reflow when
    real data replaces placeholders; the sticky header has a fixed height; fonts are
@@ -249,7 +249,7 @@ Optimization is a habit, not a phase:
 - **Build-time over runtime:** anything computable at build (formatted stats, sorted
   team lists, gallery manifests) is computed at build. The user's device does layout
   and paint, nothing else.
-- Re-run a full audit (Lighthouse + WebPageTest) after content fill — real photos and
+- Re-run a full audit (Lighthouse + WebPageTest) after content fill - real photos and
   real sponsor logos are where budgets actually get tested, not the placeholder build.
 
 ---
@@ -263,20 +263,20 @@ the _enhanced_ view, not the baseline.
 - **Build every section mobile-first**, then add `md:`/`lg:` overrides. Never the
   reverse (desktop-first `max-width` overrides rot fast).
 - **Standard breakpoints** (Tailwind defaults: 640 / 768 / 1024 / 1280) unless a
-  specific section's content breaks elsewhere — breakpoints serve content, not devices.
+  specific section's content breaks elsewhere - breakpoints serve content, not devices.
 - **Fluid type and spacing with `clamp()`**, encoded once as Tailwind theme tokens:
   the display serif should scale ~`clamp(2.25rem, 5vw + 1rem, 4.5rem)` rather than
   jumping at breakpoints. Same for section padding.
 - **Layout mechanics:**
   - Grids collapse: product cards 3→1, gallery 4→2, team 5→2 columns. Use
-    `grid-template-columns: repeat(auto-fit, minmax(…, 1fr))` where the design allows —
+    `grid-template-columns: repeat(auto-fit, minmax(…, 1fr))` where the design allows -
     it removes breakpoint code entirely.
   - Hero: side-by-side → stacked (copy above image) on mobile.
   - Header: nav links collapse into `MobileNav` (accessible disclosure: focus trap,
     `Esc` closes, body scroll locked) below `lg`.
   - Stats band: 4-across → 2×2 on mobile.
 - **Images per viewport:** correct `sizes` attributes are the responsive-image
-  mechanism — a 2-column mobile gallery must request ~50vw images, not 1200px ones.
+  mechanism - a 2-column mobile gallery must request ~50vw images, not 1200px ones.
 - **No horizontal scroll, ever.** Test at 320 px wide. Long words/URLs in testimonials
   get `overflow-wrap: break-word`.
 - **Touch:** 44×44 px minimum targets, no hover-only affordances (anything revealed on
@@ -292,14 +292,14 @@ the _enhanced_ view, not the baseline.
 Every PR:
 
 - [ ] `pnpm lint && pnpm typecheck && pnpm test` pass **in CI** (guards must be wired
-      into CI, not just committed — committed ≠ enforced)
-- [ ] No section added to a `page.tsx` inline — new sections get files
+      into CI, not just committed - committed ≠ enforced)
+- [ ] No section added to a `page.tsx` inline - new sections get files
 - [ ] New images optimized + `alt` text written
 - [ ] Budgets in §5 respected (Lighthouse CI)
 
 Before launch:
 
-- [ ] All placeholder photos/logos/stats replaced — a wrong number costs more trust
+- [ ] All placeholder photos/logos/stats replaced - a wrong number costs more trust
       than no number; sponsor logos only via the approved logo files
 - [ ] Metadata per page: title, description, OpenGraph/Twitter card image (the link
       preview _is_ the first impression when shared in college groups)

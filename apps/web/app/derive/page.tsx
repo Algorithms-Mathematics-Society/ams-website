@@ -5,7 +5,7 @@ import { DeriveJourney } from "@/components/sections/derive/DeriveJourney";
 import { DerivePartners } from "@/components/sections/derive/DerivePartners";
 
 export const metadata: Metadata = {
-  title: "Derive — the quant contest",
+  title: "Derive: the quant contest",
   description:
     "Probability, markets, and mathematical reasoning under the clock. 2,500+ participants, 150 in Round 2, 50 finalists on stage at IIT Bombay.",
 };

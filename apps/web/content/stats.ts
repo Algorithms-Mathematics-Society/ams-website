@@ -4,7 +4,7 @@ export interface Stat {
 }
 
 /**
- * TODO(launch): replace XX/₹X.X with verified counts before launch —
+ * TODO(launch): replace XX/₹X.X with verified counts before launch;
  * a wrong number costs more trust than no number (design note).
  */
 export const STATS: Stat[] = [

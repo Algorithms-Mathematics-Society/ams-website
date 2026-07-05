@@ -14,7 +14,7 @@ export function Hero() {
           </h1>
           <p className="rise-3 rise mt-6 max-w-md leading-relaxed">
             National contests in quantitative finance and competitive
-            programming — and Access, the platform that turns performance into
+            programming, plus Access, the platform that turns performance into
             verified hiring signal.
           </p>
           <div className="rise-4 rise mt-9 flex flex-wrap gap-4">
@@ -27,9 +27,9 @@ export function Hero() {
 
         <figure className="rise-3 rise">
           {/* LCP slot: when the real photo lands, render it with next/image
-              priority — nothing above it may load later than it. */}
+              priority; nothing above it may load later than it. */}
           <PhotoPlaceholder
-            label="Hero photo — finalists on the Convergence stage, IIT Bombay · wide, candid, mid-problem"
+            label="Hero photo · finalists on the Convergence stage, IIT Bombay · wide, candid, mid-problem"
             aspect="aspect-[13/11]"
           />
           <figcaption className="mt-3 text-sm text-ink/70">

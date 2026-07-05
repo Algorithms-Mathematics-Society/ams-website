@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { ComingSoon } from "@/components/ui/ComingSoon";
 
 export const metadata: Metadata = {
-  title: "Access — the platform",
+  title: "Access: the platform",
   description:
     "Proctored assessments benchmarked against India's competitive elite.",
 };

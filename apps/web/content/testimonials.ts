@@ -5,7 +5,7 @@ export interface Testimonial {
 }
 
 /**
- * TODO(launch): real names with written consent only — a real face + real
+ * TODO(launch): real names with written consent only; a real face + real
  * college beats any adjective (design note). Quotes from post-event feedback.
  */
 export const TESTIMONIALS: Testimonial[] = [
@@ -13,7 +13,7 @@ export const TESTIMONIALS: Testimonial[] = [
     name: "Finalist name",
     detail: "College, batch",
     quote:
-      "Quote about the difficulty and fairness of the problems — pull from post-event feedback form.",
+      "Quote about the difficulty and fairness of the problems. Pull from the post-event feedback form.",
   },
   {
     name: "Finalist name",

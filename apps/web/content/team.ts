@@ -4,7 +4,7 @@ export interface TeamMember {
 }
 
 /**
- * TODO(content): real names + portraits — one session, one backdrop, one crop;
+ * TODO(content): real names + portraits: one session, one backdrop, one crop;
  * consistency reads as professionalism (design note).
  */
 export const TEAM: TeamMember[] = [

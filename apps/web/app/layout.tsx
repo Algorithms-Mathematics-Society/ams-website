@@ -18,11 +18,11 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL("https://amsociety.in"),
   title: {
-    default: "AMS — Where India's sharpest minds converge",
-    template: "%s — AMS",
+    default: "AMS · Where India's sharpest minds converge",
+    template: "%s · AMS",
   },
   description:
-    "National contests in quantitative finance and competitive programming — and Access, the platform that turns performance into verified hiring signal.",
+    "National contests in quantitative finance and competitive programming, plus Access, the platform that turns performance into verified hiring signal.",
   openGraph: {
     siteName: "AMS",
     type: "website",
