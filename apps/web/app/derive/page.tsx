@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { CtaBand } from "@/components/ui/CtaBand";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { DERIVE_CTA } from "@/content/derive";
+import { DERIVE_EVENT_JSONLD } from "@/content/seo";
 import { DeriveHero } from "@/components/sections/derive/DeriveHero";
 import { DeriveJourney } from "@/components/sections/derive/DeriveJourney";
 import { DerivePartners } from "@/components/sections/derive/DerivePartners";
@@ -14,6 +16,7 @@ export const metadata: Metadata = {
 export default function DerivePage() {
   return (
     <>
+      <JsonLd data={DERIVE_EVENT_JSONLD} />
       <DeriveHero />
       <DeriveJourney />
       <DerivePartners />

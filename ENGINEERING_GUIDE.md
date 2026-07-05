@@ -1,7 +1,7 @@
 # AMS Website - Engineering Guide
 
 Read this before writing the first line of code. It defines how the AMS marketing site
-(amsociety.in) is structured, built, and kept fast. The Figma reference lives at
+(amshq.in) is structured, built, and kept fast. The Figma reference lives at
 `website-figma-reference.png`; brand assets live in `media/source-svg` and `media/source-png`.
 
 **What this site is:** a content-driven, photo-heavy marketing site - hero, sponsors, stats,

@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository state
 
-This is the **AMS marketing website** repo (amsociety.in) - the public site for AMS's
+This is the **AMS marketing website** repo (amshq.in) - the public site for AMS's
 contests (Derive: quant, Ascent: systems) and the Access assessment platform. The home
 and Derive pages are built in `apps/web`; Ascent/Access are ComingSoon stubs. Also here:
 

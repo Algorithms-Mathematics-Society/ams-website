@@ -11,7 +11,10 @@ export const SITE = {
     "Contests in quant and competitive programming. Assessment that means something.",
   description:
     "National contests in quantitative finance and competitive programming, plus Access, the platform that turns performance into verified hiring signal.",
-  copyright: "© 2026 AMS · amsociety.in · amsderive.in · amsaccess.com",
+  legalName: "Algorithms & Mathematics Society",
+  url: "https://amshq.in",
+  copyright:
+    "© 2026 Algorithms & Mathematics Society · amshq.in · amsderive.in · amsaccess.com",
 } as const;
 
 export const NAV_LINKS: NavLink[] = [

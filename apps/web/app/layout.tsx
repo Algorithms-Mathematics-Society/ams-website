@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Fraunces, Inter } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { ORGANIZATION_JSONLD } from "@/content/seo";
 import "./globals.css";
 
 // Static 400/600 only; the full variable font with opsz was the LCP
@@ -18,17 +20,29 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://amsociety.in"),
+  metadataBase: new URL("https://amshq.in"),
   title: {
-    default: "AMS · Where India's sharpest minds converge",
+    // The exact entity string Google must associate with the "ams" query.
+    default: "AMS · Algorithms & Mathematics Society",
     template: "%s · AMS",
   },
   description:
-    "National contests in quantitative finance and competitive programming, plus Access, the platform that turns performance into verified hiring signal.",
+    "Where India's sharpest minds converge: national contests in quantitative finance and competitive programming, plus Access, the platform that turns performance into verified hiring signal.",
   openGraph: {
     siteName: "AMS",
     type: "website",
     locale: "en_IN",
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: "AMS · Algorithms & Mathematics Society",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
   },
 };
 
@@ -50,6 +64,7 @@ export default function RootLayout({
             __html: "document.documentElement.classList.add('js')",
           }}
         />
+        <JsonLd data={ORGANIZATION_JSONLD} />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
