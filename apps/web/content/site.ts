@@ -1,0 +1,54 @@
+export interface NavLink {
+  label: string;
+  href: string;
+  /** Opens in a new tab (external platforms). */
+  external?: boolean;
+}
+
+export const SITE = {
+  name: "AMS",
+  tagline:
+    "Contests in quant and competitive programming. Assessment that means something.",
+  description:
+    "National contests in quantitative finance and competitive programming — and Access, the platform that turns performance into verified hiring signal.",
+  copyright: "© 2026 AMS · amsociety.in · amsderive.in · amsaccess.com",
+} as const;
+
+export const NAV_LINKS: NavLink[] = [
+  { label: "Derive", href: "/derive" },
+  { label: "Ascent", href: "/ascent" },
+  { label: "Access", href: "/access" },
+  { label: "Gallery", href: "/gallery" },
+  { label: "Team", href: "/team" },
+];
+
+/** Primary CTA. TODO(launch): point at the live Derive '26 registration URL. */
+export const COMPETE_LINK: NavLink = { label: "Compete", href: "/derive" };
+
+export const FOOTER_COLUMNS: Array<{ heading: string; links: NavLink[] }> = [
+  {
+    heading: "Compete",
+    links: [
+      { label: "Derive", href: "/derive" },
+      { label: "Ascent", href: "/ascent" },
+      // TODO(launch): monthly challenge lives on the contest platform.
+      { label: "Monthly Challenge", href: "/derive" },
+    ],
+  },
+  {
+    heading: "Firms",
+    links: [
+      { label: "Access", href: "/access" },
+      { label: "Sponsor", href: "/access#sponsor" },
+      { label: "Talk to us", href: "mailto:tilakj0108@gmail.com" },
+    ],
+  },
+  {
+    heading: "AMS",
+    links: [
+      { label: "Gallery", href: "/gallery" },
+      { label: "Team", href: "/team" },
+      { label: "Contact", href: "mailto:tilakj0108@gmail.com" },
+    ],
+  },
+];

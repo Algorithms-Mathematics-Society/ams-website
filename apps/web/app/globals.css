@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand palette — sampled from website-figma-reference.png */
+  --color-maroon: #571c24;
+  --color-maroon-deep: #43141b;
+  --color-cream: #f5f0e4;
+  --color-cream-light: #fbf8f0;
+  --color-gold: #a9822f;
+  --color-espresso: #453333;
+  --color-ink: #46403a;
+  --color-placeholder: #e9e1d3;
+
+  --font-display: var(--font-fraunces);
+  --font-sans: var(--font-inter);
+
+  /* Fluid type scale */
+  --text-hero: clamp(2.5rem, 4.5vw + 1rem, 4.25rem);
+  --text-hero--line-height: 1.08;
+  --text-section: clamp(1.9rem, 2.6vw + 0.9rem, 2.75rem);
+  --text-section--line-height: 1.15;
+  --text-stat: clamp(2.1rem, 3vw + 0.9rem, 3.25rem);
+  --text-stat--line-height: 1.1;
+  --text-card-title: clamp(1.35rem, 1vw + 1rem, 1.6rem);
+  --text-card-title--line-height: 1.25;
+
+  /* Fluid section padding */
+  --spacing-section: clamp(4rem, 8vw, 7.5rem);
+}
+
+body {
+  background-color: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Maroon-on-cream needs a deliberate, visible focus ring */
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
