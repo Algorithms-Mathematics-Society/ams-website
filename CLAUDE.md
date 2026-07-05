@@ -35,9 +35,15 @@ has not been built yet.** The repo currently contains only:
 
 ## Commands
 
-No package.json exists yet. Once the site is scaffolded (pnpm), wire lint, typecheck,
-and tests into CI immediately — committed-but-unwired checks count as unenforced —
-and record the actual commands here.
+Run from the repo root (pnpm workspace; the app lives in `apps/web`):
+
+- `pnpm install` — install (Node 24, pnpm 11)
+- `pnpm dev` — dev server
+- `pnpm build` — production build; every route must stay `○ (Static)`
+- `pnpm lint` / `pnpm typecheck` — ESLint / `tsc --noEmit`
+
+CI is not set up yet — wiring lint/typecheck/build into a workflow is open debt
+(committed-but-unwired checks count as unenforced).
 
 ## Working conventions
 
