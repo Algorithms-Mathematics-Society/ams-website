@@ -6,7 +6,9 @@ import { FOOTER_COLUMNS, SITE } from "@/content/site";
 
 export function Footer() {
   return (
-    <footer className="bg-burgundy text-cream-light">
+    // The shadow bleeds burgundy far below the page edge so bottom
+    // overscroll shows the footer extending, not a bare canvas gap.
+    <footer className="bg-burgundy text-cream-light shadow-[0_50vh_0_50vh_var(--color-burgundy)]">
       <Container className="py-16 lg:py-20">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           <PhotoPlaceholder

@@ -29,6 +29,13 @@
   --spacing-section: clamp(4rem, 8vw, 7.5rem);
 }
 
+/* Elastic overscroll reveals the canvas beyond the page edges. Paint the
+   canvas cream so the navbar reads as pinned when the page is pulled down;
+   the footer gets a matching burgundy bleed (see Footer.tsx) for the bottom. */
+html {
+  background-color: var(--color-cream);
+}
+
 body {
   background-color: var(--color-cream);
   color: var(--color-ink);
