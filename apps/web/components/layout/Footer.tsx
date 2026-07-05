@@ -20,8 +20,8 @@ export function Footer() {
               <Image
                 src="/brand/mark-glyph-white.svg"
                 alt=""
-                width={30}
-                height={30}
+                width={32}
+                height={29}
               />
               <span className="font-display text-xl font-semibold tracking-[0.22em]">
                 {SITE.name}
