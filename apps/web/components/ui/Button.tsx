@@ -4,7 +4,8 @@ import { cn } from "@/lib/cn";
 interface Props {
   href: string;
   children: React.ReactNode;
-  variant?: "solid" | "outline";
+  /** inverse = cream button for use on burgundy/espresso bands. */
+  variant?: "solid" | "outline" | "inverse";
   external?: boolean;
   className?: string;
 }
@@ -19,9 +20,11 @@ export function Button({
 }: Props) {
   const styles = cn(
     "inline-flex min-h-11 items-center justify-center rounded-md px-6 py-2.5 text-sm font-medium transition-colors",
-    variant === "solid" && "bg-burgundy text-cream-light hover:bg-burgundy-deep",
+    variant === "solid" &&
+      "bg-burgundy text-cream-light hover:bg-burgundy-deep",
     variant === "outline" &&
       "border border-burgundy/40 text-burgundy hover:border-burgundy hover:bg-burgundy/5",
+    variant === "inverse" && "bg-cream text-burgundy hover:bg-cream-light",
     className,
   );
   if (external) {
