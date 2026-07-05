@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { AccessCta } from "@/components/sections/access/AccessCta";
+import { CtaBand } from "@/components/ui/CtaBand";
+import { ACCESS_CTA } from "@/content/access";
 import { AccessFeatures } from "@/components/sections/access/AccessFeatures";
 import { AccessFirms } from "@/components/sections/access/AccessFirms";
 import { AccessHero } from "@/components/sections/access/AccessHero";
@@ -16,7 +17,7 @@ export default function AccessPage() {
       <AccessHero />
       <AccessFeatures />
       <AccessFirms />
-      <AccessCta />
+      <CtaBand {...ACCESS_CTA} />
     </>
   );
 }

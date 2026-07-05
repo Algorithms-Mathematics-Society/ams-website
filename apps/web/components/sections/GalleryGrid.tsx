@@ -7,21 +7,27 @@ import { GALLERY } from "@/content/gallery";
 interface Props {
   /** Cap the number of slots (home page shows a subset; /gallery shows all). */
   limit?: number;
+  /** Off on /gallery, where the PageHeader already introduces the grid. */
+  withHeading?: boolean;
 }
 
-export function GalleryGrid({ limit }: Props) {
+export function GalleryGrid({ limit, withHeading = true }: Props) {
   const items = limit ? GALLERY.slice(0, limit) : GALLERY;
   return (
     <section className="bg-cream-light py-section">
       <Container>
-        <Reveal>
-          <SectionHeading
-            eyebrow="Moments from AMS"
-            title="It happened. Here's proof."
-          />
-        </Reveal>
+        {withHeading && (
+          <Reveal>
+            <SectionHeading
+              eyebrow="Moments from AMS"
+              title="It happened. Here's proof."
+            />
+          </Reveal>
+        )}
 
-        <ul className="mt-12 grid grid-cols-2 gap-4 lg:grid-cols-4">
+        <ul
+          className={`grid grid-cols-2 gap-4 lg:grid-cols-4 ${withHeading ? "mt-12" : ""}`}
+        >
           {items.map((item, index) => (
             <li key={item.label}>
               {/* Stagger by column so each row reads as one left-to-right sweep. */}

@@ -4,15 +4,24 @@ import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { TEAM } from "@/content/team";
 
-export function TeamGrid() {
+interface Props {
+  /** Off on /team, where the PageHeader already introduces the grid. */
+  withHeading?: boolean;
+}
+
+export function TeamGrid({ withHeading = true }: Props) {
   return (
     <section className="py-section">
       <Container>
-        <Reveal>
-          <SectionHeading eyebrow="The team" title="The people behind it." />
-        </Reveal>
+        {withHeading && (
+          <Reveal>
+            <SectionHeading eyebrow="The team" title="The people behind it." />
+          </Reveal>
+        )}
 
-        <ul className="mt-12 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-5">
+        <ul
+          className={`grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-5 ${withHeading ? "mt-12" : ""}`}
+        >
           {TEAM.map((member, index) => (
             <li key={`${member.name}-${member.role}`}>
               <Reveal delay={index * 70}>

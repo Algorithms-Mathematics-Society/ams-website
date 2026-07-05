@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { DeriveCta } from "@/components/sections/derive/DeriveCta";
+import { CtaBand } from "@/components/ui/CtaBand";
+import { DERIVE_CTA } from "@/content/derive";
 import { DeriveHero } from "@/components/sections/derive/DeriveHero";
 import { DeriveJourney } from "@/components/sections/derive/DeriveJourney";
 import { DerivePartners } from "@/components/sections/derive/DerivePartners";
@@ -16,7 +17,7 @@ export default function DerivePage() {
       <DeriveHero />
       <DeriveJourney />
       <DerivePartners />
-      <DeriveCta />
+      <CtaBand {...DERIVE_CTA} />
     </>
   );
 }

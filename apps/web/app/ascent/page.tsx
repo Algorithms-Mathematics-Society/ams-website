@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { AscentCta } from "@/components/sections/ascent/AscentCta";
+import { CtaBand } from "@/components/ui/CtaBand";
+import { ASCENT_CTA } from "@/content/ascent";
 import { AscentHero } from "@/components/sections/ascent/AscentHero";
 import { AscentPillars } from "@/components/sections/ascent/AscentPillars";
 import { AscentStandard } from "@/components/sections/ascent/AscentStandard";
@@ -16,7 +17,7 @@ export default function AscentPage() {
       <AscentHero />
       <AscentPillars />
       <AscentStandard />
-      <AscentCta />
+      <CtaBand {...ASCENT_CTA} />
     </>
   );
 }
