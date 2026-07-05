@@ -3,7 +3,7 @@ import { Fraunces, Inter } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { ORGANIZATION_JSONLD } from "@/content/seo";
+import { ORGANIZATION_JSONLD, WEBSITE_JSONLD } from "@/content/seo";
 import "./globals.css";
 
 // Static 400/600 only; the full variable font with opsz was the LCP
@@ -65,6 +65,7 @@ export default function RootLayout({
           }}
         />
         <JsonLd data={ORGANIZATION_JSONLD} />
+        <JsonLd data={WEBSITE_JSONLD} />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

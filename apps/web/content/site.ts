@@ -51,6 +51,7 @@ export const FOOTER_COLUMNS: Array<{ heading: string; links: NavLink[] }> = [
     links: [
       { label: "Gallery", href: "/gallery" },
       { label: "Team", href: "/team" },
+      { label: "FAQ", href: "/faq" },
       { label: "Contact", href: "mailto:tilakj0108@gmail.com" },
     ],
   },

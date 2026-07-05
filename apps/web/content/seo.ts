@@ -23,6 +23,30 @@ export const ORGANIZATION_JSONLD = {
   sameAs: ["https://amsderive.in"],
 } as const;
 
+/** Site-level entity for Google's site-name and sitelinks treatment. */
+export const WEBSITE_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "AMS",
+  alternateName: "Algorithms & Mathematics Society",
+  url: SITE.url,
+} as const;
+
+/** FAQPage schema from the typed FAQ content; rendered on /faq. */
+export function faqPageJsonLd(
+  faq: ReadonlyArray<{ question: string; answer: string }>,
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faq.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: { "@type": "Answer", text: item.answer },
+    })),
+  };
+}
+
 /** Derive '26: the verified first edition. Rendered on /derive. */
 export const DERIVE_EVENT_JSONLD = {
   "@context": "https://schema.org",
