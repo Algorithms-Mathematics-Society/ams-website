@@ -22,7 +22,7 @@ export function AscentHero() {
             label={ASCENT_HERO.photoLabel}
             aspect="aspect-[13/11]"
           />
-          <figcaption className="mt-3 text-sm text-ink/70">
+          <figcaption className="mt-3 text-sm text-ink/80">
             {ASCENT_HERO.photoCaption}
           </figcaption>
         </figure>

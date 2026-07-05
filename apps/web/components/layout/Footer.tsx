@@ -36,7 +36,7 @@ export function Footer() {
             <div className="mt-10 grid grid-cols-2 gap-8 sm:grid-cols-3">
               {FOOTER_COLUMNS.map((column) => (
                 <nav key={column.heading} aria-label={column.heading}>
-                  <h2 className="text-xs font-semibold tracking-[0.25em] text-gold uppercase">
+                  <h2 className="text-xs font-semibold tracking-[0.25em] text-gold-bright uppercase">
                     {column.heading}
                   </h2>
                   <ul className="mt-4 space-y-2.5">

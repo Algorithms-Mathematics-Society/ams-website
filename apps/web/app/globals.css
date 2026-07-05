@@ -8,6 +8,10 @@
   --color-cream: #f5f0e4;
   --color-cream-light: #fbf8f0;
   --color-gold: #a9822f;
+  /* Text-safe golds: #a9822f is decorative-only (rules, accents). 4.5:1 needs
+     gold-deep on cream backgrounds and gold-bright on burgundy/espresso. */
+  --color-gold-deep: #7d6122;
+  --color-gold-bright: #cda352;
   --color-espresso: #453333;
   --color-ink: #46403a;
   --color-placeholder: #e9e1d3;
@@ -53,7 +57,9 @@ body {
    never waits for hydration. Staggered via .rise-2/-3/-4. */
 @keyframes rise {
   from {
-    opacity: 0;
+    /* 0.01, not 0: keeps the element an LCP candidate so the hero counts
+       at first paint instead of after the animation. */
+    opacity: 0.01;
     translate: 0 14px;
   }
   to {

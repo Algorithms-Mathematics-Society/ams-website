@@ -33,7 +33,7 @@ export function Testimonials() {
                       <span className="block font-display font-semibold text-burgundy">
                         {testimonial.name}
                       </span>
-                      <span className="block text-sm text-ink/70">
+                      <span className="block text-sm text-ink/80">
                         {testimonial.detail}
                       </span>
                     </span>

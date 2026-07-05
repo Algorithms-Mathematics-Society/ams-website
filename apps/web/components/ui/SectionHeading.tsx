@@ -12,7 +12,7 @@ interface Props {
 export function SectionHeading({ eyebrow, title, inverse, className }: Props) {
   return (
     <div className={cn("max-w-2xl", className)}>
-      <Eyebrow>{eyebrow}</Eyebrow>
+      <Eyebrow inverse={inverse}>{eyebrow}</Eyebrow>
       <h2
         className={cn(
           "mt-4 font-display text-section",

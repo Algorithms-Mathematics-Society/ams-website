@@ -30,7 +30,7 @@ export function PhotoPlaceholder({
         className,
       )}
     >
-      <p className="max-w-sm text-center text-[11px] font-medium tracking-[0.15em] text-ink/50 uppercase">
+      <p className="max-w-sm text-center text-[11px] font-medium tracking-[0.15em] text-ink/80 uppercase">
         📷 {label}
       </p>
     </div>

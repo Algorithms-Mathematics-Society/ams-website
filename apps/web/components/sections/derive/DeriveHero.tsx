@@ -22,7 +22,7 @@ export function DeriveHero() {
             label={DERIVE_HERO.photoLabel}
             aspect="aspect-[13/11]"
           />
-          <figcaption className="mt-3 text-sm text-ink/70">
+          <figcaption className="mt-3 text-sm text-ink/80">
             {DERIVE_HERO.photoCaption}
           </figcaption>
         </figure>

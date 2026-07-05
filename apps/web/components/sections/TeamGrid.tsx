@@ -10,6 +10,8 @@ interface Props {
 }
 
 export function TeamGrid({ withHeading = true }: Props) {
+  // Without the section h2, names step down from the page h1 directly.
+  const NameTag = withHeading ? "h3" : "h2";
   return (
     <section className="py-section">
       <Container>
@@ -31,10 +33,10 @@ export function TeamGrid({ withHeading = true }: Props) {
                   rounded="rounded-lg"
                   className="p-3"
                 />
-                <h3 className="mt-4 font-display font-semibold text-burgundy">
+                <NameTag className="mt-4 font-display font-semibold text-burgundy">
                   {member.name}
-                </h3>
-                <p className="mt-1 text-sm text-ink/70">{member.role}</p>
+                </NameTag>
+                <p className="mt-1 text-sm text-ink/80">{member.role}</p>
               </Reveal>
             </li>
           ))}

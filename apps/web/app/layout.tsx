@@ -4,10 +4,12 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import "./globals.css";
 
+// Static 400/600 only; the full variable font with opsz was the LCP
+// bottleneck on throttled 4G.
 const fraunces = Fraunces({
   variable: "--font-fraunces",
   subsets: ["latin"],
-  axes: ["opsz"],
+  weight: ["400", "600"],
 });
 
 const inter = Inter({

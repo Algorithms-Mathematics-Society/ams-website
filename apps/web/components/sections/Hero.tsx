@@ -32,7 +32,7 @@ export function Hero() {
             label="Hero photo · finalists on the Convergence stage, IIT Bombay · wide, candid, mid-problem"
             aspect="aspect-[13/11]"
           />
-          <figcaption className="mt-3 text-sm text-ink/70">
+          <figcaption className="mt-3 text-sm text-ink/80">
             Derive &apos;26 finals · IIT Bombay · July 2026
           </figcaption>
         </figure>
