@@ -42,13 +42,56 @@ body {
   outline-offset: 2px;
 }
 
+/* On-load entrance (hero and page titles) — pure CSS so the first paint
+   never waits for hydration. Staggered via .rise-2/-3/-4. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    translate: 0 14px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+.rise {
+  animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.rise-2 {
+  animation-delay: 90ms;
+}
+.rise-3 {
+  animation-delay: 180ms;
+}
+.rise-4 {
+  animation-delay: 270ms;
+}
+
+/* Scroll reveal (below the fold, driven by components/ui/Reveal).
+   Hidden state only applies once JS has stamped html.js — without JS
+   everything simply renders visible. */
+html.js .reveal {
+  opacity: 0;
+  translate: 0 14px;
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    translate 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+html.js .reveal.is-visible {
+  opacity: 1;
+  translate: 0 0;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
     scroll-behavior: auto !important;
   }
 }

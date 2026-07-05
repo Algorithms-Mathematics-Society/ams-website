@@ -1,15 +1,18 @@
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { PhotoPlaceholder } from "@/components/ui/PhotoPlaceholder";
+import { Reveal } from "@/components/ui/Reveal";
 import { ABOUT } from "@/content/about";
 
 export function AboutSplit() {
   return (
     <section className="py-section">
       <Container className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-        <PhotoPlaceholder label={ABOUT.photoLabel} aspect="aspect-[4/5]" />
+        <Reveal>
+          <PhotoPlaceholder label={ABOUT.photoLabel} aspect="aspect-[4/5]" />
+        </Reveal>
 
-        <div className="lg:pt-6">
+        <Reveal delay={120} className="lg:pt-6">
           <Eyebrow>{ABOUT.eyebrow}</Eyebrow>
           <h2 className="mt-4 font-display text-section text-burgundy">
             {ABOUT.title}
@@ -25,7 +28,7 @@ export function AboutSplit() {
               {ABOUT.attribution}
             </p>
           </div>
-        </div>
+        </Reveal>
       </Container>
     </section>
   );
