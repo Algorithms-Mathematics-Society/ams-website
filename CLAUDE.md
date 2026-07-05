@@ -5,8 +5,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Repository state
 
 This is the **AMS marketing website** repo (amshq.in) - the public site for AMS's
-contests (Derive: quant, Ascent: systems) and the Access assessment platform. The home
-and Derive pages are built in `apps/web`; Ascent/Access are ComingSoon stubs. Also here:
+contests (Derive: quant, Ascent: systems) and the Access assessment platform. All six
+pages (home, derive, ascent, access, gallery, team) are built in `apps/web`. The SEO
+strategy lives in `docs/superpowers/specs/2026-07-05-seo-rank-ams-design.md`. Also here:
 
 - `ENGINEERING_GUIDE.md` - the authoritative pre-build guide. **Read it before writing
   any code**; it fixes the stack, folder structure, component rules, performance
