@@ -6,7 +6,7 @@ import { FOOTER_COLUMNS, SITE } from "@/content/site";
 
 export function Footer() {
   return (
-    <footer className="bg-maroon text-cream-light">
+    <footer className="bg-burgundy text-cream-light">
       <Container className="py-16 lg:py-20">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           <PhotoPlaceholder

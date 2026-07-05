@@ -18,7 +18,7 @@ export function ProductCards() {
           {PRODUCTS.map((product) => (
             <li
               key={product.eyebrow}
-              className="flex flex-col rounded-xl border border-maroon/10 bg-cream-light p-5"
+              className="flex flex-col rounded-xl border border-burgundy/10 bg-cream-light p-5"
             >
               <PhotoPlaceholder
                 label={product.screenshotLabel}
@@ -27,13 +27,13 @@ export function ProductCards() {
               />
               <div className="flex flex-1 flex-col pt-6">
                 <Eyebrow>{product.eyebrow}</Eyebrow>
-                <h3 className="mt-3 font-display text-card-title text-maroon">
+                <h3 className="mt-3 font-display text-card-title text-burgundy">
                   {product.title}
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed">{product.body}</p>
                 <Link
                   href={product.href}
-                  className="mt-auto inline-flex items-center gap-1.5 pt-8 text-sm font-medium text-maroon hover:underline"
+                  className="mt-auto inline-flex items-center gap-1.5 pt-8 text-sm font-medium text-burgundy hover:underline"
                 >
                   Explore
                   <span aria-hidden>→</span>

@@ -9,7 +9,7 @@ import { COMPETE_LINK, NAV_LINKS, SITE } from "@/content/site";
 export function Header() {
   return (
     <HeaderShell>
-      <header className="h-16 border-b border-maroon/10 bg-cream">
+      <header className="h-16 border-b border-burgundy/10 bg-cream">
         <Container className="flex h-full items-center justify-between">
           <Link
             href="/"
@@ -23,7 +23,7 @@ export function Header() {
               height={29}
               priority
             />
-            <span className="font-display text-xl font-semibold tracking-[0.22em] text-maroon">
+            <span className="font-display text-xl font-semibold tracking-[0.22em] text-burgundy">
               {SITE.name}
             </span>
           </Link>
@@ -33,7 +33,7 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm text-ink transition-colors hover:text-maroon"
+                className="text-sm text-ink transition-colors hover:text-burgundy"
               >
                 {link.label}
               </Link>

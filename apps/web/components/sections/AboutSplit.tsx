@@ -11,7 +11,7 @@ export function AboutSplit() {
 
         <div className="lg:pt-6">
           <Eyebrow>{ABOUT.eyebrow}</Eyebrow>
-          <h2 className="mt-4 font-display text-section text-maroon">
+          <h2 className="mt-4 font-display text-section text-burgundy">
             {ABOUT.title}
           </h2>
           <div className="mt-6 space-y-5 leading-relaxed">
@@ -21,7 +21,7 @@ export function AboutSplit() {
           </div>
           <div className="mt-10">
             <div className="h-0.5 w-9 bg-gold" aria-hidden />
-            <p className="mt-4 font-display font-semibold text-maroon">
+            <p className="mt-4 font-display font-semibold text-burgundy">
               {ABOUT.attribution}
             </p>
           </div>

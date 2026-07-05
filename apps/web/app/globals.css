@@ -1,9 +1,10 @@
 @import "tailwindcss";
 
 @theme {
-  /* Brand palette — sampled from website-figma-reference.png */
-  --color-maroon: #571c24;
-  --color-maroon-deep: #43141b;
+  /* Official AMS brand palette: Burgundy / Antique Gold / Cream
+     (confirmed against the brand color sheet, 2026-07-05) */
+  --color-burgundy: #571c24;
+  --color-burgundy-deep: #43141b;
   --color-cream: #f5f0e4;
   --color-cream-light: #fbf8f0;
   --color-gold: #a9822f;

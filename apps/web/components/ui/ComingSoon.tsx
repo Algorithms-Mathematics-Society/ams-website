@@ -13,7 +13,7 @@ export function ComingSoon({ eyebrow, title, body }: Props) {
     <section className="py-section">
       <Container className="max-w-2xl">
         <Eyebrow>{eyebrow}</Eyebrow>
-        <h1 className="mt-6 font-display text-hero text-maroon">{title}</h1>
+        <h1 className="mt-6 font-display text-hero text-burgundy">{title}</h1>
         <p className="mt-6 leading-relaxed">{body}</p>
       </Container>
     </section>

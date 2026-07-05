@@ -19,9 +19,9 @@ export function Button({
 }: Props) {
   const styles = cn(
     "inline-flex min-h-11 items-center justify-center rounded-md px-6 py-2.5 text-sm font-medium transition-colors",
-    variant === "solid" && "bg-maroon text-cream-light hover:bg-maroon-deep",
+    variant === "solid" && "bg-burgundy text-cream-light hover:bg-burgundy-deep",
     variant === "outline" &&
-      "border border-maroon/40 text-maroon hover:border-maroon hover:bg-maroon/5",
+      "border border-burgundy/40 text-burgundy hover:border-burgundy hover:bg-burgundy/5",
     className,
   );
   if (external) {

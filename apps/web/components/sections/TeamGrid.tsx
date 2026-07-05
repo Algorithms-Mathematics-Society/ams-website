@@ -18,7 +18,7 @@ export function TeamGrid() {
                 rounded="rounded-lg"
                 className="p-3"
               />
-              <h3 className="mt-4 font-display font-semibold text-maroon">
+              <h3 className="mt-4 font-display font-semibold text-burgundy">
                 {member.name}
               </h3>
               <p className="mt-1 text-sm text-ink/70">{member.role}</p>

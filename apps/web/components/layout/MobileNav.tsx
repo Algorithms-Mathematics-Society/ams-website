@@ -55,7 +55,7 @@ export function MobileNav() {
         aria-expanded={open}
         aria-controls="mobile-nav-panel"
         onClick={() => setOpen((v) => !v)}
-        className="flex h-11 w-11 items-center justify-center text-maroon"
+        className="flex h-11 w-11 items-center justify-center text-burgundy"
       >
         <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
         <svg
@@ -80,7 +80,7 @@ export function MobileNav() {
         <div
           id="mobile-nav-panel"
           ref={panelRef}
-          className="fixed inset-x-0 top-16 bottom-0 z-50 overflow-y-auto border-t border-maroon/10 bg-cream"
+          className="fixed inset-x-0 top-16 bottom-0 z-50 overflow-y-auto border-t border-burgundy/10 bg-cream"
         >
           <nav aria-label="Main" className="flex flex-col px-5 py-6">
             {NAV_LINKS.map((link) => (
@@ -88,7 +88,7 @@ export function MobileNav() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="border-b border-maroon/10 py-4 text-lg text-maroon"
+                className="border-b border-burgundy/10 py-4 text-lg text-burgundy"
               >
                 {link.label}
               </Link>
@@ -96,7 +96,7 @@ export function MobileNav() {
             <Link
               href={COMPETE_LINK.href}
               onClick={() => setOpen(false)}
-              className="mt-6 inline-flex min-h-11 items-center justify-center rounded-md bg-maroon px-6 text-sm font-medium text-cream-light"
+              className="mt-6 inline-flex min-h-11 items-center justify-center rounded-md bg-burgundy px-6 text-sm font-medium text-cream-light"
             >
               {COMPETE_LINK.label}
             </Link>

@@ -15,7 +15,7 @@ export function Testimonials() {
           {TESTIMONIALS.map((testimonial) => (
             <li
               key={testimonial.quote}
-              className="rounded-xl border border-maroon/10 bg-cream-light p-7"
+              className="rounded-xl border border-burgundy/10 bg-cream-light p-7"
             >
               <figure>
                 <figcaption className="flex items-center gap-4">
@@ -26,7 +26,7 @@ export function Testimonials() {
                     Photo
                   </span>
                   <span>
-                    <span className="block font-display font-semibold text-maroon">
+                    <span className="block font-display font-semibold text-burgundy">
                       {testimonial.name}
                     </span>
                     <span className="block text-sm text-ink/70">

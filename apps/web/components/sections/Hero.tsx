@@ -9,7 +9,7 @@ export function Hero() {
       <Container className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
         <div>
           <Eyebrow>Quant · Algorithms · Assessment</Eyebrow>
-          <h1 className="mt-6 font-display text-hero text-maroon">
+          <h1 className="mt-6 font-display text-hero text-burgundy">
             Where India&apos;s sharpest minds converge.
           </h1>
           <p className="mt-6 max-w-md leading-relaxed">

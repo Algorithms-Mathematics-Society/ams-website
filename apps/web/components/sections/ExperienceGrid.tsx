@@ -13,7 +13,7 @@ export function ExperienceGrid() {
           {EXPERIENCE.map((item) => (
             <li key={item.title}>
               <PhotoPlaceholder label={item.photoLabel} />
-              <h3 className="mt-5 font-display text-lg font-semibold text-maroon">
+              <h3 className="mt-5 font-display text-lg font-semibold text-burgundy">
                 {item.title}
               </h3>
               <p className="mt-2 text-sm leading-relaxed">{item.body}</p>
