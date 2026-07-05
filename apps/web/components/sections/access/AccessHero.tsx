@@ -25,7 +25,6 @@ export function AccessHero() {
             height={ACCESS_HERO.image.height}
             priority
             sizes="(min-width: 1024px) 544px, 100vw"
-            className="rounded-xl border border-burgundy/15 shadow-[0_8px_32px_rgba(87,28,36,0.12)]"
           />
           <figcaption className="mt-3 text-sm text-ink/80">
             {ACCESS_HERO.photoCaption}
