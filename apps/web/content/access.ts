@@ -2,9 +2,14 @@ export const ACCESS_HERO = {
   eyebrow: "Access",
   title: "The platform.",
   body: "Proctored assessments benchmarked against India's competitive elite. A 15-stage secure onboarding takes every candidate from sign-in to a locked, monitored exam in a native desktop shell.",
-  photoLabel:
-    "Screenshot · Access proctored exam view (Tauri app) · real UI only",
-  photoCaption: "The Access desktop client · exam view",
+  image: {
+    /** From the ams-access repo's own home page (optimized from source). */
+    src: "/images/access-site.webp",
+    alt: "The Access product site: Serious evaluations need a room of their own, above a controlled-round session view",
+    width: 1600,
+    height: 768,
+  },
+  photoCaption: "amsaccess.com · the Access product site",
 } as const;
 
 export interface AccessFeature {
