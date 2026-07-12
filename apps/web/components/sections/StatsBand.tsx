@@ -10,11 +10,18 @@ import { STATS } from "@/content/stats";
 export function StatsBand() {
   return (
     <section className="relative bg-espresso py-20 text-cream-light lg:py-28">
+      {/* This photo sits under a bg-espresso/85 overlay, so quality 50 is
+          invisible here but halves the payload (70 KB to 31 KB at 750w).
+          fetchPriority low because the band's top edge pokes into the first
+          mobile viewport, which makes Chrome upgrade a lazy image to High
+          and lets pure decor compete with the hero for 4G bandwidth. */}
       <Image
         src="/images/derive26/hero/contest-in-progress.webp"
         alt=""
         aria-hidden
         fill
+        quality={50}
+        fetchPriority="low"
         sizes="100vw"
         className="object-cover opacity-100"
       />

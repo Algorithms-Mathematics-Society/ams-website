@@ -7,19 +7,25 @@ export function Hero() {
   return (
     <section className="relative flex min-h-[85vh] items-center overflow-hidden">
       {/* LCP element: preloaded, nothing above it may render late.
-          `priority` alone only makes Next eagerly load + discoverably preload
-          this image; on Next 16 it no longer implies fetchPriority="high"
-          (that became an independent prop, see next/dist get-img-props.js),
-          so it must be set explicitly or Lighthouse's Lantern network model
-          schedules the request behind render-blocking CSS/fonts under
-          throttling, inflating simulated LCP by seconds even though the
-          image is genuinely eager-loaded and discoverable in the document. */}
+          - fetchPriority must be explicit: on Next 16, `priority` only
+            controls eager loading + the head preload link and no longer
+            implies the fetchpriority=high hint (it became an independent
+            prop, see next/dist get-img-props.js).
+          - quality 50 needs next.config images.qualities to include 50 or
+            the optimizer snaps it back to 75; under the hero's dark
+            gradient overlays the compression is invisible and cuts the
+            750w mobile payload from 42 KB to 28 KB.
+          - decoding sync (instead of next/image's async default) lets the
+            already-downloaded hero commit in the same frame as first
+            paint instead of one frame later. */}
       <Image
         src="/images/derive26/hero/the-hall-at-capacity.webp"
         alt="The Derive '26 finals hall at capacity, contestants at their laptops"
         fill
         priority
         fetchPriority="high"
+        quality={50}
+        decoding="sync"
         sizes="100vw"
         className="object-cover"
       />
