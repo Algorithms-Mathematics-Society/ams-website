@@ -2,6 +2,7 @@ import { AboutSplit } from "@/components/sections/AboutSplit";
 import { ExperienceGrid } from "@/components/sections/ExperienceGrid";
 import { GalleryGrid } from "@/components/sections/GalleryGrid";
 import { Hero } from "@/components/sections/Hero";
+import { PhotoBreaker } from "@/components/sections/PhotoBreaker";
 import { ProductCards } from "@/components/sections/ProductCards";
 import { StatsBand } from "@/components/sections/StatsBand";
 import { TeamGrid } from "@/components/sections/TeamGrid";
@@ -15,6 +16,7 @@ export default function HomePage() {
       <AboutSplit />
       <ProductCards />
       <ExperienceGrid />
+      <PhotoBreaker />
       <GalleryGrid limit={8} />
       <Testimonials />
       <TeamGrid />
