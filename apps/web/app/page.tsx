@@ -15,7 +15,7 @@ export default function HomePage() {
       <AboutSplit />
       <ProductCards />
       <ExperienceGrid />
-      <GalleryGrid />
+      <GalleryGrid limit={8} />
       <Testimonials />
       <TeamGrid />
     </>
