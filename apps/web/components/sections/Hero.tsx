@@ -1,7 +1,7 @@
+import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
-import { PhotoPlaceholder } from "@/components/ui/PhotoPlaceholder";
 
 export function Hero() {
   return (
@@ -26,12 +26,17 @@ export function Hero() {
         </div>
 
         <figure className="rise-3 rise">
-          {/* LCP slot: when the real photo lands, render it with next/image
-              priority; nothing above it may load later than it. */}
-          <PhotoPlaceholder
-            label="Hero photo · finalists on the Convergence stage, IIT Bombay · wide, candid, mid-problem"
-            aspect="aspect-[13/11]"
-          />
+          {/* LCP element: preloaded, nothing above it may render late. */}
+          <div className="relative aspect-[13/11] overflow-hidden rounded-lg">
+            <Image
+              src="/images/derive26/hero/the-hall-at-capacity.webp"
+              alt="The Derive '26 finals hall at capacity, contestants at their laptops"
+              fill
+              priority
+              sizes="(min-width: 1024px) 44vw, 92vw"
+              className="object-cover"
+            />
+          </div>
           <figcaption className="mt-3 text-sm text-ink/80">
             Derive &apos;26 finals · IIT Bombay · July 2026
           </figcaption>
