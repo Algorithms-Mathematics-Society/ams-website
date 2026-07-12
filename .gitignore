@@ -7,3 +7,6 @@ next-env.d.ts
 !.env.example
 .DS_Store
 .playwright-mcp/
+
+# Camera originals (local source of truth; optimized copies live in apps/web/public/images)
+/media/photos/
