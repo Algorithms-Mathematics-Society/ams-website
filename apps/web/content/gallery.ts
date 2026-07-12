@@ -1,14 +1,16 @@
 export interface GalleryItem {
-  /** Becomes the image alt text once real photos land. */
+  /** Image alt text. */
   label: string;
-  /** TODO(content): set to the optimized photo path from the CONVERGENCE shoot. */
+  /** 640w thumbnail path under public/. */
   src?: string;
+  /** 1600w large view path under public/ (opened from the grid). */
+  full?: string;
 }
 
 export const GALLERY_PAGE = {
   eyebrow: "Moments from AMS",
   title: "It happened. Here's proof.",
-  body: "Twelve moments from Derive '26: the registration desk at eight in the morning, the hall at capacity, the trophy at the end. Shot during Convergence at IIT Bombay, July 2026.",
+  body: "Twelve moments from Derive '26: the swag desk in the morning, the hall at capacity, the cheques at the end. Shot during Convergence at IIT Bombay, July 2026.",
   cta: {
     title: "Be in the next set.",
     body: "The next edition will fill a hall again. Compete, volunteer, or just be in the room.",
@@ -17,18 +19,46 @@ export const GALLERY_PAGE = {
   },
 } as const;
 
-/** 12 slots: populate from the CONVERGENCE shoot; candids over posed (design note). */
+const img = (slug: string) => ({
+  src: `/images/derive26/thumb/${slug}.webp`,
+  full: `/images/derive26/full/${slug}.webp`,
+});
+
 export const GALLERY: GalleryItem[] = [
-  { label: "Registration desk, lanyards being handed out" },
-  { label: "Opening ceremony, mark on the big screen" },
-  { label: "Contestants coding, heads down" },
-  { label: "Group discussion between rounds" },
-  { label: "Recruiters talking with finalists" },
-  { label: "Winner lifting the crystal trophy" },
-  { label: "Certificates being signed / stacked" },
-  { label: "AMS t-shirts & merch table, swag close-up" },
-  { label: "Wide crowd shot, hall full" },
-  { label: "Volunteer team huddle" },
-  { label: "Prize cheque moment on stage" },
-  { label: "Full team photo, end of day" },
+  {
+    label: "Goodies distribution, contest kits changing hands",
+    ...img("goodies-distribution"),
+  },
+  { label: "The swag desk, notebooks and formula tees", ...img("swag-desk") },
+  { label: "A contestant deep in the problem set", ...img("in-the-zone") },
+  {
+    label: "Debating the problem set between rounds",
+    ...img("debating-the-problem-set"),
+  },
+  {
+    label: "Finalists meet the partner interviewers",
+    ...img("finalists-meet-the-interviewers"),
+  },
+  {
+    label: "Prize cheques on stage for the winners",
+    ...img("prize-cheque-moment"),
+  },
+  {
+    label: "The address before the final round",
+    ...img("address-before-the-final-round"),
+  },
+  {
+    label: "Blitz chess huddle at the evening social",
+    ...img("blitz-chess-huddle"),
+  },
+  { label: "The evening social from above", ...img("the-evening-social") },
+  { label: "The AMS deck, custom cards in play", ...img("the-ams-deck") },
+  {
+    label: "Finalists at the Convergence banner",
+    ...img("finalists-at-the-convergence-banner"),
+  },
+  {
+    label: "The full room, everyone who made it happen",
+    ...img("the-full-room"),
+  },
 ];
