@@ -6,12 +6,20 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 export function Hero() {
   return (
     <section className="relative flex min-h-[85vh] items-center overflow-hidden">
-      {/* LCP element: preloaded, nothing above it may render late. */}
+      {/* LCP element: preloaded, nothing above it may render late.
+          `priority` alone only makes Next eagerly load + discoverably preload
+          this image; on Next 16 it no longer implies fetchPriority="high"
+          (that became an independent prop, see next/dist get-img-props.js),
+          so it must be set explicitly or Lighthouse's Lantern network model
+          schedules the request behind render-blocking CSS/fonts under
+          throttling, inflating simulated LCP by seconds even though the
+          image is genuinely eager-loaded and discoverable in the document. */}
       <Image
         src="/images/derive26/hero/the-hall-at-capacity.webp"
         alt="The Derive '26 finals hall at capacity, contestants at their laptops"
         fill
         priority
+        fetchPriority="high"
         sizes="100vw"
         className="object-cover"
       />
