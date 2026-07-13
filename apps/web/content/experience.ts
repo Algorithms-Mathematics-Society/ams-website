@@ -27,8 +27,8 @@ export const EXPERIENCE: ExperienceItem[] = [
     title: "A room worth being in",
     body: "Finals are staged, hosted, and worth the train ticket.",
     photo: {
-      src: "/images/derive26/thumb/address-before-the-final-round.webp",
-      alt: "The hall listening to the address before the final round",
+      src: "/images/derive26/thumb/interview-day-briefing.webp",
+      alt: "Students seated in a lecture hall for an interview-day briefing, with a presenter at the front beside a screen and event banner",
     },
   },
 ];
