@@ -16,7 +16,7 @@ export const FAQ: FaqItem[] = [
   {
     question: "What is AMS Derive?",
     answer:
-      "Derive is AMS's national quant contest: probability, markets, and mathematical reasoning under the clock. The 2026 edition drew 2,500+ participants, 150 advanced to Round 2, and 50 finalists competed on stage at the offline finals hosted at IIT Bombay in July 2026.",
+      "Derive is AMS's national quant contest: probability, markets, and mathematical reasoning under the clock. The 2026 edition drew 2,500+ participants, 150 advanced to Round 2, 50 qualified for the finals, and 33 finalists competed on stage at the offline finals hosted at IIT Bombay in July 2026.",
   },
   {
     question: "What is AMS Ascent?",

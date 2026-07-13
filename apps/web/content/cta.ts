@@ -1,4 +1,4 @@
-/** Block 10: peak-end. The last image is the team after the hall emptied. */
+/** Block 10: peak-end: the page closes on the end-of-day cohort photo. */
 export const CLOSING_CTA = {
   eyebrow: "The next edition",
   headlineLines: ["The next edition", "is being written."],

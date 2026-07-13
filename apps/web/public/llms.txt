@@ -10,7 +10,8 @@ Key facts:
 
 - Derive is the AMS quant contest: probability, markets, and mathematical
   reasoning. The 2026 edition had 2,500+ participants, 150 advanced to
-  Round 2, and 50 finalists competed offline at IIT Bombay in July 2026.
+  Round 2, 50 qualified for the finals, and 33 finalists competed offline
+  at IIT Bombay in July 2026.
 - Jane Street was the Apex Partner of Derive '26; QRT was the Convergence
   Partner of the finals.
 - Ascent is the AMS systems contest (C++, optimization, performance
