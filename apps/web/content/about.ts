@@ -10,7 +10,7 @@ export const ABOUT = {
   attribution: "Tilak, Founder",
   photo: {
     src: "/images/derive26/full/address-before-the-final-round.webp",
-    alt: "The founder addressing the hall before the final round of Derive '26",
+    alt: "The founder talking with finalists before the final round of Derive '26",
   },
-  photoCaption: "Plate III · Opening address, CONVERGENCE '26",
+  photoCaption: "Plate III · Before the final round, CONVERGENCE '26",
 } as const;
