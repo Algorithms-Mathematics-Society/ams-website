@@ -232,6 +232,14 @@ html.js .reveal.is-visible .underline-draw {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  /* Timeline-driven animations ignore duration overrides; disable them. */
+  .parallax-slow,
+  body {
+    animation: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
