@@ -5,7 +5,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { GALLERY } from "@/content/gallery";
 
 interface Props {
-  /** Cap the number of slots (home page shows a subset; /gallery shows all). */
+  /** Optional cap on the number of tiles; currently no page passes it. */
   limit?: number;
   /** Off on /gallery, where the PageHeader already introduces the grid. */
   withHeading?: boolean;

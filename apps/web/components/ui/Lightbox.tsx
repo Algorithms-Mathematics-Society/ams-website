@@ -53,6 +53,35 @@ export function Lightbox({ items, index, onClose, onNavigate }: Props) {
     return () => document.removeEventListener("keydown", onKeyDown);
   }, [index, items.length, onClose, onNavigate]);
 
+  /**
+   * The fill img element spans the whole stage, so e.target cannot tell the
+   * letterbox margin from the photo. Hit-test the click against the
+   * object-contain photo rect: the margin is backdrop and closes, the photo
+   * pixels do nothing (pausing on the image must not dismiss it).
+   */
+  function onStageClick(e: React.MouseEvent<HTMLDivElement>) {
+    e.stopPropagation();
+    const img = e.currentTarget.querySelector("img");
+    if (img && img.naturalWidth > 0 && img.naturalHeight > 0) {
+      const rect = img.getBoundingClientRect();
+      const scale = Math.min(
+        rect.width / img.naturalWidth,
+        rect.height / img.naturalHeight,
+      );
+      const photoWidth = img.naturalWidth * scale;
+      const photoHeight = img.naturalHeight * scale;
+      const photoLeft = rect.left + (rect.width - photoWidth) / 2;
+      const photoTop = rect.top + (rect.height - photoHeight) / 2;
+      const onPhoto =
+        e.clientX >= photoLeft &&
+        e.clientX <= photoLeft + photoWidth &&
+        e.clientY >= photoTop &&
+        e.clientY <= photoTop + photoHeight;
+      if (onPhoto) return;
+    }
+    onClose();
+  }
+
   return (
     <div
       role="dialog"
@@ -61,7 +90,7 @@ export function Lightbox({ items, index, onClose, onNavigate }: Props) {
       className="fixed inset-0 z-50 flex flex-col bg-[#1f0a0d]"
       onClick={onClose}
     >
-      <div className="relative flex-1">
+      <div className="relative flex-1" onClick={onStageClick}>
         <Image
           src={item.src}
           alt={item.label}

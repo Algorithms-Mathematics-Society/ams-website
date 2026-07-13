@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Lightbox } from "@/components/ui/Lightbox";
 import { Reveal } from "@/components/ui/Reveal";
 import type { GalleryItem } from "@/content/gallery";
@@ -32,10 +32,17 @@ const SPANS = [
  */
 export function GalleryTiles({ items }: Props) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  /** The tile that opened the lightbox; focus returns to it on close. */
+  const openerRef = useRef<HTMLButtonElement | null>(null);
   const withImages = items.filter(
     (item): item is GalleryItem & { src: string; full: string } =>
       Boolean(item.src && item.full),
   );
+
+  function closeLightbox() {
+    setOpenIndex(null);
+    openerRef.current?.focus();
+  }
 
   return (
     <>
@@ -45,7 +52,10 @@ export function GalleryTiles({ items }: Props) {
             <Reveal delay={(index % 3) * 60}>
               <button
                 type="button"
-                onClick={() => setOpenIndex(index)}
+                onClick={(e) => {
+                  openerRef.current = e.currentTarget;
+                  setOpenIndex(index);
+                }}
                 className="group relative block aspect-[4/3] w-full overflow-hidden rounded-lg lg:h-64 lg:w-full lg:[aspect-ratio:auto]"
               >
                 <Image
@@ -76,7 +86,7 @@ export function GalleryTiles({ items }: Props) {
             label: item.label,
           }))}
           index={openIndex}
-          onClose={() => setOpenIndex(null)}
+          onClose={closeLightbox}
           onNavigate={setOpenIndex}
         />
       )}
