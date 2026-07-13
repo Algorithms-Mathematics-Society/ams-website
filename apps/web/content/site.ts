@@ -14,7 +14,7 @@ export const SITE = {
   legalName: "Algorithms & Mathematics Society",
   url: "https://amshq.in",
   copyright:
-    "© 2026 Algorithms & Mathematics Society · amshq.in · amsderive.in · amsaccess.com",
+    "© 2026 AMS (Algorithms & Mathematics Society) · amshq.in · amsderive.in · amsaccess.com",
 } as const;
 
 export const NAV_LINKS: NavLink[] = [
