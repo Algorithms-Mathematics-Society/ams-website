@@ -19,8 +19,8 @@ export const EXPERIENCE: ExperienceItem[] = [
     title: "Real problems, real debate",
     body: "Problems written by people who trade and build for a living.",
     photo: {
-      src: "/images/derive26/thumb/debating-the-problem-set.webp",
-      alt: "Contestants debating the problem set between rounds",
+      src: "/images/derive26/thumb/huddle-at-the-macbook.webp",
+      alt: "Three students huddled over a laptop and notes in the contest hall, talking through a solution",
     },
   },
   {
