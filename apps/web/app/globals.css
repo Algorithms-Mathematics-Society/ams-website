@@ -36,6 +36,11 @@
   --ease-reveal: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+/* js: variant, true only once the inline layout script stamps html.js before
+   first paint. Gates JS-dependent styling (the overlay nav) so no-JS visitors
+   keep the solid cream header instead of a stuck transparent one. */
+@custom-variant js (html.js &);
+
 /* Elastic overscroll reveals the canvas beyond the page edges. Paint the
    canvas cream so the navbar reads as pinned when the page is pulled down;
    the footer gets a matching burgundy bleed (see Footer.tsx) for the bottom. */

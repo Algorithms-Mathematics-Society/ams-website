@@ -36,6 +36,11 @@ export function Hero() {
         aria-hidden
         className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/25 to-black/30"
       />
+      {/* Top scrim: keeps the overlay nav legible where the photo runs bright. */}
+      <div
+        aria-hidden
+        className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-black/55 to-transparent"
+      />
 
       <Container className="relative">
         <div className="max-w-xl">

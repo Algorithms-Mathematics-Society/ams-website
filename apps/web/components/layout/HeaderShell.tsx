@@ -30,7 +30,9 @@ export function HeaderShell({ children }: { children: React.ReactNode }) {
         const delta = y - lastY.current;
         lastY.current = y;
         setAtTop(y < 8);
-        setPastHero(y > window.innerHeight * 0.8);
+        // pastHero only matters on the overlay route; skip the per-tick
+        // state churn everywhere else.
+        if (overlayRoute) setPastHero(y > window.innerHeight * 0.8);
 
         if (y < 64) {
           // Near the top the header is always shown.
@@ -48,8 +50,11 @@ export function HeaderShell({ children }: { children: React.ReactNode }) {
     }
 
     window.addEventListener("scroll", onScroll, { passive: true });
+    // Style correctly when a load lands mid-page (scroll restoration,
+    // anchor links) before the first scroll event fires.
+    onScroll();
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [overlayRoute]);
 
   // Transparent over the hero photo; solid cream bar past 80vh.
   const overlay = overlayRoute && !pastHero;
