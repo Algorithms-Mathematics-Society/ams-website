@@ -14,7 +14,7 @@ export interface DeriveStage {
   body: string;
 }
 
-/** The Derive '26 funnel: verified numbers from the first edition. */
+/** The Derive '26 funnel, verified: 50 qualified for the finals, 33 competed. */
 export const DERIVE_STAGES: DeriveStage[] = [
   {
     stat: "2,500+",
@@ -30,9 +30,9 @@ export const DERIVE_STAGES: DeriveStage[] = [
   },
   {
     stat: "50",
-    statLabel: "finalists",
+    statLabel: "qualify for finals",
     title: "Finals: offline at IIT Bombay",
-    body: "Fifty finalists compete on stage, in person, judged with the sponsor firms in the room.",
+    body: "Fifty qualify for the on-stage finals; 33 competed in person at Derive '26.",
   },
 ];
 
@@ -57,7 +57,7 @@ export const DERIVE_PARTNERS: DerivePartner[] = [
     tier: "Convergence Partner",
     name: "QRT",
     description:
-      "Partner of the Convergence finals at IIT Bombay, where the top fifty compete in person.",
+      "Partner of the Convergence finals at IIT Bombay, where the top fifty qualify to compete in person.",
   },
 ];
 
@@ -66,5 +66,6 @@ export const DERIVE_CTA = {
   body: "Derive returns. Leave your email and be first to know when registration opens.",
   buttonLabel: "Get notified",
   /** TODO(launch): point at the registration/interest form when live. */
-  buttonHref: "mailto:tilakj0108@gmail.com?subject=Derive%20registration%20updates",
+  buttonHref:
+    "mailto:tilakj0108@gmail.com?subject=Derive%20registration%20updates",
 } as const;

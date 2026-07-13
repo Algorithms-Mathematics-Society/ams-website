@@ -13,13 +13,13 @@ team, footer. Almost nothing is dynamic. That single fact drives every decision 
 
 ## 1. Stack
 
-| Concern         | Choice                                                                   | Why                                                                                                                                                 |
-| --------------- | ------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Framework       | **Next.js (App Router), static output**                                  | Matches the rest of the AMS org's tooling; built-in `next/image`, `next/font`, per-route code splitting.                                            |
-| Language        | TypeScript, `strict: true`                                               | Non-negotiable. Catch prop mistakes at build time.                                                                                                  |
+| Concern         | Choice                                                                   | Why                                                                                                                                               |
+| --------------- | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Framework       | **Next.js (App Router), static output**                                  | Matches the rest of the AMS org's tooling; built-in `next/image`, `next/font`, per-route code splitting.                                          |
+| Language        | TypeScript, `strict: true`                                               | Non-negotiable. Catch prop mistakes at build time.                                                                                                |
 | Styling         | Tailwind CSS + CSS variables for brand tokens                            | Utility classes for layout speed; tokens (`--color-burgundy`, `--color-cream`, spacing, type scale) so the palette is defined in exactly one place. |
-| Package manager | pnpm                                                                     | Org standard.                                                                                                                                       |
-| Hosting         | Static export behind a CDN (Vercel / Cloudflare Pages / GCS + Cloud CDN) | See §4.                                                                                                                                             |
+| Package manager | pnpm                                                                     | Org standard.                                                                                                                                     |
+| Hosting         | Static export behind a CDN (Vercel / Cloudflare Pages / GCS + Cloud CDN) | See §4.                                                                                                                                           |
 
 Rules that follow from this:
 

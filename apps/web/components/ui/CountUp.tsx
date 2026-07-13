@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 
 interface Props {
-  /** Final display string, e.g. "2,500+", "33", "24+", "₹3.2 L". */
+  /** Final display string, e.g. "2,500+", "33", "24+", "₹75K". */
   value: string;
   /** Delay after entering view before the count starts, in ms. */
   delay?: number;
