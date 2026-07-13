@@ -55,10 +55,12 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Maroon-on-cream needs a deliberate, visible focus ring */
-:focus-visible {
-  outline: 2px solid var(--color-gold);
-  outline-offset: 2px;
+@layer base {
+  /* Maroon-on-cream needs a deliberate, visible focus ring */
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 2px;
+  }
 }
 
 /* On-load entrance (hero and page titles): pure CSS so the first paint

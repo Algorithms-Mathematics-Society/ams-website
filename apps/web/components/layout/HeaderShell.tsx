@@ -51,7 +51,11 @@ export function HeaderShell({ children }: { children: React.ReactNode }) {
 
     window.addEventListener("scroll", onScroll, { passive: true });
     // Style correctly when a load lands mid-page (scroll restoration,
-    // anchor links) before the first scroll event fires.
+    // anchor links) before the first scroll event fires. Seed lastY so
+    // this initial call measures zero delta instead of reading as a
+    // scroll-down from 0, which would hide the header on every mid-page
+    // landing.
+    lastY.current = window.scrollY;
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   }, [overlayRoute]);

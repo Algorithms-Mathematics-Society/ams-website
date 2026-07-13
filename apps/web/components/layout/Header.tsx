@@ -29,6 +29,7 @@ export function Header() {
               alt=""
               width={32}
               height={29}
+              loading="eager"
               className="hidden js:group-data-[overlay]:block"
             />
             <span className="font-display text-xl font-semibold tracking-[0.22em] text-burgundy transition-colors duration-300 js:group-data-[overlay]:text-cream-light">
