@@ -1,4 +1,5 @@
 import { AboutSplit } from "@/components/sections/AboutSplit";
+import { ClosingCta } from "@/components/sections/ClosingCta";
 import { ExperienceGrid } from "@/components/sections/ExperienceGrid";
 import { GalleryGrid } from "@/components/sections/GalleryGrid";
 import { Hero } from "@/components/sections/Hero";
@@ -22,6 +23,7 @@ export default function HomePage() {
       <GalleryGrid />
       <Testimonials />
       <TeamGrid />
+      <ClosingCta />
     </>
   );
 }
