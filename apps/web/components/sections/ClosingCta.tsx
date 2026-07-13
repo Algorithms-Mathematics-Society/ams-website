@@ -49,7 +49,7 @@ export function ClosingCta() {
         </div>
       </Reveal>
 
-      <p className="absolute right-5 bottom-6 text-sm text-cream-light/60 italic sm:right-8">
+      <p className="caption-fade absolute right-5 bottom-6 text-sm text-cream-light/60 italic sm:right-8">
         {CLOSING_CTA.plateCaption}
       </p>
     </section>

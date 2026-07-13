@@ -6,7 +6,7 @@ export const CLOSING_CTA = {
   secondary: { label: "Sponsor the next one", href: "/access#sponsor" },
   photo: {
     src: "/images/derive26/hero/the-full-room.webp",
-    alt: "The full Derive '26 room, everyone who made it happen, IIT Bombay",
+    alt: "Group photo of the Derive '26 cohort and organizers at the front of the hall, IIT Bombay",
   },
-  plateCaption: "Plate XII · After the hall emptied",
+  plateCaption: "Plate XII · End of day, the full cohort",
 } as const;
