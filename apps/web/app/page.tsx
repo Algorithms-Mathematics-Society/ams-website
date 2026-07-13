@@ -19,7 +19,7 @@ export default function HomePage() {
       <ProductCards />
       <ExperienceGrid />
       <PhotoBreaker />
-      <GalleryGrid limit={8} />
+      <GalleryGrid />
       <Testimonials />
       <TeamGrid />
     </>
