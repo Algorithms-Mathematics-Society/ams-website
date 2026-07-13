@@ -5,7 +5,7 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 
 export function Hero() {
   return (
-    <section className="relative flex min-h-svh items-end overflow-hidden pb-20 sm:pb-24">
+    <section className="relative flex min-h-svh items-end overflow-hidden pb-24 sm:pb-32 lg:pb-[14vh]">
       {/* LCP element: preloaded, nothing above it may render late.
           - fetchPriority must be explicit on Next 16 (priority no longer
             implies the fetchpriority=high hint).
@@ -43,7 +43,7 @@ export function Hero() {
       />
 
       <Container className="relative">
-        <div className="max-w-xl">
+        <div className="max-w-3xl">
           <Eyebrow inverse className="rise">
             Quant · Algorithms · Assessment
           </Eyebrow>
