@@ -27,7 +27,7 @@ export function ProductCards() {
                       label={product.screenshotLabel}
                       aspect="aspect-[16/10]"
                       rounded="rounded-none"
-                      className={`transition-transform duration-300 group-hover:scale-[1.03] ${
+                      className={`transition-transform duration-300 group-hover:scale-[1.03] group-focus-within:scale-[1.03] ${
                         product.tone === "glacier"
                           ? "!border-none !bg-[#2c4a63] !text-cream-light [&_p]:!text-cream-light/80"
                           : ""
@@ -49,7 +49,7 @@ export function ProductCards() {
                       Explore
                       <span
                         aria-hidden
-                        className="transition-transform duration-150 group-hover:translate-x-1"
+                        className="transition-transform duration-150 group-hover:translate-x-1 group-focus-within:translate-x-1"
                       >
                         →
                       </span>
