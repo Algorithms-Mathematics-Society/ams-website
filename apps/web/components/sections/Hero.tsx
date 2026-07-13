@@ -16,8 +16,8 @@ export function Hero() {
             never delays the paint itself. */}
       <div className="kenburns absolute inset-0">
         <Image
-          src="/images/derive26/hero/winners-with-the-cheques.webp"
-          alt="The three Derive '26 winners holding their prize cheques, flanked by organizers, IIT Bombay"
+          src="/images/derive26/hero/finalists-mid-problem.webp"
+          alt="Finalists working through the problem set in the hall at IIT Bombay, Derive '26 finals"
           fill
           priority
           fetchPriority="high"
