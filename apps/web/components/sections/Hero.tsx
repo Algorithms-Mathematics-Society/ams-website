@@ -19,8 +19,8 @@ export function Hero() {
             already-downloaded hero commit in the same frame as first
             paint instead of one frame later. */}
       <Image
-        src="/images/derive26/hero/the-hall-at-capacity.webp"
-        alt="The Derive '26 finals hall at capacity, contestants at their laptops"
+        src="/images/derive26/hero/winners-with-the-cheques.webp"
+        alt="The three Derive '26 winners holding their prize cheques, flanked by organizers, IIT Bombay"
         fill
         priority
         fetchPriority="high"
