@@ -44,8 +44,8 @@ export const GALLERY: GalleryItem[] = [
     ...img("prize-cheque-moment"),
   },
   {
-    label: "The full hall deep in the contest, laptops open under the lights",
-    ...img("contest-in-progress"),
+    label: "The address before the final round",
+    ...img("address-before-the-final-round"),
   },
   {
     label: "Blitz chess huddle at the evening social",
