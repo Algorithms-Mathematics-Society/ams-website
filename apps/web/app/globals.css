@@ -238,20 +238,20 @@ html.js .reveal.is-visible .underline-draw {
   }
 }
 
-/* Hero slideshow: stacked frames crossfading inside the chevron cut.
+/* Hero slideshow: stacked banner frames crossfading in place.
    The site's ONE sanctioned looping animation (user-directed): opacity
-   only, 18s cycle, three frames, ~6s each. Negative delays start every
+   only, 27s cycle, three frames, ~9s each. Negative delays start every
    frame mid-cycle so nothing flashes at load; frames 2 and 3 also carry
    a base opacity-0 utility so reduced motion (animation: none below)
    pins the page to frame one. */
 .hero-slide {
-  animation: hero-crossfade 18s linear infinite both;
+  animation: hero-crossfade 27s linear infinite both;
 }
 .hero-slide-2 {
-  animation-delay: -12s;
+  animation-delay: -18s;
 }
 .hero-slide-3 {
-  animation-delay: -6s;
+  animation-delay: -9s;
 }
 @keyframes hero-crossfade {
   0%,
