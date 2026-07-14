@@ -57,6 +57,23 @@ export function Hero() {
         aria-hidden
         className="absolute top-[52%] left-[44%] hidden size-3 -translate-x-9 -translate-y-1/2 rounded-full bg-gold lg:block xl:left-[50%]"
       />
+      {/* Mobile trace: parallels the docked photo's rising top edge. */}
+      <svg
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-[42svh] overflow-visible lg:hidden"
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+      >
+        <polyline
+          points="0,14 100,0"
+          transform="translate(0 -4)"
+          fill="none"
+          stroke="var(--color-gold)"
+          strokeWidth="2"
+          strokeLinecap="round"
+          vectorEffect="non-scaling-stroke"
+        />
+      </svg>
 
       <Container className="relative z-10 w-full pt-10 pb-[46svh] lg:py-24 lg:pb-24">
         <div className="max-w-xl">
