@@ -35,6 +35,8 @@ interface DomeGalleryProps {
   imageBorderRadius?: string;
   openedImageBorderRadius?: string;
   grayscale?: boolean;
+  /** Idle drift speed in degrees per second around Y; 0 disables (default). */
+  autoRotateDegPerSec?: number;
 }
 
 type Item = {
@@ -135,6 +137,7 @@ export default function DomeGallery({
   imageBorderRadius = "12px",
   openedImageBorderRadius = "16px",
   grayscale = false,
+  autoRotateDegPerSec = 0,
 }: DomeGalleryProps) {
   const rootRef = useRef<HTMLDivElement | null>(null);
   const mainRef = useRef<HTMLElement | null>(null);
@@ -175,12 +178,12 @@ export default function DomeGallery({
 
   const items = useMemo(() => buildItems(images, segments), [images, segments]);
 
-  const applyTransform = (xDeg: number, yDeg: number) => {
+  const applyTransform = useCallback((xDeg: number, yDeg: number) => {
     const el = sphereRef.current;
     if (el) {
       el.style.transform = `translateZ(calc(var(--radius) * -1)) rotateX(${xDeg}deg) rotateY(${yDeg}deg)`;
     }
-  };
+  }, []);
 
   const lockedRadiusRef = useRef<number | null>(null);
 
@@ -277,6 +280,41 @@ export default function DomeGallery({
   useEffect(() => {
     applyTransform(rotationRef.current.x, rotationRef.current.y);
   }, []);
+
+  // Idle drift: the planetarium's slow lap. Defers to every interaction:
+  // while dragging, during inertia, while a photo is enlarged, in hidden
+  // tabs (RAF pauses; the dt clamp swallows the resume spike), and under
+  // prefers-reduced-motion. After any blocker clears, drift resumes
+  // following a one second grace period.
+  useEffect(() => {
+    if (!autoRotateDegPerSec) return;
+    const mql = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let raf: number;
+    let last = performance.now();
+    let resumeNotBefore = 0;
+    const step = (now: number) => {
+      const dt = Math.min((now - last) / 1000, 0.05);
+      last = now;
+      const blocked =
+        draggingRef.current ||
+        inertiaRAF.current != null ||
+        focusedElRef.current != null ||
+        mql.matches ||
+        document.visibilityState === "hidden";
+      if (blocked) {
+        resumeNotBefore = now + 1000;
+      } else if (now >= resumeNotBefore) {
+        const nextY = wrapAngleSigned(
+          rotationRef.current.y + autoRotateDegPerSec * dt,
+        );
+        rotationRef.current = { ...rotationRef.current, y: nextY };
+        applyTransform(rotationRef.current.x, nextY);
+      }
+      raf = requestAnimationFrame(step);
+    };
+    raf = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(raf);
+  }, [autoRotateDegPerSec, applyTransform]);
 
   const stopInertia = useCallback(() => {
     if (inertiaRAF.current) {
