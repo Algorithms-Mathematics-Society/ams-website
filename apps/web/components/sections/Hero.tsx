@@ -23,17 +23,42 @@ export function Hero() {
             delays the paint itself. */}
       <div className="absolute inset-x-0 bottom-0 h-[42svh] [clip-path:polygon(0_24%,100%_0,100%_100%,0_100%)] lg:inset-y-0 lg:right-0 lg:left-auto lg:h-auto lg:w-[56%] lg:[clip-path:polygon(20%_0,100%_0,100%_100%,20%_100%,0_52%)] xl:w-[50%]">
         <div className="kenburns absolute inset-0">
-          <Image
-            src="/images/derive26/hero/finalists-mid-problem.webp"
-            alt="Finalists working through the problem set in the hall at IIT Bombay, Derive '26 finals"
-            fill
-            priority
-            fetchPriority="high"
-            quality={75}
-            decoding="sync"
-            sizes="(min-width: 1024px) 56vw, 100vw"
-            className="object-cover"
-          />
+          {/* Slideshow: frame 1 is the LCP image and keeps the full
+              loading discipline; the later frames fetch lazily after
+              first paint and crossfade in on the CSS cycle. */}
+          <div className="hero-slide absolute inset-0">
+            <Image
+              src="/images/derive26/hero/finalists-mid-problem.webp"
+              alt="Finalists working through the problem set in the hall at IIT Bombay, Derive '26 finals"
+              fill
+              priority
+              fetchPriority="high"
+              quality={75}
+              decoding="sync"
+              sizes="(min-width: 1024px) 56vw, 100vw"
+              className="object-cover"
+            />
+          </div>
+          <div className="hero-slide hero-slide-2 absolute inset-0 opacity-0">
+            <Image
+              src="/images/derive26/hero/the-full-room.webp"
+              alt="Group photo of the Derive '26 cohort and organizers in the hall at IIT Bombay"
+              fill
+              quality={75}
+              sizes="(min-width: 1024px) 56vw, 100vw"
+              className="object-cover"
+            />
+          </div>
+          <div className="hero-slide hero-slide-3 absolute inset-0 opacity-0">
+            <Image
+              src="/images/derive26/hero/winners-with-the-cheques.webp"
+              alt="The three Derive '26 winners holding their prize cheques, flanked by organizers, IIT Bombay"
+              fill
+              quality={75}
+              sizes="(min-width: 1024px) 56vw, 100vw"
+              className="object-cover"
+            />
+          </div>
         </div>
       </div>
 
