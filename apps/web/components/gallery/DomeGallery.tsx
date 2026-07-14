@@ -283,9 +283,10 @@ export default function DomeGallery({
 
   // Idle drift: the planetarium's slow lap. Defers to every interaction:
   // while dragging, during inertia, while a photo is enlarged, in hidden
-  // tabs (RAF pauses; the dt clamp swallows the resume spike), and under
-  // prefers-reduced-motion. After any blocker clears, drift resumes
-  // following a one second grace period.
+  // tabs (long rAF gaps from hidden tabs or frozen pages re-arm the one
+  // second grace period, and the dt clamp bounds any single frame's step),
+  // and under prefers-reduced-motion. After any blocker clears, drift
+  // resumes following a one second grace period.
   useEffect(() => {
     if (!autoRotateDegPerSec) return;
     const mql = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -293,6 +294,7 @@ export default function DomeGallery({
     let last = performance.now();
     let resumeNotBefore = 0;
     const step = (now: number) => {
+      if (now - last > 1000) resumeNotBefore = now + 1000;
       const dt = Math.min((now - last) / 1000, 0.05);
       last = now;
       const blocked =
