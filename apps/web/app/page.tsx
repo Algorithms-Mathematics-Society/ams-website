@@ -1,7 +1,7 @@
 import { AboutSplit } from "@/components/sections/AboutSplit";
 import { ClosingCta } from "@/components/sections/ClosingCta";
 import { ExperienceGrid } from "@/components/sections/ExperienceGrid";
-import { GalleryGrid } from "@/components/sections/GalleryGrid";
+import { GalleryDome } from "@/components/sections/GalleryDome";
 import { Hero } from "@/components/sections/Hero";
 import { LineOfRecord } from "@/components/sections/LineOfRecord";
 import { ProductCards } from "@/components/sections/ProductCards";
@@ -18,7 +18,7 @@ export default function HomePage() {
       <AboutSplit />
       <ProductCards />
       <ExperienceGrid />
-      <GalleryGrid />
+      <GalleryDome />
       <Testimonials />
       <TeamGrid />
       <ClosingCta />
