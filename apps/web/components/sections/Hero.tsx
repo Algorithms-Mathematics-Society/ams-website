@@ -15,11 +15,13 @@ export function Hero() {
     <section className="relative flex min-h-[calc(100svh-4rem)] items-center overflow-hidden bg-cream">
       {/* LCP element: preloaded, nothing above it may render late.
           - fetchPriority stays explicit (Next 16 decoupled it from priority).
-          - quality 50 needs next.config images.qualities to include 50.
+          - quality 75 (not the overlay-only 50): this photo sits on bare
+            cream with no dark scrim to hide compression in, so it needs
+            the full-fidelity tier.
           - decoding sync commits the hero in the same frame as first paint.
           - .kenburns settles 1.04 to 1.00 over 8s inside the clip and never
             delays the paint itself. */}
-      <div className="absolute inset-x-0 bottom-0 h-[42svh] [clip-path:polygon(0_14%,100%_0,100%_100%,0_100%)] lg:inset-y-0 lg:right-0 lg:left-auto lg:h-auto lg:w-[56%] lg:[clip-path:polygon(32%_0,100%_0,100%_100%,32%_100%,0_52%)] xl:w-[50%]">
+      <div className="absolute inset-x-0 bottom-0 h-[42svh] [clip-path:polygon(0_24%,100%_0,100%_100%,0_100%)] lg:inset-y-0 lg:right-0 lg:left-auto lg:h-auto lg:w-[56%] lg:[clip-path:polygon(20%_0,100%_0,100%_100%,20%_100%,0_52%)] xl:w-[50%]">
         <div className="kenburns absolute inset-0">
           <Image
             src="/images/derive26/hero/finalists-mid-problem.webp"
@@ -27,7 +29,7 @@ export function Hero() {
             fill
             priority
             fetchPriority="high"
-            quality={50}
+            quality={75}
             decoding="sync"
             sizes="(min-width: 1024px) 56vw, 100vw"
             className="object-cover"
@@ -44,12 +46,12 @@ export function Hero() {
         preserveAspectRatio="none"
       >
         <polyline
-          points="32,0 0,52 32,100"
+          points="20,0 0,52 20,100"
           transform="translate(-4 0)"
           fill="none"
           stroke="var(--color-gold)"
           strokeWidth="2"
-          strokeLinejoin="round"
+          strokeLinejoin="miter"
           vectorEffect="non-scaling-stroke"
         />
       </svg>
@@ -65,7 +67,7 @@ export function Hero() {
         preserveAspectRatio="none"
       >
         <polyline
-          points="0,14 100,0"
+          points="0,24 100,0"
           transform="translate(0 -4)"
           fill="none"
           stroke="var(--color-gold)"
