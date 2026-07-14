@@ -11,7 +11,7 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
  */
 export function Hero() {
   return (
-    <section className="relative flex min-h-[calc(100svh-4rem)] items-end overflow-hidden pb-24 sm:pb-28 lg:pb-[13vh]">
+    <section className="relative flex min-h-[calc(100svh-4rem)] items-center overflow-hidden py-24">
       {/* LCP element: preloaded, nothing above it may render late.
           - fetchPriority stays explicit (Next 16 decoupled it from priority).
           - quality 75: the scrim is light, so compression has nowhere to
