@@ -6,10 +6,11 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { GALLERY } from "@/content/gallery";
 
 /**
- * Block 07 on home: the proof gallery as a draggable photo dome. The
- * /gallery page keeps the flat grid and lightbox as the accessible,
- * no-JS-friendly archive of the same twelve moments; this section links
- * there for anyone who wants the full-size set.
+ * Block 07 on home: the proof gallery as a dark photo planetarium. A
+ * near-full-height espresso band; the dome drifts slowly while idle and
+ * its radial fades resolve into the band's own ground. The /gallery page
+ * keeps the flat grid and lightbox as the accessible, no-JS-friendly
+ * archive of the same twelve moments.
  */
 export function GalleryDome() {
   const images = GALLERY.filter((item) => item.src).map((item) => ({
@@ -18,28 +19,42 @@ export function GalleryDome() {
   }));
 
   return (
-    <section className="bg-cream-light py-section">
-      <Container>
-        <Reveal>
-          <div className="flex flex-wrap items-end justify-between gap-4">
-            <SectionHeading
-              eyebrow="Moments from AMS"
-              title="It happened. Here's proof."
-            />
-            <p className="text-sm text-ink/60">
-              Drag to look around · click a photo to open it
-            </p>
-          </div>
-        </Reveal>
-      </Container>
+    <section className="relative bg-espresso">
+      {/* Heading floats over the band's top; pointer-events pass through
+          so drags beside the text still reach the dome. */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-10 pt-14 lg:pt-16">
+        <Container>
+          <Reveal>
+            <div className="flex flex-wrap items-end justify-between gap-4">
+              <SectionHeading
+                eyebrow="Moments from AMS"
+                title="It happened. Here's proof."
+                inverse
+              />
+              <p className="text-sm text-cream-light/60">
+                Drag to look around · click a photo to open it
+              </p>
+            </div>
+          </Reveal>
+        </Container>
+      </div>
 
-      {/* Full-bleed dome; height bounded so the page keeps scrolling
-          naturally above and below the drag surface. */}
-      <div className="relative mt-10 h-[62svh] min-h-[420px] w-full overflow-hidden">
+      {/* The planetarium: fades and blend resolve into the espresso
+          ground (overlayBlurColor matches bg-espresso exactly). fitBasis
+          min ties the radius to the band's height, which is what makes
+          the sphere read as round instead of a wide barrel. */}
+      <div className="relative h-[85svh] min-h-[560px] w-full overflow-hidden">
         <DomeGallery
           images={images}
-          overlayBlurColor="#fbf8f0"
+          overlayBlurColor="#453333"
           grayscale={false}
+          fitBasis="min"
+          fit={0.62}
+          minRadius={420}
+          segments={26}
+          maxVerticalRotationDeg={9}
+          dragSensitivity={25}
+          autoRotateDegPerSec={3}
           imageBorderRadius="12px"
           openedImageBorderRadius="16px"
           openedImageWidth="min(560px, 84vw)"
@@ -48,10 +63,10 @@ export function GalleryDome() {
       </div>
 
       <Container>
-        <div className="mt-8 text-center">
+        <div className="pb-10 text-center">
           <Link
             href="/gallery"
-            className="text-sm font-medium text-burgundy underline-offset-4 hover:underline"
+            className="text-sm font-medium text-cream-light underline-offset-4 hover:text-gold-bright hover:underline"
           >
             See the full gallery <span aria-hidden>→</span>
           </Link>
