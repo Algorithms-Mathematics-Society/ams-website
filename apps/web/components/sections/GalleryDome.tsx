@@ -44,6 +44,13 @@ export function GalleryDome() {
           min ties the radius to the band's height, which is what makes
           the sphere read as round instead of a wide barrel. */}
       <div className="relative h-[85svh] min-h-[560px] w-full overflow-hidden">
+        {/* Guarantees heading and hint legibility over the dome's top
+            tiles at every breakpoint; sits above the dome's own fades
+            (z 3-5) and below the enlarge viewer (z 20). */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 top-0 z-[6] h-72 bg-gradient-to-b from-espresso from-35% via-espresso/80 via-65% to-transparent lg:h-52 lg:from-25%"
+        />
         <DomeGallery
           images={images}
           overlayBlurColor="#453333"
