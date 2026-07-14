@@ -4,136 +4,103 @@ import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 
 /**
- * Summit Cut hero. Copy sits on solid cream; the photo is exposed through a
- * chevron edge lifted from the brand mark (rotated to point left), traced by
- * a gold outline with the summit dot at its apex. No scrims or vignettes:
- * the photo stays untouched and text never sits on it. On mobile the photo
- * docks below the copy behind a single rising diagonal.
+ * Full-bleed banner hero: the slideshow fills the viewport below the cream
+ * header and the copy sits at the bottom left over a restrained directional
+ * scrim (enough for contrast, not a vignette). Three frames crossfade on
+ * the CSS cycle; frame one is the LCP image and reduced motion pins to it.
  */
 export function Hero() {
   return (
-    <section className="relative flex min-h-[calc(100svh-4rem)] items-center overflow-hidden bg-cream">
+    <section className="relative flex min-h-[calc(100svh-4rem)] items-end overflow-hidden pb-24 sm:pb-28 lg:pb-[13vh]">
       {/* LCP element: preloaded, nothing above it may render late.
           - fetchPriority stays explicit (Next 16 decoupled it from priority).
-          - quality 75 (not the overlay-only 50): this photo sits on bare
-            cream with no dark scrim to hide compression in, so it needs
-            the full-fidelity tier.
+          - quality 75: the scrim is light, so compression has nowhere to
+            hide; keep the full-fidelity tier.
           - decoding sync commits the hero in the same frame as first paint.
-          - .kenburns settles 1.04 to 1.00 over 8s inside the clip and never
-            delays the paint itself. */}
-      <div className="absolute inset-x-0 bottom-0 h-[42svh] [clip-path:polygon(0_24%,100%_0,100%_100%,0_100%)] lg:inset-y-0 lg:right-0 lg:left-auto lg:h-auto lg:w-[56%] lg:[clip-path:polygon(20%_0,100%_0,100%_100%,20%_100%,0_52%)] xl:w-[50%]">
-        <div className="kenburns absolute inset-0">
-          {/* Slideshow: frame 1 is the LCP image and keeps the full
-              loading discipline; the later frames fetch lazily after
-              first paint and crossfade in on the CSS cycle. */}
-          <div className="hero-slide absolute inset-0">
-            <Image
-              src="/images/derive26/hero/finalists-mid-problem.webp"
-              alt="Finalists working through the problem set in the hall at IIT Bombay, Derive '26 finals"
-              fill
-              priority
-              fetchPriority="high"
-              quality={75}
-              decoding="sync"
-              sizes="(min-width: 1024px) 56vw, 100vw"
-              className="object-cover"
-            />
-          </div>
-          <div className="hero-slide hero-slide-2 absolute inset-0 opacity-0">
-            <Image
-              src="/images/derive26/hero/the-full-room.webp"
-              alt="Group photo of the Derive '26 cohort and organizers in the hall at IIT Bombay"
-              fill
-              quality={75}
-              sizes="(min-width: 1024px) 56vw, 100vw"
-              className="object-cover"
-            />
-          </div>
-          <div className="hero-slide hero-slide-3 absolute inset-0 opacity-0">
-            <Image
-              src="/images/derive26/hero/winners-with-the-cheques.webp"
-              alt="The three Derive '26 winners holding their prize cheques, flanked by organizers, IIT Bombay"
-              fill
-              quality={75}
-              sizes="(min-width: 1024px) 56vw, 100vw"
-              className="object-cover"
-            />
-          </div>
+          - .kenburns settles 1.04 to 1.00 over 8s, transform only, and
+            never delays the paint itself. */}
+      <div className="kenburns absolute inset-0">
+        <div className="hero-slide absolute inset-0">
+          <Image
+            src="/images/derive26/hero/finalists-mid-problem.webp"
+            alt="Finalists working through the problem set in the hall at IIT Bombay, Derive '26 finals"
+            fill
+            priority
+            fetchPriority="high"
+            quality={75}
+            decoding="sync"
+            sizes="100vw"
+            className="object-cover"
+          />
+        </div>
+        <div className="hero-slide hero-slide-2 absolute inset-0 opacity-0">
+          <Image
+            src="/images/derive26/hero/the-full-room.webp"
+            alt="Group photo of the Derive '26 cohort and organizers in the hall at IIT Bombay"
+            fill
+            quality={75}
+            sizes="100vw"
+            className="object-cover"
+          />
+        </div>
+        <div className="hero-slide hero-slide-3 absolute inset-0 opacity-0">
+          <Image
+            src="/images/derive26/hero/winners-with-the-cheques.webp"
+            alt="The three Derive '26 winners holding their prize cheques, flanked by organizers, IIT Bombay"
+            fill
+            quality={75}
+            sizes="100vw"
+            className="object-cover"
+          />
         </div>
       </div>
-
-      {/* Gold trace of the cut: same chevron in percent space, nudged left,
-          with the mark's summit dot at the apex. Decorative only. */}
-      <svg
-        aria-hidden
-        className="pointer-events-none absolute inset-y-0 right-0 hidden w-[56%] overflow-visible lg:block xl:w-[50%]"
-        viewBox="0 0 100 100"
-        preserveAspectRatio="none"
-      >
-        <polyline
-          points="20,0 0,52 20,100"
-          transform="translate(-4 0)"
-          fill="none"
-          stroke="var(--color-gold)"
-          strokeWidth="2"
-          strokeLinejoin="miter"
-          vectorEffect="non-scaling-stroke"
-        />
-      </svg>
+      {/* Directional legibility shading: darkest under the copy at the
+          bottom left plus a bottom band, fading out toward the top right
+          so the frame never reads as a full vignette. */}
       <div
         aria-hidden
-        className="absolute top-[52%] left-[44%] hidden size-3 -translate-x-9 -translate-y-1/2 rounded-full bg-gold lg:block xl:left-[50%]"
+        className="absolute inset-0 bg-gradient-to-tr from-black/80 via-black/35 to-transparent"
       />
-      {/* Mobile trace: parallels the docked photo's rising top edge. */}
-      <svg
+      <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-[42svh] overflow-visible lg:hidden"
-        viewBox="0 0 100 100"
-        preserveAspectRatio="none"
-      >
-        <polyline
-          points="0,24 100,0"
-          transform="translate(0 -4)"
-          fill="none"
-          stroke="var(--color-gold)"
-          strokeWidth="2"
-          strokeLinecap="round"
-          vectorEffect="non-scaling-stroke"
-        />
-      </svg>
+        className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/60 via-black/20 to-transparent"
+      />
 
-      <Container className="relative z-10 w-full pt-10 pb-[46svh] lg:py-24 lg:pb-24">
-        <div className="max-w-xl">
-          <Eyebrow className="rise">Quant · Algorithms · Assessment</Eyebrow>
-          {/* Three-line mask reveal, 700ms per line, 120ms stagger, starting
-              400ms after load. Burgundy on cream: no scrim tricks. */}
-          <h1 className="mt-6 font-display text-hero text-burgundy">
+      <Container className="relative z-10 w-full">
+        <div className="max-w-3xl">
+          <Eyebrow inverse className="rise">
+            Quant · Algorithms · Assessment
+          </Eyebrow>
+          {/* Two-line mask reveal, 700ms per line, 120ms stagger, starting
+              400ms after load so the photo gets one uninterrupted beat. */}
+          <h1 className="mt-6 font-display text-hero text-cream-light">
             <span className="mask-line mask-load-1">
-              <span>Where India&apos;s</span>
+              <span>Where India&apos;s sharpest</span>
             </span>
             <span className="mask-line mask-load-2">
-              <span>sharpest minds</span>
-            </span>
-            <span className="mask-line">
-              <span style={{ animationDelay: "640ms" }}>converge.</span>
+              <span>minds converge.</span>
             </span>
           </h1>
-          <p className="rise rise-hero-sub mt-6 max-w-md leading-relaxed">
+          <p className="rise rise-hero-sub mt-6 max-w-md leading-relaxed text-cream-light/90">
             National contests in quantitative finance and competitive
             programming, plus Access, the platform that turns performance into
             verified hiring signal.
           </p>
           <div className="rise rise-hero-cta mt-9 flex flex-wrap gap-4">
             <Button href="/derive">Enter Derive &apos;26</Button>
-            <Button href="/access" variant="outline">
+            <Button
+              href="/access"
+              variant="outline"
+              className="border-cream-light/50! text-cream-light! hover:border-cream-light! hover:bg-cream-light/10!"
+            >
               For firms
             </Button>
           </div>
         </div>
       </Container>
 
-      {/* Plate caption: the archival stamp lands last, over the photo. */}
-      <p className="caption-fade absolute right-5 bottom-5 text-sm text-cream-light/90 [text-shadow:0_1px_10px_rgba(0,0,0,0.55)] sm:right-8">
+      {/* Plate caption: the archival stamp lands last. */}
+      <p className="caption-fade absolute right-5 bottom-6 text-sm text-cream-light/85 [text-shadow:0_1px_8px_rgba(0,0,0,0.45)] sm:right-8">
         Derive &apos;26 finals · IIT Bombay · July 2026
       </p>
     </section>
