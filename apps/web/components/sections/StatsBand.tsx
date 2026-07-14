@@ -18,7 +18,7 @@ export function StatsBand() {
           fetchPriority low so decor never competes with the hero. */}
       <div className="parallax-slow absolute -inset-y-[8%] inset-x-0">
         <Image
-          src="/images/derive26/hero/the-hall-at-capacity.webp"
+          src="/images/derive26/hero/deep-focus.webp"
           alt=""
           aria-hidden
           fill
@@ -53,7 +53,7 @@ export function StatsBand() {
           ))}
         </dl>
         <p className="caption-fade mt-14 text-sm text-cream-light/60 italic">
-          Plate II · The hall at capacity, opening keynote
+          Plate II · Deep focus, mid-contest
         </p>
       </Container>
     </section>

@@ -18,8 +18,8 @@ export default function HomePage() {
       <AboutSplit />
       <ProductCards />
       <ExperienceGrid />
-      <GalleryDome />
       <Testimonials />
+      <GalleryDome />
       <TeamGrid />
       <ClosingCta />
     </>
