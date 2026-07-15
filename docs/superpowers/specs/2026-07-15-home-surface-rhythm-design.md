@@ -72,7 +72,9 @@ Open question for Tilak at spec review: amsderive.in also appears in
 `content/seo.ts` (`sameAs`) and in a `content/faq.ts` answer ("published on
 amsderive.in"). If that domain no longer resolves, both are stale facts and
 join this change; if it is live and redirecting, both stay. Until he
-answers, this spec touches only the colophon string.
+answers, this spec touches only the colophon string. The same applies to
+public/llms.txt, which names amsderive.in and amsaccess.com; it joins
+whichever way the answer goes.
 
 ## Explicitly out of scope
 

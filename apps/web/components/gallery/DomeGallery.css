@@ -168,7 +168,7 @@ main.sphere-main {
   position: absolute;
   inset: 0;
   z-index: 10;
-  background: rgba(20, 8, 10, 0.45);
+  background: rgba(31, 10, 13, 0.85);
   pointer-events: none;
   opacity: 0;
   transition: opacity 500ms ease;

@@ -32,7 +32,7 @@ export function GalleryDome() {
                 eyebrow="Moments from AMS"
                 title="It happened. Here's proof."
               />
-              <p className="text-sm text-ink/55">
+              <p className="text-sm text-ink/80">
                 Drag to look around · click a photo to open it
               </p>
             </div>
