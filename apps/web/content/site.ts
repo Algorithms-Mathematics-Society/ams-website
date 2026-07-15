@@ -13,8 +13,7 @@ export const SITE = {
     "National contests in quantitative finance and competitive programming, plus Access, the platform that turns performance into verified hiring signal.",
   legalName: "Algorithms & Mathematics Society",
   url: "https://amshq.in",
-  copyright:
-    "© 2026 AMS (Algorithms & Mathematics Society) · amshq.in · amsderive.in · amsaccess.com",
+  copyright: "© 2026 AMS (Algorithms & Mathematics Society) · amshq.in",
 } as const;
 
 export const NAV_LINKS: NavLink[] = [
