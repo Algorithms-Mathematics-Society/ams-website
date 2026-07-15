@@ -14,16 +14,18 @@ export function StatsBand() {
   return (
     <section className="bg-espresso py-20 text-cream-light lg:py-28">
       <Container>
-        <dl className="grid gap-x-8 gap-y-12 sm:grid-cols-3">
+        <dl className="grid gap-x-8 gap-y-12 text-center sm:grid-cols-3">
           {STATS.map((stat, index) => (
             <Reveal key={stat.label} delay={index * 150}>
               <dd className="font-display text-stat">
                 <CountUp value={stat.value} delay={index * 150} />
               </dd>
               {/* Draws 400ms after its number lands:
-                  1200ms count + 150ms stagger + 400ms. */}
+                  1200ms count + 150ms stagger + 400ms. The draw still runs
+                  left to right, the site's gesture everywhere; only the
+                  rule's box is centred under the number. */}
               <div
-                className="underline-draw mt-3 h-0.5 w-9 bg-gold"
+                className="underline-draw mx-auto mt-3 h-0.5 w-9 bg-gold"
                 style={{ transitionDelay: `${1600 + index * 150}ms` }}
                 aria-hidden
               />
