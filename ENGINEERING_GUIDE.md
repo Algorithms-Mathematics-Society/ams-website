@@ -221,6 +221,8 @@ A PR that blows a budget doesn't merge until it's explained or fixed.
    - Server Components by default (§1) means most sections ship as pure HTML/CSS.
    - Animations in CSS (transitions, `@keyframes`, scroll-driven where supported)
      before reaching for a JS animation library.
+   - Count-up counters stay banned, with one sanctioned exception: the home stats
+     band's single count-up (value server-rendered, runs once).
    - If a heavy widget is unavoidable (e.g. a map), load it with `next/dynamic` on
      interaction/visibility - never in the critical path.
 

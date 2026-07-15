@@ -4,12 +4,14 @@ export interface Stat {
 }
 
 /**
- * TODO(launch): replace XX/₹X.X with verified counts before launch;
- * a wrong number costs more trust than no number (design note).
+ * Verified by Tilak on 2026-07-15; the fact-sync map ran. These are the
+ * AMS-wide numbers, deliberately not the Derive '26 funnel: the 2,500+ who
+ * entered that contest and the 33 who reached the stage are a subset of the
+ * pool, and those figures stay on the Derive, Ascent, Access, FAQ, seo, and
+ * llms.txt surfaces that scope them to the edition.
  */
 export const STATS: Stat[] = [
-  { value: "2,500+", label: "Students, year one" },
-  { value: "150+", label: "Finalists" },
-  { value: "XX+", label: "Institutes represented" },
-  { value: "₹X.X L", label: "Prizes & travel funded" },
+  { value: "3,000+", label: "AMS talent pool" },
+  { value: "30+", label: "Institutions represented" },
+  { value: "2", label: "Competitions conducted" },
 ];

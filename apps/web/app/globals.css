@@ -15,6 +15,7 @@
   --color-espresso: #453333;
   --color-ink: #46403a;
   --color-placeholder: #e9e1d3;
+  --color-paper: #ede6d6;
 
   --font-display: var(--font-fraunces);
   --font-sans: var(--font-inter);
@@ -31,7 +32,15 @@
 
   /* Fluid section padding */
   --spacing-section: clamp(4rem, 8vw, 7.5rem);
+
+  /* Redesign motion grammar: single easing for every reveal (motion spec). */
+  --ease-reveal: cubic-bezier(0.22, 1, 0.36, 1);
 }
+
+/* js: variant, true only once the inline layout script stamps html.js before
+   first paint. Gates JS-dependent styling (the overlay nav) so no-JS visitors
+   keep the solid cream header instead of a stuck transparent one. */
+@custom-variant js (html.js &);
 
 /* Elastic overscroll reveals the canvas beyond the page edges. Paint the
    canvas cream so the navbar reads as pinned when the page is pulled down;
@@ -47,10 +56,12 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Maroon-on-cream needs a deliberate, visible focus ring */
-:focus-visible {
-  outline: 2px solid var(--color-gold);
-  outline-offset: 2px;
+@layer base {
+  /* Maroon-on-cream needs a deliberate, visible focus ring */
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 2px;
+  }
 }
 
 /* On-load entrance (hero and page titles): pure CSS so the first paint
@@ -94,6 +105,178 @@ html.js .reveal {
 html.js .reveal.is-visible {
   opacity: 1;
   translate: 0 0;
+}
+
+/* ---- Photo-immersive redesign motion primitives ----
+   Every animation here runs once and uses --ease-reveal. The global
+   reduced-motion block below crushes all durations to 0.01ms, which lands
+   each of these on its final (visible) state instantly. */
+
+/* Headline mask reveal: wrap each headline line in .mask-line > span.
+   Runs on load in the hero (.mask-load-*) and on scroll inside a Reveal
+   wrapper (.mask-step-*). Without JS the load variant still runs (pure
+   CSS); the scroll variant is paused only under html.js, so no-JS
+   visitors always end up with visible text. */
+.mask-line {
+  display: block;
+  overflow: hidden;
+}
+.mask-line > span {
+  display: block;
+  translate: 0 110%;
+  animation: mask-up 0.7s var(--ease-reveal) forwards;
+}
+@keyframes mask-up {
+  to {
+    translate: 0 0;
+  }
+}
+/* Hero (load-time) stagger: line 1 at 400ms after load, line 2 +120ms. */
+.mask-load-1 > span {
+  animation-delay: 400ms;
+}
+.mask-load-2 > span {
+  animation-delay: 520ms;
+}
+/* Scroll-triggered variant: paused until the Reveal wrapper is visible. */
+html.js .reveal .mask-line > span {
+  animation-play-state: paused;
+}
+html.js .reveal.is-visible .mask-line > span {
+  animation-play-state: running;
+}
+.mask-step-2 > span {
+  animation-delay: 120ms;
+}
+
+/* Hero copy choreography: subhead and CTAs ride the existing .rise
+   keyframes, delayed to land 500ms after the headline finishes. */
+.rise-hero-sub {
+  animation-delay: 1100ms;
+}
+.rise-hero-cta {
+  animation-delay: 1250ms;
+}
+
+/* Plate caption stamp: fades in last, after the claim (2.2s). */
+.caption-fade {
+  opacity: 0;
+  animation: fade-in 0.6s var(--ease-reveal) forwards;
+  animation-delay: 2.2s;
+}
+@keyframes fade-in {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Hero Ken Burns settle: 1.04 to 1.00 over 8s, once, transform only.
+   Starts at first paint; never delays the LCP image itself. */
+.kenburns {
+  animation: kenburns 8s ease-out forwards;
+}
+@keyframes kenburns {
+  from {
+    scale: 1.04;
+  }
+  to {
+    scale: 1;
+  }
+}
+
+/* Gold underline draw: left to right over 400ms once its Reveal wrapper
+   is visible. Per-instance timing via inline transition-delay. */
+html.js .underline-draw {
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s var(--ease-reveal);
+}
+html.js .reveal.is-visible .underline-draw {
+  transform: scaleX(1);
+}
+
+/* Scroll-driven effects (zero JS). Browsers without animation-timeline
+   simply keep the static layout and colors. */
+@supports (animation-timeline: view()) {
+  /* Backdrop parallax at roughly 0.85x page speed: the wrapper is 8%
+     taller than its section on each side and drifts through it. */
+  .parallax-slow {
+    animation: parallax-shift linear both;
+    animation-timeline: view();
+  }
+  @keyframes parallax-shift {
+    from {
+      translate: 0 -4%;
+    }
+    to {
+      translate: 0 4%;
+    }
+  }
+
+  /* Body cream-to-burgundy shift while the experience band (Task 7)
+     crosses the viewport, so the band feels entered rather than passed. */
+  body {
+    timeline-scope: --experience-band;
+    animation: body-to-burgundy linear both;
+    animation-timeline: --experience-band;
+  }
+  .experience-band-timeline {
+    view-timeline: --experience-band block;
+  }
+  @keyframes body-to-burgundy {
+    0%,
+    20% {
+      background-color: var(--color-cream);
+    }
+    45%,
+    60% {
+      background-color: var(--color-burgundy);
+    }
+    85%,
+    100% {
+      background-color: var(--color-cream);
+    }
+  }
+}
+
+/* Hero slideshow: stacked banner frames crossfading in place.
+   The site's ONE sanctioned looping animation (user-directed): opacity
+   only, 27s cycle, three frames, ~9s each. Negative delays start every
+   frame mid-cycle so nothing flashes at load; frames 2 and 3 also carry
+   a base opacity-0 utility so reduced motion (animation: none below)
+   pins the page to frame one. */
+.hero-slide {
+  animation: hero-crossfade 27s linear infinite both;
+}
+.hero-slide-2 {
+  animation-delay: -18s;
+}
+.hero-slide-3 {
+  animation-delay: -9s;
+}
+@keyframes hero-crossfade {
+  0%,
+  29% {
+    opacity: 1;
+  }
+  34%,
+  95% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* Timeline-driven animations ignore duration overrides, and the global
+     duration crush would freeze the slideshow on a stacked frame instead
+     of the first one; disable all of them outright. */
+  .parallax-slow,
+  .hero-slide,
+  body {
+    animation: none !important;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

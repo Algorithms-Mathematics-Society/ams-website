@@ -30,7 +30,7 @@ export const ASCENT_PILLARS: AscentPillar[] = [
 export const ASCENT_STANDARD = {
   eyebrow: "One standard",
   title: "The same road Derive built.",
-  body: "Online rounds to earn a seat, then finals judged in person with the sponsor firms in the room. Derive '26 set the template: 2,500+ entered, 50 stood on stage at IIT Bombay.",
+  body: "Online rounds to earn a seat, then finals judged in person with the sponsor firms in the room. Derive '26 set the template: 2,500+ entered, 33 stood on stage at IIT Bombay.",
   linkLabel: "See how Derive ran",
   linkHref: "/derive",
 } as const;

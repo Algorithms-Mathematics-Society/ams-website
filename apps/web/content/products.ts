@@ -4,6 +4,8 @@ export interface Product {
   body: string;
   href: string;
   screenshotLabel: string;
+  /** Optional slot tint; Ascent's glacier tone is a quiet sub-brand cue. */
+  tone?: "glacier";
 }
 
 export const PRODUCTS: Product[] = [
@@ -22,6 +24,7 @@ export const PRODUCTS: Product[] = [
     href: "/ascent",
     screenshotLabel:
       "Screenshot · Ascent leaderboard, real standings · real UI only",
+    tone: "glacier",
   },
   {
     eyebrow: "Access",
