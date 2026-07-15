@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/ui/Reveal";
@@ -20,10 +21,20 @@ export function DerivePartners() {
                 className="h-full rounded-xl border border-burgundy/10 bg-cream-light p-8"
               >
                 <Eyebrow>{partner.tier}</Eyebrow>
-                <p className="mt-4 font-display text-3xl tracking-[0.08em] text-ink/85">
-                  {partner.name}
-                </p>
-                <p className="mt-4 max-w-md text-sm leading-relaxed">
+                {/* Dark inset panel: the approved marks are built for a dark
+                    surface (Jane Street is a white wordmark, QRT a blue cube
+                    with white type), so they sit on burgundy to stay legible
+                    on the cream card. */}
+                <div className="mt-5 flex h-28 items-center justify-center rounded-lg bg-burgundy-deep px-6">
+                  <Image
+                    src={partner.logo.src}
+                    alt={partner.name}
+                    width={partner.logo.width}
+                    height={partner.logo.height}
+                    className={partner.logo.className}
+                  />
+                </div>
+                <p className="mt-5 max-w-md text-sm leading-relaxed">
                   {partner.description}
                 </p>
               </Reveal>

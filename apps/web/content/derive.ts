@@ -40,24 +40,42 @@ export interface DerivePartner {
   tier: string;
   name: string;
   description: string;
+  logo: {
+    /** Public path to the approved logo asset. */
+    src: string;
+    /** Intrinsic pixel dimensions (drive next/image aspect ratio only). */
+    width: number;
+    height: number;
+    /** Display sizing. The two marks differ in shape (Jane Street is a wide
+     *  wordmark, QRT is a tall stacked mark), so each sets its own height. */
+    className: string;
+  };
 }
 
-/**
- * TODO(launch): replace names with approved logo files only,
- * per the sponsor logo-approval workflow.
- */
 export const DERIVE_PARTNERS: DerivePartner[] = [
   {
     tier: "Apex Partner",
     name: "Jane Street",
     description:
       "Title partner of Derive, backing the contest that measures India's quant talent on its own terms.",
+    logo: {
+      src: "/partners/Jane_Street.svg",
+      width: 302,
+      height: 80,
+      className: "h-8 w-auto",
+    },
   },
   {
     tier: "Convergence Partner",
     name: "QRT",
     description:
       "Partner of the Convergence finals at IIT Bombay, where the top fifty compete in person.",
+    logo: {
+      src: "/partners/QRT.png",
+      width: 7916,
+      height: 8614,
+      className: "h-20 w-auto",
+    },
   },
 ];
 
@@ -66,5 +84,6 @@ export const DERIVE_CTA = {
   body: "Derive returns. Leave your email and be first to know when registration opens.",
   buttonLabel: "Get notified",
   /** TODO(launch): point at the registration/interest form when live. */
-  buttonHref: "mailto:tilakj0108@gmail.com?subject=Derive%20registration%20updates",
+  buttonHref:
+    "mailto:tilakj0108@gmail.com?subject=Derive%20registration%20updates",
 } as const;
