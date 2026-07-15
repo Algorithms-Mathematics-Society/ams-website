@@ -1,35 +1,19 @@
-import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { CountUp } from "@/components/ui/CountUp";
 import { Reveal } from "@/components/ui/Reveal";
 import { STATS, STATS_BAND } from "@/content/stats";
 
 /**
- * Numbers over the hall (block 03): the claim and its evidence share one
- * frame. Photo backdrop drifts at less than page speed (CSS scroll-driven
- * parallax; static where unsupported). The count-up is the page's ONE
- * numeric flourish; underlines draw after each number lands.
+ * Numbers as set type (block 03): a typographic poster on solid espresso.
+ * The hero one viewport up has already shown the stage, so the band shows
+ * no photo; on flat ground the numbers read as claims, not decoration.
+ * The count-up is the page's ONE numeric flourish; underlines draw after
+ * each number lands.
  */
 export function StatsBand() {
   return (
-    <section className="relative overflow-hidden bg-espresso py-20 text-cream-light lg:py-28">
-      {/* Parallax bleed: wrapper is taller than the band so the drift
-          never exposes edges. quality 50 is invisible under the overlay.
-          fetchPriority low so decor never competes with the hero. */}
-      <div className="parallax-slow absolute -inset-y-[8%] inset-x-0">
-        <Image
-          src="/images/derive26/hero/deep-focus.webp"
-          alt=""
-          aria-hidden
-          fill
-          quality={50}
-          fetchPriority="low"
-          sizes="100vw"
-          className="object-cover"
-        />
-      </div>
-      <div className="absolute inset-0 bg-espresso/85" aria-hidden />
-      <Container className="relative">
+    <section className="bg-espresso py-20 text-cream-light lg:py-28">
+      <Container>
         <Reveal>
           <p className="font-display text-xl italic text-cream-light/90 sm:text-2xl">
             {STATS_BAND.emotionalLine}
@@ -52,9 +36,6 @@ export function StatsBand() {
             </Reveal>
           ))}
         </dl>
-        <p className="caption-fade mt-14 text-sm text-cream-light/60 italic">
-          Plate II · Deep focus, mid-contest
-        </p>
       </Container>
     </section>
   );
