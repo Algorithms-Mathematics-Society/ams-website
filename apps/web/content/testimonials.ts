@@ -10,9 +10,10 @@ export interface Testimonial {
  * grammar and length only; no claim was added that the participant did not
  * make.
  *
- * Names are Tilak's, read off the addresses that submitted each review (the
- * form collected addresses, not names). He should eyeball them before launch:
- * a handle is not a signature.
+ * Names came from Tilak, who knows these competitors; the form collected
+ * addresses, not names. Reading a name off an address does not work: this
+ * list had "Shane Christian" wrong until he corrected it, so any name added
+ * here comes from him, never from an address.
  *
  * TODO(launch): colleges and faces. The form captured neither, so `detail`
  * says only what the form itself proves: they competed in Derive '26. The
@@ -27,7 +28,7 @@ export const TESTIMONIALS: Testimonial[] = [
       "AMS Derive was just the right kind of challenge that was missing in the competitive programming scene.",
   },
   {
-    name: "Christian Janet",
+    name: "Shane Christian",
     detail: "Derive '26 participant",
     quote:
       "A really well designed contest: the problems are a mixture of probability, game theory, ad hoc, math and quant. The style is unique, mainly in how the problem statements are designed.",
