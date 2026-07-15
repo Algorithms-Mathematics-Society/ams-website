@@ -6,7 +6,6 @@ import { Hero } from "@/components/sections/Hero";
 import { LineOfRecord } from "@/components/sections/LineOfRecord";
 import { ProductCards } from "@/components/sections/ProductCards";
 import { StatsBand } from "@/components/sections/StatsBand";
-import { TeamGrid } from "@/components/sections/TeamGrid";
 import { Testimonials } from "@/components/sections/Testimonials";
 
 export default function HomePage() {
@@ -20,7 +19,6 @@ export default function HomePage() {
       <ExperienceGrid />
       <Testimonials />
       <GalleryDome />
-      <TeamGrid />
       <ClosingCta />
     </>
   );
