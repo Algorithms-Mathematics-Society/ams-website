@@ -119,11 +119,18 @@ html.js .reveal.is-visible {
    visitors always end up with visible text. */
 .mask-line {
   display: block;
-  overflow: hidden;
+  /* Descenders sink below the line box: at the hero's 1.08 line-height the
+     tail of "converge." falls 5px past it. overflow clips at the box, so it
+     severed them. clip-path masks the same way but takes a negative bottom
+     inset, letting the tail paint below the box while costing no layout,
+     which padding would. In em, so it tracks the type at every clamp step;
+     the start offset below clears the deeper mask. */
+  --mask-tail: 0.14em;
+  clip-path: inset(0 0 calc(var(--mask-tail) * -1) 0);
 }
 .mask-line > span {
   display: block;
-  translate: 0 110%;
+  translate: 0 calc(110% + var(--mask-tail));
   animation: mask-up 0.7s var(--ease-reveal) forwards;
 }
 @keyframes mask-up {
