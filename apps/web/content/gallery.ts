@@ -19,6 +19,19 @@ export const GALLERY_PAGE = {
   },
 } as const;
 
+/**
+ * The home proof gallery's caption rail. Separate from GALLERY_PAGE: the
+ * archive page introduces the whole set, this rail sits beside the dome
+ * and only has to place the photographs and say how to turn them.
+ */
+export const GALLERY_DOME = {
+  eyebrow: "Moments from AMS",
+  title: "It happened. Here's proof.",
+  body: "Twelve moments from the Derive '26 finals at IIT Bombay: the swag desk in the morning, the hall at capacity, the cheques at the end.",
+  hint: "Drag to look around · click a photo to open it",
+  link: { label: "See the full gallery", href: "/gallery" },
+} as const;
+
 const img = (slug: string) => ({
   src: `/images/derive26/thumb/${slug}.webp`,
   full: `/images/derive26/full/${slug}.webp`,
