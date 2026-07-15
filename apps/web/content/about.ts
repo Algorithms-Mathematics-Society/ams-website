@@ -12,5 +12,5 @@ export const ABOUT = {
     src: "/images/founder.webp",
     alt: "The founder, mic in hand, addressing the room",
   },
-  photoCaption: "Plate III · The founder, mid-address",
+  photoCaption: "Plate II · The founder, mid-address",
 } as const;

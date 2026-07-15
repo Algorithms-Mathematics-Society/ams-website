@@ -104,7 +104,7 @@ export function Hero() {
       {/* Plate caption: the archival stamp lands last, on a quiet pill so
           it stays legible over the desks. */}
       <p className="caption-fade absolute right-5 bottom-6 rounded-full bg-black/45 px-3.5 py-1.5 text-sm text-cream-light/90 sm:right-8">
-        Derive &apos;26 finals · IIT Bombay · July 2026
+        Plate I · Derive &apos;26 finals · IIT Bombay · July 2026
       </p>
     </section>
   );

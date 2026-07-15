@@ -8,5 +8,5 @@ export const CLOSING_CTA = {
     src: "/images/derive26/hero/the-evening-social.webp",
     alt: "The evening social from above: contestants around tables after the Derive '26 finals",
   },
-  plateCaption: "Plate XII · The evening social, after the final round",
+  plateCaption: "Plate III · The evening social, after the final round",
 } as const;
