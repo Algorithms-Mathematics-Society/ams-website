@@ -14,3 +14,7 @@ next-env.d.ts
 # Local Claude Code session state (skills stay tracked)
 .claude/settings.local.json
 .claude/worktrees/
+
+# Form exports: participant emails and other personal data. This remote is a
+# public repo, so these never get committed, not even by an accidental add -A.
+/media/*.csv
