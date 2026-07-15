@@ -29,7 +29,12 @@ export function StatsBand() {
                 style={{ transitionDelay: `${1600 + index * 150}ms` }}
                 aria-hidden
               />
-              <dt className="mt-3 text-sm text-cream-light/85">{stat.label}</dt>
+              {/* Set like the site's eyebrows: the label is a caption for
+                  its number, not prose, and uppercase letterspacing keeps
+                  it from competing with the figure above it. */}
+              <dt className="mt-3 text-xs font-semibold tracking-[0.18em] text-cream-light/75 uppercase">
+                {stat.label}
+              </dt>
             </Reveal>
           ))}
         </dl>
