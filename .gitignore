@@ -10,3 +10,7 @@ next-env.d.ts
 
 # Camera originals (local source of truth; optimized copies live in apps/web/public/images)
 /media/photos/
+
+# Local Claude Code session state (skills stay tracked)
+.claude/settings.local.json
+.claude/worktrees/
