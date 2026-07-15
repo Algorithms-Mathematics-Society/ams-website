@@ -20,6 +20,7 @@ export function GalleryDome() {
   const images = GALLERY.filter((item) => item.src).map((item) => ({
     src: item.src as string,
     alt: item.label,
+    full: item.full,
   }));
 
   return (
@@ -53,16 +54,13 @@ export function GalleryDome() {
           </Link>
         </Reveal>
 
-        {/* The column, not the viewport, sizes the dome now: fitBasis width
-            keys the radius to the cell's width, so the cell's height is free
-            to hug the sphere instead of leaving a void under it. Fewer
-            segments keep the prints their old size at the smaller radius,
-            and the low padFactor stops the shorter cell from shrinking the
-            opened photo. Opening a print darkens this cell rather than the
-            page, so the cell is rounded and the opened sizes leave a mat:
-            the print reads as laid on a viewing plate, not as a dark box
-            cut into the spread. */}
-        <div className="relative h-[56svh] min-h-[380px] w-full overflow-hidden rounded-2xl lg:col-span-7 lg:h-[500px]">
+        {/* The column, not the viewport, sizes the dome: fitBasis width keys
+            the radius to the cell's width, so the cell's height is free to
+            hug the sphere instead of leaving a void under it. Fewer segments
+            keep the prints their old size at the smaller radius. Opening a
+            print is a full-screen moment (the viewer is fixed), so it is not
+            bounded by this cell and the opened sizes are screen-sized. */}
+        <div className="relative h-[56svh] min-h-[380px] w-full overflow-hidden lg:col-span-7 lg:h-[500px]">
           <DomeGallery
             images={images}
             overlayBlurColor="#ede6d6"
@@ -77,8 +75,8 @@ export function GalleryDome() {
             autoRotateDegPerSec={3}
             imageBorderRadius="12px"
             openedImageBorderRadius="16px"
-            openedImageWidth="min(460px, 74vw)"
-            openedImageHeight="min(345px, 55vw)"
+            openedImageWidth="min(1040px, 88vw)"
+            openedImageHeight="min(780px, 76svh)"
           />
         </div>
       </Container>

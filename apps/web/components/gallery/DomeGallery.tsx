@@ -13,8 +13,11 @@ import "./DomeGallery.css";
  */
 
 export interface DomeImage {
+  /** Thumb used for the dome's tiles. */
   src: string;
   alt?: string;
+  /** Large variant for the opened view; falls back to src when absent. */
+  full?: string;
 }
 
 interface DomeGalleryProps {
@@ -46,6 +49,7 @@ type Item = {
   sizeY: number;
   src: string;
   alt: string;
+  full: string;
 };
 
 const clamp = (v: number, min: number, max: number) =>
@@ -73,12 +77,16 @@ function buildItems(pool: (string | DomeImage)[], seg: number): Item[] {
 
   const totalSlots = coords.length;
   if (pool.length === 0) {
-    return coords.map((c) => ({ ...c, src: "", alt: "" }));
+    return coords.map((c) => ({ ...c, src: "", alt: "", full: "" }));
   }
 
   const normalizedImages = pool.map((image) => {
-    if (typeof image === "string") return { src: image, alt: "" };
-    return { src: image.src || "", alt: image.alt || "" };
+    if (typeof image === "string") return { src: image, alt: "", full: image };
+    return {
+      src: image.src || "",
+      alt: image.alt || "",
+      full: image.full || image.src || "",
+    };
   });
 
   const usedImages = Array.from(
@@ -103,6 +111,7 @@ function buildItems(pool: (string | DomeImage)[], seg: number): Item[] {
     ...c,
     src: usedImages[i].src,
     alt: usedImages[i].alt,
+    full: usedImages[i].full,
   }));
 }
 
@@ -234,9 +243,10 @@ export default function DomeGallery({
 
       const enlargedOverlay =
         viewerRef.current?.querySelector<HTMLElement>(".enlarge");
-      if (enlargedOverlay && frameRef.current && mainRef.current) {
+      if (enlargedOverlay && frameRef.current && viewerRef.current) {
         const frameR = frameRef.current.getBoundingClientRect();
-        const mainR = mainRef.current.getBoundingClientRect();
+        // Same origin as the open path: the fixed viewer, not the dome's box.
+        const mainR = viewerRef.current.getBoundingClientRect();
 
         const hasCustomSize = openedImageWidth && openedImageHeight;
         if (hasCustomSize) {
@@ -465,7 +475,10 @@ export default function DomeGallery({
         return;
       }
       const currentRect = overlay.getBoundingClientRect();
-      const rootRect = rootRef.current!.getBoundingClientRect();
+      // The closing photo flies back to its tile across the whole screen, so
+      // it animates inside the fixed viewer. Parenting it to the dome's root
+      // instead would let the section's overflow clip it mid-flight.
+      const rootRect = viewerRef.current!.getBoundingClientRect();
       const originalPosRelativeToRoot = {
         left: originalPos.left - rootRect.left,
         top: originalPos.top - rootRect.top,
@@ -480,15 +493,17 @@ export default function DomeGallery({
       };
       const animatingOverlay = document.createElement("div");
       animatingOverlay.className = "enlarge-closing";
-      animatingOverlay.style.cssText = `position:absolute;left:${overlayRelativeToRoot.left}px;top:${overlayRelativeToRoot.top}px;width:${overlayRelativeToRoot.width}px;height:${overlayRelativeToRoot.height}px;z-index:9999;border-radius: var(--enlarge-radius, 16px);overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.35);transition:all ${enlargeTransitionMs}ms ease-out;pointer-events:none;margin:0;transform:none;`;
+      animatingOverlay.style.cssText = `position:absolute;left:${overlayRelativeToRoot.left}px;top:${overlayRelativeToRoot.top}px;width:${overlayRelativeToRoot.width}px;height:${overlayRelativeToRoot.height}px;z-index:9999;border-radius: var(--enlarge-radius, 16px);overflow:hidden;transition:all ${enlargeTransitionMs}ms ease-out;pointer-events:none;margin:0;transform:none;`;
       const originalImg = overlay.querySelector("img");
       if (originalImg) {
         const img = originalImg.cloneNode() as HTMLImageElement;
-        img.style.cssText = "width:100%;height:100%;object-fit:cover;";
+        // Matches the opened view's fit, so the photo does not re-crop on
+        // the way back to its tile.
+        img.style.cssText = "width:100%;height:100%;object-fit:contain;";
         animatingOverlay.appendChild(img);
       }
       overlay.remove();
-      rootRef.current!.appendChild(animatingOverlay);
+      viewerRef.current!.appendChild(animatingOverlay);
       void animatingOverlay.getBoundingClientRect();
       requestAnimationFrame(() => {
         animatingOverlay.style.left = originalPosRelativeToRoot.left + "px";
@@ -509,6 +524,14 @@ export default function DomeGallery({
           el.style.visibility = "";
           el.style.opacity = "0";
           el.style.zIndex = "0";
+          // Removing the overlay drops focus on the body, which strands a
+          // keyboard reader at the top of the document. Now that opening a
+          // photo is a full-screen modal, closing it has to hand focus back
+          // to the tile that opened it. preventScroll keeps the page where
+          // they left it, and :focus-visible means no ring for mouse users.
+          if (document.activeElement === document.body) {
+            el.focus({ preventScroll: true });
+          }
           focusedElRef.current = null;
           rootRef.current?.removeAttribute("data-enlarging");
           requestAnimationFrame(() => {
@@ -581,7 +604,11 @@ export default function DomeGallery({
       void refDiv.offsetHeight;
 
       const tileR = refDiv.getBoundingClientRect();
-      const mainR = mainRef.current?.getBoundingClientRect();
+      // The overlay lives in .viewer, which is fixed to the viewport, so it
+      // is the origin every coordinate below is relative to. Anchoring to
+      // the dome's own box instead would trap the opened photo inside the
+      // section's column.
+      const mainR = viewerRef.current?.getBoundingClientRect();
       const frameR = frameRef.current?.getBoundingClientRect();
 
       if (!mainR || !frameR || tileR.width <= 0 || tileR.height <= 0) {
@@ -612,7 +639,13 @@ export default function DomeGallery({
       overlay.style.willChange = "transform, opacity";
       overlay.style.transformOrigin = "top left";
       overlay.style.transition = `transform ${enlargeTransitionMs}ms ease, opacity ${enlargeTransitionMs}ms ease`;
-      const rawSrc = parent.dataset.src || el.querySelector("img")?.src || "";
+      // The opened view fills the screen, so it takes the large variant; the
+      // tile's 640w thumb would visibly soften at that size.
+      const rawSrc =
+        parent.dataset.full ||
+        parent.dataset.src ||
+        el.querySelector("img")?.src ||
+        "";
       const img = document.createElement("img");
       img.src = rawSrc;
       const tileAlt = el.querySelector("img")?.alt || "";
@@ -734,6 +767,11 @@ export default function DomeGallery({
           "--tile-radius": imageBorderRadius,
           "--enlarge-radius": openedImageBorderRadius,
           "--image-filter": grayscale ? "grayscale(1)" : "none",
+          // The frame is the target the opened photo flies to, so it is sized
+          // to the opened photo itself. A frame of another size would make the
+          // photo land, then visibly resize.
+          "--opened-w": openedImageWidth,
+          "--opened-h": openedImageHeight,
         } as React.CSSProperties
       }
     >
@@ -745,6 +783,7 @@ export default function DomeGallery({
                 key={`${it.x},${it.y},${i}`}
                 className="item"
                 data-src={it.src}
+                data-full={it.full}
                 data-offset-x={it.x}
                 data-offset-y={it.y}
                 data-size-x={it.sizeX}
