@@ -1,25 +1,20 @@
 import { Container } from "@/components/ui/Container";
 import { CountUp } from "@/components/ui/CountUp";
 import { Reveal } from "@/components/ui/Reveal";
-import { STATS, STATS_BAND } from "@/content/stats";
+import { STATS } from "@/content/stats";
 
 /**
  * Numbers as set type (block 03): a typographic poster on solid espresso.
  * The hero one viewport up has already shown the stage, so the band shows
- * no photo; on flat ground the numbers read as claims, not decoration.
- * The count-up is the page's ONE numeric flourish; underlines draw after
- * each number lands.
+ * no photo; on flat ground the numbers read as claims, not decoration, and
+ * they carry the band alone: no line introduces them. The count-up is the
+ * page's ONE numeric flourish; underlines draw after each number lands.
  */
 export function StatsBand() {
   return (
     <section className="bg-espresso py-20 text-cream-light lg:py-28">
       <Container>
-        <Reveal>
-          <p className="font-display text-xl italic text-cream-light/90 sm:text-2xl">
-            {STATS_BAND.emotionalLine}
-          </p>
-        </Reveal>
-        <dl className="mt-12 grid gap-x-8 gap-y-12 sm:grid-cols-3">
+        <dl className="grid gap-x-8 gap-y-12 sm:grid-cols-3">
           {STATS.map((stat, index) => (
             <Reveal key={stat.label} delay={index * 150}>
               <dd className="font-display text-stat">

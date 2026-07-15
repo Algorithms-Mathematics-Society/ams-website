@@ -15,8 +15,3 @@ export const STATS: Stat[] = [
   { value: "30+", label: "Institutions represented" },
   { value: "2", label: "Competitions conducted" },
 ];
-
-export const STATS_BAND = {
-  /** The emotional read above the numbers; the stats are the rational read. */
-  emotionalLine: "2,500 registered. 33 stood on that stage.",
-} as const;
