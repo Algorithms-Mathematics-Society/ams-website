@@ -19,7 +19,7 @@ export function StatsBand() {
             {STATS_BAND.emotionalLine}
           </p>
         </Reveal>
-        <dl className="mt-12 grid grid-cols-2 gap-x-8 gap-y-12 lg:grid-cols-4">
+        <dl className="mt-12 grid gap-x-8 gap-y-12 sm:grid-cols-3">
           {STATS.map((stat, index) => (
             <Reveal key={stat.label} delay={index * 150}>
               <dd className="font-display text-stat">

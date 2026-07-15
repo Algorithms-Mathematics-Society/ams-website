@@ -8,6 +8,8 @@
 
 Key facts:
 
+- AMS has conducted 2 competitions to date. Its talent pool is 3,000+
+  students drawn from 30+ institutions across India.
 - Derive is the AMS quant contest: probability, markets, and mathematical
   reasoning. The 2026 edition had 2,500+ participants, 150 advanced to
   Round 2, 50 qualified for the finals, and 33 finalists competed offline
