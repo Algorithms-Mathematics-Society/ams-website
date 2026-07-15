@@ -20,6 +20,16 @@ strategy lives in `docs/superpowers/specs/2026-07-05-seo-rank-ams-design.md`. Al
   favicons) in primary/black/white/inverse variants. Prefer the SVGs in the site;
   favicons and touch icons come from `media/source-png`.
 
+## Project skill (mandatory)
+
+Before writing or reviewing any code, content, metadata, or assets in `apps/web`,
+invoke the project skill `ams-site-standards` (`.claude/skills/ams-site-standards/SKILL.md`).
+It is the applied checklist for system design, latency budgets, animation smoothness,
+mobile responsiveness, SEO entity rules, and AEO surfaces (llms.txt, FAQ schema,
+AI-crawler robots), including the fact-sync map that must run whenever a verified
+stat, winner, sponsor, or date changes. ENGINEERING_GUIDE.md stays authoritative;
+the skill operationalizes it and covers the SEO/AEO layer the guide does not.
+
 ## Key decisions already made (see ENGINEERING_GUIDE.md for detail)
 
 - Next.js App Router + TypeScript strict + Tailwind, **fully static export** behind a
