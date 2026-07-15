@@ -15,10 +15,12 @@ export interface Testimonial {
  * list had "Shane Christian" wrong until he corrected it, so any name added
  * here comes from him, never from an address.
  *
- * TODO(launch): colleges and faces. The form captured neither, so `detail`
- * says only what the form itself proves: they competed in Derive '26. The
- * section heading promises colleges, so either they arrive or the heading
- * changes. Faces need a yes from each of the three.
+ * No faces here by decision: the cards carry a drawn figure instead, so the
+ * three are never asked for a photograph.
+ *
+ * TODO(launch): colleges. The form did not capture them, so `detail` says
+ * only what the form itself proves: they competed in Derive '26. The section
+ * heading promises colleges, so either they arrive or the heading changes.
  */
 export const TESTIMONIALS: Testimonial[] = [
   {
