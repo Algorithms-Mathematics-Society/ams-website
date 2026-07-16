@@ -47,10 +47,13 @@ export function Hero() {
           </div>
 
           {/* The spine: a rule between the two pages with a small volume label,
-    drawn once on load. Horizontal when the pages stack below lg;
-    vertical with a soft gutter shadow on each side once they sit
-    side by side. */}
-          <div aria-hidden className="relative py-2 lg:py-0">
+              drawn once on load. Horizontal when the pages stack below lg;
+              vertical with a soft gutter shadow on each side once they sit
+              side by side. */}
+          <div
+            aria-hidden
+            className="relative py-2 pointer-events-none lg:py-0"
+          >
             <div className="absolute inset-y-0 left-1/2 hidden w-8 -translate-x-full bg-gradient-to-r from-transparent to-ink/10 lg:block" />
             <div className="absolute inset-y-0 left-1/2 hidden w-8 bg-gradient-to-l from-transparent to-ink/10 lg:block" />
             <div className="spine-draw h-px w-full bg-gold lg:absolute lg:inset-y-0 lg:left-1/2 lg:h-auto lg:w-px lg:-translate-x-1/2" />
@@ -87,7 +90,7 @@ export function Hero() {
                       fetchPriority="high"
                       quality={75}
                       decoding="sync"
-                      sizes="(min-width: 1024px) 448px, 92vw"
+                      sizes="(min-width: 540px) 448px, 92vw"
                       className="object-cover object-[center_85%]"
                     />
                   </div>
@@ -97,7 +100,7 @@ export function Hero() {
                       alt="Group photo of the Derive '26 cohort and organizers in the hall at IIT Bombay"
                       fill
                       quality={75}
-                      sizes="(min-width: 1024px) 448px, 92vw"
+                      sizes="(min-width: 540px) 448px, 92vw"
                       className="object-cover object-[center_62%]"
                     />
                   </div>
@@ -107,7 +110,7 @@ export function Hero() {
                       alt="The three Derive '26 winners holding their prize cheques, flanked by organizers, IIT Bombay"
                       fill
                       quality={75}
-                      sizes="(min-width: 1024px) 448px, 92vw"
+                      sizes="(min-width: 540px) 448px, 92vw"
                       className="object-cover"
                     />
                   </div>
