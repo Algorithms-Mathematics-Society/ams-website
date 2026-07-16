@@ -166,12 +166,19 @@ html.js .reveal.is-visible .mask-line > span {
 }
 
 /* Hero copy choreography: subhead and CTAs ride the existing .rise
-   keyframes, delayed to land 500ms after the headline finishes. */
+   keyframes, delayed to land 500ms after the headline finishes. The
+   plate (the right page's matted photo) rides the same .rise keyframes
+   too, landing mid-sequence: after the headline lines start moving, but
+   before the subhead, so the words and the picture read as one opening
+   beat instead of two unrelated timers. */
 .rise-hero-sub {
   animation-delay: 1100ms;
 }
 .rise-hero-cta {
   animation-delay: 1250ms;
+}
+.rise-hero-plate {
+  animation-delay: 750ms;
 }
 
 /* Plate caption stamp: fades in last, after the claim (2.2s). */
