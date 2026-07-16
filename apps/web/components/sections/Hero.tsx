@@ -11,7 +11,7 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
  */
 export function Hero() {
   return (
-    <section className="relative flex min-h-[calc(100svh-4rem)] items-center overflow-hidden py-24">
+    <section className="relative flex min-h-[calc(100svh-4rem)] items-end overflow-hidden py-24">
       {/* LCP element: preloaded, nothing above it may render late.
           - fetchPriority stays explicit (Next 16 decoupled it from priority).
           - quality 75: the scrim is light, so compression has nowhere to
@@ -31,7 +31,7 @@ export function Hero() {
             quality={75}
             decoding="sync"
             sizes="100vw"
-            className="object-cover object-[center_70%]"
+            className="object-cover object-[center_85%]"
           />
         </div>
         <div className="hero-slide hero-slide-2 absolute inset-0 opacity-0">
@@ -57,16 +57,18 @@ export function Hero() {
       </div>
       {/* Legibility scrim, three layers: a uniform wash that tames bright
           ceilings on every frame, a diagonal that is darkest under the
-          copy, and a bottom band. Top right keeps the least shading so
-          the frame still breathes. */}
-      <div aria-hidden className="absolute inset-0 bg-black/25" />
+          copy, and a bottom band. Built from the brand's own darks
+          (espresso, burgundy-deep) rather than neutral black, so the
+          wash reads as AMS and not as a generic photo-hero gradient.
+          Top right keeps the least shading so the frame still breathes. */}
+      <div aria-hidden className="absolute inset-0 bg-espresso/30" />
       <div
         aria-hidden
-        className="absolute inset-0 bg-gradient-to-tr from-black/70 via-black/30 to-transparent"
+        className="absolute inset-0 bg-gradient-to-tr from-burgundy-deep/75 via-espresso/30 to-transparent"
       />
       <div
         aria-hidden
-        className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/60 via-black/20 to-transparent"
+        className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-burgundy-deep/65 via-espresso/20 to-transparent"
       />
 
       <Container className="relative z-10 w-full">
