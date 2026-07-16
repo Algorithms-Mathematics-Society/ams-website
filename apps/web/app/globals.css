@@ -27,6 +27,11 @@
   --text-section--line-height: 1.15;
   --text-stat: clamp(2.1rem, 3vw + 0.9rem, 3.25rem);
   --text-stat--line-height: 1.1;
+  /* The one lead stat on the band; sized above the hero headline so the
+     proof number is the biggest numeral on the page. Supporting stats
+     stay at --text-stat, giving a ~1.6x lead. */
+  --text-stat-lead: clamp(3.5rem, 6vw + 1rem, 5.25rem);
+  --text-stat-lead--line-height: 1;
   --text-card-title: clamp(1.35rem, 1vw + 1rem, 1.6rem);
   --text-card-title--line-height: 1.25;
 
