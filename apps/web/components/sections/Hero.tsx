@@ -11,15 +11,14 @@ import { PlateFrame } from "@/components/ui/PlateFrame";
  * like the founder portrait's "Plate II" rather than run full-bleed, so
  * the page's archival-plate idea (Plate I/II/III) becomes the hero's own
  * structure instead of a detail borrowed from elsewhere on the page. See
- * docs/superpowers/specs/2026-07-16-hero-bound-plate-design.md. The spine
- * between the two pages lands in a follow-up change; this step is the
- * two-page layout on its own.
+ * docs/superpowers/specs/2026-07-16-hero-bound-plate-design.md. The gold
+ * spine between the two pages completes the open-book read.
  */
 export function Hero() {
   return (
     <section className="py-16 lg:py-24">
       <Container>
-        <div className="grid min-h-[480px] items-stretch gap-10 lg:min-h-[600px] lg:grid-cols-2 lg:gap-16">
+        <div className="grid min-h-[480px] items-stretch gap-10 lg:min-h-[600px] lg:grid-cols-[1fr_2.5rem_1fr] lg:gap-0">
           {/* Left page: the title page. */}
           <div className="flex flex-col justify-center">
             <Eyebrow className="rise">Quant · Algorithms · Assessment</Eyebrow>
@@ -45,6 +44,19 @@ export function Hero() {
                 For firms
               </Button>
             </div>
+          </div>
+
+          {/* The spine: a rule between the two pages with a small volume label,
+    drawn once on load. Horizontal when the pages stack below lg;
+    vertical with a soft gutter shadow on each side once they sit
+    side by side. */}
+          <div aria-hidden className="relative py-2 lg:py-0">
+            <div className="absolute inset-y-0 left-1/2 hidden w-8 -translate-x-full bg-gradient-to-r from-transparent to-ink/10 lg:block" />
+            <div className="absolute inset-y-0 left-1/2 hidden w-8 bg-gradient-to-l from-transparent to-ink/10 lg:block" />
+            <div className="spine-draw h-px w-full bg-gold lg:absolute lg:inset-y-0 lg:left-1/2 lg:h-auto lg:w-px lg:-translate-x-1/2" />
+            <span className="mt-3 block text-center text-[10px] font-semibold tracking-[0.25em] text-gold-deep uppercase lg:absolute lg:top-1/2 lg:left-1/2 lg:mt-0 lg:w-max lg:-translate-x-1/2 lg:-translate-y-1/2 lg:[writing-mode:vertical-rl]">
+              Vol. I · Derive &apos;26
+            </span>
           </div>
 
           {/* Right page: the plate. */}

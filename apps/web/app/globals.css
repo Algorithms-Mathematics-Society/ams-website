@@ -218,6 +218,34 @@ html.js .reveal.is-visible .underline-draw {
   transform: scaleX(1);
 }
 
+/* Hero spine rule: drawn once on load, like .mask-line/.rise (the hero
+   has no Reveal wrapper to gate on; it is always above the fold, so
+   there is nothing to wait for). Horizontal, left to right, when the
+   two pages stack; vertical, top to bottom, once they sit side by side
+   at lg and the spine sits between them. One class, one keyframe: the
+   end state (scale(1)) is the same regardless of which axis the start
+   state used, so the breakpoint only needs to flip the starting
+   transform and its origin. Swept into the reduced-motion crush by the
+   existing wildcard rule at the bottom of this file; no separate
+   opt-in needed. */
+.spine-draw {
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: spine-draw-in 0.5s var(--ease-reveal) forwards;
+  animation-delay: 600ms;
+}
+@keyframes spine-draw-in {
+  to {
+    transform: scale(1);
+  }
+}
+@media (min-width: 1024px) {
+  .spine-draw {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+}
+
 /* Scroll-driven effects (zero JS). Browsers without animation-timeline
    simply keep the static layout and colors. */
 @supports (animation-timeline: view()) {
