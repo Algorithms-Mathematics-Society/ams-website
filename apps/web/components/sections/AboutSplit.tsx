@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
+import { PlateFrame } from "@/components/ui/PlateFrame";
 import { Reveal } from "@/components/ui/Reveal";
 import { ABOUT } from "@/content/about";
 
@@ -18,10 +19,7 @@ export function AboutSplit() {
     <section className="py-section">
       <Container className="grid items-center gap-10 lg:grid-cols-12 lg:gap-16">
         <Reveal className="lg:col-span-5">
-          {/* Mounted print: a hairline frame, a thin cream mat, and a soft
-              lift off the cream ground, so the portrait reads as the
-              "Plate II" the caption calls it rather than a photo card. */}
-          <div className="rounded-lg border border-ink/15 bg-cream-light p-2.5 shadow-[0_2px_24px_rgba(70,64,58,0.10)]">
+          <PlateFrame caption={ABOUT.photoCaption}>
             <div className="relative aspect-[4/5] overflow-hidden rounded-sm">
               <Image
                 src={ABOUT.photo.src}
@@ -31,10 +29,7 @@ export function AboutSplit() {
                 className="object-cover object-[center_38%]"
               />
             </div>
-          </div>
-          <p className="mt-3 text-xs text-ink/60 italic">
-            {ABOUT.photoCaption}
-          </p>
+          </PlateFrame>
         </Reveal>
 
         <Reveal delay={200} className="lg:col-span-7">
