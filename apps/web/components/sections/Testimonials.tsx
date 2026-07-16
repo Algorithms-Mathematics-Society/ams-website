@@ -1,8 +1,38 @@
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { TESTIMONIALS } from "@/content/testimonials";
+import { TESTIMONIALS, type Testimonial } from "@/content/testimonials";
 
+const featured = TESTIMONIALS.find((t) => t.featured) ?? TESTIMONIALS[0];
+const supporting = TESTIMONIALS.filter((t) => t !== featured);
+
+const cardBase =
+  "flex flex-col rounded-xl border border-burgundy/10 bg-cream-light";
+
+/** Attribution set in the "on the record" register the line-of-record uses:
+ *  the name in display serif, the role letterspaced in gold. */
+function Attribution({ item }: { item: Testimonial }) {
+  return (
+    <figcaption className="mt-6">
+      <span className="block font-display font-semibold text-burgundy">
+        {item.name}
+      </span>
+      <span className="mt-0.5 block text-[11px] font-medium tracking-[0.22em] text-gold-deep uppercase">
+        {item.detail}
+      </span>
+    </figcaption>
+  );
+}
+
+/**
+ * Block 08: social proof, the one section in another voice. Testimony is not
+ * interchangeable, so it does not sit in a third equal grid: the most specific
+ * verdict leads as a wide pull-quote, the other two support beside it. The
+ * quote outranks the name (the section is "In their words"), and an oversized
+ * Fraunces quotation mark anchors each card in place of the old avatar glyph,
+ * which read as a face that had not loaded. No hover, no rotation: stillness
+ * reads as on the record.
+ */
 export function Testimonials() {
   return (
     <section className="py-section">
@@ -14,51 +44,45 @@ export function Testimonials() {
           />
         </Reveal>
 
-        <ul className="mt-12 grid gap-6 lg:grid-cols-3">
-          {TESTIMONIALS.map((testimonial, index) => (
-            <li key={testimonial.quote} className="h-full">
+        <div className="mt-12 grid items-start gap-6 lg:grid-cols-12">
+          <Reveal className={`${cardBase} p-8 lg:col-span-7`}>
+            <figure>
+              <span
+                aria-hidden
+                className="block font-display text-6xl leading-[0.6] text-gold/40"
+              >
+                &ldquo;
+              </span>
+              <blockquote className="mt-4 font-display text-2xl leading-snug text-ink lg:text-[1.75rem]">
+                {featured.quote}
+              </blockquote>
+              <Attribution item={featured} />
+            </figure>
+          </Reveal>
+
+          <div className="flex flex-col gap-6 lg:col-span-5">
+            {supporting.map((item, index) => (
               <Reveal
-                delay={index * 90}
-                className="h-full rounded-xl border border-burgundy/10 bg-cream-light p-7"
+                key={item.quote}
+                delay={(index + 1) * 90}
+                className={`${cardBase} p-6`}
               >
                 <figure>
-                  <figcaption className="flex items-center gap-4">
-                    {/* A drawn figure, not a face: these competitors gave a
-                        review, not a photograph. The name beside it carries
-                        the attribution, so the glyph is decorative. */}
-                    <span
-                      aria-hidden
-                      className="flex size-14 shrink-0 items-center justify-center rounded-full border border-burgundy/10 bg-placeholder text-burgundy/40"
-                    >
-                      <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth={1.5}
-                        strokeLinecap="round"
-                        className="size-6"
-                      >
-                        <circle cx="12" cy="8.5" r="3.75" />
-                        <path d="M5.25 19.25a6.75 6.75 0 0 1 13.5 0" />
-                      </svg>
-                    </span>
-                    <span>
-                      <span className="block font-display font-semibold text-burgundy">
-                        {testimonial.name}
-                      </span>
-                      <span className="block text-sm text-ink/80">
-                        {testimonial.detail}
-                      </span>
-                    </span>
-                  </figcaption>
-                  <blockquote className="mt-6 text-sm leading-relaxed">
-                    &ldquo;{testimonial.quote}&rdquo;
+                  <span
+                    aria-hidden
+                    className="block font-display text-4xl leading-[0.6] text-gold/40"
+                  >
+                    &ldquo;
+                  </span>
+                  <blockquote className="mt-3 text-sm leading-relaxed text-ink">
+                    {item.quote}
                   </blockquote>
+                  <Attribution item={item} />
                 </figure>
               </Reveal>
-            </li>
-          ))}
-        </ul>
+            ))}
+          </div>
+        </div>
       </Container>
     </section>
   );

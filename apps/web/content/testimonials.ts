@@ -2,6 +2,8 @@ export interface Testimonial {
   name: string;
   detail: string;
   quote: string;
+  /** The lead quote, set larger and wider; the most specific of the three. */
+  featured?: boolean;
 }
 
 /**
@@ -15,8 +17,8 @@ export interface Testimonial {
  * list had "Shane Christian" wrong until he corrected it, so any name added
  * here comes from him, never from an address.
  *
- * No faces here by decision: the cards carry a drawn figure instead, so the
- * three are never asked for a photograph.
+ * No faces here by decision: the cards lead with a quotation mark, not a
+ * portrait, so the three are never asked for a photograph.
  *
  * TODO(launch): colleges. The form did not capture them, so `detail` says
  * only what the form itself proves: they competed in Derive '26. The section
@@ -32,6 +34,7 @@ export const TESTIMONIALS: Testimonial[] = [
   {
     name: "Shane Christian",
     detail: "Derive '26 participant",
+    featured: true,
     quote:
       "A really well designed contest: the problems are a mixture of probability, game theory, ad hoc, math and quant. The style is unique, mainly in how the problem statements are designed.",
   },
