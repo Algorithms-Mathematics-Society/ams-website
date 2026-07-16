@@ -31,6 +31,12 @@ main.sphere-main {
   user-select: none;
   -webkit-user-select: none;
   background: transparent;
+  /* The primary gesture is drag: say so on the object itself, so the
+     affordance does not depend on the text hint beside it. */
+  cursor: grab;
+}
+main.sphere-main:active {
+  cursor: grabbing;
 }
 
 .stage {
@@ -114,7 +120,9 @@ main.sphere-main {
   overflow: hidden;
   backface-visibility: hidden;
   transition: transform 300ms;
-  cursor: pointer;
+  /* Inherit the sphere's grab cursor: a tile is part of the draggable
+     surface, not a plain button, even though a click also opens it. */
+  cursor: inherit;
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
   pointer-events: auto;
