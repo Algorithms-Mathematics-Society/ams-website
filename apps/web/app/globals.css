@@ -122,10 +122,9 @@ html.js .reveal.is-visible {
    each of these on its final (visible) state instantly. */
 
 /* Headline mask reveal: wrap each headline line in .mask-line > span.
-   Runs on load in the hero (.mask-load-*) and on scroll inside a Reveal
-   wrapper (.mask-step-*). Without JS the load variant still runs (pure
-   CSS); the scroll variant is paused only under html.js, so no-JS
-   visitors always end up with visible text. */
+   Runs on scroll inside a Reveal wrapper (.mask-step-*, used by the
+   closing CTA). Without JS the reveal is paused only under html.js, so
+   no-JS visitors always end up with visible text. */
 .mask-line {
   display: block;
   /* Descenders sink below the line box: at the hero's 1.08 line-height the
@@ -147,13 +146,6 @@ html.js .reveal.is-visible {
     translate: 0 0;
   }
 }
-/* Hero (load-time) stagger: line 1 at 400ms after load, line 2 +120ms. */
-.mask-load-1 > span {
-  animation-delay: 400ms;
-}
-.mask-load-2 > span {
-  animation-delay: 520ms;
-}
 /* Scroll-triggered variant: paused until the Reveal wrapper is visible. */
 html.js .reveal .mask-line > span {
   animation-play-state: paused;
@@ -165,23 +157,8 @@ html.js .reveal.is-visible .mask-line > span {
   animation-delay: 120ms;
 }
 
-/* Hero copy choreography: subhead and CTAs ride the existing .rise
-   keyframes, delayed to land 500ms after the headline finishes. The
-   plate (the right page's matted photo) rides the same .rise keyframes
-   too, landing mid-sequence: after the headline lines start moving, but
-   before the subhead, so the words and the picture read as one opening
-   beat instead of two unrelated timers. */
-.rise-hero-sub {
-  animation-delay: 1100ms;
-}
-.rise-hero-cta {
-  animation-delay: 1250ms;
-}
-.rise-hero-plate {
-  animation-delay: 750ms;
-}
-
-/* Plate caption stamp: fades in last, after the claim (2.2s). */
+/* Plate caption stamp: fades in last, after the claim (2.2s). Used by
+   the closing CTA; the hero's own plate caption renders instantly. */
 .caption-fade {
   opacity: 0;
   animation: fade-in 0.6s var(--ease-reveal) forwards;
@@ -216,34 +193,6 @@ html.js .underline-draw {
 }
 html.js .reveal.is-visible .underline-draw {
   transform: scaleX(1);
-}
-
-/* Hero spine rule: drawn once on load, like .mask-line/.rise (the hero
-   has no Reveal wrapper to gate on; it is always above the fold, so
-   there is nothing to wait for). Horizontal, left to right, when the
-   two pages stack; vertical, top to bottom, once they sit side by side
-   at lg and the spine sits between them. One class, one keyframe: the
-   end state (scale(1)) is the same regardless of which axis the start
-   state used, so the breakpoint only needs to flip the starting
-   transform and its origin. Swept into the reduced-motion crush by the
-   existing wildcard rule at the bottom of this file; no separate
-   opt-in needed. */
-.spine-draw {
-  transform: scaleX(0);
-  transform-origin: left;
-  animation: spine-draw-in 0.5s var(--ease-reveal) forwards;
-  animation-delay: 600ms;
-}
-@keyframes spine-draw-in {
-  to {
-    transform: scale(1);
-  }
-}
-@media (min-width: 1024px) {
-  .spine-draw {
-    transform: scaleY(0);
-    transform-origin: top;
-  }
 }
 
 /* Scroll-driven effects (zero JS). Browsers without animation-timeline

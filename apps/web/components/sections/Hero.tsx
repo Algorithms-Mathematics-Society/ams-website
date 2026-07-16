@@ -19,26 +19,21 @@ export function Hero() {
     <section className="py-16 lg:py-24">
       <Container>
         <div className="grid min-h-[480px] items-stretch gap-10 lg:min-h-[600px] lg:grid-cols-[1fr_2.5rem_1fr] lg:gap-0">
-          {/* Left page: the title page. */}
+          {/* Left page: the title page. Renders at full strength on
+              first paint, no entrance animation: this is the first thing
+              a visitor sees, so there is nothing to reveal it from. */}
           <div className="flex flex-col justify-center">
-            <Eyebrow className="rise">Quant · Algorithms · Assessment</Eyebrow>
-            {/* Two-line mask reveal, 700ms per line, 120ms stagger,
-                starting 400ms after load so the page gets one
-                uninterrupted beat. */}
+            <Eyebrow>Quant · Algorithms · Assessment</Eyebrow>
             <h1 className="mt-6 font-display text-hero text-burgundy">
-              <span className="mask-line mask-load-1">
-                <span>Where India&apos;s sharpest</span>
-              </span>
-              <span className="mask-line mask-load-2">
-                <span>minds converge.</span>
-              </span>
+              <span className="block">Where India&apos;s sharpest</span>
+              <span className="block">minds converge.</span>
             </h1>
-            <p className="rise rise-hero-sub mt-6 max-w-md leading-relaxed">
+            <p className="mt-6 max-w-md leading-relaxed">
               National contests in quantitative finance and competitive
               programming. Access turns how people place into a hiring signal
               firms can use.
             </p>
-            <div className="rise rise-hero-cta mt-9 flex flex-wrap gap-4">
+            <div className="mt-9 flex flex-wrap gap-4">
               <Button href="/derive">Enter Derive &apos;26</Button>
               <Button href="/access" variant="outline">
                 For firms
@@ -46,17 +41,17 @@ export function Hero() {
             </div>
           </div>
 
-          {/* The spine: a rule between the two pages with a small volume label,
-              drawn once on load. Horizontal when the pages stack below lg;
-              vertical with a soft gutter shadow on each side once they sit
-              side by side. */}
+          {/* The spine: a rule between the two pages with a small volume
+              label, fully drawn on first paint. Horizontal when the pages
+              stack below lg; vertical with a soft gutter shadow on each
+              side once they sit side by side. */}
           <div
             aria-hidden
             className="relative py-2 pointer-events-none lg:py-0"
           >
             <div className="absolute inset-y-0 left-1/2 hidden w-8 -translate-x-full bg-gradient-to-r from-transparent to-ink/10 lg:block" />
             <div className="absolute inset-y-0 left-1/2 hidden w-8 bg-gradient-to-l from-transparent to-ink/10 lg:block" />
-            <div className="spine-draw h-px w-full bg-gold lg:absolute lg:inset-y-0 lg:left-1/2 lg:h-auto lg:w-px lg:-translate-x-1/2" />
+            <div className="h-px w-full bg-gold lg:absolute lg:inset-y-0 lg:left-1/2 lg:h-auto lg:w-px lg:-translate-x-1/2" />
             <span className="mt-3 block text-center text-[10px] font-semibold tracking-[0.25em] text-gold-deep uppercase lg:absolute lg:top-1/2 lg:left-1/2 lg:mt-0 lg:w-max lg:-translate-x-1/2 lg:-translate-y-1/2 lg:[writing-mode:vertical-rl]">
               Vol. I · Derive &apos;26
             </span>
@@ -67,7 +62,7 @@ export function Hero() {
             <PlateFrame
               caption="Plate I · Derive '26 finals · IIT Bombay · July 2026"
               captionTone="dark"
-              className="rise rise-hero-plate mx-auto w-full max-w-md"
+              className="mx-auto w-full max-w-md"
             >
               {/* LCP candidate: preloaded, nothing above it may render
                   late.

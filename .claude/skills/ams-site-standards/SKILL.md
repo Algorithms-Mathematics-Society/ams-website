@@ -50,8 +50,9 @@ Rules for anything that moves, fades, or responds to scroll:
 - **Animate only `transform` and `opacity`.** Never animate `top`/`left`/`width`/`height`/`margin`/`box-shadow` directly: those trigger layout or paint on the main thread and produce jank on mid-range phones.
 - **Respect `prefers-reduced-motion`** in every new keyframe or transition. The existing `.reveal` styles already handle it; new animation CSS must too, and content must be fully visible with JS disabled.
 - **Timing:** micro-interactions (hover, focus, button) 150-300 ms; entrance reveals 400-600 ms with ~80 ms stagger; ease-out for entrances. Nothing animates the LCP hero image itself or delays its paint.
+- **The hero and the stats band skip entrance animation entirely** (no fade-up, mask-reveal, rise, or draw-in): they are the first two things a visitor sees, so there is nothing to reveal them from and any such effect reads as decoration, not motion serving content. Everything below them keeps the standard `Reveal`-driven scroll entrance.
 - **INP discipline:** no scroll listeners (use IntersectionObserver), passive event listeners where listeners are unavoidable, no long tasks on interaction.
-- **Banned:** count-up number counters (ONE sanctioned exception: the home stats band runs a single count-up, once, with the real value server-rendered; banned everywhere else), JS parallax (CSS scroll-driven parallax with a reduced-motion kill switch is allowed), scroll-jacking, hover-only reveals (everything hover-revealed must also work via tap/focus).
+- **Banned:** count-up number counters (no exception; the home stats band's numbers render at full strength on first paint), JS parallax (CSS scroll-driven parallax with a reduced-motion kill switch is allowed), scroll-jacking, hover-only reveals (everything hover-revealed must also work via tap/focus).
 
 ## Mobile responsiveness
 
