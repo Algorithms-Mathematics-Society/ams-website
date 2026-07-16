@@ -17,7 +17,7 @@ export function ExperienceGrid() {
         <Reveal>
           <SectionHeading
             eyebrow="The experience"
-            title="Not told. Shown."
+            title="Inside the finals."
             inverse
           />
         </Reveal>

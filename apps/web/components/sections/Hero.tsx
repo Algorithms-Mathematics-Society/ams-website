@@ -89,8 +89,8 @@ export function Hero() {
           </h1>
           <p className="rise rise-hero-sub mt-6 max-w-md leading-relaxed text-cream-light [text-shadow:0_1px_8px_rgba(0,0,0,0.5)]">
             National contests in quantitative finance and competitive
-            programming, plus Access, the platform that turns performance into
-            verified hiring signal.
+            programming. Access turns how people place into a hiring signal
+            firms can use.
           </p>
           <div className="rise rise-hero-cta mt-9 flex flex-wrap gap-4">
             <Button href="/derive">Enter Derive &apos;26</Button>

@@ -8,7 +8,7 @@ export interface NavLink {
 export const SITE = {
   name: "AMS",
   tagline:
-    "Contests in quant and competitive programming. Assessment that means something.",
+    "Contests in quant and competitive programming. Assessments scored against the people who compete.",
   description:
     "National contests in quantitative finance and competitive programming, plus Access, the platform that turns performance into verified hiring signal.",
   legalName: "Algorithms & Mathematics Society",

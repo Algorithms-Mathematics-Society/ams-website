@@ -10,7 +10,7 @@ export function Testimonials() {
         <Reveal>
           <SectionHeading
             eyebrow="What competitors say"
-            title="Real names. Real colleges."
+            title="In their words."
           />
         </Reveal>
 

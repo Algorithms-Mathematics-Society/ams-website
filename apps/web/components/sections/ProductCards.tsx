@@ -13,7 +13,7 @@ export function ProductCards() {
         <Reveal>
           <SectionHeading
             eyebrow="What we run"
-            title="Three instruments, one standard."
+            title="Two contests and a platform."
           />
         </Reveal>
 

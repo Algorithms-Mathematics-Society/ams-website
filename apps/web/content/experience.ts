@@ -25,7 +25,7 @@ export const EXPERIENCE: ExperienceItem[] = [
   },
   {
     title: "A room worth being in",
-    body: "Finals are staged, hosted, and worth the train ticket.",
+    body: "Finals are hosted in person, and worth the trip.",
     photo: {
       src: "/images/derive26/thumb/address-before-the-final-round.webp",
       alt: "The hall listening to the address before the final round",
