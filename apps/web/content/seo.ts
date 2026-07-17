@@ -15,7 +15,7 @@ export const ORGANIZATION_JSONLD = {
   url: SITE.url,
   logo: `${SITE.url}/brand/logo.png`,
   description: SITE.description,
-  foundingDate: "2025",
+  foundingDate: "2026",
   location: {
     "@type": "Country",
     name: "India",

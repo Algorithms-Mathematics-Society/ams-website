@@ -4,6 +4,6 @@
  * sponsor Derive, not AMS, and are named on the Derive page.
  */
 export const LINE_OF_RECORD = {
-  established: "Est. 2025 · Mumbai",
+  established: "Est. 2026 · India",
   line: "Two national contests · One assessment platform · Finals hosted at IIT Bombay",
 } as const;
