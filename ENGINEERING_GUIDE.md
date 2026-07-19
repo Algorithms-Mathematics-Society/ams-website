@@ -117,6 +117,21 @@ apps/web/
    finalist count" a one-line diff instead of a JSX hunt, and it keeps copy reviewable
    by non-engineers.
 
+   **Exception: the blog.** Long-form prose doesn't fit a typed data object, so blog
+   posts are Markdown files with frontmatter, authored in a top-level `blogs/` folder
+   (a sibling of `media/` and `docs/`, not inside `apps/web`) - one folder per post,
+   images colocated next to the post's own `index.md` and referenced by a path
+   relative to that folder. `apps/web/lib/blog.ts` is the only place that reads
+   `blogs/`: it parses frontmatter (`gray-matter`), resizes/copies the post's images
+   into `apps/web/public/blog/<slug>/` via `sharp` (the same idempotent, mtime-checked
+   pattern as `scripts/optimize-photos.mjs`), and compiles the body through a
+   `unified`/`remark`/`rehype` pipeline (with `rehype-pretty-code` for syntax
+   highlighting) into static HTML - all of it at build/dev time, in a server-only
+   module never imported by a `"use client"` file, so it costs 0 KB of shipped client
+   JS regardless of how many Markdown/unified packages it pulls in. `content/blog.ts`
+   still holds the blog *page's* own typed copy (eyebrow, title, CTA), the same as
+   `content/gallery.ts` does for `/gallery` - it just doesn't hold the posts themselves.
+
 5. **Props over forks.** `ProductCard` takes `{ eyebrow, title, body, href, image }` -
    there is no `DeriveCard.tsx`, `AscentCard.tsx`, `AccessCard.tsx`. Duplicate a
    component only when the variants genuinely diverge in structure, not just content.

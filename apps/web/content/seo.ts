@@ -47,6 +47,36 @@ export function faqPageJsonLd(
   };
 }
 
+/** BlogPosting schema for a single post. Rendered on /blog/[slug]. */
+export function blogPostingJsonLd(post: {
+  slug: string;
+  title: string;
+  description: string;
+  pubDate: Date;
+  author: string;
+  cover: { full: string; alt: string };
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.description,
+    datePublished: post.pubDate.toISOString(),
+    author: { "@type": "Person", name: post.author },
+    publisher: {
+      "@type": "Organization",
+      name: SITE.name,
+      logo: { "@type": "ImageObject", url: `${SITE.url}/brand/logo.png` },
+    },
+    image: `${SITE.url}${post.cover.full}`,
+    url: `${SITE.url}/blog/${post.slug}`,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${SITE.url}/blog/${post.slug}`,
+    },
+  };
+}
+
 /** Derive '26: the verified first edition. Rendered on /derive. */
 export const DERIVE_EVENT_JSONLD = {
   "@context": "https://schema.org",

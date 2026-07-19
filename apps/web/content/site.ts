@@ -22,6 +22,7 @@ export const NAV_LINKS: NavLink[] = [
   { label: "Access", href: "/access" },
   { label: "Gallery", href: "/gallery" },
   { label: "Team", href: "/team" },
+  { label: "Blog", href: "/blog" },
 ];
 
 /** Primary CTA. TODO(launch): point at the live Derive '26 registration URL. */
@@ -50,6 +51,7 @@ export const FOOTER_COLUMNS: Array<{ heading: string; links: NavLink[] }> = [
     links: [
       { label: "Gallery", href: "/gallery" },
       { label: "Team", href: "/team" },
+      { label: "Blog", href: "/blog" },
       { label: "FAQ", href: "/faq" },
       { label: "Contact", href: "mailto:tilakj0108@gmail.com" },
     ],

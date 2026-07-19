@@ -291,3 +291,87 @@ html.js .reveal.is-visible .underline-draw {
     scroll-behavior: auto !important;
   }
 }
+
+/* Blog article body: hand-rolled typography (same approach as the FAQ's
+   dl/dt/dd, no Tailwind typography plugin) so headings, links, and code
+   keep the site's own fonts and palette instead of a generic default.
+   Shiki (rehype-pretty-code) supplies inline per-token colors on code
+   spans; this block only owns headings, links, lists, and block chrome. */
+.blog-prose {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--color-ink);
+}
+.blog-prose > * + * {
+  margin-top: 1.5em;
+}
+.blog-prose h1,
+.blog-prose h2,
+.blog-prose h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--color-burgundy);
+}
+.blog-prose h1 {
+  margin-top: 2.5em;
+  font-size: 1.75rem;
+}
+.blog-prose h2 {
+  margin-top: 2.5em;
+  font-size: 1.5rem;
+}
+.blog-prose h3 {
+  margin-top: 2em;
+  font-size: 1.25rem;
+}
+.blog-prose a {
+  color: var(--color-gold-deep);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.blog-prose a:hover {
+  color: var(--color-burgundy);
+}
+.blog-prose strong {
+  font-weight: 600;
+  color: var(--color-burgundy);
+}
+.blog-prose ul,
+.blog-prose ol {
+  padding-left: 1.5em;
+}
+.blog-prose ul {
+  list-style: disc;
+}
+.blog-prose ol {
+  list-style: decimal;
+}
+.blog-prose li + li {
+  margin-top: 0.4em;
+}
+.blog-prose blockquote {
+  border-left: 3px solid var(--color-burgundy);
+  padding-left: 1.25em;
+  font-style: italic;
+}
+.blog-prose :not(pre) > code {
+  background-color: var(--color-paper);
+  border-radius: 0.25em;
+  padding: 0.15em 0.4em;
+  font-size: 0.9em;
+  overflow-wrap: break-word;
+}
+.blog-prose pre {
+  overflow-x: auto;
+  border-radius: 0.75rem;
+  background-color: var(--color-paper);
+  border: 1px solid rgba(87, 28, 36, 0.12);
+  padding: 1.25em;
+  font-size: 0.875em;
+  line-height: 1.6;
+}
+.blog-prose img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.75rem;
+}

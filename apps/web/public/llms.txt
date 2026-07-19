@@ -35,6 +35,7 @@ Key facts:
 - [FAQ](https://amshq.in/faq): definitional answers about AMS
 - [Gallery](https://amshq.in/gallery): moments from the finals
 - [Team](https://amshq.in/team): the people behind AMS
+- [Blog](https://amshq.in/blog): recaps, problem walkthroughs, and contest notes
 
 ## Related properties
 
