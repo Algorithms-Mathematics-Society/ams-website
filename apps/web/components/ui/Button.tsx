@@ -4,7 +4,7 @@ import { cn } from "@/lib/cn";
 interface Props {
   href: string;
   children: React.ReactNode;
-  /** inverse = cream button for use on burgundy/espresso bands. */
+  /** inverse = white button for use on black bands. */
   variant?: "solid" | "outline" | "inverse";
   external?: boolean;
   className?: string;

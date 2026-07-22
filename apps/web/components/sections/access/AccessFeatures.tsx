@@ -33,12 +33,13 @@ export function AccessFeatures() {
         </ul>
 
         <Reveal className="mt-16 flex flex-col items-start gap-4 border-t border-cream-light/15 pt-8 sm:flex-row sm:items-center">
-          {/* Product wordmark from the platform repo; near-white art, dark band only. */}
+          {/* Product wordmark uses white lettering and the approved red accent. */}
           <Image
             src={ACCESS_WORDMARK.src}
             alt={ACCESS_WORDMARK.alt}
             width={131}
             height={30}
+            className="preserve-accent"
           />
           <p className="text-sm text-cream-light/70">
             {ACCESS_WORDMARK.caption}

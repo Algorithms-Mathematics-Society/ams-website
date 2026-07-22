@@ -11,7 +11,7 @@ interface Props {
 }
 
 /**
- * Full-bleed gallery lightbox on #1F0A0D (block 07): the immersive payoff,
+ * Full-bleed gallery lightbox on black: the immersive payoff,
  * chrome kept minimal. Esc closes, arrow keys navigate, focus is trapped,
  * body scroll locks while open.
  */
@@ -87,7 +87,7 @@ export function Lightbox({ items, index, onClose, onNavigate }: Props) {
       role="dialog"
       aria-modal="true"
       aria-label={item.label}
-      className="fixed inset-0 z-50 flex flex-col bg-[#1f0a0d]"
+      className="fixed inset-0 z-50 flex flex-col bg-black"
       onClick={onClose}
     >
       <div className="relative flex-1" onClick={onStageClick}>
