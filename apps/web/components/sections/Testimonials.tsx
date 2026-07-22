@@ -1,65 +1,63 @@
 import { Container } from "@/components/ui/Container";
+import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/ui/Reveal";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-import {
-  TESTIMONIALS,
-  TESTIMONIALS_SECTION,
-  type Testimonial,
-} from "@/content/testimonials";
+import { TESTIMONIALS, TESTIMONIALS_SECTION } from "@/content/testimonials";
 
 const featured = TESTIMONIALS.find((t) => t.featured) ?? TESTIMONIALS[0];
-const supporting = TESTIMONIALS.filter((t) => t !== featured);
+const ordered = [featured, ...TESTIMONIALS.filter((item) => item !== featured)];
 
-function Attribution({ item }: { item: Testimonial }) {
-  return (
-    <figcaption className="mt-6 border-t border-burgundy/10 pt-4">
-      <span className="block text-sm font-semibold text-burgundy">{item.name}</span>
-      <span className="mt-1 block text-sm leading-5 text-ink/80">
-        {item.detail}
-      </span>
-    </figcaption>
-  );
-}
-
-/**
- * Block 08: one segmented proof panel. The most specific testimonial leads,
- * with two supporting accounts beside it on desktop and beneath it on mobile.
- * Opaque cells and quiet rules reset the page to a paper-like reading surface.
- */
+/** Verified participant accounts presented as a flat, ruled record. */
 export function Testimonials() {
   return (
-    <section className="bg-cream py-section">
+    <section
+      aria-labelledby="participant-record-heading"
+      className="border-y border-burgundy/15 bg-cream py-section"
+    >
       <Container>
         <Reveal>
-          <SectionHeading
-            eyebrow={TESTIMONIALS_SECTION.eyebrow}
-            title={TESTIMONIALS_SECTION.title}
-          />
-
-          <ul className="mt-10 grid gap-px overflow-hidden rounded-panel border border-burgundy/12 bg-burgundy/12 sm:mt-12 lg:grid-cols-12 lg:grid-rows-2">
-            <li className="min-w-0 bg-cream-light p-5 sm:p-7 lg:col-span-7 lg:row-span-2 lg:p-10">
-              <figure>
-                <blockquote className="font-display text-xl leading-snug text-ink sm:text-2xl lg:text-[1.75rem]">
-                  <p className="break-words">&ldquo;{featured.quote}&rdquo;</p>
-                </blockquote>
-                <Attribution item={featured} />
-              </figure>
-            </li>
-
-            {supporting.map((item) => (
-              <li
-                key={item.quote}
-                className="min-w-0 bg-cream-light p-5 sm:p-7 lg:col-span-5 lg:p-8"
+          <header className="grid gap-6 border-t-2 border-burgundy pt-6 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,0.5fr)] lg:items-end">
+            <div>
+              <Eyebrow>{TESTIMONIALS_SECTION.eyebrow}</Eyebrow>
+              <h2
+                id="participant-record-heading"
+                className="mt-4 max-w-3xl text-section font-semibold tracking-tight text-burgundy"
               >
-                <figure>
-                  <blockquote className="text-base leading-relaxed text-ink/90">
+                {TESTIMONIALS_SECTION.title}
+              </h2>
+            </div>
+            <p className="max-w-xl text-sm leading-6 text-ink/75 lg:justify-self-end">
+              {TESTIMONIALS_SECTION.note}
+            </p>
+          </header>
+
+          <ol className="mt-10 grid border-y border-burgundy/20 divide-y divide-burgundy/20 lg:grid-cols-3 lg:divide-x lg:divide-y-0">
+            {ordered.map((item, index) => (
+              <li
+                key={item.name}
+                className="min-w-0 bg-cream-light px-5 py-7 sm:px-7 sm:py-8"
+              >
+                <figure className="flex h-full flex-col">
+                  <p
+                    aria-hidden="true"
+                    className="text-xs font-semibold tracking-[0.2em] text-gold-deep tabular-nums"
+                  >
+                    {String(index + 1).padStart(2, "0")}
+                  </p>
+                  <blockquote className="mt-7 flex-1 text-lg leading-relaxed text-ink">
                     <p className="break-words">&ldquo;{item.quote}&rdquo;</p>
                   </blockquote>
-                  <Attribution item={item} />
+                  <figcaption className="mt-8 border-t border-burgundy/15 pt-4">
+                    <span className="block text-sm font-semibold text-burgundy">
+                      {item.name}
+                    </span>
+                    <span className="mt-1 block text-sm leading-5 text-ink/75">
+                      {item.detail}
+                    </span>
+                  </figcaption>
                 </figure>
               </li>
             ))}
-          </ul>
+          </ol>
         </Reveal>
       </Container>
     </section>

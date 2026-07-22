@@ -19,8 +19,8 @@ export function GalleryGrid({ limit, withHeading = true }: Props) {
         {withHeading && (
           <Reveal>
             <SectionHeading
-              eyebrow="Moments from AMS"
-              title="It happened. Here's proof."
+              eyebrow="Event archive"
+              title="Documentary record from AMS."
             />
           </Reveal>
         )}

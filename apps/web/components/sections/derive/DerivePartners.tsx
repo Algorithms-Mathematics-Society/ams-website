@@ -18,14 +18,14 @@ export function DerivePartners() {
             <li key={partner.name} className="h-full">
               <Reveal
                 delay={index * 90}
-                className="h-full rounded-xl border border-burgundy/10 bg-cream-light p-8"
+                className="h-full rounded-panel border border-burgundy/20 bg-cream-light p-8"
               >
                 <Eyebrow>{partner.tier}</Eyebrow>
                 {/* Dark inset panel: the approved marks are built for a dark
                     surface (Jane Street is a white wordmark, QRT a blue cube
                     with white type), so they sit on burgundy to stay legible
                     on the cream card. */}
-                <div className="mt-5 flex h-28 items-center justify-center rounded-lg bg-burgundy-deep px-6">
+                <div className="mt-5 flex h-28 items-center justify-center rounded-media bg-burgundy-deep px-6">
                   <Image
                     src={partner.logo.src}
                     alt={partner.name}

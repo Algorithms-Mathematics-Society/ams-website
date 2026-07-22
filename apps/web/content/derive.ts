@@ -2,8 +2,10 @@ export const DERIVE_HERO = {
   eyebrow: "Derive",
   title: "The quant contest.",
   body: "Probability, markets, and mathematical reasoning under the clock. Two online rounds to earn a seat, then finals on stage: in person, in front of the firms that hire this talent.",
-  photoLabel:
-    "Photo · Derive finals in progress, contestants on stage, IIT Bombay",
+  image: {
+    src: "/images/derive26/hero/the-hall-at-capacity.webp",
+    alt: "Derive finalists working across the contest hall at IIT Bombay",
+  },
   photoCaption: "Derive '26 finals · IIT Bombay · July 2026",
 } as const;
 

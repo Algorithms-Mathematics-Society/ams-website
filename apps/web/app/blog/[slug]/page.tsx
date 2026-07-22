@@ -60,7 +60,7 @@ export default async function BlogPostPage({ params }: Props) {
       <section className="pt-section pb-4">
         <Container className="max-w-3xl">
           <Eyebrow>{BLOG_PAGE.eyebrow}</Eyebrow>
-          <h1 className="mt-6 font-display text-hero text-burgundy">
+          <h1 className="mt-6 font-sans text-hero font-semibold tracking-[-0.04em] text-burgundy">
             {post.title}
           </h1>
           <div className="mt-6 flex flex-wrap items-center gap-3 text-sm text-ink/70">
@@ -81,7 +81,7 @@ export default async function BlogPostPage({ params }: Props) {
             {post.tags.map((tag) => (
               <span
                 key={tag}
-                className="rounded-full bg-gold/10 px-2.5 py-1 text-xs font-semibold tracking-wide text-gold-deep uppercase"
+                className="rounded-control border border-gold-deep/30 px-2.5 py-1 text-xs font-semibold tracking-wide text-gold-deep uppercase"
               >
                 {tag}
               </span>
@@ -92,7 +92,7 @@ export default async function BlogPostPage({ params }: Props) {
 
       <section className="pb-4">
         <Container className="max-w-3xl">
-          <div className="relative aspect-[1200/630] w-full overflow-hidden rounded-xl">
+          <div className="relative aspect-[1200/630] w-full overflow-hidden rounded-media border border-burgundy/20">
             <Image
               src={post.cover.full}
               alt={post.cover.alt}

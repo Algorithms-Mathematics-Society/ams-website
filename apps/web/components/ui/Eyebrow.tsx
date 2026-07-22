@@ -7,12 +7,12 @@ interface Props {
   className?: string;
 }
 
-/** Gold, letterspaced kicker above section headings ("WHAT WE RUN"). */
+/** Compact institutional kicker above section headings. */
 export function Eyebrow({ children, inverse, className }: Props) {
   return (
     <p
       className={cn(
-        "text-xs font-semibold tracking-[0.25em] uppercase",
+        "text-[11px] leading-none font-bold tracking-[0.18em] uppercase",
         inverse ? "text-gold-bright" : "text-gold-deep",
         className,
       )}

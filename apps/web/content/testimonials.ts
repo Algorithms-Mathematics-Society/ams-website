@@ -2,13 +2,14 @@ export interface Testimonial {
   name: string;
   detail: string;
   quote: string;
-  /** The lead quote, set larger and wider; the most specific of the three. */
+  /** The most specific account, placed first in the home-page record. */
   featured?: boolean;
 }
 
 export const TESTIMONIALS_SECTION = {
-  eyebrow: "What competitors say",
-  title: "In their words.",
+  eyebrow: "Participant record",
+  title: "What competitors report",
+  note: "Selected responses from the Derive '26 post-event feedback form.",
 } as const;
 
 /**

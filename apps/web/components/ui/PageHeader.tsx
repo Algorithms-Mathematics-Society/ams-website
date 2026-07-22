@@ -7,17 +7,17 @@ interface Props {
   body?: string;
 }
 
-/** Rise-in page opener for content pages (gallery, team). */
+/** Stable, ruled page opener for content pages. */
 export function PageHeader({ eyebrow, title, body }: Props) {
   return (
-    <section className="pt-section pb-4">
+    <section className="border-b border-burgundy/20 py-section">
       <Container className="max-w-2xl lg:max-w-none">
-        <Eyebrow className="rise">{eyebrow}</Eyebrow>
-        <h1 className="rise-2 rise mt-6 max-w-2xl font-display text-hero text-burgundy">
+        <Eyebrow>{eyebrow}</Eyebrow>
+        <h1 className="mt-6 max-w-3xl font-sans text-hero font-semibold tracking-[-0.04em] text-burgundy">
           {title}
         </h1>
         {body && (
-          <p className="rise-3 rise mt-6 max-w-2xl leading-relaxed">{body}</p>
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink/85">{body}</p>
         )}
       </Container>
     </section>

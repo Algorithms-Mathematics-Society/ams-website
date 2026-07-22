@@ -10,25 +10,9 @@ interface Props {
   items: GalleryItem[];
 }
 
-/** Irregular editorial spans (12-col grid on lg): uniformity reads as stock. */
-const SPANS = [
-  "lg:col-span-5",
-  "lg:col-span-4",
-  "lg:col-span-3",
-  "lg:col-span-3",
-  "lg:col-span-6",
-  "lg:col-span-3",
-  "lg:col-span-4",
-  "lg:col-span-3",
-  "lg:col-span-5",
-  "lg:col-span-6",
-  "lg:col-span-3",
-  "lg:col-span-3",
-];
-
 /**
- * Client leaf for block 07: the tile grid owns lightbox state. Caption bar
- * slides up on hover/focus over a darkening scrim; click opens the lightbox.
+ * Client leaf for the archive: the ruled grid owns lightbox state and keeps
+ * every documentary caption visible without hover.
  */
 export function GalleryTiles({ items }: Props) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -46,9 +30,9 @@ export function GalleryTiles({ items }: Props) {
 
   return (
     <>
-      <ul className="grid grid-cols-2 gap-4 lg:grid-cols-12">
+      <ul className="grid border-t border-l border-burgundy/20 sm:grid-cols-2 lg:grid-cols-3">
         {withImages.map((item, index) => (
-          <li key={item.label} className={SPANS[index % SPANS.length]}>
+          <li key={item.label} className="min-w-0 border-r border-b border-burgundy/20">
             <Reveal delay={(index % 3) * 60}>
               <button
                 type="button"
@@ -56,21 +40,18 @@ export function GalleryTiles({ items }: Props) {
                   openerRef.current = e.currentTarget;
                   setOpenIndex(index);
                 }}
-                className="group relative block aspect-[4/3] w-full overflow-hidden rounded-lg lg:h-64 lg:w-full lg:[aspect-ratio:auto]"
+                className="group block w-full text-left focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-gold-deep"
               >
-                <Image
-                  src={item.src}
-                  alt={item.label}
-                  fill
-                  sizes="(min-width: 1280px) 500px, (min-width: 1024px) 33vw, 46vw"
-                  className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
-                />
-                {/* Darkening scrim + caption bar sliding up (240ms). */}
-                <span
-                  aria-hidden
-                  className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/25 group-focus-visible:bg-black/25"
-                />
-                <span className="absolute inset-x-0 bottom-0 translate-y-full bg-black/60 px-3 py-2 text-left text-xs text-cream-light transition-transform duration-[240ms] group-hover:translate-y-0 group-focus-visible:translate-y-0">
+                <span className="relative block aspect-[4/3] overflow-hidden bg-paper">
+                  <Image
+                    src={item.src}
+                    alt={item.label}
+                    fill
+                    sizes="(min-width: 1280px) 362px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                    className="object-cover"
+                  />
+                </span>
+                <span className="flex min-h-16 items-center border-t border-burgundy/15 bg-cream-light px-4 py-3 text-xs leading-5 font-medium text-ink/80 group-hover:text-burgundy">
                   {item.label}
                 </span>
               </button>

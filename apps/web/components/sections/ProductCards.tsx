@@ -1,119 +1,84 @@
-import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/ui/Reveal";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-import { PRODUCTS, type Product } from "@/content/products";
+import { PRODUCTS } from "@/content/products";
 
-const linkBase =
-  "group flex h-full min-w-0 flex-col p-4 focus-visible:outline-2 focus-visible:-outline-offset-4 focus-visible:outline-gold-deep sm:p-5";
+const COLUMNS = "md:grid-cols-[3rem_1fr_1.3fr_1.6fr_2rem]";
 
-function ProductMedia({ product }: { product: Product }) {
-  if (product.media.type === "identity") {
-    return (
-      <div className="flex aspect-[640/427] min-w-0 flex-col justify-between overflow-hidden rounded-media bg-ascent/10 p-5 text-ascent sm:p-6">
-        <span className="font-display text-3xl leading-none sm:text-4xl">
-          {product.eyebrow}
-        </span>
-        <ul
-          className="flex flex-wrap gap-2"
-          aria-label={`${product.eyebrow} focus areas`}
-        >
-          {product.media.facts.map((fact) => (
-            <li
-              key={fact}
-              className="rounded-control border border-ascent/20 bg-cream-light/70 px-2.5 py-1 text-xs font-medium"
-            >
-              {fact}
-            </li>
-          ))}
-        </ul>
-      </div>
-    );
-  }
-
-  const isAccess = product.media.fit === "contain";
-
-  return (
-    <div
-      className={`relative min-w-0 overflow-hidden rounded-media ${isAccess ? "aspect-[43/26] bg-espresso" : "aspect-[640/427]"}`}
-    >
-      <Image
-        fill
-        src={product.media.src}
-        alt={product.media.alt}
-        sizes={
-          isAccess
-            ? "(min-width: 1280px) 600px, (min-width: 1024px) 55vw, calc(100vw - 72px)"
-            : "(min-width: 1280px) 500px, (min-width: 768px) calc(50vw - 64px), calc(100vw - 64px)"
-        }
-        className={isAccess ? "object-contain" : "object-cover"}
-      />
-    </div>
-  );
-}
-
-function ExploreCue() {
-  return (
-    <span className="mt-auto inline-flex items-center gap-1.5 pt-6 text-sm font-medium text-burgundy">
-      Explore
-      <span
-        aria-hidden
-        className="transition-transform duration-150 group-hover:translate-x-1 group-focus-visible:translate-x-1 motion-reduce:transition-none"
-      >
-        →
-      </span>
-    </span>
-  );
-}
-
-/** One segmented panel states the two-contest and one-platform taxonomy. */
+/** A directory of AMS programs, classified by role rather than marketed as products. */
 export function ProductCards() {
   return (
-    <section className="py-section">
+    <section className="bg-cream py-section">
       <Container>
-        <Reveal>
-          <SectionHeading
-            eyebrow="What we run"
-            title="Two contests and a platform."
-          />
-        </Reveal>
+        <Reveal className="grid gap-8 lg:grid-cols-12 lg:gap-0">
+          <header className="lg:col-span-4 lg:pr-10">
+            <Eyebrow>Program directory</Eyebrow>
+            <h2 className="mt-4 max-w-md font-sans text-section font-semibold tracking-[-0.035em] text-burgundy">
+              Two national contests. One assessment system.
+            </h2>
+          </header>
 
-        <Reveal className="mt-12">
-          <ul className="grid overflow-hidden rounded-panel border border-burgundy/12 bg-cream-light md:grid-cols-2">
-            {PRODUCTS.map((product) => {
-              const isPlatform = product.kind === "platform";
+          <div className="min-w-0 lg:col-span-8 lg:border-l lg:border-burgundy/20 lg:pl-10">
+            <div
+              className={`hidden border-y border-burgundy/25 py-3 text-[0.6875rem] font-semibold tracking-[0.14em] text-ink/65 uppercase md:grid md:gap-5 ${COLUMNS}`}
+              aria-hidden="true"
+            >
+              <span>No.</span>
+              <span>Program</span>
+              <span>Classification</span>
+              <span>Evidence</span>
+              <span />
+            </div>
 
-              return (
-                <li
-                  key={product.eyebrow}
-                  className={`min-w-0 ${isPlatform ? "md:col-span-2" : "border-b border-burgundy/12 first:md:border-r"}`}
-                >
+            <ul className="border-t border-burgundy/25 md:border-t-0">
+              {PRODUCTS.map((product) => (
+                <li key={product.name} className="border-b border-burgundy/25">
                   <Link
                     href={product.href}
-                    className={`${linkBase} ${isPlatform ? "lg:grid lg:grid-cols-12 lg:items-center lg:gap-8" : ""}`}
+                    className={`group grid min-h-11 min-w-0 gap-4 py-6 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-gold-deep md:items-start md:gap-5 md:py-7 ${COLUMNS}`}
                   >
-                    <div className={isPlatform ? "min-w-0 lg:col-span-7" : "min-w-0"}>
-                      <ProductMedia product={product} />
-                    </div>
-                    <div
-                      className={`flex min-w-0 flex-1 flex-col pt-5 ${isPlatform ? "lg:col-span-5 lg:pt-0" : ""}`}
-                    >
-                      <Eyebrow>{product.eyebrow}</Eyebrow>
-                      <h3 className="mt-3 font-display text-card-title text-burgundy">
-                        {product.title}
+                    <span className="text-xs font-semibold tracking-[0.16em] text-gold-deep">
+                      {product.index}
+                    </span>
+
+                    <div className="min-w-0">
+                      <h3 className="font-sans text-xl font-semibold tracking-tight text-burgundy">
+                        {product.name}
                       </h3>
-                      <p className="mt-3 max-w-md text-sm leading-relaxed">
-                        {product.body}
+                      <p className="mt-2 text-sm leading-6 text-ink/80 md:hidden">
+                        {product.purpose}
                       </p>
-                      <ExploreCue />
                     </div>
+
+                    <p className="min-w-0 text-sm font-medium leading-6 text-burgundy">
+                      <span className="mb-1 block text-[0.6875rem] tracking-[0.14em] text-ink/60 uppercase md:hidden">
+                        Classification
+                      </span>
+                      {product.classification}
+                      <span className="mt-2 hidden text-sm font-normal leading-6 text-ink/80 md:block">
+                        {product.purpose}
+                      </span>
+                    </p>
+
+                    <p className="min-w-0 text-sm leading-6 text-ink/80">
+                      <span className="mb-1 block text-[0.6875rem] tracking-[0.14em] text-ink/60 uppercase md:hidden">
+                        Evidence
+                      </span>
+                      {product.evidence}
+                    </p>
+
+                    <span
+                      aria-hidden="true"
+                      className="text-lg text-burgundy transition-transform duration-150 group-hover:translate-x-1 group-focus-visible:translate-x-1 motion-reduce:transition-none"
+                    >
+                      →
+                    </span>
                   </Link>
                 </li>
-              );
-            })}
-          </ul>
+              ))}
+            </ul>
+          </div>
         </Reveal>
       </Container>
     </section>

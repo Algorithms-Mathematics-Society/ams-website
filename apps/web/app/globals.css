@@ -21,31 +21,31 @@
   --color-placeholder: #e9e1d3;
   --color-paper: #ede6d6;
 
-  --font-display: var(--font-fraunces);
+  --font-display: var(--font-inter);
   --font-sans: var(--font-inter);
 
-  /* Shared geometry: controls, inset media, and containing panels. */
-  --radius-control: 0.5rem;
-  --radius-media: 0.625rem;
-  --radius-panel: 0.875rem;
+  /* Institutional geometry: controls stay usable, major surfaces stay precise. */
+  --radius-control: 0.25rem;
+  --radius-media: 0.125rem;
+  --radius-panel: 0.125rem;
 
   /* Fluid type scale */
-  --text-hero: clamp(2.5rem, 4.5vw + 1rem, 4.25rem);
-  --text-hero--line-height: 1.08;
-  --text-section: clamp(1.9rem, 2.6vw + 0.9rem, 2.75rem);
-  --text-section--line-height: 1.15;
+  --text-hero: clamp(2.5rem, 4.8vw + 0.75rem, 4.75rem);
+  --text-hero--line-height: 1.02;
+  --text-section: clamp(1.9rem, 2.8vw + 0.75rem, 3.1rem);
+  --text-section--line-height: 1.08;
   --text-stat: clamp(2.1rem, 3vw + 0.9rem, 3.25rem);
   --text-stat--line-height: 1.1;
   /* The one lead stat on the band; sized above the hero headline so the
      proof number is the biggest numeral on the page. Supporting stats
      stay at --text-stat, giving a ~1.6x lead. */
-  --text-stat-lead: clamp(3.5rem, 6vw + 1rem, 5.25rem);
+  --text-stat-lead: clamp(3.25rem, 5vw + 1rem, 4.75rem);
   --text-stat-lead--line-height: 1;
   --text-card-title: clamp(1.35rem, 1vw + 1rem, 1.6rem);
   --text-card-title--line-height: 1.25;
 
   /* Fluid section padding */
-  --spacing-section: clamp(4rem, 8vw, 7.5rem);
+  --spacing-section: clamp(3.75rem, 7vw, 6.5rem);
 
   /* Redesign motion grammar: single easing for every reveal (motion spec). */
   --ease-reveal: cubic-bezier(0.22, 1, 0.36, 1);
@@ -132,42 +132,7 @@ html.js .reveal.is-visible .underline-draw {
   transform: scaleX(1);
 }
 
-/* Hero slideshow: stacked banner frames crossfading in place.
-   The site's ONE sanctioned looping animation (user-directed): opacity
-   only, 27s cycle, three frames, ~9s each. Negative delays start every
-   frame mid-cycle so nothing flashes at load; frames 2 and 3 also carry
-   a base opacity-0 utility so reduced motion (animation: none below)
-   pins the page to frame one. */
-.hero-slide {
-  animation: hero-crossfade 27s linear infinite both;
-}
-.hero-slide-2 {
-  animation-delay: -18s;
-}
-.hero-slide-3 {
-  animation-delay: -9s;
-}
-@keyframes hero-crossfade {
-  0%,
-  29% {
-    opacity: 1;
-  }
-  34%,
-  95% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  /* The global duration crush would freeze the slideshow on a stacked frame
-     instead of the first one, so disable it outright. */
-  .hero-slide {
-    animation: none !important;
-  }
-
   html.js .reveal {
     opacity: 1;
     translate: 0 0;

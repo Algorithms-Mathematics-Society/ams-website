@@ -7,7 +7,7 @@ import { GALLERY, GALLERY_HOME } from "@/content/gallery";
 
 const HOME_PLACEMENTS = ["lead", "support-top", "support-bottom"] as const;
 
-/** A static home-page selection from the complete gallery archive. */
+/** Three documentary frames selected from the complete gallery archive. */
 export function GallerySpread() {
   const items = HOME_PLACEMENTS.map((placement) =>
     GALLERY.find((item) => item.homePlacement === placement),
@@ -15,56 +15,61 @@ export function GallerySpread() {
 
   if (items.some((item) => !item?.src)) return null;
 
-  const [lead, ...supports] = items as [
-    (typeof GALLERY)[number] & { src: string },
-    ...((typeof GALLERY)[number] & { src: string })[],
-  ];
+  const records = items as ((typeof GALLERY)[number] & { src: string })[];
 
   return (
-    <section className="border-y border-ink/10 bg-paper py-section">
+    <section
+      aria-labelledby="documentary-record-heading"
+      className="bg-paper py-section"
+    >
       <Container>
         <Reveal>
-          <div className="max-w-2xl">
-            <Eyebrow>{GALLERY_HOME.eyebrow}</Eyebrow>
-            <h2 className="mt-4 font-display text-section text-burgundy">
-              {GALLERY_HOME.title}
-            </h2>
-            <p className="mt-4 leading-relaxed">{GALLERY_HOME.body}</p>
-            <Link
-              href={GALLERY_HOME.link.href}
-              className="mt-5 inline-flex min-h-11 items-center gap-1.5 rounded-control px-1 text-sm font-medium text-burgundy underline-offset-4 hover:text-gold-deep hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-deep"
-            >
-              {GALLERY_HOME.link.label} <span aria-hidden>→</span>
-            </Link>
-          </div>
+          <header className="grid gap-6 border-t-2 border-burgundy pt-6 lg:grid-cols-12 lg:items-end">
+            <div className="lg:col-span-7">
+              <Eyebrow>{GALLERY_HOME.eyebrow}</Eyebrow>
+              <h2
+                id="documentary-record-heading"
+                className="mt-4 text-section font-semibold tracking-tight text-burgundy"
+              >
+                {GALLERY_HOME.title}
+              </h2>
+            </div>
+            <div className="lg:col-span-5">
+              <p className="max-w-xl leading-relaxed text-ink/80">
+                {GALLERY_HOME.body}
+              </p>
+              <Link
+                href={GALLERY_HOME.link.href}
+                className="mt-3 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-burgundy underline-offset-4 hover:text-gold-deep hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-deep"
+              >
+                {GALLERY_HOME.link.label} <span aria-hidden>→</span>
+              </Link>
+            </div>
+          </header>
 
-          <div className="mt-8 overflow-hidden rounded-panel border border-burgundy/10 bg-cream-light p-2.5 sm:p-3">
-            <ul className="grid grid-cols-2 gap-2.5 lg:h-[500px] lg:grid-cols-12 lg:grid-rows-2 lg:gap-3">
-              <li className="relative col-span-2 aspect-[4/3] overflow-hidden rounded-media lg:col-span-7 lg:row-span-2 lg:aspect-auto">
-                <Image
-                  src={lead.src}
-                  alt={lead.label}
-                  fill
-                  sizes="(min-width: 1280px) 615px, (min-width: 1024px) calc(58.333vw - 58px), (min-width: 640px) calc(100vw - 90px), calc(100vw - 62px)"
-                  className="object-cover"
-                />
+          <ul className="mt-10 border-y border-burgundy/20 divide-y divide-burgundy/20 md:grid md:grid-cols-3 md:divide-x md:divide-y-0">
+            {records.map((item, index) => (
+              <li key={item.homePlacement} className="min-w-0 bg-cream-light">
+                <figure>
+                  <div className="relative aspect-[4/3] overflow-hidden">
+                    <Image
+                      src={item.src}
+                      alt={item.label}
+                      fill
+                      sizes="(min-width: 1280px) 362px, (min-width: 768px) calc((100vw - 64px) / 3), calc(100vw - 40px)"
+                      className="object-cover"
+                    />
+                  </div>
+                  <figcaption className="flex min-h-20 gap-4 border-t border-burgundy/15 px-5 py-4 text-sm leading-5 text-ink/80">
+                    <span className="shrink-0 font-semibold text-gold-deep tabular-nums">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <span className="break-words">{item.label}</span>
+                  </figcaption>
+                </figure>
               </li>
-              {supports.map((item) => (
-                <li
-                  key={item.homePlacement}
-                  className="relative aspect-square overflow-hidden rounded-media lg:col-span-5 lg:aspect-auto"
-                >
-                  <Image
-                    src={item.src}
-                    alt={item.label}
-                    fill
-                    sizes="(min-width: 1280px) 436px, (min-width: 1024px) calc(41.667vw - 45px), (min-width: 640px) calc(50vw - 50px), calc(50vw - 36px)"
-                    className="object-cover"
-                  />
-                </li>
-              ))}
-            </ul>
-          </div>
+            ))}
+          </ul>
         </Reveal>
       </Container>
     </section>

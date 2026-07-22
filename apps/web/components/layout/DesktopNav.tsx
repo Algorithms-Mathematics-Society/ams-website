@@ -14,7 +14,7 @@ export function DesktopNav() {
   const pathname = usePathname();
 
   return (
-    <nav aria-label="Main" className="hidden items-center gap-2 lg:flex">
+    <nav aria-label="Main" className="hidden h-full items-center lg:flex">
       {NAV_LINKS.map((link) => {
         const active = routeIsActive(pathname, link.href);
 
@@ -24,23 +24,23 @@ export function DesktopNav() {
             href={link.href}
             aria-current={active ? "page" : undefined}
             className={cn(
-              "relative inline-flex min-h-11 items-center rounded-control px-3 text-sm font-medium transition-colors",
+              "relative inline-flex h-16 items-center px-3 text-[13px] font-semibold tracking-[0.01em] transition-colors focus-visible:transition-none focus-visible:outline-gold-bright",
               active
-                ? "text-burgundy"
-                : "text-ink hover:bg-burgundy/5 hover:text-burgundy",
+                ? "bg-burgundy-deep text-cream-light"
+                : "text-cream-light/80 hover:bg-burgundy-deep/60 hover:text-cream-light",
             )}
           >
             {link.label}
             {active && (
               <span
                 aria-hidden="true"
-                className="absolute inset-x-3 bottom-1.5 h-px bg-gold-deep"
+                className="absolute inset-x-3 bottom-0 h-0.5 bg-gold-bright"
               />
             )}
           </Link>
         );
       })}
-      <Button href={COMPETE_LINK.href} className="ml-2">
+      <Button href={COMPETE_LINK.href} variant="inverse" className="ml-4 px-5">
         {COMPETE_LINK.label}
       </Button>
     </nav>

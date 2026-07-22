@@ -1,18 +1,10 @@
 import type { Metadata } from "next";
-import { Fraunces, Inter } from "next/font/google";
+import { Inter } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ORGANIZATION_JSONLD, WEBSITE_JSONLD } from "@/content/seo";
 import "./globals.css";
-
-// Static 400/600 only; the full variable font with opsz was the LCP
-// bottleneck on throttled 4G.
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
-  subsets: ["latin"],
-  weight: ["400", "600"],
-});
 
 const inter = Inter({
   variable: "--font-inter",
@@ -27,7 +19,7 @@ export const metadata: Metadata = {
     template: "%s · AMS",
   },
   description:
-    "Where India's sharpest minds converge: national contests in quantitative finance and competitive programming, plus Access, the platform that turns performance into verified hiring signal.",
+    "AMS is an Indian contest and assessment organization running national contests in quantitative finance and competitive programming, supported by the Access assessment platform.",
   openGraph: {
     siteName: "AMS",
     type: "website",
@@ -54,7 +46,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${fraunces.variable} ${inter.variable}`}
+      className={inter.variable}
       suppressHydrationWarning
     >
       <body className="flex min-h-dvh flex-col">

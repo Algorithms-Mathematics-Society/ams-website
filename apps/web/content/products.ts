@@ -1,66 +1,36 @@
-import { ACCESS_HERO } from "@/content/access";
-
-interface ProductImageMedia {
-  type: "image";
-  src: string;
-  alt: string;
-  width: number;
-  height: number;
-  fit: "cover" | "contain";
-}
-
-interface ProductIdentityMedia {
-  type: "identity";
-  facts: readonly string[];
-}
-
 export interface Product {
-  eyebrow: string;
-  title: string;
-  body: string;
+  index: string;
+  name: string;
+  classification: string;
+  purpose: string;
+  evidence: string;
   href: string;
-  /** Contests are siblings; the platform renders as the full-width segment. */
-  kind: "contest" | "platform";
-  media: ProductImageMedia | ProductIdentityMedia;
 }
 
+/** The AMS program taxonomy. Claims are mirrored from the program pages. */
 export const PRODUCTS = [
   {
-    eyebrow: "Derive",
-    title: "The quant contest.",
-    body: "Probability, markets, and mathematical reasoning under the clock.",
+    index: "01",
+    name: "Derive",
+    classification: "National quant contest",
+    purpose: "Probability, markets, and mathematical reasoning under the clock.",
+    evidence: "2,500+ participants · 150 advanced · 50 qualified · 33 competed",
     href: "/derive",
-    kind: "contest",
-    media: {
-      type: "image",
-      src: "/images/derive26/thumb/contest-in-progress.webp",
-      alt: "Derive finalists working at laptops in a lecture hall at IIT Bombay",
-      width: 640,
-      height: 427,
-      fit: "cover",
-    },
   },
   {
-    eyebrow: "Ascent",
-    title: "The systems contest.",
-    body: "C++, optimization, and performance engineering. Winter edition.",
+    index: "02",
+    name: "Ascent",
+    classification: "National systems contest",
+    purpose: "C++, optimization, and performance engineering under the clock.",
+    evidence: "Winter edition · dates announced soon",
     href: "/ascent",
-    kind: "contest",
-    media: {
-      type: "identity",
-      facts: ["Winter edition", "C++", "Optimization", "Performance engineering"],
-    },
   },
   {
-    eyebrow: "Access",
-    title: "The platform.",
-    body: "Proctored assessments benchmarked against India's competitive elite.",
+    index: "03",
+    name: "Access",
+    classification: "Assessment infrastructure",
+    purpose: "Proctored assessments benchmarked against AMS contest populations.",
+    evidence: "Native desktop shell · seven readiness checks · audit trail",
     href: "/access",
-    kind: "platform",
-    media: {
-      type: "image",
-      ...ACCESS_HERO.image,
-      fit: "contain",
-    },
   },
 ] satisfies readonly Product[];

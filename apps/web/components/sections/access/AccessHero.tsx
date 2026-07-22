@@ -8,16 +8,16 @@ export function AccessHero() {
     <section className="py-section">
       <Container className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
         <div>
-          <Eyebrow className="rise">{ACCESS_HERO.eyebrow}</Eyebrow>
-          <h1 className="rise-2 rise mt-6 font-display text-hero text-burgundy">
+          <Eyebrow>{ACCESS_HERO.eyebrow}</Eyebrow>
+          <h1 className="mt-6 font-sans text-hero font-semibold tracking-[-0.04em] text-burgundy">
             {ACCESS_HERO.title}
           </h1>
-          <p className="rise-3 rise mt-6 max-w-md leading-relaxed">
+          <p className="mt-6 max-w-md leading-relaxed">
             {ACCESS_HERO.body}
           </p>
         </div>
 
-        <figure className="rise-3 rise">
+        <figure>
           <Image
             src={ACCESS_HERO.image.src}
             alt={ACCESS_HERO.image.alt}

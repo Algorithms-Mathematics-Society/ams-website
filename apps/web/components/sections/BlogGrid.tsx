@@ -18,10 +18,9 @@ function formatDate(date: Date) {
   });
 }
 
-/** Same resting-card language as ProductCards: the whole card is the tap
- *  target, only transform animates on hover. */
+/** Ruled editorial index: the whole article row is the tap target. */
 const cardBase =
-  "group flex h-full flex-col overflow-hidden rounded-xl border border-burgundy/10 bg-cream-light shadow-[0_1px_3px_rgba(70,64,58,0.06)] transition-transform duration-150 hover:-translate-y-1 focus-visible:-translate-y-1";
+  "group flex h-full flex-col overflow-hidden rounded-panel border border-burgundy/20 bg-cream-light transition-colors duration-150 hover:border-burgundy/50 focus-visible:border-burgundy";
 
 export async function BlogGrid({ withHeading = true }: Props) {
   const posts = await getAllPosts();
@@ -58,14 +57,14 @@ export async function BlogGrid({ withHeading = true }: Props) {
                         {post.tags.map((tag) => (
                           <li
                             key={tag}
-                            className="rounded-full bg-gold/10 px-2.5 py-1 text-xs font-semibold tracking-wide text-gold-deep uppercase"
+                            className="rounded-control border border-gold-deep/30 px-2.5 py-1 text-xs font-semibold tracking-wide text-gold-deep uppercase"
                           >
                             {tag}
                           </li>
                         ))}
                       </ul>
                     )}
-                    <h3 className="mt-3 font-display text-card-title text-burgundy">
+                    <h3 className="mt-3 font-sans text-card-title font-semibold tracking-[-0.025em] text-burgundy">
                       {post.title}
                     </h3>
                     <p className="mt-3 text-sm leading-relaxed">

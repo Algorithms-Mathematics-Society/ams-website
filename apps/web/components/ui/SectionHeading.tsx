@@ -15,7 +15,7 @@ export function SectionHeading({ eyebrow, title, inverse, className }: Props) {
       <Eyebrow inverse={inverse}>{eyebrow}</Eyebrow>
       <h2
         className={cn(
-          "mt-4 font-display text-section",
+          "mt-4 max-w-3xl font-sans text-section font-semibold tracking-[-0.035em]",
           inverse ? "text-cream-light" : "text-burgundy",
         )}
       >

@@ -10,12 +10,12 @@ export interface GalleryItem {
 }
 
 export const GALLERY_PAGE = {
-  eyebrow: "Moments from AMS",
-  title: "It happened. Here's proof.",
+  eyebrow: "Derive '26 archive",
+  title: "Documentary record of the first edition.",
   body: "Twelve moments from Derive '26: the swag desk in the morning, the hall at capacity, the cheques at the end. Shot during Convergence at IIT Bombay, July 2026.",
   cta: {
-    title: "Be in the next set.",
-    body: "The next edition will fill a hall again. Compete, volunteer, or just be in the room.",
+    title: "Prepare for the next edition.",
+    body: "Review the Derive format, follow the next registration window, or contact AMS about contributing to the event.",
     buttonLabel: "Explore Derive",
     buttonHref: "/derive",
   },
@@ -26,10 +26,10 @@ export const GALLERY_PAGE = {
  * GALLERY_PAGE because the archive page introduces the complete set.
  */
 export const GALLERY_HOME = {
-  eyebrow: "Moments from AMS",
-  title: "It happened. Here's proof.",
-  body: "Twelve moments from the Derive '26 finals at IIT Bombay: the swag desk in the morning, the hall at capacity, the cheques at the end.",
-  link: { label: "See the full gallery", href: "/gallery" },
+  eyebrow: "Documentary record",
+  title: "Derive '26, on record",
+  body: "Selected photographs from Derive '26 at IIT Bombay: contest kits, the finals hall, and prize cheques presented on stage.",
+  link: { label: "View the Derive '26 archive", href: "/gallery" },
 } as const;
 
 const img = (slug: string) => ({

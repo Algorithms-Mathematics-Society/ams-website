@@ -10,7 +10,7 @@ export function AscentStandard() {
       <Container>
         <Reveal className="max-w-2xl">
           <Eyebrow>{ASCENT_STANDARD.eyebrow}</Eyebrow>
-          <h2 className="mt-4 font-display text-section text-burgundy">
+          <h2 className="mt-4 font-sans text-section font-semibold tracking-[-0.035em] text-burgundy">
             {ASCENT_STANDARD.title}
           </h2>
           <p className="mt-6 leading-relaxed">{ASCENT_STANDARD.body}</p>

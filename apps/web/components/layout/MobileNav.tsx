@@ -68,7 +68,7 @@ function MobileNavDisclosure({ pathname }: { pathname: string }) {
         aria-expanded={open}
         aria-controls="mobile-nav-panel"
         onClick={() => setOpen((v) => !v)}
-        className="flex h-11 w-11 items-center justify-center rounded-control text-burgundy transition-colors hover:bg-burgundy/5"
+        className="flex h-11 w-11 items-center justify-center text-cream-light transition-colors hover:bg-burgundy-deep focus-visible:transition-none focus-visible:outline-gold-bright"
       >
         <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
         <svg
@@ -91,7 +91,7 @@ function MobileNavDisclosure({ pathname }: { pathname: string }) {
 
       {open && (
         <div
-          className="fixed inset-x-0 top-16 bottom-0 z-50 overflow-y-auto bg-espresso/25 p-3 backdrop-blur-[2px] sm:p-4"
+          className="fixed inset-x-0 top-16 bottom-0 z-50 overflow-y-auto border-t border-gold-bright/35 bg-burgundy"
           onMouseDown={(event) => {
             if (event.target === event.currentTarget) closeMenu();
           }}
@@ -102,9 +102,9 @@ function MobileNavDisclosure({ pathname }: { pathname: string }) {
             role="dialog"
             aria-modal="true"
             aria-label="Main navigation"
-            className="ml-auto max-w-sm rounded-panel border border-cream/15 bg-burgundy p-2 shadow-[0_18px_50px_rgba(67,20,27,0.28)]"
+            className="mx-auto w-full max-w-6xl px-5 py-5 sm:px-8"
           >
-            <nav aria-label="Main" className="flex flex-col gap-1">
+            <nav aria-label="Main" className="flex flex-col border-t border-cream-light/20">
               {NAV_LINKS.map((link) => (
                 <Link
                   key={link.href}
@@ -117,11 +117,11 @@ function MobileNavDisclosure({ pathname }: { pathname: string }) {
                   }
                   onClick={() => closeMenu()}
                   className={cn(
-                    "flex min-h-11 items-center rounded-control px-4 py-2.5 text-base font-medium transition-colors",
+                    "flex min-h-14 items-center border-b border-cream-light/20 px-1 py-3 text-base font-semibold transition-colors focus-visible:transition-none focus-visible:outline-gold-bright",
                     pathname === link.href ||
                       pathname.startsWith(`${link.href}/`)
-                      ? "bg-cream text-burgundy"
-                      : "text-cream-light hover:bg-cream/10",
+                      ? "border-l-2 border-l-gold-bright bg-burgundy-deep pl-4 text-cream-light"
+                      : "text-cream-light/85 hover:bg-burgundy-deep/60 hover:text-cream-light",
                   )}
                 >
                   {link.label}
@@ -131,7 +131,7 @@ function MobileNavDisclosure({ pathname }: { pathname: string }) {
                 href={COMPETE_LINK.href}
                 variant="inverse"
                 onClick={() => closeMenu()}
-                className="mt-2 w-full"
+                className="mt-5 w-full sm:w-auto"
               >
                 {COMPETE_LINK.label}
               </Button>

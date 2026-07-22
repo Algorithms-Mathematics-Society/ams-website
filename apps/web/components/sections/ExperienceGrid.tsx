@@ -1,76 +1,61 @@
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
+import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/ui/Reveal";
-import { SectionHeading } from "@/components/ui/SectionHeading";
 import { EXPERIENCE } from "@/content/experience";
 
-const MOBILE_IMAGE_SIZES =
-  "(min-width: 640px) calc(100vw - 96px), calc(100vw - 64px)";
-
-/**
- * Block 07: a single segmented proof panel inside a full-burgundy band.
- * The lead moment owns the left side on desktop while the two supporting
- * moments stack at right. Below lg, all three return to the same image-first
- * reading order.
- */
+/** The four-stage AMS operating model, anchored by one documentary image. */
 export function ExperienceGrid() {
   return (
-    <section className="bg-burgundy py-section text-cream-light">
+    <section className="border-y border-cream-light/20 bg-burgundy py-section text-cream-light">
       <Container>
         <Reveal>
-          <SectionHeading
-            eyebrow="The experience"
-            title="Inside the finals."
-            inverse
-          />
+          <header className="grid gap-5 border-b border-cream-light/30 pb-8 md:grid-cols-12 md:items-end">
+            <div className="md:col-span-4">
+              <Eyebrow inverse>{EXPERIENCE.eyebrow}</Eyebrow>
+            </div>
+            <h2 className="max-w-2xl font-sans text-section font-semibold tracking-[-0.035em] text-cream-light md:col-span-8">
+              {EXPERIENCE.title}
+            </h2>
+          </header>
 
-          <ul className="mt-12 grid gap-px overflow-hidden rounded-panel border border-cream-light/30 bg-cream-light/30 lg:grid-cols-12 lg:grid-rows-2">
-            {EXPERIENCE.map((item, index) => {
-              const isLead = index === 0;
+          <div className="grid lg:grid-cols-12">
+            <figure className="border-b border-cream-light/30 py-6 lg:col-span-5 lg:border-r lg:border-b-0 lg:pr-8">
+              <div className="relative aspect-[4/3] overflow-hidden bg-burgundy-deep">
+                <Image
+                  src={EXPERIENCE.image.src}
+                  alt={EXPERIENCE.image.alt}
+                  fill
+                  sizes="(min-width: 1280px) 440px, (min-width: 1024px) 40vw, (min-width: 640px) calc(100vw - 64px), calc(100vw - 40px)"
+                  className="object-cover"
+                />
+              </div>
+              <figcaption className="mt-3 text-xs font-medium tracking-[0.08em] text-cream-light/70 uppercase">
+                {EXPERIENCE.image.caption}
+              </figcaption>
+            </figure>
 
-              return (
+            <ol className="lg:col-span-7 lg:pl-8">
+              {EXPERIENCE.stages.map((stage) => (
                 <li
-                  key={item.title}
-                  className={`bg-cream-light ${
-                    isLead
-                      ? "lg:col-span-7 lg:row-span-2"
-                      : "lg:col-span-5"
-                  }`}
+                  key={stage.index}
+                  className="grid gap-3 border-b border-cream-light/30 py-6 sm:grid-cols-[3rem_minmax(0,1fr)]"
                 >
-                  <figure
-                    className={`flex h-full flex-col p-3 sm:p-4 ${
-                      isLead
-                        ? ""
-                        : "lg:grid lg:grid-cols-[minmax(0,210px)_1fr] lg:items-center lg:gap-5"
-                    }`}
-                  >
-                    <div className="relative aspect-[640/427] overflow-hidden rounded-media">
-                      <Image
-                        src={item.photo.src}
-                        alt={item.photo.alt}
-                        fill
-                        sizes={
-                          isLead
-                            ? `(min-width: 1180px) 590px, (min-width: 1024px) 54vw, ${MOBILE_IMAGE_SIZES}`
-                            : `(min-width: 1024px) 210px, ${MOBILE_IMAGE_SIZES}`
-                        }
-                        className="object-cover"
-                      />
-                    </div>
-
-                    <figcaption className="pt-4 lg:py-2">
-                      <h3 className="font-display text-card-title text-burgundy">
-                        {item.title}
-                      </h3>
-                      <p className="mt-1.5 text-sm leading-relaxed text-ink/80">
-                        {item.body}
-                      </p>
-                    </figcaption>
-                  </figure>
+                  <span className="text-xs font-semibold tracking-[0.16em] text-gold-bright">
+                    {stage.index}
+                  </span>
+                  <div className="grid gap-2 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] md:gap-6">
+                    <h3 className="font-sans text-base font-semibold text-cream-light">
+                      {stage.title}
+                    </h3>
+                    <p className="text-sm leading-6 text-cream-light/80">
+                      {stage.body}
+                    </p>
+                  </div>
                 </li>
-              );
-            })}
-          </ul>
+              ))}
+            </ol>
+          </div>
         </Reveal>
       </Container>
     </section>

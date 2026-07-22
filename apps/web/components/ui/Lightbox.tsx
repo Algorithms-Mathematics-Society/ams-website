@@ -104,7 +104,7 @@ export function Lightbox({ items, index, onClose, onNavigate }: Props) {
         className="flex items-center justify-between gap-4 px-5 py-4 sm:px-8"
         onClick={(e) => e.stopPropagation()}
       >
-        <p className="text-sm text-cream-light/80 italic">{item.label}</p>
+        <p className="text-sm text-cream-light/80">{item.label}</p>
         <div className="flex shrink-0 gap-2">
           <button
             type="button"
@@ -112,7 +112,7 @@ export function Lightbox({ items, index, onClose, onNavigate }: Props) {
             onClick={() =>
               onNavigate((index - 1 + items.length) % items.length)
             }
-            className="flex h-11 w-11 items-center justify-center rounded-md text-cream-light/80 hover:text-cream-light"
+            className="flex h-11 w-11 items-center justify-center rounded-control text-cream-light/80 hover:text-cream-light"
           >
             <span className="sr-only">Previous photo</span>
             <span aria-hidden>←</span>
@@ -121,7 +121,7 @@ export function Lightbox({ items, index, onClose, onNavigate }: Props) {
             type="button"
             data-lightbox-control
             onClick={() => onNavigate((index + 1) % items.length)}
-            className="flex h-11 w-11 items-center justify-center rounded-md text-cream-light/80 hover:text-cream-light"
+            className="flex h-11 w-11 items-center justify-center rounded-control text-cream-light/80 hover:text-cream-light"
           >
             <span className="sr-only">Next photo</span>
             <span aria-hidden>→</span>
@@ -131,7 +131,7 @@ export function Lightbox({ items, index, onClose, onNavigate }: Props) {
             type="button"
             data-lightbox-control
             onClick={onClose}
-            className="flex h-11 w-11 items-center justify-center rounded-md text-cream-light/80 hover:text-cream-light"
+            className="flex h-11 w-11 items-center justify-center rounded-control text-cream-light/80 hover:text-cream-light"
           >
             <span className="sr-only">Close</span>
             <span aria-hidden>✕</span>

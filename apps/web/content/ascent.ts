@@ -2,8 +2,11 @@ export const ASCENT_HERO = {
   eyebrow: "Ascent",
   title: "The systems contest.",
   body: "C++, optimization, and performance engineering under the clock. The winter edition of the AMS circuit, built for the people who care how fast it actually runs.",
-  photoLabel: "Screenshot · Ascent leaderboard, real standings · real UI only",
-  photoCaption: "Ascent · winter edition · dates announced soon",
+  statusLabel: "Competition status",
+  status: "Winter edition",
+  statusDetail: "Dates announced soon",
+  focusLabel: "Assessment disciplines",
+  focusAreas: ["C++", "Optimization", "Performance engineering"],
 } as const;
 
 export interface AscentPillar {
