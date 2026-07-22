@@ -1,19 +1,26 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { HeaderShell } from "@/components/layout/HeaderShell";
+import { DesktopNav } from "@/components/layout/DesktopNav";
 import { MobileNav } from "@/components/layout/MobileNav";
-import { COMPETE_LINK, NAV_LINKS, SITE } from "@/content/site";
+import { SITE } from "@/content/site";
 
 export function Header() {
   return (
-    <HeaderShell>
+    <div className="sticky top-0 z-40 shadow-[0_1px_12px_rgba(87,28,36,0.08)]">
+      <a
+        href="#main-content"
+        className="group pointer-events-none fixed left-4 top-3 z-[60] overflow-hidden rounded-control text-sm font-medium"
+      >
+        <span className="flex min-h-10 -translate-y-full items-center bg-burgundy px-4 text-cream-light shadow-lg transition-transform group-focus-visible:translate-y-0">
+          Skip to content
+        </span>
+      </a>
       <header className="h-16 border-b border-burgundy/10 bg-cream">
         <Container className="flex h-full items-center justify-between">
           <Link
             href="/"
-            className="flex items-center gap-2.5"
+            className="inline-flex min-h-11 items-center gap-2.5 rounded-control pr-2"
             aria-label={`${SITE.name} home`}
           >
             <Image
@@ -28,22 +35,10 @@ export function Header() {
             </span>
           </Link>
 
-          <nav aria-label="Main" className="hidden items-center gap-8 lg:flex">
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-sm font-medium text-ink transition-colors hover:text-burgundy"
-              >
-                {link.label}
-              </Link>
-            ))}
-            <Button href={COMPETE_LINK.href}>{COMPETE_LINK.label}</Button>
-          </nav>
-
+          <DesktopNav />
           <MobileNav />
         </Container>
       </header>
-    </HeaderShell>
+    </div>
   );
 }

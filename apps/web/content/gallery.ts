@@ -5,6 +5,8 @@ export interface GalleryItem {
   src?: string;
   /** 1600w large view path under public/ (opened from the grid). */
   full?: string;
+  /** Explicit placement in the home-page proof spread. */
+  homePlacement?: "lead" | "support-top" | "support-bottom";
 }
 
 export const GALLERY_PAGE = {
@@ -20,15 +22,13 @@ export const GALLERY_PAGE = {
 } as const;
 
 /**
- * The home proof gallery's caption rail. Separate from GALLERY_PAGE: the
- * archive page introduces the whole set, this rail sits beside the dome
- * and only has to place the photographs and say how to turn them.
+ * The compact introduction for the home proof spread. Separate from
+ * GALLERY_PAGE because the archive page introduces the complete set.
  */
-export const GALLERY_DOME = {
+export const GALLERY_HOME = {
   eyebrow: "Moments from AMS",
   title: "It happened. Here's proof.",
   body: "Twelve moments from the Derive '26 finals at IIT Bombay: the swag desk in the morning, the hall at capacity, the cheques at the end.",
-  hint: "Drag to look around · click a photo to open it",
   link: { label: "See the full gallery", href: "/gallery" },
 } as const;
 
@@ -40,6 +40,7 @@ const img = (slug: string) => ({
 export const GALLERY: GalleryItem[] = [
   {
     label: "Goodies distribution, contest kits changing hands",
+    homePlacement: "support-top",
     ...img("goodies-distribution"),
   },
   { label: "The swag desk, notebooks and formula tees", ...img("swag-desk") },
@@ -54,6 +55,7 @@ export const GALLERY: GalleryItem[] = [
   },
   {
     label: "Prize cheques on stage for the winners",
+    homePlacement: "support-bottom",
     ...img("prize-cheque-moment"),
   },
   {
@@ -72,6 +74,7 @@ export const GALLERY: GalleryItem[] = [
   },
   {
     label: "The full room, everyone who made it happen",
+    homePlacement: "lead",
     ...img("the-full-room"),
   },
 ];

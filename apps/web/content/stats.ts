@@ -3,6 +3,8 @@ export interface Stat {
   label: string;
 }
 
+export const STATS_HEADING = "AMS reach at a glance";
+
 /**
  * Verified by Tilak on 2026-07-15; the fact-sync map ran. The band widens
  * from one contest to AMS itself: the pool is everyone AMS has drawn, and

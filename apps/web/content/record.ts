@@ -5,5 +5,9 @@
  */
 export const LINE_OF_RECORD = {
   established: "Est. 2026 · India",
-  line: "Two national contests · One assessment platform · Finals hosted at IIT Bombay",
+  facts: [
+    "Two national contests",
+    "One assessment platform",
+    "Finals hosted at IIT Bombay",
+  ],
 } as const;

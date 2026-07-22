@@ -1,23 +1,20 @@
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { TESTIMONIALS, type Testimonial } from "@/content/testimonials";
+import {
+  TESTIMONIALS,
+  TESTIMONIALS_SECTION,
+  type Testimonial,
+} from "@/content/testimonials";
 
 const featured = TESTIMONIALS.find((t) => t.featured) ?? TESTIMONIALS[0];
 const supporting = TESTIMONIALS.filter((t) => t !== featured);
 
-const cardBase =
-  "flex flex-col rounded-xl border border-burgundy/10 bg-cream-light";
-
-/** Attribution set in the "on the record" register the line-of-record uses:
- *  the name in display serif, the role letterspaced in gold. */
 function Attribution({ item }: { item: Testimonial }) {
   return (
-    <figcaption className="mt-6">
-      <span className="block font-display font-semibold text-burgundy">
-        {item.name}
-      </span>
-      <span className="mt-0.5 block text-[11px] font-medium tracking-[0.22em] text-gold-deep uppercase">
+    <figcaption className="mt-6 border-t border-burgundy/10 pt-4">
+      <span className="block text-sm font-semibold text-burgundy">{item.name}</span>
+      <span className="mt-1 block text-sm leading-5 text-ink/80">
         {item.detail}
       </span>
     </figcaption>
@@ -25,64 +22,45 @@ function Attribution({ item }: { item: Testimonial }) {
 }
 
 /**
- * Block 08: social proof, the one section in another voice. Testimony is not
- * interchangeable, so it does not sit in a third equal grid: the most specific
- * verdict leads as a wide pull-quote, the other two support beside it. The
- * quote outranks the name (the section is "In their words"), and an oversized
- * Fraunces quotation mark anchors each card in place of the old avatar glyph,
- * which read as a face that had not loaded. No hover, no rotation: stillness
- * reads as on the record.
+ * Block 08: one segmented proof panel. The most specific testimonial leads,
+ * with two supporting accounts beside it on desktop and beneath it on mobile.
+ * Opaque cells and quiet rules reset the page to a paper-like reading surface.
  */
 export function Testimonials() {
   return (
-    <section className="py-section">
+    <section className="bg-cream py-section">
       <Container>
         <Reveal>
           <SectionHeading
-            eyebrow="What competitors say"
-            title="In their words."
+            eyebrow={TESTIMONIALS_SECTION.eyebrow}
+            title={TESTIMONIALS_SECTION.title}
           />
-        </Reveal>
 
-        <div className="mt-12 grid items-start gap-6 lg:grid-cols-12">
-          <Reveal className={`${cardBase} p-8 lg:col-span-7`}>
-            <figure>
-              <span
-                aria-hidden
-                className="block font-display text-6xl leading-[0.6] text-gold/40"
-              >
-                &ldquo;
-              </span>
-              <blockquote className="mt-4 font-display text-2xl leading-snug text-ink lg:text-[1.75rem]">
-                {featured.quote}
-              </blockquote>
-              <Attribution item={featured} />
-            </figure>
-          </Reveal>
+          <ul className="mt-10 grid gap-px overflow-hidden rounded-panel border border-burgundy/12 bg-burgundy/12 sm:mt-12 lg:grid-cols-12 lg:grid-rows-2">
+            <li className="min-w-0 bg-cream-light p-5 sm:p-7 lg:col-span-7 lg:row-span-2 lg:p-10">
+              <figure>
+                <blockquote className="font-display text-xl leading-snug text-ink sm:text-2xl lg:text-[1.75rem]">
+                  <p className="break-words">&ldquo;{featured.quote}&rdquo;</p>
+                </blockquote>
+                <Attribution item={featured} />
+              </figure>
+            </li>
 
-          <div className="flex flex-col gap-6 lg:col-span-5">
-            {supporting.map((item, index) => (
-              <Reveal
+            {supporting.map((item) => (
+              <li
                 key={item.quote}
-                delay={(index + 1) * 90}
-                className={`${cardBase} p-6`}
+                className="min-w-0 bg-cream-light p-5 sm:p-7 lg:col-span-5 lg:p-8"
               >
                 <figure>
-                  <span
-                    aria-hidden
-                    className="block font-display text-4xl leading-[0.6] text-gold/40"
-                  >
-                    &ldquo;
-                  </span>
-                  <blockquote className="mt-3 text-sm leading-relaxed text-ink">
-                    {item.quote}
+                  <blockquote className="text-base leading-relaxed text-ink/90">
+                    <p className="break-words">&ldquo;{item.quote}&rdquo;</p>
                   </blockquote>
                   <Attribution item={item} />
                 </figure>
-              </Reveal>
+              </li>
             ))}
-          </div>
-        </div>
+          </ul>
+        </Reveal>
       </Container>
     </section>
   );

@@ -10,16 +10,6 @@ interface Props {
   className?: string;
 }
 
-/**
- * The site's mounted-print treatment: a hairline frame, a thin cream mat,
- * and a soft lift off the page, so photographic content reads as an
- * archival plate rather than a rounded photo card. The mat itself stays
- * cream regardless of the surrounding page (a real mat board reads the
- * same in a dark room); only the caption's tone follows the page.
- * Children own their aspect ratio and clipping (a single portrait Image,
- * or a multi-layer crossfade); this component only owns the mat and the
- * caption.
- */
 export function PlateFrame({
   children,
   caption,
@@ -28,8 +18,8 @@ export function PlateFrame({
 }: Props) {
   return (
     <figure className={className}>
-      <div className="rounded-lg border border-ink/15 bg-cream-light p-2.5 shadow-[0_2px_24px_rgba(70,64,58,0.10)]">
-        {children}
+      <div className="rounded-panel border border-ink/15 bg-cream-light p-2.5 shadow-[0_2px_14px_rgba(70,64,58,0.08)]">
+        <div className="overflow-hidden rounded-media">{children}</div>
       </div>
       {caption ? (
         <figcaption

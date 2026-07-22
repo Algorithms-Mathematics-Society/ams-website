@@ -67,7 +67,9 @@ export default function RootLayout({
         <JsonLd data={ORGANIZATION_JSONLD} />
         <JsonLd data={WEBSITE_JSONLD} />
         <Header />
-        <main className="flex-1">{children}</main>
+        <main id="main-content" tabIndex={-1} className="flex-1">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

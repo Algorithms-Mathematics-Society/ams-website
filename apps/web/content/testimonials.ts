@@ -6,6 +6,11 @@ export interface Testimonial {
   featured?: boolean;
 }
 
+export const TESTIMONIALS_SECTION = {
+  eyebrow: "What competitors say",
+  title: "In their words.",
+} as const;
+
 /**
  * Quotes are real, from the Derive '26 post-event feedback form, whose own
  * field said the review would be used on the website. Lightly edited for
@@ -17,12 +22,11 @@ export interface Testimonial {
  * list had "Shane Christian" wrong until he corrected it, so any name added
  * here comes from him, never from an address.
  *
- * No faces here by decision: the cards lead with a quotation mark, not a
- * portrait, so the three are never asked for a photograph.
+ * No faces here by decision. Do not invent portraits or add photographs
+ * without explicit permission from each participant.
  *
- * TODO(launch): colleges. The form did not capture them, so `detail` says
- * only what the form itself proves: they competed in Derive '26. The section
- * heading promises colleges, so either they arrive or the heading changes.
+ * The form did not capture colleges. Do not add affiliations unless they are
+ * verified directly; `detail` states only what the form proves.
  */
 export const TESTIMONIALS: Testimonial[] = [
   {

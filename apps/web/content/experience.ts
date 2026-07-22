@@ -4,7 +4,7 @@ export interface ExperienceItem {
   photo: { src: string; alt: string };
 }
 
-/** Block 06: three cards answering a would-be finalist's three anxieties
+/** Block 07: three moments answering a would-be finalist's three anxieties
     (is it worth it, is it real, will the right people see me). */
 export const EXPERIENCE: ExperienceItem[] = [
   {
@@ -28,7 +28,7 @@ export const EXPERIENCE: ExperienceItem[] = [
     body: "Finals are hosted in person, and worth the trip.",
     photo: {
       src: "/images/derive26/thumb/address-before-the-final-round.webp",
-      alt: "The hall listening to the address before the final round",
+      alt: "Derive participants gathered around a guest in the finals room",
     },
   },
 ];

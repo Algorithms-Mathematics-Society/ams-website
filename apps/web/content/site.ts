@@ -25,6 +25,11 @@ export const NAV_LINKS: NavLink[] = [
   { label: "Blog", href: "/blog" },
 ];
 
+export const DERIVE_OVERVIEW_LINK = {
+  label: "Explore Derive",
+  href: "/derive",
+} as const satisfies NavLink;
+
 /** Primary CTA. TODO(launch): point at the live Derive '26 registration URL. */
 export const COMPETE_LINK: NavLink = { label: "Compete", href: "/derive" };
 

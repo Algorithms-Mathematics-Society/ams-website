@@ -8,6 +8,7 @@ interface Props {
   variant?: "solid" | "outline" | "inverse";
   external?: boolean;
   className?: string;
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
 }
 
 /** Navigation CTA rendered as a link. For in-page actions use a plain <button>. */
@@ -17,14 +18,16 @@ export function Button({
   variant = "solid",
   external,
   className,
+  onClick,
 }: Props) {
   const styles = cn(
-    "inline-flex min-h-11 items-center justify-center rounded-md px-6 py-2.5 text-sm font-medium transition-colors",
+    "inline-flex min-h-11 items-center justify-center rounded-control px-6 py-2.5 text-sm font-medium transition-colors focus-visible:transition-none focus-visible:outline-2 focus-visible:outline-offset-2",
     variant === "solid" &&
-      "bg-burgundy text-cream-light hover:bg-burgundy-deep",
+      "bg-burgundy text-cream-light hover:bg-burgundy-deep focus-visible:outline-gold-deep",
     variant === "outline" &&
-      "border border-burgundy/40 text-burgundy hover:border-burgundy hover:bg-burgundy/5",
-    variant === "inverse" && "bg-cream text-burgundy hover:bg-cream-light",
+      "border border-burgundy/40 text-burgundy hover:border-burgundy hover:bg-burgundy/5 focus-visible:outline-gold-deep",
+    variant === "inverse" &&
+      "bg-cream text-burgundy hover:bg-cream-light focus-visible:outline-gold-bright",
     className,
   );
   if (external) {
@@ -34,13 +37,14 @@ export function Button({
         target="_blank"
         rel="noopener noreferrer"
         className={styles}
+        onClick={onClick}
       >
         {children}
       </a>
     );
   }
   return (
-    <Link href={href} className={styles}>
+    <Link href={href} className={styles} onClick={onClick}>
       {children}
     </Link>
   );

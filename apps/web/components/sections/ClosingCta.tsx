@@ -7,73 +7,63 @@ import { Reveal } from "@/components/ui/Reveal";
 import { CLOSING_CTA } from "@/content/cta";
 
 /**
- * Block 10: the page closes with the same gesture it opened with. It is the
- * hero's bookend, so it shares the hero's grammar: copy anchored bottom-left,
- * a layered scrim built from the brand darks rather than flat black, and the
- * headline mask-reveals the way the hero's did. The scrim deepens toward
- * burgundy at the bottom so the photo dissolves into the burgundy footer
- * instead of cutting to it.
+ * Block 10: a contained closing proof and conversion panel. The evening
+ * social establishes the human outcome, then a segmented burgundy row gives
+ * contestants and sponsors separate, equally clear next steps.
  */
 export function ClosingCta() {
   return (
-    <section className="relative flex min-h-[85svh] items-end overflow-hidden py-24 text-cream-light lg:py-28">
-      <div className="parallax-slow absolute inset-x-0 -inset-y-[8%]">
-        <Image
-          src={CLOSING_CTA.photo.src}
-          alt={CLOSING_CTA.photo.alt}
-          fill
-          quality={50}
-          fetchPriority="low"
-          sizes="100vw"
-          className="object-cover object-[center_40%]"
-        />
-      </div>
-      {/* Layered scrim, like the hero: a uniform wash, a diagonal darkest
-          under the bottom-left copy, and a bottom band that deepens to
-          burgundy-deep so the seam into the footer is a dissolve. */}
-      <div aria-hidden className="absolute inset-0 bg-espresso/30" />
-      <div
-        aria-hidden
-        className="absolute inset-0 bg-gradient-to-tr from-burgundy-deep/80 via-espresso/30 to-transparent"
-      />
-      <div
-        aria-hidden
-        className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-burgundy-deep/85 via-burgundy-deep/25 to-transparent"
-      />
+    <section className="bg-cream py-section">
+      <Container>
+        <Reveal>
+          <div className="overflow-hidden rounded-panel border border-burgundy/15 bg-cream-light">
+            <figure className="p-3 sm:p-4">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-media sm:aspect-video lg:aspect-[1920/906]">
+                <Image
+                  src={CLOSING_CTA.photo.src}
+                  alt={CLOSING_CTA.photo.alt}
+                  fill
+                  quality={75}
+                  fetchPriority="low"
+                  sizes="(min-width: 1280px) 1054px, (min-width: 640px) calc(100vw - 98px), calc(100vw - 66px)"
+                  className="object-cover"
+                />
+              </div>
+              <figcaption className="px-1 pt-3 text-sm text-ink/80 italic">
+                {CLOSING_CTA.plateCaption}
+              </figcaption>
+            </figure>
 
-      <Container className="relative w-full">
-        <Reveal className="max-w-2xl">
-          <Eyebrow inverse>{CLOSING_CTA.eyebrow}</Eyebrow>
-          <h2 className="mt-6 font-display text-hero">
-            <span className="mask-line">
-              <span>{CLOSING_CTA.headlineLines[0]}</span>
-            </span>
-            <span className="mask-line mask-step-2">
-              <span>{CLOSING_CTA.headlineLines[1]}</span>
-            </span>
-          </h2>
-          <div className="mt-9 flex flex-wrap items-center gap-x-8 gap-y-4">
-            <Button href={CLOSING_CTA.primary.href} variant="inverse">
-              {CLOSING_CTA.primary.label}
-            </Button>
-            {/* Set apart from the primary action, not stacked beneath it: a
-                different audience (firms), routed rather than offered as
-                step two of the same funnel. */}
-            <Link
-              href={CLOSING_CTA.secondary.href}
-              className="text-sm text-cream-light/75 underline-offset-4 transition-colors hover:text-cream-light hover:underline"
-            >
-              {CLOSING_CTA.secondary.label} <span aria-hidden>→</span>
-            </Link>
+            <div className="grid border-t border-burgundy/15 bg-burgundy text-cream-light md:grid-cols-[minmax(0,1.6fr)_minmax(18rem,0.8fr)]">
+              <div className="p-6 sm:p-8 lg:p-10">
+                <Eyebrow inverse>{CLOSING_CTA.eyebrow}</Eyebrow>
+                <h2 className="mt-5 font-display text-section">
+                  {CLOSING_CTA.headlineLines.map((line) => (
+                    <span key={line} className="block">
+                      {line}{" "}
+                    </span>
+                  ))}
+                </h2>
+                <p className="mt-5 max-w-2xl leading-relaxed text-cream-light/80">
+                  {CLOSING_CTA.body}
+                </p>
+              </div>
+
+              <div className="flex flex-col justify-center gap-3 border-t border-cream-light/20 p-6 sm:p-8 md:border-t-0 md:border-l">
+                <Button href={CLOSING_CTA.primary.href} variant="inverse">
+                  {CLOSING_CTA.primary.label}
+                </Button>
+                <Link
+                  href={CLOSING_CTA.secondary.href}
+                  className="inline-flex min-h-11 items-center justify-center rounded-control border border-cream-light/35 px-6 py-2.5 text-sm font-medium text-cream-light transition-colors hover:border-cream-light hover:bg-cream-light/10 focus-visible:transition-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-bright"
+                >
+                  {CLOSING_CTA.secondary.label}
+                </Link>
+              </div>
+            </div>
           </div>
         </Reveal>
       </Container>
-
-      {/* Plate caption in the contained pill the hero uses, so the two
-          "Plate" stamps on the page read as one system. */}
-      <p className="caption-fade absolute right-5 bottom-6 rounded-full bg-black/45 px-3.5 py-1.5 text-sm text-cream-light/90 italic sm:right-8">
-        {CLOSING_CTA.plateCaption}
-      </p>
     </section>
   );
 }
