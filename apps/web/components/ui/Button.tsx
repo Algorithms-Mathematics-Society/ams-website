@@ -20,6 +20,7 @@ export function Button({
   className,
   onClick,
 }: Props) {
+  const isExternal = external ?? /^https?:\/\//.test(href);
   const styles = cn(
     "inline-flex min-h-11 items-center justify-center rounded-control px-5 py-2.5 text-sm font-semibold transition-colors focus-visible:transition-none focus-visible:outline-2 focus-visible:outline-offset-2",
     variant === "solid" &&
@@ -30,7 +31,7 @@ export function Button({
       "bg-cream text-burgundy hover:bg-cream-light focus-visible:outline-gold-bright",
     className,
   );
-  if (external) {
+  if (isExternal) {
     return (
       <a
         href={href}

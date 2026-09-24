@@ -17,7 +17,10 @@ Key facts:
 - Jane Street was the Apex Partner of Derive '26; QRT was the Convergence
   Partner of the finals.
 - Ascent is the AMS systems contest (C++, optimization, performance
-  engineering), the winter edition of the circuit.
+  engineering), the winter edition of the circuit. Registration is open and
+  free, closing 20 October 2026, at https://ascent.amshq.in. Round 1 is on
+  24 October 2026, Round 2 on 6 December, and the finals in Mumbai in
+  December.
 - Access is the AMS assessment platform: a native desktop lockdown app with
   seven readiness checks, audited proctoring, and scoring benchmarked against
   the AMS contest population. Product site: https://amsaccess.com.
@@ -31,6 +34,7 @@ Key facts:
 - [Home](https://amshq.in/): what AMS runs and why
 - [Derive](https://amshq.in/derive): the quant contest, verified 2026 numbers
 - [Ascent](https://amshq.in/ascent): the systems contest, winter edition
+- [Ascent registration](https://ascent.amshq.in): enter Ascent '26
 - [Access](https://amshq.in/access): the proctored assessment platform
 - [FAQ](https://amshq.in/faq): definitional answers about AMS
 - [Gallery](https://amshq.in/gallery): moments from the finals

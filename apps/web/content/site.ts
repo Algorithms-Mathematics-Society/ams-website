@@ -30,8 +30,11 @@ export const DERIVE_OVERVIEW_LINK = {
   href: "/derive",
 } as const satisfies NavLink;
 
-/** Primary CTA. TODO(launch): point at the live Derive '26 registration URL. */
-export const COMPETE_LINK: NavLink = { label: "Compete", href: "/derive" };
+/** Primary CTA. Links out to the contest platform, never into this repo. */
+export const COMPETE_LINK: NavLink = {
+  label: "Compete",
+  href: "https://ascent.amshq.in",
+};
 
 export const FOOTER_COLUMNS: Array<{ heading: string; links: NavLink[] }> = [
   {

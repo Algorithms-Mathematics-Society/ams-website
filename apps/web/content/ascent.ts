@@ -3,8 +3,8 @@ export const ASCENT_HERO = {
   title: "The systems contest.",
   body: "C++, optimization, and performance engineering under the clock. The winter edition of the AMS circuit, built for the people who care how fast it actually runs.",
   statusLabel: "Competition status",
-  status: "Winter edition",
-  statusDetail: "Dates announced soon",
+  status: "Registration open",
+  statusDetail: "Round 1 on 24 October 2026",
   focusLabel: "Assessment disciplines",
   focusAreas: ["C++", "Optimization", "Performance engineering"],
 } as const;
@@ -39,10 +39,8 @@ export const ASCENT_STANDARD = {
 } as const;
 
 export const ASCENT_CTA = {
-  title: "Ascent arrives this winter.",
-  body: "Registration is not open yet. Leave your email and be first in when it is.",
-  buttonLabel: "Get notified",
-  /** TODO(launch): point at the registration/interest form when live. */
-  buttonHref:
-    "mailto:tilakj0108@gmail.com?subject=Ascent%20registration%20updates",
+  title: "Ascent '26 registration is open.",
+  body: "Entry is free and closes on 20 October 2026. Round 1 runs online on 24 October.",
+  buttonLabel: "Register for Ascent",
+  buttonHref: "https://ascent.amshq.in/register",
 } as const;

@@ -8,7 +8,7 @@ import { AscentStandard } from "@/components/sections/ascent/AscentStandard";
 export const metadata: Metadata = {
   title: "Ascent: the systems contest",
   description:
-    "C++, optimization, and performance engineering under the clock. The winter edition of the AMS circuit.",
+    "C++, optimization, and performance engineering under the clock. Registration for Ascent '26 is open until 20 October 2026, with Round 1 on 24 October.",
 };
 
 export default function AscentPage() {
