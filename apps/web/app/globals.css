@@ -67,12 +67,6 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Documentary imagery follows the monochrome system. Product brand artwork
-   can opt out when it carries the approved red accent. */
-main img:not(.preserve-accent) {
-  filter: grayscale(1) contrast(1.04);
-}
-
 @layer base {
   /* Red is the sole accent and provides a deliberate, visible focus ring. */
   :focus-visible {
