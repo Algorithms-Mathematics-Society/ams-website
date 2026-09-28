@@ -81,7 +81,7 @@ export const ACCESS_CONVERSATION = {
   id: "contact",
   eyebrow: "Start a conversation",
   title: "What would you like to assess?",
-  body: "Share your hiring context with Tilak, the AMS founder. These are the questions to work through before choosing an assessment or partnership.",
+  body: "Share your hiring context with the AMS team. These are the questions to work through before choosing an assessment or partnership.",
   topics: [
     {
       title: "Role and problem set",
@@ -104,7 +104,13 @@ export const ACCESS_CONVERSATION = {
 
 export const ACCESS_CTA = {
   title: "Tell us about your hiring needs.",
-  body: "Email Tilak with the roles, approximate candidate count, and timeline you have in mind. You can also get in touch about a contest partnership.",
-  buttonLabel: "Email Tilak at AMS",
-  buttonHref: "mailto:tilakj0108@gmail.com?subject=AMS%20assessment%20or%20partnership%20enquiry",
+  body: "Email the AMS team with the roles, approximate candidate count, and timeline you have in mind. You can also get in touch about a contest partnership.",
+  buttonLabel: "Email the AMS team",
+  buttonHref: "mailto:team@amshq.in?subject=AMS%20assessment%20enquiry",
 } as const;
+
+/** Public addresses listed on the official Ascent site. */
+export const ACCESS_CONTACTS = [
+  { label: "Assessment enquiries", email: "team@amshq.in", href: "mailto:team@amshq.in?subject=AMS%20assessment%20enquiry" },
+  { label: "Contest partnerships", email: "partners@amshq.in", href: "mailto:partners@amshq.in?subject=AMS%20contest%20partnership" },
+] as const;

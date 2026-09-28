@@ -11,7 +11,7 @@ interface Props {
 export function PageHeader({ eyebrow, title, body }: Props) {
   return (
     <section className="border-b border-burgundy/20 py-section">
-      <Container className="max-w-2xl lg:max-w-none">
+      <Container>
         <Eyebrow>{eyebrow}</Eyebrow>
         <h1 className="mt-6 max-w-3xl font-display text-hero font-normal tracking-[-0.04em] text-burgundy">
           {title}

@@ -1,7 +1,7 @@
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { ACCESS_CONVERSATION } from "@/content/access";
+import { ACCESS_CONVERSATION, ACCESS_CONTACTS } from "@/content/access";
 
 export function AccessConversation() {
   return (
@@ -18,6 +18,18 @@ export function AccessConversation() {
           <p className="mt-6 max-w-2xl leading-relaxed">
             {ACCESS_CONVERSATION.body}
           </p>
+          <dl className="mt-6 flex flex-wrap gap-x-12 gap-y-4">
+            {ACCESS_CONTACTS.map((contact) => (
+              <div key={contact.email}>
+                <dt className="text-sm text-ink/75">{contact.label}</dt>
+                <dd>
+                  <a href={contact.href} className="inline-flex min-h-11 items-center break-all font-semibold text-burgundy underline underline-offset-4">
+                    {contact.email}
+                  </a>
+                </dd>
+              </div>
+            ))}
+          </dl>
         </Reveal>
         <ol className="mt-10 grid gap-x-12 gap-y-8 md:grid-cols-2">
           {ACCESS_CONVERSATION.topics.map((topic, index) => (

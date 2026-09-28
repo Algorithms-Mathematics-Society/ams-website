@@ -4,7 +4,7 @@ export const ASCENT_HERO = {
   body: "A competition in C++, optimization, and performance engineering. Solve problems where memory use, execution time, and implementation choices matter.",
   statusLabel: "Competition status",
   status: "Registration open",
-  statusDetail: "Round 1 on 24 October 2026",
+  statusDetail: "Free entry · Register by 20 October 2026",
   focusLabel: "What you will work on",
   focusAreas: ["C++", "Optimization", "Performance engineering"],
 } as const;
@@ -43,4 +43,20 @@ export const ASCENT_CTA = {
   body: "Entry is free and closes on 20 October 2026. Round 1 runs online on 24 October.",
   buttonLabel: "Register for Ascent",
   buttonHref: "https://ascent.amshq.in/register",
+} as const;
+
+/** Registration details checked against the official Ascent site on 28 September 2026. */
+export const ASCENT_REGISTRATION = {
+  eyebrow: "Before you register",
+  title: "Enter individually. Come prepared.",
+  facts: [
+    { label: "Who can enter", detail: "Candidates in India and across the Asia-Pacific region. This edition has 100 seats for candidates outside India." },
+    { label: "Entry and teams", detail: "Registration is free. You do not need a team for registration or the online qualifier." },
+    { label: "What to have ready", detail: "Your contact and education details, plus a shareable Google Drive resume link. A transcript and Codeforces handle are optional." },
+    { label: "The online qualifier", detail: "24 October 2026, 2:00 pm IST. The round lasts two hours and runs on AMS Access. Registration closes on 20 October." },
+  ],
+  links: [
+    { label: "Official eligibility and requirements", href: "https://ascent.amshq.in/#faq" },
+    { label: "Full contest schedule", href: "https://ascent.amshq.in/#timeline" },
+  ],
 } as const;

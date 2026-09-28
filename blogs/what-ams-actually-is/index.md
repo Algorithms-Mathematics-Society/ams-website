@@ -51,7 +51,8 @@ platform and how to discuss an assessment with AMS.
 
 ## The people involved
 
-AMS has reached a talent pool of 5,000+ students across 30+ institutions.
+As of July 2026, AMS reported community reach of 5,000+ students across
+30+ institutions. Derive participants are included in that wider count.
 Participants, problem setters, judges, volunteers, and engineers all
 contribute to the contests and the platform.
 

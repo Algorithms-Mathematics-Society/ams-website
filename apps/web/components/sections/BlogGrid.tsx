@@ -23,6 +23,7 @@ const cardBase =
   "group flex h-full flex-col overflow-hidden rounded-panel border border-burgundy/20 bg-cream-light transition-colors duration-150 hover:border-burgundy/50 focus-visible:border-burgundy";
 
 export async function BlogGrid({ withHeading = true }: Props) {
+  const PostTitle = withHeading ? "h3" : "h2";
   const posts = await getAllPosts();
   if (posts.length === 0) return null;
 
@@ -64,9 +65,9 @@ export async function BlogGrid({ withHeading = true }: Props) {
                         ))}
                       </ul>
                     )}
-                    <h3 className="mt-3 font-sans text-card-title font-semibold tracking-[-0.025em] text-burgundy">
+                    <PostTitle className="mt-3 font-sans text-card-title font-semibold tracking-[-0.025em] text-burgundy">
                       {post.title}
-                    </h3>
+                    </PostTitle>
                     <p className="mt-3 text-sm leading-relaxed">
                       {post.description}
                     </p>

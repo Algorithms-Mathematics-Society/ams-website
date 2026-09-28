@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
-import { STATS, STATS_HEADING, STATS_LINK } from "@/content/stats";
+import { STATS, STATS_HEADING, STATS_LINK, STATS_NOTE } from "@/content/stats";
 
 export function StatsBand() {
   return (
@@ -22,6 +22,7 @@ export function StatsBand() {
             </div>
           ))}
         </dl>
+        <p className="mt-6 max-w-2xl text-xs leading-5 text-ink/75">{STATS_NOTE}</p>
       </Container>
     </section>
   );

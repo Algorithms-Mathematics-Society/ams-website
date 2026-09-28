@@ -5,6 +5,8 @@ export interface Stat {
 
 export const STATS_HEADING = "AMS in numbers";
 
+export const STATS_NOTE = "AMS community figures as of July 2026. Derive participation is included in the wider community count.";
+
 export const STATS_LINK = {
   label: "Explore Derive '26",
   href: "/derive",
@@ -18,7 +20,7 @@ export const STATS_LINK = {
  * seo, and llms.txt surfaces that scope it to the edition.
  */
 export const STATS: Stat[] = [
-  { value: "5,000+", label: "AMS talent pool" },
+  { value: "5,000+", label: "AMS community reach" },
   { value: "2,500+", label: "Derive '26 participants" },
   { value: "30+", label: "Institutions represented" },
   { value: "2", label: "Contest series" },

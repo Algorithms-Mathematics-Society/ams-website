@@ -4,7 +4,7 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/ui/Reveal";
 import { EXPERIENCE } from "@/content/experience";
 
-/** The four-stage AMS operating model, anchored by one documentary image. */
+/** A recap of the Derive edition, anchored by a photograph from the finals. */
 export function ExperienceGrid() {
   return (
     <section className="border-y border-cream-light/20 bg-burgundy py-section text-cream-light">

@@ -60,7 +60,7 @@ export default async function BlogPostPage({ params }: Props) {
       <JsonLd data={blogPostingJsonLd(post)} />
 
       <section className="pt-section pb-4">
-        <Container className="max-w-3xl">
+        <Container size="reading">
           <Eyebrow>{BLOG_PAGE.eyebrow}</Eyebrow>
           <h1 className="mt-6 font-display text-hero font-normal tracking-[-0.04em] text-burgundy">
             {post.title}
@@ -93,14 +93,14 @@ export default async function BlogPostPage({ params }: Props) {
       </section>
 
       <section className="pb-4">
-        <Container className="max-w-3xl">
+        <Container size="reading">
           <div className="relative aspect-[1200/630] w-full overflow-hidden rounded-media border border-burgundy/20">
             <Image
               src={post.cover.full}
               alt={post.cover.alt}
               fill
               priority
-              sizes="(min-width: 1024px) 768px, 100vw"
+              sizes="(min-width: 768px) 704px, (min-width: 640px) calc(100vw - 64px), calc(100vw - 40px)"
               className="object-cover"
             />
           </div>
@@ -108,7 +108,7 @@ export default async function BlogPostPage({ params }: Props) {
       </section>
 
       <section className="pt-8 pb-section">
-        <Container className="max-w-3xl">
+        <Container size="reading">
           <div
             className="blog-prose"
             dangerouslySetInnerHTML={{ __html: post.html }}

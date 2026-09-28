@@ -28,7 +28,7 @@ export const INSTITUTIONAL_OVERVIEW = {
     {
       number: "02",
       title: "A place earned through competition",
-      body: "Online rounds give participants a common set of problems. Qualifying competitors advance to the in-person finals.",
+      body: "Each contest has its own qualification criteria. The Derive '26 finalists earned their place through two online rounds.",
     },
     {
       number: "03",

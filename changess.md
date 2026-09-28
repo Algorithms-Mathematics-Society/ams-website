@@ -42,7 +42,7 @@ Main files: `apps/web/content/`, route metadata, `blogs/welcome-to-ams/index.md`
 - Positioned assessment results alongside interviews and other evidence, rather than presenting them as a hiring decision by themselves.
 - Added a genuine photograph of conversations at the Derive finals, with contextual links to the edition, gallery, and team.
 - Added a new `AccessConversation.tsx` section covering the questions a hiring team should resolve: role and problem set, candidate experience, results and review, and scope and terms.
-- Made the contact action explicit: email Tilak with the roles, approximate candidate count, and timeline. Preserved his existing direct address for that named contact.
+- Made the contact action explicit: email the AMS team with the roles, approximate candidate count, and timeline. The follow-up recruiter review replaced the personal address with the verified team and partnership mailboxes and made both addresses visible.
 - Expanded the founder profile with Tilak Jain's full name, a concise factual biography, and his LinkedIn profile linked from the official Derive site.
 - Used the publicly listed AMS team address for general inquiries and participation contacts.
 - Removed the misleading Monthly Challenge footer link, which previously led to an unrelated page.
@@ -81,6 +81,8 @@ Tests ran against the local production build with Chrome. Node 24 was invoked di
 
 ### Mobile Lighthouse spot checks
 
+These measurements are from the first polish build, before the follow-up visitor reviews below.
+
 | Page | Performance | Accessibility | Best practices | SEO | LCP | CLS |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | Home | 98 | 100 | 100 | 100 | 2.3 s | 0 |
@@ -88,7 +90,7 @@ Tests ran against the local production build with Chrome. Node 24 was invoked di
 | Gallery | 98 | 100 | 100 | 100 | 2.3 s | 0 |
 | For firms / Access | 96 | 100 | 100 | 100 | 2.7 s | 0 |
 
-All audited pages meet the repository's Lighthouse score target of 95. Its stricter LCP target of 2.0 seconds remains unmet in these simulated mobile measurements. The homepage transferred approximately 158 KiB of scripts, including framework and prefetched route code, above the 100 KiB target. No new JavaScript dependencies were added. These remaining budgets need performance work; they are not reported as passing. Real-device field INP and deployed CDN performance were not measured.
+In the first polish build, all audited pages met the repository's Lighthouse score target of 95. Its stricter LCP target of 2.0 seconds remains unmet in these simulated mobile measurements. The homepage transferred approximately 158 KiB of scripts, including framework and prefetched route code, above the 100 KiB target. No new JavaScript dependencies were added. These remaining budgets need performance work; they are not reported as passing. Real-device field INP and deployed CDN performance were not measured.
 
 ## Source checks
 
@@ -107,3 +109,63 @@ External destinations were checked during this update. Partnership roles and par
 Three subagents handled copy, the recruiter journey, and source/link verification. A separate final read-through checked expectations, factual consistency, and missing evidence. The main agent integrated the visual work, addressed review findings, and ran the production and browser checks.
 
 Only website source, relevant brand artwork, the two existing blog articles, and this report belong to this change. Existing screenshot files and design-reference exports were excluded.
+
+
+## Follow-up: visitor walkthroughs and UI review
+
+The user requested another review before publishing. Four separate agents browsed the running site as a newcomer, a recruiter, an Ascent entrant, and a UI reviewer. These were role-based agent walkthroughs, not a study with recruited human participants.
+
+### What each reviewer tried
+
+| Reviewer | Journey | Findings addressed |
+| --- | --- | --- |
+| New visitor | Home, team, Derive, gallery, FAQ, blog articles, Ascent, and Access; desktop navigation and mobile menu | FAQ next steps needed links; the homepage generalized Derive's format; the reach figure needed context. |
+| Recruiter | Hiring CTA, assessment and sponsorship anchors, team identity, partner evidence, articles, and contact path | Clarify the reach figure and reporting date; show copyable business email addresses; make FAQ references actionable. |
+| Ascent entrant | Home/menu to Ascent, official event site, registration form, and return-to-event link | Explain eligibility, free individual entry, preparation requirements, and qualifier details before leaving the marketing site. |
+| UI reviewer | Screenshots, lower sections, gallery controls, and portrait/landscape navigation across five screen widths | Remove repeated photo-button accessible names; confirm layout and keyboard behavior. |
+
+### Changes made from the reviews
+
+- Added contextual links to seven FAQ answers. Visitors can now continue directly to the contest pages, rules, eligibility, partnership information, or hiring contact. The plain answer text remains suitable for FAQ structured data.
+- Moved the FAQ answer list into `FaqList.tsx`, keeping the route focused on metadata and section composition.
+- Added an Ascent registration-preparation section with individual entry, free registration, India/APAC eligibility, the 100-seat limit outside India, the required shareable Google Drive resume link, optional transcript/Codeforces details, and the qualifier's date, time, and duration.
+- Added direct links to the official Ascent eligibility FAQ and full timeline. The existing registration buttons still open the official registration form.
+- Made the registration deadline and free entry visible in the opening Ascent status panel.
+- Replaced the ambiguous “AMS talent pool” label with “AMS community reach,” added the July 2026 reporting context, and stated that Derive participants are included in the wider figure. Updated the article and `llms.txt` to match. This does not advertise a database of candidates available for recruitment.
+- Scoped the homepage competition walkthrough to Derive '26 and adjusted its wording to reflect the completed edition. Ascent retains its distinct individual-to-team format and planned finale.
+- Displayed `team@amshq.in` for assessment inquiries and `partners@amshq.in` for contest partnerships in the contact section. Both addresses were confirmed on the official Ascent site. Updated the general assessment email button to the team address.
+- Fixed a confirmed Tailwind width conflict: the default arbitrary maximum width overrode the intended narrower article width. Added an explicit `reading` container size for articles and FAQ content, and adjusted the article image sizes accordingly.
+- Aligned shared page introductions with the site's standard content gutter.
+- Added concise gallery button names beginning with “Open photo,” avoiding the duplicated name previously produced by the image alt text and matching caption.
+- Corrected the blog index article headings to H2 when no section H2 precedes them.
+
+### Confirmed working during the walkthroughs
+
+- Home explains the three AMS offerings and provides distinct participant and firm routes.
+- Internal navigation reached all ten content pages without dead ends.
+- Gallery thumbnail activation, next-photo navigation, Escape, and focus restoration worked. An initial recruiter selector timeout was resolved by direct UI testing; the gallery itself was functioning.
+- Mobile menu links, Escape, focus restoration, and scrolling to the final action in a short landscape viewport worked.
+- The official Ascent event and registration pages returned HTTP 200. A reviewer reached the first registration step and followed the event-return link. No personal data was entered, later form steps were not submitted, and no registration was created.
+- The UI reviewer found no horizontal overflow in 35 checks across seven section pages at 320, 375, 768, 1024, and 1440 pixels, plus the homepage checks.
+
+### External issue recorded
+
+The official Ascent site has a contradictory sentence in its timeline introduction saying the registration closing date is unannounced, while its detailed timeline and FAQ specify 20 October 2026. This repository uses the explicit date from those detailed sections. The conflicting sentence belongs to the separate contest site and was not edited here.
+
+
+### Verification of the rebuilt review fixes
+
+- Production build, ESLint, and TypeScript checks passed.
+- All ten content pages passed the 320, 375, 768, 1024, and 1440 pixel checks with one H1, correct canonical URLs, no horizontal overflow, no em dashes, and no grayscale photo filters.
+- All internal destinations and anchors checked successfully. FAQ links were followed into the Ascent journey.
+- Confirmed the new Ascent preparation facts, visible and correctly addressed email links, and all 12 gallery button labels.
+- Blog reading containers are now capped at 768 pixels. The UI agent visually confirmed 704-pixel article content inside that container, readable FAQ content, and aligned desktop page introductions.
+- Mobile navigation, gallery keyboard controls, image loading, reduced-motion content, no-JavaScript homepage content, and browser runtime-error checks passed.
+- The UI agent rechecked the rebuilt article, FAQ, Ascent preparation, contact, and gallery views on desktop and 375-pixel mobile layouts and reported no further defects.
+
+
+### Follow-up performance results
+
+The rebuilt Ascent page scored 96 for performance and 100 for accessibility, best practices, and SEO, with LCP 2.7 seconds and CLS 0. The homepage scored 88 while other visual checks were running, then 91 in an isolated repeat, with LCP 3.0 seconds, total blocking time 180 milliseconds, CLS 0, and 100 in the other three categories.
+
+The final homepage measurement does not meet the repository's 95 performance target or its two-second LCP target. A targeted review found no new hero animation, visibility gate, hydration dependency, or meaningful asset growth: request counts stayed the same and total transfer grew by 437 bytes relative to the earlier report. The LCP photograph, priority, dimensions, and primary framework scripts were unchanged. No clear source regression was identified, so speculative rendering changes were not introduced to chase a score. The latest lower measurement is retained here rather than presented as a passing performance check. The previously noted JavaScript budget also remains open.

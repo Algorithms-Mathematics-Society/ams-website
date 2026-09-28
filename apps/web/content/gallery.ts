@@ -1,3 +1,5 @@
+export const GALLERY_ACTIONS = { openPhoto: "Open photo" } as const;
+
 export interface GalleryItem {
   /** Image alt text. */
   label: string;

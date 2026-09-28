@@ -5,7 +5,7 @@ export interface OperatingStage {
 }
 
 export const EXPERIENCE = {
-  eyebrow: "How the contests work",
+  eyebrow: "How Derive '26 worked",
   title: "From the first round to the final room.",
   image: {
     src: "/images/derive26/thumb/the-hall-at-capacity.webp",
@@ -15,18 +15,18 @@ export const EXPERIENCE = {
   stages: [
     {
       index: "01",
-      title: "Start online",
-      body: "Participants from across India tackle the same timed problems in the opening rounds.",
+      title: "Online qualifying rounds",
+      body: "Participants from across India tackled the same timed problems in the opening rounds.",
     },
     {
       index: "02",
-      title: "Earn a place in the finals",
-      body: "Results determine who advances. Qualifying competitors come together for the in-person finals.",
+      title: "A place in the finals",
+      body: "Fifty participants qualified for the finals, and 33 competed in person at IIT Bombay.",
     },
     {
       index: "03",
       title: "Meet the people behind the work",
-      body: "Finalists solve problems in person and meet engineers and recruiters from partner firms.",
+      body: "Finalists solved problems in person and met engineers and recruiters from partner firms.",
     },
     {
       index: "04",

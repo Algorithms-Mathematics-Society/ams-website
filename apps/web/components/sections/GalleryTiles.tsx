@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useRef, useState } from "react";
 import { Lightbox } from "@/components/ui/Lightbox";
 import { Reveal } from "@/components/ui/Reveal";
-import type { GalleryItem } from "@/content/gallery";
+import { GALLERY_ACTIONS, type GalleryItem } from "@/content/gallery";
 
 interface Props {
   items: GalleryItem[];
@@ -36,6 +36,7 @@ export function GalleryTiles({ items }: Props) {
             <Reveal delay={(index % 3) * 60}>
               <button
                 type="button"
+                aria-label={`${GALLERY_ACTIONS.openPhoto}: ${item.label}`}
                 onClick={(e) => {
                   openerRef.current = e.currentTarget;
                   setOpenIndex(index);

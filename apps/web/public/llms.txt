@@ -8,8 +8,9 @@
 
 Key facts:
 
-- AMS runs two contest series, Derive and Ascent. Its reported talent pool is
-  5,000+, with more than 30 institutions represented.
+- AMS runs two contest series, Derive and Ascent. Its reported community reach is
+  5,000+, with more than 30 institutions represented, as of July 2026.
+  The Derive participation count is included in that wider community figure.
 - Derive is the AMS quantitative reasoning contest, covering probability,
   markets, and mathematics. The 2026 edition had 2,500+ participants; 150
   advanced to Round 2, 50 qualified for the finals, and 33 competed in person
@@ -21,7 +22,7 @@ Key facts:
   individual online qualifier to team optimization at partner campuses and
   an on-site codebase finale. Registration for the 2026 edition is free and
   open until 20 October 2026 at https://ascent.amshq.in/register. Round 1 is
-  on 24 October, and Round 2 is on 6 December. The final is planned for
+  on 24 October at 2:00 pm IST and lasts two hours; Round 2 is on 6 December. The final is planned for
   20 December 2026 in Mumbai; that final date is tentative. The contest
   platform publishes the current schedule and entry requirements.
 - Access is the AMS proctored assessment platform. It uses a desktop
@@ -32,7 +33,9 @@ Key facts:
   recommendation.
 - Eligibility differs by contest. The Derive '26 rules cover students in
   technical degree programs in India and recent alumni. Ascent publishes
-  its own India and Asia-Pacific entry requirements on its contest site.
+  its own India and Asia-Pacific entry requirements on its contest site,
+  including a limit of 100 seats for candidates outside India. Ascent
+  registration is individual and requires a shareable Google Drive resume link.
 - AMS is led by founder Tilak Jain. Firms can discuss contest partnerships
   and assessment requirements via https://amshq.in/access.
 
