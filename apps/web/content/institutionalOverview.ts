@@ -8,7 +8,7 @@ export const INSTITUTIONAL_OVERVIEW = {
   eyebrow: "Why AMS",
   title: "Good problems bring capable people together.",
   definition:
-    "AMS brings students and early-career talent together through national contests in quantitative reasoning and systems engineering. Sponsors help make these contests possible and connect with the people taking part.",
+    "AMS brings students and early-career talent together through national contests in quantitative reasoning and systems engineering. Firms partner with AMS to take part in these contests and meet the people behind the work.",
   image: {
     src: "/images/derive26/hero/finalists-meet-the-interviewers.webp",
     alt: "Derive finalists meeting interviewers from partner firms at IIT Bombay",
@@ -32,8 +32,8 @@ export const INSTITUTIONAL_OVERVIEW = {
     },
     {
       number: "03",
-      title: "Support the next contest",
-      body: "We are seeking sponsors for Ascent and welcome conversations about future Derive editions.",
+      title: "Partner on the next edition",
+      body: "Ascent is our current sponsorship focus. Firms can also plan partnerships for future editions of Derive.",
     },
   ] satisfies readonly InstitutionalMandateItem[],
 } as const;

@@ -35,7 +35,7 @@ export const PRODUCTS = [
     index: "03",
     name: "Partner with AMS",
     classification: "Competition sponsorship",
-    purpose: "Support Ascent and Derive, and meet students working on systems and quantitative problems.",
+    purpose: "Partner on Ascent or a future Derive edition, and meet people working on systems and quantitative problems.",
     evidence: "Current focus: Ascent '26 sponsorship",
     href: "/access",
   },

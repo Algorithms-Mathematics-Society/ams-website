@@ -1,7 +1,7 @@
 export const ACCESS_HERO = {
   eyebrow: "Hiring & partnerships",
   title: "Sponsor Ascent.",
-  body: "We are looking for partners for Ascent, our competition in C++, optimization, and performance engineering. Help support the contest and get to know the people taking part.",
+  body: "Ascent brings systems programmers together to compete on C++, optimization, and performance engineering. Partner with AMS on the next edition.",
   image: {
     src: "/images/derive26/full/finalists-meet-the-interviewers.webp",
     alt: "Derive finalists in conversation with interviewers at the IIT Bombay finals",
@@ -14,19 +14,19 @@ export const ACCESS_HERO = {
 export const ACCESS_FIRMS = {
   id: "sponsor",
   eyebrow: "Contest sponsorship",
-  title: "Where your support can help.",
-  body: "Ascent is our current sponsorship priority. We are also open to conversations about future editions of Derive, our quantitative finance competition.",
+  title: "Partner with the next edition.",
+  body: "Ascent is our current focus for sponsorship. Derive partnerships cover future editions of our quantitative finance competition.",
   opportunities: [
     {
       name: "Ascent",
       status: "Current sponsorship focus",
-      body: "Participants work through problems where memory use, execution time, and implementation choices matter. Talk with us about supporting the contest and how your team could take part.",
+      body: "Participants compete on memory use, execution time, and implementation quality. Bring your team’s systems engineering and recruiting interests to an Ascent partnership.",
       link: { label: "Explore Ascent", href: "/ascent" },
     },
     {
       name: "Derive",
       status: "Future editions",
-      body: "Derive ’26 concluded with an in-person final at IIT Bombay, supported by Jane Street and QRT. We welcome conversations about supporting the next edition.",
+      body: "Derive ’26 brought 33 finalists to IIT Bombay, with Jane Street and QRT as partners. Partner with AMS for a future edition focused on probability, markets, and mathematical reasoning.",
       link: { label: "See Derive ’26", href: "/derive" },
     },
   ],
@@ -35,8 +35,8 @@ export const ACCESS_FIRMS = {
 export const ACCESS_CONVERSATION = {
   id: "contact",
   eyebrow: "Become a partner",
-  title: "Let’s talk about Ascent.",
-  body: "Email the AMS team to discuss sponsorship. Tell us about your organisation, your timeline, and how you would like to be involved. Interested in the next Derive? Mention that in your note.",
+  title: "Plan your partnership.",
+  body: "Share your firm’s goals, timeline, and proposed involvement. We will define the scope and next steps together. Ascent is the current focus; include Derive in your note if you are planning for a future edition.",
   contact: {
     email: "partners@amshq.in",
     href: "mailto:partners@amshq.in?subject=Ascent%20sponsorship%20enquiry",
@@ -44,11 +44,11 @@ export const ACCESS_CONVERSATION = {
   topics: [
     {
       title: "For sponsors",
-      body: "We can discuss the support you have in mind, the scope of your involvement, and how it fits the contest.",
+      body: "Set the scope of your sponsorship: objectives, involvement, and timing.",
     },
     {
       title: "For recruiting teams",
-      body: "If hiring is part of your interest, tell us which roles and skills matter to your team. We can discuss whether the contest is a good fit.",
+      body: "Tell us which roles and skills your team hires for. We will assess how the contest fits your recruiting goals.",
     },
   ],
 } as const;

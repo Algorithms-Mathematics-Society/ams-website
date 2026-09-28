@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "Hiring & partnerships: sponsor Ascent and Derive",
   alternates: { canonical: "/access" },
   description:
-    "Support AMS contests through sponsorship, with Ascent as our current focus and opportunities to discuss future Derive editions. Explore technical hiring assessments with AMS Access.",
+    "Partner with AMS on Ascent, our current sponsorship focus, or future Derive editions. Explore technical hiring assessments with AMS Access.",
 };
 
 export default function AccessPage() {

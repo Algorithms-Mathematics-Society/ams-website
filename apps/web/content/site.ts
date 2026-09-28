@@ -8,7 +8,7 @@ export interface NavLink {
 export const SITE = {
   name: "AMS",
   tagline:
-    "Competitions in quantitative finance and systems programming. Sponsorships that support the next generation of technical talent.",
+    "National competitions in quantitative finance and systems programming. Partnerships that bring firms and competitors together.",
   description:
     "AMS (Algorithms & Mathematics Society) runs Derive and Ascent, competitions in quantitative finance and systems programming. Explore our contests, people, and sponsorship opportunities.",
   legalName: "Algorithms & Mathematics Society",

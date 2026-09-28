@@ -211,3 +211,12 @@ Two design and content subagents reviewed the shared UI and sponsorship page. Th
 - The design subagent visually reviewed the final production homepage, team page, and sponsorship page on desktop and mobile. It found no arrow collisions, awkward underlines, wrapping defects, or spacing issues. Sampled standalone text actions measured at least 44 pixels high.
 - The isolated homepage Lighthouse run scored 96 for performance and 100 for accessibility, best practices, and SEO. LCP was 2.8 seconds, CLS was 0, and total blocking time was 20 milliseconds.
 - The Lighthouse score meets the repository's 95 target. Its stricter two-second LCP target remains unmet, and this refinement does not resolve the previously documented JavaScript budget. No dependencies, image assets, or additional client-side interactions were added.
+
+## Partnership tone refinement
+
+- Replaced “Where your support can help” with “Partner with the next edition” and “Let’s talk about Ascent” with “Plan your partnership.”
+- Removed tentative appeals such as “looking for partners,” “help support,” “seeking sponsors,” and “we welcome conversations” from the sponsorship pitch and related homepage copy.
+- Framed sponsorship as a working partnership with clear objectives, involvement, timing, and agreed next steps. Recruiting copy now asks for concrete roles and skills so AMS can assess the fit.
+- Grounded Derive's invitation in its completed edition: 33 finalists at IIT Bombay, with Jane Street and QRT as partners. Kept Ascent as the current focus and Derive sponsorship tied to future editions.
+- Updated the homepage introduction, partnership card, closing invitation, footer tagline, and partnerships metadata for a consistent tone. Preserved the design, contact destinations, and final assessment section.
+- Verification: production build with TypeScript validation, ESLint, and whitespace checks passed. Homepage and partnerships page passed copy and layout checks at 320, 375, 768, 1024, and 1440 pixels. Confirmed the contact destination, absence of em dashes and removed phrases, and no browser errors. Visually checked the revised sponsorship section.
