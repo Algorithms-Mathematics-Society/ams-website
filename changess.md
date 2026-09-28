@@ -227,3 +227,40 @@ Two design and content subagents reviewed the shared UI and sponsorship page. Th
 - Added Sahil as “Head of Partnerships · AMS Derive 2026,” linking to the supplied LinkedIn profile. Affiliation is optional and omitted where none was supplied.
 - Arranged the four profiles beneath Tilak in two columns on tablet and desktop, with a single column on phones. Updated the team introduction and `llms.txt` to include the partnerships role.
 - Verification: production build with TypeScript validation, ESLint, and whitespace checks passed. The team page passed at 320, 375, 768, 1024, and 1440 pixels, with the exact role text and Sahil's LinkedIn destination, no horizontal overflow or em dashes, and no browser errors. Visually checked the completed roster.
+
+## Balanced team page and gallery redesign
+
+### Research and design rationale
+
+There is no single gallery layout established as universally “most liked.” The design follows published guidance and the actual AMS photo collection rather than attributing a preference to Apple or Google.
+
+- [Apple Human Interface Guidelines: Collections](https://developer.apple.com/design/human-interface-guidelines/collections) recommends familiar rows or grids, adequate spacing, and layouts that keep attention on the content. Applied as a predictable grid with straightforward photo selection.
+- [Google Material: Image lists](https://m2.material.io/go/web-image-list/) distinguishes equal-sized grids from layouts that emphasize selected images or preserve varied proportions. Most AMS thumbnails are approximately 3:2, so a regular 3:2 grid suits this collection. The full-size viewer preserves the original image proportions.
+- [Nielsen Norman Group: Cards](https://www.nngroup.com/articles/cards-component/) recommends a regular grid for a photo album rather than framing every photograph as a separate card. Removed the shared border matrix and boxed caption strips, keeping clear gutters and visible captions.
+- [Nielsen Norman Group: Similarity](https://www.nngroup.com/articles/gestalt-similarity/) explains how consistent size signals related content and comparable visual prominence. Applied to the team roster with the same name size for every person.
+
+### Team layout
+
+- Removed the full-width founder panel, its contrasting background, oversized padding, and large portrait.
+- Placed all five members in the same responsive roster with equal name typography. Tilak remains first with a 72-by-88-pixel real photograph and his short biography, providing modest recognition without dominating the page.
+- Kept every name, role, affiliation, and profile link. Added no invented photographs or affiliations.
+- Added a compact page-header option for the team page and tightened the space before the roster so colleagues appear sooner.
+
+### Gallery layout and viewer
+
+- Added a compact album introduction with event context, a dynamic photo count, a full-size viewing hint, and a link back to the Derive edition.
+- Used two columns on phones and tablets and three on desktop, with stable row order and consistent gutters. The twelve photographs remain in their existing order.
+- Changed thumbnails from 4:3 to 3:2, closer to the source photographs, and retained descriptive captions below every image.
+- Removed borders around each photograph and the reveal effect from gallery tiles. Photos are available immediately without waiting for scroll animations; the first thumbnail is prioritized and the others remain lazy-loaded.
+- Matched image size hints to the actual column widths. No new image assets or dependencies were added.
+- Added a current-photo counter to the full-size viewer and separated captions and controls on narrow screens. Original aspect ratios, keyboard navigation, Escape, focus restoration, and scroll locking remain part of the viewer.
+
+### Review and verification
+
+- A design subagent proposed the compact founder treatment and shared roster. The parent implemented it alongside the gallery redesign and visually reviewed desktop and mobile captures.
+- Production build, ESLint, TypeScript, and whitespace checks passed. All routes remain statically generated.
+- All ten content pages passed checks at 320, 375, 768, 1024, and 1440 pixels for layout, headings, canonical URLs, color photographs, reduced-motion visibility, and absence of em dashes.
+- Additional checks confirmed equal name typography across all five team members, the 72-by-88-pixel portrait, and the gallery's two-column and three-column breakpoints.
+- Opened and decoded all twelve full-size photographs. Verified the counter, previous/next wraparound, keyboard focus trapping, Escape, focus restoration, scroll unlocking, and that clicking the photograph itself does not close the viewer. Viewer controls retain 44-pixel targets.
+- Checked visible gallery content without JavaScript, all internal routes and anchors, image loading, mobile navigation, and JSON-LD parsing. No browser runtime errors were reported.
+- Final gallery Lighthouse: performance 99; accessibility, best practices, and SEO 100; displayed LCP 2.0 seconds; CLS 0; total blocking time 20 milliseconds. This is a gallery measurement, not a new site-wide performance guarantee. Previously recorded homepage and JavaScript budget limitations remain documented above.

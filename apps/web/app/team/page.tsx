@@ -15,6 +15,7 @@ export default function TeamPage() {
   return (
     <>
       <PageHeader
+        compact
         eyebrow={TEAM_PAGE.eyebrow}
         title={TEAM_PAGE.title}
         body={TEAM_PAGE.body}

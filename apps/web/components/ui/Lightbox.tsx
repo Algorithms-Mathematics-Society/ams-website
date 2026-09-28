@@ -6,6 +6,7 @@ import { useEffect, useRef } from "react";
 interface Props {
   items: { src: string; label: string }[];
   index: number;
+  positionLabel: string;
   onClose: () => void;
   onNavigate: (index: number) => void;
 }
@@ -15,7 +16,7 @@ interface Props {
  * chrome kept minimal. Esc closes, arrow keys navigate, focus is trapped,
  * body scroll locks while open.
  */
-export function Lightbox({ items, index, onClose, onNavigate }: Props) {
+export function Lightbox({ items, index, positionLabel, onClose, onNavigate }: Props) {
   const closeRef = useRef<HTMLButtonElement>(null);
   const item = items[index];
 
@@ -90,7 +91,7 @@ export function Lightbox({ items, index, onClose, onNavigate }: Props) {
       className="fixed inset-0 z-50 flex flex-col bg-black"
       onClick={onClose}
     >
-      <div className="relative flex-1" onClick={onStageClick}>
+      <div className="relative min-h-0 flex-1" onClick={onStageClick}>
         <Image
           src={item.src}
           alt={item.label}
@@ -101,11 +102,16 @@ export function Lightbox({ items, index, onClose, onNavigate }: Props) {
       </div>
 
       <div
-        className="flex items-center justify-between gap-4 px-5 py-4 sm:px-8"
+        className="flex shrink-0 flex-col gap-3 px-5 py-4 sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:px-8"
         onClick={(e) => e.stopPropagation()}
       >
-        <p className="text-sm text-cream-light/80">{item.label}</p>
-        <div className="flex shrink-0 gap-2">
+        <div className="min-w-0" aria-live="polite" aria-atomic="true">
+          <p className="text-xs tabular-nums text-cream-light/60">
+            {positionLabel} {index + 1} / {items.length}
+          </p>
+          <p className="mt-1 text-sm leading-6 text-cream-light/90">{item.label}</p>
+        </div>
+        <div className="flex shrink-0 justify-end gap-2">
           <button
             type="button"
             data-lightbox-control

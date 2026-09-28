@@ -14,7 +14,7 @@ interface Props {
 export function GalleryGrid({ limit, withHeading = true }: Props) {
   const items = limit ? GALLERY.slice(0, limit) : GALLERY;
   return (
-    <section className="bg-cream-light py-section">
+    <section className={`bg-cream-light pb-section ${withHeading ? "pt-section" : ""}`}>
       <Container>
         {withHeading && (
           <Reveal>

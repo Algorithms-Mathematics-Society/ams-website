@@ -11,57 +11,54 @@ interface Props {
 }
 
 export function TeamGrid({ withHeading = true }: Props) {
-  // Without the section h2, names step down from the page h1 directly.
   const NameTag = withHeading ? "h3" : "h2";
+
   return (
-    <section className="py-section">
+    <section className="pb-section pt-8 sm:pt-10">
       <Container>
         {withHeading && (
           <Reveal>
             <SectionHeading eyebrow="The team" title="The people behind it." />
           </Reveal>
         )}
-
-        <ul className={`grid gap-x-10 gap-y-10 md:grid-cols-2 ${withHeading ? "mt-12" : ""}`}>
+        <ul className={`grid gap-x-16 gap-y-10 md:grid-cols-2 ${withHeading ? "mt-12" : ""}`}>
           {TEAM.map((member, index) => (
-            <li
-              key={member.name}
-              className={member.image ? "col-span-full" : "min-w-0"}
-            >
-              <Reveal
-                delay={index * 70}
-                className={member.image ? "grid overflow-hidden rounded-lg bg-paper md:grid-cols-12" : "flex h-full flex-col py-2"}
-              >
-                {member.image && (
-                  <div className="relative aspect-[4/3] overflow-hidden md:col-span-4 md:aspect-[4/5]">
-                    <Image
-                      src={member.image.src}
-                      alt={member.image.alt}
-                      fill
-                      sizes="(min-width: 1280px) 405px, (min-width: 768px) 33vw, calc(100vw - 40px)"
-                      className="object-cover"
-                    />
-                  </div>
-                )}
-                <div className={member.image ? "flex flex-col justify-center px-6 py-8 md:col-span-8 md:px-12 md:py-12" : "flex h-full flex-col items-start"}>
-                  <NameTag className={member.image ? "text-[clamp(1.875rem,3vw,2.25rem)] font-semibold tracking-[-0.035em] text-burgundy" : "text-2xl font-semibold tracking-[-0.025em] text-burgundy"}>
-                    {member.name}
-                  </NameTag>
-                  <p className="mt-3 text-base font-medium leading-6 text-ink">
-                    {member.role}
-                  </p>
-                  {member.affiliation && (
-                    <p className="mt-1 text-sm leading-6 text-ink/65">
-                      {member.affiliation}
-                    </p>
-                  )}
-                  {member.bio && <p className="mt-5 max-w-xl leading-7 text-ink/85">{member.bio}</p>}
-                  {member.profile && (
-                    <div className={member.image ? "mt-6" : "mt-auto pt-6"}>
-                      <TextLink href={member.profile.href}>{member.profile.label}</TextLink>
+            <li key={member.name} className="min-w-0">
+              <Reveal delay={index * 60} className="flex h-full flex-col items-start py-2">
+                <div className="flex items-start gap-4">
+                  {member.image && (
+                    <div className="relative h-[88px] w-[72px] shrink-0 overflow-hidden rounded-media">
+                      <Image
+                        src={member.image.src}
+                        alt={member.image.alt}
+                        fill
+                        sizes="72px"
+                        className="object-cover object-top"
+                      />
                     </div>
                   )}
+                  <div className="min-w-0">
+                    <NameTag className="text-2xl font-semibold tracking-[-0.025em] text-burgundy">
+                      {member.name}
+                    </NameTag>
+                    <p className="mt-3 text-base font-medium leading-6 text-ink">
+                      {member.role}
+                    </p>
+                    {member.affiliation && (
+                      <p className="mt-1 text-sm leading-6 text-ink/65">
+                        {member.affiliation}
+                      </p>
+                    )}
+                  </div>
                 </div>
+                {member.bio && (
+                  <p className="mt-4 max-w-md text-sm leading-6 text-ink/75">{member.bio}</p>
+                )}
+                {member.profile && (
+                  <div className="mt-auto pt-4">
+                    <TextLink href={member.profile.href}>{member.profile.label}</TextLink>
+                  </div>
+                )}
               </Reveal>
             </li>
           ))}

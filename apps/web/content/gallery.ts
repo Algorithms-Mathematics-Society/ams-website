@@ -1,4 +1,7 @@
-export const GALLERY_ACTIONS = { openPhoto: "Open photo" } as const;
+export const GALLERY_ACTIONS = {
+  openPhoto: "Open photo",
+  photo: "Photo",
+} as const;
 
 export interface GalleryItem {
   /** Image alt text. */
@@ -14,7 +17,10 @@ export interface GalleryItem {
 export const GALLERY_PAGE = {
   eyebrow: "Derive '26 archive",
   title: "Inside the Derive '26 finals.",
-  body: "Photographs from the Derive '26 finals at IIT Bombay in July 2026. Problem solving, conversations with partner firms, and time together between rounds.",
+  body: "IIT Bombay, July 2026. The competition and the people behind it.",
+  photoCountLabel: "photographs",
+  viewHint: "Select a photograph to view full size.",
+  editionLink: { label: "About Derive ’26", href: "/derive" },
   cta: {
     title: "Prepare for the next edition.",
     body: "Review the Derive format, follow the next registration window, or contact AMS about contributing to the event.",
