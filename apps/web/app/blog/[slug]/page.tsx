@@ -34,8 +34,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: post.title,
     description: post.description,
+    alternates: { canonical: `/blog/${post.slug}` },
     openGraph: {
       type: "article",
+      url: `/blog/${post.slug}`,
       title: post.title,
       description: post.description,
       publishedTime: post.pubDate.toISOString(),
@@ -60,7 +62,7 @@ export default async function BlogPostPage({ params }: Props) {
       <section className="pt-section pb-4">
         <Container className="max-w-3xl">
           <Eyebrow>{BLOG_PAGE.eyebrow}</Eyebrow>
-          <h1 className="mt-6 font-sans text-hero font-semibold tracking-[-0.04em] text-burgundy">
+          <h1 className="mt-6 font-display text-hero font-normal tracking-[-0.04em] text-burgundy">
             {post.title}
           </h1>
           <div className="mt-6 flex flex-wrap items-center gap-3 text-sm text-ink/70">

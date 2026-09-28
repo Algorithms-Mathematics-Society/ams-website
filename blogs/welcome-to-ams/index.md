@@ -1,62 +1,66 @@
 ---
-title: "Why AMS runs contests, not courses"
+title: "Why AMS runs competitions"
 pubDate: 2026-07-19
-description: "AMS bets that a hard contest under a clock reveals more about a candidate than a course ever could, which is why Derive, Ascent, and Access are all built around live, timed problem-solving."
-author: "Tilak"
+description: "How timed problems, a shared scoring system, and in-person finals help AMS bring quantitative and systems talent together."
+author: "Tilak Jain"
 image:
   url: "./cover.webp"
   alt: "Finalists on stage at the Derive '26 prize ceremony, IIT Bombay"
 tags: ["about", "derive"]
 ---
 
-# Why AMS runs contests, not courses
 
-AMS is an Indian organization that runs national contests in quantitative
-finance and competitive programming, and builds Access, the assessment
-platform that turns contest performance into verified hiring signal. We could
-have built another course platform. We built a scoreboard instead.
+A good problem gives people something concrete to work on together. A
+competition adds a time limit, common rules, and a reason to test an idea
+carefully before submitting it.
 
-## The bet
+That is the starting point for AMS, the Algorithms & Mathematics Society.
+We run national contests in quantitative reasoning and systems engineering,
+and build Access for teams that want to assess candidates through timed
+problem solving.
 
-A course tells you what someone was taught. A contest tells you what someone
-can actually do when the clock is running and nobody can help. Derive '26
-drew 2,500+ participants from 30+ institutions across India, out of a talent
-pool of 5,000+ students AMS has reached so far, and the finals came down to
-33 people in a room at IIT Bombay in July 2026. That funnel is the point:
-most of the noise falls away before round two, and what's left is signal.
+## What a contest can show
 
-## What that looks like in practice
+A result tells you how someone performed on a particular set of problems,
+under particular conditions. It can reveal mathematical reasoning,
+implementation skill, or the ability to make progress within a time limit.
+It is one useful part of understanding a candidate, alongside their other
+work and a conversation about how they think.
 
-* **Derive** is timed, adversarial, and scored the same way for everyone in
-  the room: probability, markets, and mathematical reasoning under pressure.
-* **Ascent** does the same thing for systems: C++, optimization, and
-  performance engineering, the winter edition of the circuit.
-* **Access** takes that same idea and rents it to firms: a proctored
-  assessment benchmarked against the AMS contest population, not a generic
-  test bank.
+Derive '26 brought together 2,500+ participants. The top 150 advanced to
+Round 2, 50 qualified for the finals, and 33 competed in person at IIT
+Bombay in July 2026. The [Derive page](/derive) records that format and the
+partners who supported it.
 
-## A small taste of the problem style
+## Different problems, different skills
 
-Derive problems tend to reward exact reasoning over brute force. Here's the
-shape of it, not an actual contest problem, just the flavor:
+* [Derive](/derive) focuses on probability, markets, and mathematical
+  reasoning.
+* [Ascent](/ascent) focuses on C++, optimization, and performance
+  engineering.
+* [Access](/access) supports proctored assessments for hiring teams, with
+  results and session records that can inform further review.
 
-```python
-def expected_rounds(p_win: float) -> float:
-    """Expected number of rounds to win once, given a per-round win prob."""
-    if not 0 < p_win <= 1:
-        raise ValueError("p_win must be in (0, 1]")
-    return 1 / p_win
+## An example of the reasoning
 
-print(expected_rounds(0.25))  # 4.0
-```
+Suppose each independent round of a game has the same probability of a
+win. How many rounds should you expect to play before your first win?
 
-Nothing exotic: the contest rewards the person who sees the closed form
-before the person who starts simulating.
+For a win probability `p`, where `0 < p <= 1`, the expected number of rounds
+is `1 / p`. For example, a one-in-four chance gives an expectation of four
+rounds. This depends on the probability staying fixed and the rounds being
+independent. It does not mean every player wins by the fourth round.
 
-> Jane Street was the Apex Partner of Derive '26, and QRT was the
-> Convergence Partner for the finals. Firms show up because the scoreboard
-> already did the filtering for them.
+This is an introductory illustration, not a problem from the contest.
+Writing down the assumptions and distinguishing an expectation from a
+guarantee are both part of the reasoning we care about.
 
-We'll use this space for recaps, problem walkthroughs, and notes on how the
-next edition is shaping up. Start with [Derive](/derive) if you want to see
-what the contest itself looks like.
+## Beyond the score
+
+The finals also give competitors time to meet one another and speak with
+people from partner firms. The [event gallery](/gallery) shows both the
+contest and the conversations around it.
+
+Jane Street was the Apex Partner of Derive '26, and QRT was the
+Convergence Partner for the finals. Firms interested in a future edition
+can [discuss a partnership with AMS](/access#sponsor).

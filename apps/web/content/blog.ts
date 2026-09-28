@@ -1,10 +1,10 @@
 export const BLOG_PAGE = {
   eyebrow: "Blog",
-  title: "AMS Blogs",
-  body: "Recaps, problem walkthroughs, and notes on how the next edition is shaping up.",
+  title: "Notes from AMS.",
+  body: "Contest recaps, problem walkthroughs, and updates from the team.",
   cta: {
-    title: "See the contest itself.",
-    body: "Reading about it is one thing. Derive '26 drew 2,500+ participants; the next edition is where you'd be one of them.",
+    title: "Explore Derive.",
+    body: "Review the contest format, meet our partners, and see what happened at the 2026 finals.",
     buttonLabel: "Explore Derive",
     buttonHref: "/derive",
   },

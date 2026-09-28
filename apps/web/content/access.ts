@@ -1,15 +1,16 @@
 export const ACCESS_HERO = {
-  eyebrow: "Access",
-  title: "The platform.",
-  body: "Proctored assessments benchmarked against India's competitive elite. A 15-stage secure onboarding takes every candidate from sign-in to a locked, monitored exam in a native desktop shell.",
+  eyebrow: "AMS Access · Assessments for firms",
+  title: "See how candidates solve problems.",
+  body: "Access is the AMS desktop assessment platform. It brings timed problem solving, session checks, and proctoring into one place for your team to review alongside interviews.",
   image: {
-    /** Contestant Command Hub mockup from the ams-access home page assets. */
     src: "/images/access-command-hub.png",
-    alt: "The Access desktop client's Contestant Command Hub: session code entry, contest list, and a system integrity rail with every check reading SECURE",
+    alt: "Access desktop interface preview with session entry, contest list, and system readiness checks",
     width: 860,
     height: 520,
   },
-  photoCaption: "The Access desktop client · Contestant Command Hub",
+  photoCaption: "Access desktop interface preview",
+  primaryLink: { label: "Discuss an assessment", href: "#contact" },
+  secondaryLink: { label: "Explore contest partnerships", href: "#sponsor" },
 } as const;
 
 export interface AccessFeature {
@@ -17,54 +18,93 @@ export interface AccessFeature {
   body: string;
 }
 
-/** Feature set drawn from the platform repo (access-ams) docs. */
+export const ACCESS_FEATURES_HEADING = {
+  eyebrow: "The assessment environment",
+  title: "From session setup to review.",
+} as const;
+
+/** Descriptions reflect the existing product materials, without security guarantees. */
 export const ACCESS_FEATURES: AccessFeature[] = [
   {
-    title: "A native shell, not a browser tab",
-    body: "A desktop app for Windows and Linux. System shortcuts, screenshots, and app switching are locked at the OS level for the length of the session.",
+    title: "Desktop assessment client",
+    body: "A dedicated application for Windows and Linux provides a consistent place to enter and complete an assessment.",
   },
   {
-    title: "Seven readiness checks",
-    body: "Camera, microphone, network, restricted apps, keyboard lockdown, platform, and VM integrity. Everything green before a candidate can enter.",
+    title: "Readiness checks",
+    body: "Camera, microphone, network, and environment checks help candidates prepare before the session begins.",
   },
   {
-    title: "Network, allowlisted",
-    body: "Outbound traffic is locked to the contest API for the duration of the exam. No lookups, no side channels.",
+    title: "Session restrictions",
+    body: "Application and network controls are designed to limit outside assistance during an assessment.",
   },
   {
-    title: "Environment integrity",
-    body: "Detects virtual machines, debugger and injection attempts, and restricted apps like screen recorders and remote desktop tools.",
+    title: "Environment checks",
+    body: "Checks flag restricted applications and signs of a virtual or modified environment for review.",
   },
   {
-    title: "Proctoring with an audit trail",
-    body: "Video, audio, and screen requirements are set per contest, and every integrity event lands in the audit log.",
+    title: "Configurable proctoring",
+    body: "Video, audio, and screen requirements can be set for each contest. Integrity events form part of the session record.",
   },
   {
-    title: "Crash-safe by design",
-    body: "Sessions resume after a disconnect or crash, and the candidate's machine is always restored to its normal state.",
+    title: "Session recovery",
+    body: "Recovery flows support interrupted sessions. Discuss device requirements and candidate support before running an assessment.",
   },
 ];
 
 export const ACCESS_WORDMARK = {
   src: "/brand/access-wordmark.svg",
   alt: "AMS Access",
-  caption: "The desktop client behind every session.",
+  caption: "The AMS assessment platform.",
 } as const;
 
 export const ACCESS_FIRMS = {
-  /** Anchor target: the footer's Sponsor link points at /access#sponsor. */
   id: "sponsor",
-  eyebrow: "For firms",
-  title: "Signal, not resumes.",
+  eyebrow: "For recruiters and contest partners",
+  title: "Get to know the work behind the result.",
   paragraphs: [
-    "Every Access assessment runs in the same shell and is scored against the population that competes in Derive and Ascent. When a candidate clears your bar, you know exactly where that bar sits: against 2,500+ of India's competitive best.",
-    "Sponsor a contest, run a private benchmarked assessment, or both.",
+    "A contest result is a starting point for a conversation. Derive brings together people interested in probability, markets, and mathematical reasoning. Ascent focuses on algorithms and systems programming.",
+    "Talk to AMS about supporting a contest or exploring an assessment for your hiring process. Start with the roles you are hiring for, the skills you want to examine, and the evidence your team needs to make a decision.",
+  ],
+  image: {
+    src: "/images/derive26/full/finalists-meet-the-interviewers.webp",
+    alt: "Derive finalists in conversation with interviewers at the IIT Bombay finals",
+    caption: "Conversations at the Derive '26 finals · IIT Bombay",
+  },
+  links: [
+    { label: "Review Derive '26", href: "/derive" },
+    { label: "See the finals photographs", href: "/gallery" },
+    { label: "Meet the AMS team", href: "/team" },
+  ],
+} as const;
+
+export const ACCESS_CONVERSATION = {
+  id: "contact",
+  eyebrow: "Start a conversation",
+  title: "What would you like to assess?",
+  body: "Share your hiring context with Tilak, the AMS founder. These are the questions to work through before choosing an assessment or partnership.",
+  topics: [
+    {
+      title: "Role and problem set",
+      body: "Which skills matter for the role, and what would a useful problem set look like?",
+    },
+    {
+      title: "Candidate experience",
+      body: "What devices, timing, accessibility needs, and support should the session account for?",
+    },
+    {
+      title: "Results and review",
+      body: "What scoring, comparison group, and session records would help your team evaluate the results?",
+    },
+    {
+      title: "Scope and terms",
+      body: "What are the timeline, pricing, proctoring requirements, and candidate data handling arrangements?",
+    },
   ],
 } as const;
 
 export const ACCESS_CTA = {
-  title: "Run a benchmarked assessment.",
-  body: "Bring your own question set or use ours. We run the shell, the proctoring, and the ranklist.",
-  buttonLabel: "Talk to us",
-  buttonHref: "mailto:tilakj0108@gmail.com?subject=Access%20for%20firms",
+  title: "Tell us about your hiring needs.",
+  body: "Email Tilak with the roles, approximate candidate count, and timeline you have in mind. You can also get in touch about a contest partnership.",
+  buttonLabel: "Email Tilak at AMS",
+  buttonHref: "mailto:tilakj0108@gmail.com?subject=AMS%20assessment%20or%20partnership%20enquiry",
 } as const;

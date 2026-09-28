@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { DERIVE_HERO } from "@/content/derive";
@@ -9,12 +10,15 @@ export function DeriveHero() {
       <Container className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
         <div>
           <Eyebrow>{DERIVE_HERO.eyebrow}</Eyebrow>
-          <h1 className="mt-6 font-sans text-hero font-semibold tracking-[-0.04em] text-burgundy">
+          <h1 className="mt-6 font-display text-hero font-normal tracking-[-0.04em] text-burgundy">
             {DERIVE_HERO.title}
           </h1>
           <p className="mt-6 max-w-md leading-relaxed">
             {DERIVE_HERO.body}
           </p>
+          <Button href={DERIVE_HERO.archiveLink.href} variant="outline" className="mt-7">
+            {DERIVE_HERO.archiveLink.label}
+          </Button>
         </div>
 
         <figure>
@@ -24,7 +28,7 @@ export function DeriveHero() {
               alt={DERIVE_HERO.image.alt}
               fill
               priority
-              sizes="(min-width: 1280px) 544px, (min-width: 1024px) 46vw, calc(100vw - 40px)"
+              sizes="(min-width: 1280px) 576px, (min-width: 1024px) 46vw, calc(100vw - 40px)"
               className="object-cover"
             />
           </div>

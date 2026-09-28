@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -33,20 +34,24 @@ export function TeamGrid({ withHeading = true }: Props) {
                     src={member.image.src}
                     alt={member.image.alt}
                     fill
-                    sizes="(min-width: 1024px) 362px, (min-width: 768px) 33vw, calc(100vw - 40px)"
+                    sizes="(min-width: 1280px) 405px, (min-width: 768px) 33vw, calc(100vw - 40px)"
                     className="object-cover"
                   />
                 </div>
                 <div className="flex flex-col justify-end border-t border-burgundy/20 px-5 py-7 md:col-span-8 md:border-t-0 md:border-l md:px-10 md:py-10">
-                  <p className="text-xs font-semibold tracking-[0.18em] text-gold-deep tabular-nums">
-                    {String(index + 1).padStart(2, "0")}
-                  </p>
+
                   <NameTag className="mt-6 text-3xl font-semibold tracking-[-0.035em] text-burgundy sm:text-4xl">
                     {member.name}
                   </NameTag>
                   <p className="mt-2 text-sm font-semibold tracking-[0.12em] text-ink/70 uppercase">
                     {member.role}
                   </p>
+                  {member.bio && <p className="mt-5 max-w-xl leading-7 text-ink/85">{member.bio}</p>}
+                  {member.profile && (
+                    <div className="mt-6">
+                      <Button href={member.profile.href} variant="outline">{member.profile.label}</Button>
+                    </div>
+                  )}
                 </div>
               </Reveal>
             </li>

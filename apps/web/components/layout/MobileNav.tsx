@@ -40,7 +40,7 @@ function MobileNavDisclosure({ pathname }: { pathname: string }) {
       }
       if (e.key !== "Tab") return;
       const focusables = [
-        ...(panelRef.current?.querySelectorAll<HTMLElement>("a") ?? []),
+        ...(panelRef.current?.querySelectorAll<HTMLElement>("a, button") ?? []),
       ].filter((el): el is HTMLElement => el != null);
       const first = focusables[0];
       const last = focusables[focusables.length - 1];
@@ -91,7 +91,7 @@ function MobileNavDisclosure({ pathname }: { pathname: string }) {
 
       {open && (
         <div
-          className="fixed inset-x-0 top-16 bottom-0 z-50 overflow-y-auto border-t border-gold-bright/35 bg-burgundy"
+          className="fixed inset-x-0 top-20 bottom-0 z-50 overflow-y-auto border-t border-gold-bright/35 bg-burgundy"
           onMouseDown={(event) => {
             if (event.target === event.currentTarget) closeMenu();
           }}
@@ -104,6 +104,13 @@ function MobileNavDisclosure({ pathname }: { pathname: string }) {
             aria-label="Main navigation"
             className="mx-auto w-full max-w-6xl px-5 py-5 sm:px-8"
           >
+            <button
+              type="button"
+              onClick={() => closeMenu()}
+              className="mb-4 flex min-h-11 items-center gap-2 text-sm text-cream-light underline underline-offset-4 focus-visible:outline-gold-bright"
+            >
+              Close menu <span aria-hidden>×</span>
+            </button>
             <nav aria-label="Main" className="flex flex-col border-t border-cream-light/20">
               {NAV_LINKS.map((link) => (
                 <Link

@@ -15,16 +15,14 @@ export function Footer() {
               className="inline-flex min-h-11 items-center gap-3 text-cream-light hover:text-gold-bright focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-bright"
             >
               <Image
-                src="/brand/mark-glyph-white.svg"
+                src="/brand/wordmark-horizontal-inverse.svg"
                 alt=""
                 aria-hidden="true"
-                width={32}
-                height={29}
+                width={119}
+                height={36}
                 className="shrink-0"
               />
-              <span className="text-lg font-semibold tracking-[0.2em]">
-                {SITE.name}
-              </span>
+
             </Link>
             <p className="mt-4 max-w-md break-words text-sm leading-6 text-cream-light/80">
               {SITE.tagline}

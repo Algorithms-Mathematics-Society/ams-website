@@ -1,6 +1,7 @@
+import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
-import { ASCENT_HERO } from "@/content/ascent";
+import { ASCENT_CTA, ASCENT_HERO } from "@/content/ascent";
 
 export function AscentHero() {
   return (
@@ -8,12 +9,13 @@ export function AscentHero() {
       <Container className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
         <div>
           <Eyebrow>{ASCENT_HERO.eyebrow}</Eyebrow>
-          <h1 className="mt-6 font-sans text-hero font-semibold tracking-[-0.04em] text-burgundy">
+          <h1 className="mt-6 font-display text-hero font-normal tracking-[-0.04em] text-burgundy">
             {ASCENT_HERO.title}
           </h1>
           <p className="mt-6 max-w-md leading-relaxed">
             {ASCENT_HERO.body}
           </p>
+          <Button href={ASCENT_CTA.buttonHref} className="mt-7">{ASCENT_CTA.buttonLabel}</Button>
         </div>
 
         <aside className="border-y border-burgundy/25 bg-cream-light">

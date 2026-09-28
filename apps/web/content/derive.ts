@@ -1,10 +1,14 @@
 export const DERIVE_HERO = {
   eyebrow: "Derive",
-  title: "The quant contest.",
-  body: "Probability, markets, and mathematical reasoning under the clock. Two online rounds to earn a seat, then finals on stage: in person, in front of the firms that hire this talent.",
+  title: "The quantitative reasoning contest.",
+  body: "Probability, markets, and mathematical reasoning, tested through two online rounds and an in-person final. Explore the format and the participation from Derive '26.",
   image: {
     src: "/images/derive26/hero/the-hall-at-capacity.webp",
     alt: "Derive finalists working across the contest hall at IIT Bombay",
+  },
+  archiveLink: {
+    label: "Read the 2026 rules",
+    href: "https://amsderive.in/rules",
   },
   photoCaption: "Derive '26 finals · IIT Bombay · July 2026",
 } as const;
@@ -21,26 +25,27 @@ export const DERIVE_STAGES: DeriveStage[] = [
   {
     stat: "2,500+",
     statLabel: "participants",
-    title: "Round 1: the field",
-    body: "Open to everyone. One round of probability, markets, and mathematical reasoning sets the bar.",
+    title: "Round 1: the opening round",
+    body: "The first online round tested probability, markets, and mathematical reasoning.",
   },
   {
     stat: "150",
     statLabel: "advanced",
-    title: "Round 2: the cut",
-    body: "The top performers return for a harder paper. Only the sharpest 150 make it this far.",
+    title: "Round 2: the qualifying round",
+    body: "The top 150 participants advanced to a second online round with a more demanding problem set.",
   },
   {
     stat: "50",
-    statLabel: "qualify for finals",
-    title: "Finals: offline at IIT Bombay",
-    body: "Fifty qualify for the on-stage finals; 33 competed in person at Derive '26.",
+    statLabel: "qualified for finals",
+    title: "Finals: in person at IIT Bombay",
+    body: "Fifty participants qualified for the finals. Thirty-three competed in person at IIT Bombay in July 2026.",
   },
 ];
 
 export interface DerivePartner {
   tier: string;
   name: string;
+  href: string;
   description: string;
   logo: {
     /** Public path to the approved logo asset. */
@@ -54,12 +59,19 @@ export interface DerivePartner {
   };
 }
 
+export const DERIVE_PARTNERS_SECTION = {
+  eyebrow: "Derive '26 partners",
+  title: "Supporting the competition.",
+  body: "Jane Street and QRT supported the 2026 edition of Derive.",
+} as const;
+
 export const DERIVE_PARTNERS: DerivePartner[] = [
   {
     tier: "Apex Partner",
     name: "Jane Street",
+    href: "https://www.janestreet.com/",
     description:
-      "Title partner of Derive, backing the contest that measures India's quant talent on its own terms.",
+      "Apex Partner of Derive '26, supporting the national quantitative reasoning contest.",
     logo: {
       src: "/partners/Jane_Street.svg",
       width: 302,
@@ -70,8 +82,9 @@ export const DERIVE_PARTNERS: DerivePartner[] = [
   {
     tier: "Convergence Partner",
     name: "QRT",
+    href: "https://www.qube-rt.com/",
     description:
-      "Partner of the Convergence finals at IIT Bombay, where the top fifty qualify to compete in person.",
+      "Convergence Partner of the Derive '26 finals at IIT Bombay, where 33 finalists competed in person.",
     logo: {
       src: "/partners/QRT.png",
       width: 7916,
@@ -82,10 +95,10 @@ export const DERIVE_PARTNERS: DerivePartner[] = [
 ];
 
 export const DERIVE_CTA = {
-  title: "The next edition is coming.",
-  body: "Derive returns. Leave your email and be first to know when registration opens.",
-  buttonLabel: "Get notified",
+  title: "Interested in the next Derive?",
+  body: "Email AMS to ask about the next edition and registration updates.",
+  buttonLabel: "Email about Derive",
   /** TODO(launch): point at the registration/interest form when live. */
   buttonHref:
-    "mailto:tilakj0108@gmail.com?subject=Derive%20registration%20updates",
+    "mailto:team@amshq.in?subject=Derive%20registration%20updates",
 } as const;

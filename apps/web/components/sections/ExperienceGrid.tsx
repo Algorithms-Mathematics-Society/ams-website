@@ -26,7 +26,7 @@ export function ExperienceGrid() {
                   src={EXPERIENCE.image.src}
                   alt={EXPERIENCE.image.alt}
                   fill
-                  sizes="(min-width: 1280px) 440px, (min-width: 1024px) 40vw, (min-width: 640px) calc(100vw - 64px), calc(100vw - 40px)"
+                  sizes="(min-width: 1280px) 474px, (min-width: 1024px) 40vw, (min-width: 640px) calc(100vw - 64px), calc(100vw - 40px)"
                   className="object-cover"
                 />
               </div>

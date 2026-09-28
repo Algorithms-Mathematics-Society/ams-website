@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { ACCESS_FEATURES, ACCESS_WORDMARK } from "@/content/access";
+import { ACCESS_FEATURES, ACCESS_FEATURES_HEADING, ACCESS_WORDMARK } from "@/content/access";
 
 export function AccessFeatures() {
   return (
@@ -10,8 +10,7 @@ export function AccessFeatures() {
       <Container>
         <Reveal>
           <SectionHeading
-            eyebrow="The shell"
-            title="Built like a proctor, not a plugin."
+            {...ACCESS_FEATURES_HEADING}
             inverse
           />
         </Reveal>
@@ -33,13 +32,12 @@ export function AccessFeatures() {
         </ul>
 
         <Reveal className="mt-16 flex flex-col items-start gap-4 border-t border-cream-light/15 pt-8 sm:flex-row sm:items-center">
-          {/* Product wordmark uses white lettering and the approved red accent. */}
+          {/* Product wordmark uses cream lettering and the AMS gold accent. */}
           <Image
             src={ACCESS_WORDMARK.src}
             alt={ACCESS_WORDMARK.alt}
             width={131}
             height={30}
-            className="preserve-accent"
           />
           <p className="text-sm text-cream-light/70">
             {ACCESS_WORDMARK.caption}

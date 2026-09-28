@@ -5,8 +5,8 @@ export interface OperatingStage {
 }
 
 export const EXPERIENCE = {
-  eyebrow: "Operating model",
-  title: "A contest system built to produce signal.",
+  eyebrow: "How the contests work",
+  title: "From the first round to the final room.",
   image: {
     src: "/images/derive26/thumb/the-hall-at-capacity.webp",
     alt: "Contestants working in a full lecture hall during the Derive finals at IIT Bombay",
@@ -15,23 +15,23 @@ export const EXPERIENCE = {
   stages: [
     {
       index: "01",
-      title: "Establish the field",
-      body: "Online rounds create a national field and establish a common performance standard.",
+      title: "Start online",
+      body: "Participants from across India tackle the same timed problems in the opening rounds.",
     },
     {
       index: "02",
-      title: "Select for the finals",
-      body: "Successive rounds narrow the field before finalists compete in person.",
+      title: "Earn a place in the finals",
+      body: "Results determine who advances. Qualifying competitors come together for the in-person finals.",
     },
     {
       index: "03",
-      title: "Evaluate in the room",
-      body: "Engineers and recruiters from sponsor firms judge the finals in person.",
+      title: "Meet the people behind the work",
+      body: "Finalists solve problems in person and meet engineers and recruiters from partner firms.",
     },
     {
       index: "04",
-      title: "Carry the standard forward",
-      body: "Access brings the same benchmark into secure, proctored assessments for firms.",
+      title: "Continue the conversation",
+      body: "Firms can discuss sponsorship, candidate engagement, and private assessments through Access.",
     },
   ] satisfies readonly OperatingStage[],
 } as const;

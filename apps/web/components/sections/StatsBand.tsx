@@ -1,42 +1,27 @@
+import Link from "next/link";
 import { Container } from "@/components/ui/Container";
-import { STATS, STATS_HEADING } from "@/content/stats";
+import { STATS, STATS_HEADING, STATS_LINK } from "@/content/stats";
 
-/**
- * Static institutional evidence ledger. Values render at full strength on
- * first paint and align to the line of record immediately above.
- */
 export function StatsBand() {
   return (
-    <section
-      aria-labelledby="stats-heading"
-      className="border-b border-burgundy/30 bg-cream"
-    >
+    <section aria-labelledby="stats-heading" className="border-b border-burgundy/15 bg-cream-light py-9 sm:py-12">
       <Container>
-        <div className="border-x border-burgundy/25 py-10 sm:py-12 lg:grid lg:grid-cols-[13rem_1fr] lg:py-0">
-          <h2
-            className="px-5 text-[11px] leading-5 font-bold tracking-[0.16em] text-burgundy uppercase md:px-6 lg:flex lg:min-h-48 lg:items-center lg:border-r lg:border-burgundy/25"
-            id="stats-heading"
-          >
+        <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
+          <h2 id="stats-heading" className="text-sm font-semibold text-burgundy">
             {STATS_HEADING}
           </h2>
-          <dl className="mt-5 grid border-t border-burgundy/25 sm:grid-cols-3 lg:mt-0 lg:border-t-0">
-            {STATS.map((stat, index) => (
-              <div
-                className="flex min-h-32 min-w-0 flex-col justify-center border-b border-burgundy/20 px-5 py-6 last:border-b-0 sm:min-h-40 sm:border-r sm:border-b-0 sm:px-6 sm:last:border-r-0 lg:min-h-48"
-                key={stat.label}
-              >
-                <dt className="order-2 mt-4 max-w-44 text-xs leading-5 font-bold tracking-[0.11em] text-ink/70 uppercase">
-                  {stat.label}
-                </dt>
-                <dd
-                  className={`order-1 min-w-0 whitespace-nowrap font-sans leading-none font-bold tracking-[-0.045em] text-burgundy tabular-nums ${index === 0 ? "text-stat-lead" : "text-stat"}`}
-                >
-                  {stat.value}
-                </dd>
-              </div>
-            ))}
-          </dl>
+          <Link href={STATS_LINK.href} className="inline-flex min-h-11 items-center gap-2 text-sm text-burgundy underline underline-offset-4">
+            {STATS_LINK.label} <span aria-hidden>→</span>
+          </Link>
         </div>
+        <dl className="mt-6 grid grid-cols-2 gap-x-5 gap-y-8 sm:grid-cols-4 sm:gap-x-8">
+          {STATS.map((stat) => (
+            <div className="flex min-w-0 flex-col border-t border-burgundy/20 pt-5" key={stat.label}>
+              <dt className="order-2 mt-3 max-w-48 text-sm leading-5 text-ink/80">{stat.label}</dt>
+              <dd className="order-1 text-[clamp(2rem,3.5vw,3.1rem)] leading-none font-medium tracking-tight text-burgundy tabular-nums">{stat.value}</dd>
+            </div>
+          ))}
+        </dl>
       </Container>
     </section>
   );

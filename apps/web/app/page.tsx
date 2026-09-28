@@ -1,24 +1,28 @@
+import type { Metadata } from "next";
 import { AboutSplit } from "@/components/sections/AboutSplit";
 import { ClosingCta } from "@/components/sections/ClosingCta";
 import { ExperienceGrid } from "@/components/sections/ExperienceGrid";
 import { GallerySpread } from "@/components/sections/GallerySpread";
 import { Hero } from "@/components/sections/Hero";
-import { LineOfRecord } from "@/components/sections/LineOfRecord";
 import { ProductCards } from "@/components/sections/ProductCards";
 import { StatsBand } from "@/components/sections/StatsBand";
-import { Testimonials } from "@/components/sections/Testimonials";
+
+export const metadata: Metadata = {
+  title: { absolute: "AMS · Algorithms & Mathematics Society" },
+  description:
+    "AMS runs Derive and Ascent, competitions in quantitative reasoning and systems engineering, and builds Access for proctored assessments.",
+  alternates: { canonical: "/" },
+};
 
 export default function HomePage() {
   return (
     <>
       <Hero />
-      <LineOfRecord />
       <StatsBand />
       <AboutSplit />
       <ProductCards />
-      <ExperienceGrid />
-      <Testimonials />
       <GallerySpread />
+      <ExperienceGrid />
       <ClosingCta />
     </>
   );

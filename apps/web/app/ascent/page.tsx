@@ -6,9 +6,10 @@ import { AscentPillars } from "@/components/sections/ascent/AscentPillars";
 import { AscentStandard } from "@/components/sections/ascent/AscentStandard";
 
 export const metadata: Metadata = {
-  title: "Ascent: the systems contest",
+  title: "Ascent: the C++ performance competition",
   description:
-    "C++, optimization, and performance engineering under the clock. Registration for Ascent '26 is open until 20 October 2026, with Round 1 on 24 October.",
+    "Ascent tests C++, optimization, and performance engineering. Register for the 2026 edition by 20 October. The online qualifier is on 24 October.",
+  alternates: { canonical: "/ascent" },
 };
 
 export default function AscentPage() {

@@ -8,9 +8,9 @@ export interface NavLink {
 export const SITE = {
   name: "AMS",
   tagline:
-    "Contests in quant and competitive programming. Assessments scored against the people who compete.",
+    "Competitions in quantitative finance and systems programming. Assessments for technical hiring.",
   description:
-    "National contests in quantitative finance and competitive programming, plus Access, the platform that turns performance into verified hiring signal.",
+    "AMS (Algorithms & Mathematics Society) runs Derive and Ascent, competitions in quantitative finance and systems programming, and builds the Access assessment platform.",
   legalName: "Algorithms & Mathematics Society",
   url: "https://amshq.in",
   copyright: "© 2026 AMS (Algorithms & Mathematics Society) · amshq.in",
@@ -19,7 +19,7 @@ export const SITE = {
 export const NAV_LINKS: NavLink[] = [
   { label: "Derive", href: "/derive" },
   { label: "Ascent", href: "/ascent" },
-  { label: "Access", href: "/access" },
+  { label: "For firms", href: "/access" },
   { label: "Gallery", href: "/gallery" },
   { label: "Team", href: "/team" },
   { label: "Blog", href: "/blog" },
@@ -42,16 +42,14 @@ export const FOOTER_COLUMNS: Array<{ heading: string; links: NavLink[] }> = [
     links: [
       { label: "Derive", href: "/derive" },
       { label: "Ascent", href: "/ascent" },
-      // TODO(launch): monthly challenge lives on the contest platform.
-      { label: "Monthly Challenge", href: "/derive" },
     ],
   },
   {
     heading: "Firms",
     links: [
-      { label: "Access", href: "/access" },
-      { label: "Sponsor", href: "/access#sponsor" },
-      { label: "Talk to us", href: "mailto:tilakj0108@gmail.com" },
+      { label: "Assessments", href: "/access" },
+      { label: "Contest partnerships", href: "/access#sponsor" },
+      { label: "Discuss your hiring needs", href: "/access#contact" },
     ],
   },
   {
@@ -61,7 +59,7 @@ export const FOOTER_COLUMNS: Array<{ heading: string; links: NavLink[] }> = [
       { label: "Team", href: "/team" },
       { label: "Blog", href: "/blog" },
       { label: "FAQ", href: "/faq" },
-      { label: "Contact", href: "mailto:tilakj0108@gmail.com" },
+      { label: "Contact", href: "mailto:team@amshq.in" },
     ],
   },
 ];

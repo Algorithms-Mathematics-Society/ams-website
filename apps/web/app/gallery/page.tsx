@@ -5,9 +5,10 @@ import { PageHeader } from "@/components/ui/PageHeader";
 import { GALLERY_PAGE } from "@/content/gallery";
 
 export const metadata: Metadata = {
-  title: "Gallery",
+  title: "Gallery: Derive '26 at IIT Bombay",
   description:
-    "Moments from AMS contests and finals: Derive '26 at IIT Bombay, shot during Convergence.",
+    "Photographs from the Derive '26 finals at IIT Bombay in July 2026: the competition, conversations between rounds, and prize presentations.",
+  alternates: { canonical: "/gallery" },
 };
 
 export default function GalleryPage() {

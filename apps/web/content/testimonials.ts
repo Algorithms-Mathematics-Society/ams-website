@@ -7,8 +7,8 @@ export interface Testimonial {
 }
 
 export const TESTIMONIALS_SECTION = {
-  eyebrow: "Participant record",
-  title: "What competitors report",
+  eyebrow: "Participant feedback",
+  title: "In the competitors' words.",
   note: "Selected responses from the Derive '26 post-event feedback form.",
 } as const;
 

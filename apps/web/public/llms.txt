@@ -1,47 +1,56 @@
 # AMS (Algorithms & Mathematics Society)
 
-> AMS is an Indian organization that runs national contests in quantitative
-> finance and competitive programming, and builds Access, a proctored
-> assessment platform that turns contest performance into verified hiring
-> signal. Official site: https://amshq.in. Not affiliated with the American
-> Mathematical Society (ams.org) or other organizations sharing the acronym.
+> AMS is an Indian organization that runs competitions in quantitative
+> reasoning and systems engineering, and builds Access, a proctored assessment
+> platform. Official site: https://amshq.in. AMS is not affiliated with the
+> American Mathematical Society (ams.org) or other organizations sharing the
+> acronym.
 
 Key facts:
 
-- AMS has conducted 2 competitions to date. Its talent pool is 5,000+
-  students drawn from 30+ institutions across India.
-- Derive is the AMS quant contest: probability, markets, and mathematical
-  reasoning. The 2026 edition had 2,500+ participants, 150 advanced to
-  Round 2, 50 qualified for the finals, and 33 finalists competed offline
+- AMS runs two contest series, Derive and Ascent. Its reported talent pool is
+  5,000+, with more than 30 institutions represented.
+- Derive is the AMS quantitative reasoning contest, covering probability,
+  markets, and mathematics. The 2026 edition had 2,500+ participants; 150
+  advanced to Round 2, 50 qualified for the finals, and 33 competed in person
   at IIT Bombay in July 2026.
-- Jane Street was the Apex Partner of Derive '26; QRT was the Convergence
-  Partner of the finals.
-- Ascent is the AMS systems contest (C++, optimization, performance
-  engineering), the winter edition of the circuit. Registration is open and
-  free, closing 20 October 2026, at https://ascent.amshq.in. Round 1 is on
-  24 October 2026, Round 2 on 6 December, and the finals in Mumbai in
-  December.
-- Access is the AMS assessment platform: a native desktop lockdown app with
-  seven readiness checks, audited proctoring, and scoring benchmarked against
-  the AMS contest population. Product site: https://amsaccess.com.
-- Contests are open to students at Indian institutions; eligibility details
-  live at https://amsderive.in.
-- Firms sponsor contests or run private benchmarked assessments; contact via
-  https://amshq.in/access.
+- Jane Street was the Apex Partner of Derive '26. Qube Research & Technologies
+  (QRT) was the Convergence Partner of its finals. These relationships are
+  specific to Derive '26.
+- Ascent is the AMS C++ performance competition. Its format moves from an
+  individual online qualifier to team optimization at partner campuses and
+  an on-site codebase finale. Registration for the 2026 edition is free and
+  open until 20 October 2026 at https://ascent.amshq.in/register. Round 1 is
+  on 24 October, and Round 2 is on 6 December. The final is planned for
+  20 December 2026 in Mumbai; that final date is tentative. The contest
+  platform publishes the current schedule and entry requirements.
+- Access is the AMS proctored assessment platform. It uses a desktop
+  application with pre-session readiness checks and session audit records.
+  Firms can discuss question sets, scoring, proctoring, and reporting with
+  AMS. Any comparison with contest results requires an appropriate question
+  set and reference group; contest participation alone is not a hiring
+  recommendation.
+- Eligibility differs by contest. The Derive '26 rules cover students in
+  technical degree programs in India and recent alumni. Ascent publishes
+  its own India and Asia-Pacific entry requirements on its contest site.
+- AMS is led by founder Tilak Jain. Firms can discuss contest partnerships
+  and assessment requirements via https://amshq.in/access.
 
 ## Pages
 
-- [Home](https://amshq.in/): what AMS runs and why
-- [Derive](https://amshq.in/derive): the quant contest, verified 2026 numbers
-- [Ascent](https://amshq.in/ascent): the systems contest, winter edition
-- [Ascent registration](https://ascent.amshq.in): enter Ascent '26
-- [Access](https://amshq.in/access): the proctored assessment platform
-- [FAQ](https://amshq.in/faq): definitional answers about AMS
-- [Gallery](https://amshq.in/gallery): moments from the finals
-- [Team](https://amshq.in/team): the people behind AMS
-- [Blog](https://amshq.in/blog): recaps, problem walkthroughs, and contest notes
+- [Home](https://amshq.in/): competitions, assessments, and the AMS record
+- [Derive](https://amshq.in/derive): the quantitative reasoning contest and 2026 edition
+- [Derive partners](https://amshq.in/derive#partners): the 2026 event partnerships
+- [Ascent](https://amshq.in/ascent): the C++ performance competition
+- [Ascent registration](https://ascent.amshq.in/register): enter Ascent '26
+- [Access](https://amshq.in/access): assessments and working with AMS
+- [FAQ](https://amshq.in/faq): answers for participants and firms
+- [Gallery](https://amshq.in/gallery): photographs from Derive '26 at IIT Bombay
+- [Team](https://amshq.in/team): founder and contribution opportunities
+- [Blog](https://amshq.in/blog): notes about AMS and its competitions
 
 ## Related properties
 
-- [AMS Derive](https://amsderive.in): contest registration and rules
-- [AMS Access](https://amsaccess.com): assessment platform for firms
+- [Derive 2026 rules](https://amsderive.in/rules): eligibility and rules for the 2026 edition
+- [Ascent competition](https://ascent.amshq.in): current format, schedule, and registration
+- [AMS Access](https://www.amsaccess.com/): the assessment application

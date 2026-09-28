@@ -5,21 +5,23 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/ui/Reveal";
 import { CLOSING_CTA } from "@/content/cta";
 
-/** Compact institutional close with separate contestant and sponsor paths. */
+/** Closing invitations for competitors and hiring teams. */
 export function ClosingCta() {
   return (
     <section
       aria-labelledby="next-edition-heading"
-      className="border-y border-gold-bright/60 bg-burgundy text-cream-light"
+      className="bg-burgundy text-cream-light"
     >
-      <Container className="py-10 sm:py-12">
+      <Container className="py-14 sm:py-20">
         <Reveal>
-          <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
+          <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
             <div>
-              <Eyebrow inverse>{CLOSING_CTA.eyebrow}</Eyebrow>
+              <Eyebrow inverse className="!text-cream-light/75">
+                {CLOSING_CTA.eyebrow}
+              </Eyebrow>
               <h2
                 id="next-edition-heading"
-                className="mt-4 max-w-3xl text-section font-semibold tracking-tight"
+                className="mt-4 max-w-3xl text-section font-medium tracking-[-0.04em]"
               >
                 {CLOSING_CTA.headline}
               </h2>
@@ -31,8 +33,7 @@ export function ClosingCta() {
             <div className="flex flex-col gap-3 border-t border-cream-light/25 pt-6 sm:flex-row lg:border-t-0 lg:pt-0">
               <Button
                 href={CLOSING_CTA.primary.href}
-                variant="inverse"
-                className="sm:min-w-40"
+                className="!bg-cream-light !text-burgundy hover:!bg-cream sm:min-w-40"
               >
                 {CLOSING_CTA.primary.label}
               </Button>

@@ -1,91 +1,66 @@
 ---
-title: "What AMS actually is"
+title: "Meet the Algorithms & Mathematics Society"
 pubDate: 2026-07-19
-description: "AMS runs Derive and Ascent, two national contests in quant and systems, and builds Access, the platform that turns contest performance into verified hiring signal. Here's the whole picture: the funnel, the partners, and the team running it."
+description: "An introduction to AMS: Derive, Ascent, the Access assessment platform, and the people behind the contests."
 author: "AMS Team"
 image:
   url: "./cover.webp"
-  alt: "The full room at the Derive '26 finals, IIT Bombay: everyone who made it happen"
+  alt: "Derive '26 finalists and organizers together at IIT Bombay"
 tags: ["about", "derive", "ascent", "access"]
 ---
 
-# What AMS actually is
 
-AMS (Algorithms & Mathematics Society) is an Indian organization that runs
-national contests in quantitative finance and competitive programming, and
-builds Access, the platform that turns contest performance into verified
-hiring signal. It is not affiliated with the American Mathematical Society,
-despite sharing three letters.
+AMS is an Indian organization that brings quantitative and systems talent
+together through competition. Our work includes Derive, Ascent, and Access,
+a desktop platform for proctored assessments.
 
-## Where it started
+## Derive: quantitative reasoning
 
-> AMS began as a question I could not shake: India produces world-class
-> competitive programmers and quants, so why is there no institution that
-> measures them on their own terms?
->
-> **Tilak, Founder**
+Derive tests probability, markets, and mathematical reasoning through online
+qualifying rounds and an in-person final. The 2026 edition ran in three
+stages:
 
-Last July, that question got an answer in a lecture hall at IIT Bombay: a
-national field narrowed to one stage, judged in person by the firms that
-hire this talent. That was Derive '26.
+* **Round 1:** 2,500+ participants entered.
+* **Round 2:** 150 participants advanced.
+* **Finals:** 50 qualified, and 33 competed in person at IIT Bombay in July
+  2026.
 
-## Derive: the quant contest
+Jane Street was the Apex Partner of Derive '26. QRT was the Convergence
+Partner for the finals. You can see the [edition overview](/derive) and
+[photographs from the event](/gallery).
 
-Derive is timed reasoning under pressure: probability, markets, and
-mathematical thinking, scored the same way for everyone in the room. The
-'26 edition ran in three stages:
+## Ascent: systems engineering
 
-* **Round 1**, open to everyone: 2,500+ participants entered.
-* **Round 2**, the cut: the top 150 advanced.
-* **Finals**, offline at IIT Bombay: 50 qualified, and 33 competed on stage
-  in July 2026.
+Ascent focuses on modern C++, algorithmic optimization, and performance
+engineering. Its problems ask competitors to work within time and memory
+limits and consider how implementation choices affect performance.
 
-Jane Street was the Apex Partner of Derive '26. QRT backed the Convergence
-finals, where those 33 finalists competed in person.
+The [Ascent page](/ascent) links to the current schedule, eligibility, and
+registration details.
 
-## Ascent: the systems contest
+## Access: assessments for hiring teams
 
-Ascent is Derive's winter sibling: same road, different discipline. It
-measures modern C++ under tight memory and time constraints, algorithmic
-optimization, and performance engineering, the code that runs the systems
-behind the markets Derive reasons about. It follows the same template Derive
-set: online rounds to earn a seat, then finals judged in person with sponsor
-firms in the room. Registration for the first edition isn't open yet.
+Access supports timed assessments in a desktop application. Session checks
+and proctoring records help teams review the conditions under which work
+was completed, alongside candidate results.
 
-## Access: the platform
+An assessment is one part of a hiring decision. Teams should agree on what
+the problems measure, how results will be reviewed, and whether a relevant
+comparison group is available. Our [Access page](/access) explains the
+platform and how to discuss an assessment with AMS.
 
-Access takes the same idea and rents it to firms. It is a native desktop
-client for Windows and Linux, not a browser tab: system shortcuts, app
-switching, and screen recording are locked at the OS level for the length of
-a session. Before anyone sits an exam, seven readiness checks (camera,
-microphone, network, restricted apps, keyboard lockdown, platform, and VM
-integrity) all have to read clear, and outbound network traffic stays
-allowlisted to the contest API for the duration.
+## The people involved
 
-The part that matters most to a firm: every Access assessment is scored
-against the population that competes in Derive and Ascent. When a candidate
-clears your bar on Access, you know exactly where that bar sits, against
-2,500+ of India's competitive best, not a generic test bank.
+AMS has reached a talent pool of 5,000+ students across 30+ institutions.
+Participants, problem setters, judges, volunteers, and engineers all
+contribute to the contests and the platform.
 
-## The talent pool behind it
+Tilak Jain founded AMS and organizes its national competitions. Visit the
+[team page](/team) to learn more or get in touch about contributing.
 
-AMS has conducted two competitions to date, drawing a talent pool of 5,000+
-students from 30+ institutions across India. That pool is the reservoir;
-Derive and Ascent are how it gets ranked, and Access is how a firm gets to
-use the ranking.
+## Take part
 
-## The team
-
-AMS is run by a small team of competitors: the people who set the problems,
-run the halls, and build the platform. Tilak founded it; the rest of the
-team covers engineering, design, operations, and outreach. Built by
-competitors, for competitors, which is also the only pitch AMS has ever
-needed to make to a sponsor.
-
-## Where to go from here
-
-* [Derive](/derive): the quant contest, verified 2026 numbers.
-* [Ascent](/ascent): the systems contest, winter edition.
-* [Access](/access): the assessment platform, for firms.
-* [Gallery](/gallery): moments from the Derive '26 finals.
-* [Team](/team): the people behind all of it.
+Students and other prospective competitors can begin with [Derive](/derive)
+or [Ascent](/ascent) and check the rules for the edition they want to enter.
+Hiring teams can [discuss assessments or sponsorship](/access). For common
+questions about AMS, visit the [FAQ](/faq).

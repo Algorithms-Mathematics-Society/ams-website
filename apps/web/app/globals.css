@@ -1,24 +1,22 @@
 @import "tailwindcss";
 
 @theme {
-  /* Monochrome institutional palette. Existing semantic names remain stable
-     for component compatibility: burgundy maps to black surfaces, cream to
-     white surfaces, and gold to the site's only chromatic accent, red. */
-  --color-burgundy: #111111;
-  --color-burgundy-deep: #000000;
-  --color-cream: #f6f6f6;
-  --color-cream-light: #ffffff;
-  --color-gold: #d7192d;
-  /* Accent variants preserve readable red on light and dark surfaces. */
-  --color-gold-deep: #b10f24;
-  --color-gold-bright: #ff5364;
-  --color-espresso: #080808;
-  --color-ascent: #242424;
-  --color-ink: #1b1b1b;
-  --color-placeholder: #e4e4e4;
-  --color-paper: #ededed;
+  /* AMS brand palette. Gold is reserved for accents; the darker and lighter
+     variants keep small text legible on cream and burgundy surfaces. */
+  --color-burgundy: #571c24;
+  --color-burgundy-deep: #3b141a;
+  --color-cream: #f5f0e4;
+  --color-cream-light: #fffcf5;
+  --color-gold: #a9822f;
+  --color-gold-deep: #76591f;
+  --color-gold-bright: #dfbf72;
+  --color-espresso: #242123;
+  --color-ascent: #242123;
+  --color-ink: #30292a;
+  --color-placeholder: #e7decd;
+  --color-paper: #ede5d5;
 
-  --font-display: var(--font-inter);
+  --font-display: var(--font-source-serif);
   --font-sans: var(--font-inter);
 
   /* Institutional geometry: controls stay usable, major surfaces stay precise. */
@@ -54,10 +52,10 @@
 @custom-variant js (html.js &);
 
 /* Elastic overscroll reveals the canvas beyond the page edges. Paint the
-   canvas white so the navbar reads as pinned when the page is pulled down;
-   the footer gets a matching black bleed (see Footer.tsx) for the bottom. */
+   canvas cream so the page edges stay consistent during overscroll. */
 html {
   background-color: var(--color-cream);
+  scroll-padding-top: 6rem;
 }
 
 body {
@@ -68,9 +66,9 @@ body {
 }
 
 @layer base {
-  /* Red is the sole accent and provides a deliberate, visible focus ring. */
+  /* Visible keyboard focus, including on photographic and dark surfaces. */
   :focus-visible {
-    outline: 2px solid var(--color-gold);
+    outline: 2px solid var(--color-gold-deep);
     outline-offset: 2px;
   }
 }

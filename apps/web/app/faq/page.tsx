@@ -3,13 +3,14 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { Container } from "@/components/ui/Container";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Reveal } from "@/components/ui/Reveal";
-import { FAQ } from "@/content/faq";
+import { FAQ, FAQ_PAGE } from "@/content/faq";
 import { faqPageJsonLd } from "@/content/seo";
 
 export const metadata: Metadata = {
-  title: "FAQ",
+  title: "Frequently asked questions",
   description:
-    "What AMS is, how Derive and Ascent work, what the Access platform does, who backs AMS, and who can compete.",
+    "Answers about AMS, Derive and Ascent eligibility, the Access assessment platform, competition partners, and working with AMS.",
+  alternates: { canonical: "/faq" },
 };
 
 export default function FaqPage() {
@@ -17,9 +18,9 @@ export default function FaqPage() {
     <>
       <JsonLd data={faqPageJsonLd(FAQ)} />
       <PageHeader
-        eyebrow="FAQ"
-        title="Straight answers."
-        body="What AMS is, how the contests work, and how firms plug in."
+        eyebrow={FAQ_PAGE.eyebrow}
+        title={FAQ_PAGE.title}
+        body={FAQ_PAGE.body}
       />
       <section className="pt-8 pb-section">
         <Container className="max-w-3xl lg:max-w-3xl">

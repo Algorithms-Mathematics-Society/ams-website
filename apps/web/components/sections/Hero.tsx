@@ -1,36 +1,39 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
+import { Eyebrow } from "@/components/ui/Eyebrow";
 import { HOME_HERO } from "@/content/homeHero";
 
 export function Hero() {
   return (
-    <section className="border-b border-burgundy-deep bg-burgundy">
-      <Container className="px-0 sm:px-8">
-        <div className="grid border-x border-cream-light/20 lg:grid-cols-[minmax(23rem,0.95fr)_minmax(0,1.4fr)]">
-          <div className="order-2 flex flex-col justify-center border-t border-cream-light/20 px-5 py-10 text-cream-light sm:px-8 sm:py-12 lg:order-1 lg:border-t-0 lg:border-r lg:px-10 lg:py-16">
-            <p className="text-[11px] font-bold tracking-[0.18em] text-gold-bright uppercase">
-              {HOME_HERO.eyebrow}
-            </p>
-            <h1 className="mt-5 max-w-xl text-[clamp(2.5rem,4.5vw,3.75rem)] leading-[0.98] font-bold tracking-[-0.045em] text-balance">
-              {HOME_HERO.headline}
-            </h1>
-            <p className="mt-6 max-w-xl text-base leading-7 text-cream-light/82">
-              {HOME_HERO.body}
-            </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <Button href={HOME_HERO.primaryAction.href} variant="inverse">
-                {HOME_HERO.primaryAction.label}
-              </Button>
-              <Button
-                href={HOME_HERO.secondaryAction.href}
-                className="!border !border-cream-light/40 !bg-transparent !text-cream-light hover:!border-cream-light hover:!bg-cream-light/10 focus-visible:!outline-gold-bright"
-              >
-                {HOME_HERO.secondaryAction.label}
-              </Button>
-            </div>
+    <section className="home-hero border-b border-burgundy/15 bg-cream">
+      <Container className="grid gap-10 pt-12 pb-10 sm:pt-16 sm:pb-14 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:items-center lg:gap-14 lg:py-16">
+        <div>
+          <Eyebrow>{HOME_HERO.eyebrow}</Eyebrow>
+          <h1 className="mt-6 max-w-xl font-display text-[clamp(2.75rem,4.8vw,4.5rem)] leading-[1.08] font-normal tracking-[-0.04em] text-burgundy text-balance">
+            {HOME_HERO.headline}
+          </h1>
+          <p className="mt-6 max-w-lg text-base leading-7 text-ink/85 sm:text-lg sm:leading-8">
+            {HOME_HERO.body}
+          </p>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <Button href={HOME_HERO.primaryAction.href}>
+              {HOME_HERO.primaryAction.label}
+            </Button>
+            <Button href={HOME_HERO.secondaryAction.href} variant="outline">
+              {HOME_HERO.secondaryAction.label}
+            </Button>
           </div>
-          <figure className="relative order-1 min-h-[17rem] overflow-hidden bg-espresso sm:min-h-[25rem] lg:order-2 lg:min-h-[34rem]">
+          <Link
+            href={HOME_HERO.teamLink.href}
+            className="mt-6 inline-flex min-h-11 items-center gap-2 text-sm text-ink/75 underline underline-offset-4 hover:text-burgundy"
+          >
+            {HOME_HERO.teamLink.label} <span aria-hidden>→</span>
+          </Link>
+        </div>
+        <figure className="min-w-0 border border-burgundy/15 bg-cream-light">
+          <div className="relative aspect-[4/3] overflow-hidden lg:aspect-[6/5]">
             <Image
               src={HOME_HERO.image.src}
               alt={HOME_HERO.image.alt}
@@ -38,14 +41,17 @@ export function Hero() {
               priority
               fetchPriority="high"
               quality={75}
-              sizes="(min-width: 1216px) 696px, (min-width: 1024px) 58vw, 100vw"
-              className="object-cover object-center"
+              sizes="(min-width: 1280px) 610px, (min-width: 1024px) 50vw, (min-width: 640px) calc(100vw - 64px), calc(100vw - 40px)"
+              className="object-cover"
             />
-            <figcaption className="absolute right-0 bottom-0 left-0 border-t border-cream-light/20 bg-espresso/95 px-5 py-3 text-[10px] leading-4 font-semibold tracking-[0.12em] text-cream-light uppercase sm:px-6">
-              {HOME_HERO.image.context}
-            </figcaption>
-          </figure>
-        </div>
+          </div>
+          <figcaption className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 border-t border-burgundy/15 px-5 py-3 text-xs leading-5 text-ink/80">
+            <span>{HOME_HERO.image.context}</span>
+            <Link href={HOME_HERO.galleryLink.href} className="inline-flex min-h-11 items-center gap-2 font-semibold text-burgundy underline underline-offset-4">
+              {HOME_HERO.galleryLink.label} <span aria-hidden>→</span>
+            </Link>
+          </figcaption>
+        </figure>
       </Container>
     </section>
   );

@@ -3,7 +3,12 @@ export interface Stat {
   label: string;
 }
 
-export const STATS_HEADING = "AMS reach at a glance";
+export const STATS_HEADING = "AMS in numbers";
+
+export const STATS_LINK = {
+  label: "Explore Derive '26",
+  href: "/derive",
+} as const;
 
 /**
  * Verified by Tilak on 2026-07-15; the fact-sync map ran. The band widens
@@ -14,6 +19,7 @@ export const STATS_HEADING = "AMS reach at a glance";
  */
 export const STATS: Stat[] = [
   { value: "5,000+", label: "AMS talent pool" },
-  { value: "2,500+", label: "Derive participants" },
+  { value: "2,500+", label: "Derive '26 participants" },
   { value: "30+", label: "Institutions represented" },
+  { value: "2", label: "Contest series" },
 ];

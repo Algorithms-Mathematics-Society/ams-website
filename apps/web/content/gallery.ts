@@ -11,8 +11,8 @@ export interface GalleryItem {
 
 export const GALLERY_PAGE = {
   eyebrow: "Derive '26 archive",
-  title: "Documentary record of the first edition.",
-  body: "Twelve moments from Derive '26: the swag desk in the morning, the hall at capacity, the cheques at the end. Shot during Convergence at IIT Bombay, July 2026.",
+  title: "Inside the Derive '26 finals.",
+  body: "Photographs from the Derive '26 finals at IIT Bombay in July 2026. Problem solving, conversations with partner firms, and time together between rounds.",
   cta: {
     title: "Prepare for the next edition.",
     body: "Review the Derive format, follow the next registration window, or contact AMS about contributing to the event.",
@@ -26,10 +26,10 @@ export const GALLERY_PAGE = {
  * GALLERY_PAGE because the archive page introduces the complete set.
  */
 export const GALLERY_HOME = {
-  eyebrow: "Documentary record",
-  title: "Derive '26, on record",
-  body: "Selected photographs from Derive '26 at IIT Bombay: contest kits, the finals hall, and prize cheques presented on stage.",
-  link: { label: "View the Derive '26 archive", href: "/gallery" },
+  eyebrow: "From the finals",
+  title: "A day at Derive '26.",
+  body: "The competitors and conversations behind Derive '26. Photographed at IIT Bombay in July 2026.",
+  link: { label: "View the event gallery", href: "/gallery" },
 } as const;
 
 const img = (slug: string) => ({
@@ -39,12 +39,12 @@ const img = (slug: string) => ({
 
 export const GALLERY: GalleryItem[] = [
   {
-    label: "Goodies distribution, contest kits changing hands",
+    label: "Participants collecting their Derive contest kits",
     homePlacement: "support-top",
     ...img("goodies-distribution"),
   },
-  { label: "The swag desk, notebooks and formula tees", ...img("swag-desk") },
-  { label: "A contestant deep in the problem set", ...img("in-the-zone") },
+  { label: "Contest notebooks and T-shirts at the registration desk", ...img("swag-desk") },
+  { label: "A contestant working through the problem set", ...img("in-the-zone") },
   {
     label: "Debating the problem set between rounds",
     ...img("debating-the-problem-set"),
@@ -73,7 +73,7 @@ export const GALLERY: GalleryItem[] = [
     ...img("finalists-at-the-convergence-banner"),
   },
   {
-    label: "The full room, everyone who made it happen",
+    label: "Derive finalists and organizers together at IIT Bombay",
     homePlacement: "lead",
     ...img("the-full-room"),
   },

@@ -1,10 +1,8 @@
-import { DERIVE_OVERVIEW_LINK } from "@/content/site";
-
-/** The home page's compact institutional closing action. */
+/** Invitations for competitors and hiring teams. */
 export const CLOSING_CTA = {
-  eyebrow: "Next edition",
-  headline: "Prepare for the next Derive.",
-  body: "See how the contest works, what the first field accomplished, and how to be ready when the next registration opens.",
-  primary: DERIVE_OVERVIEW_LINK,
-  secondary: { label: "Sponsorship information", href: "/access#sponsor" },
+  eyebrow: "Take part",
+  headline: "Your next challenge starts here.",
+  body: "Explore Ascent for systems programming, or talk to AMS about assessments and contest partnerships.",
+  primary: { label: "Explore Ascent", href: "/ascent" },
+  secondary: { label: "Discuss a partnership", href: "/access#contact" },
 } as const;

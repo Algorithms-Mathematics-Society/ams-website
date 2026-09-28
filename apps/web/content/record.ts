@@ -8,6 +8,6 @@ export const LINE_OF_RECORD = {
   facts: [
     "Two national contests",
     "One assessment platform",
-    "Finals hosted at IIT Bombay",
+    "Derive '26 finals at IIT Bombay",
   ],
 } as const;

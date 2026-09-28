@@ -56,7 +56,7 @@ export function GallerySpread() {
                       src={item.src}
                       alt={item.label}
                       fill
-                      sizes="(min-width: 1280px) 362px, (min-width: 768px) calc((100vw - 64px) / 3), calc(100vw - 40px)"
+                      sizes="(min-width: 1280px) 405px, (min-width: 768px) calc((100vw - 64px) / 3), calc(100vw - 40px)"
                       className="object-cover"
                     />
                   </div>

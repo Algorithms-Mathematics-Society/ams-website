@@ -5,9 +5,10 @@ import { PageHeader } from "@/components/ui/PageHeader";
 import { BLOG_PAGE } from "@/content/blog";
 
 export const metadata: Metadata = {
-  title: "Blog",
+  title: "Notes from AMS",
   description:
-    "Recaps, problem walkthroughs, and notes on how the next AMS contest edition is shaping up.",
+    "Read about AMS, its competitions, and the work behind Derive, Ascent, and the Access assessment platform.",
+  alternates: { canonical: "/blog" },
 };
 
 export default function BlogPage() {

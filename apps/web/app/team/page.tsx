@@ -5,9 +5,10 @@ import { PageHeader } from "@/components/ui/PageHeader";
 import { TEAM_PAGE } from "@/content/team";
 
 export const metadata: Metadata = {
-  title: "Team",
+  title: "The people behind AMS",
   description:
-    "The people behind AMS: the competitors who set the problems, run the halls, and build the platform.",
+    "Meet Tilak Jain, founder of AMS, and learn how to contribute to its contests, problem setting, event operations, and assessment platform.",
+  alternates: { canonical: "/team" },
 };
 
 export default function TeamPage() {

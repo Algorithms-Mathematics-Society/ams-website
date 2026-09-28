@@ -3,12 +3,14 @@ import { CtaBand } from "@/components/ui/CtaBand";
 import { ACCESS_CTA } from "@/content/access";
 import { AccessFeatures } from "@/components/sections/access/AccessFeatures";
 import { AccessFirms } from "@/components/sections/access/AccessFirms";
+import { AccessConversation } from "@/components/sections/access/AccessConversation";
 import { AccessHero } from "@/components/sections/access/AccessHero";
 
 export const metadata: Metadata = {
-  title: "Access: the platform",
+  title: "Access: assessments for technical hiring",
+  alternates: { canonical: "/access" },
   description:
-    "Proctored assessments benchmarked against India's competitive elite, in a native desktop lockdown shell with a full audit trail.",
+    "Explore AMS Access, a desktop assessment platform with readiness checks and configurable proctoring. Discuss technical hiring assessments and contest partnerships.",
 };
 
 export default function AccessPage() {
@@ -17,6 +19,7 @@ export default function AccessPage() {
       <AccessHero />
       <AccessFeatures />
       <AccessFirms />
+      <AccessConversation />
       <CtaBand {...ACCESS_CTA} />
     </>
   );

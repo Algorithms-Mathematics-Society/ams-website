@@ -1,11 +1,11 @@
 export const ASCENT_HERO = {
   eyebrow: "Ascent",
-  title: "The systems contest.",
-  body: "C++, optimization, and performance engineering under the clock. The winter edition of the AMS circuit, built for the people who care how fast it actually runs.",
+  title: "The systems engineering contest.",
+  body: "A competition in C++, optimization, and performance engineering. Solve problems where memory use, execution time, and implementation choices matter.",
   statusLabel: "Competition status",
   status: "Registration open",
   statusDetail: "Round 1 on 24 October 2026",
-  focusLabel: "Assessment disciplines",
+  focusLabel: "What you will work on",
   focusAreas: ["C++", "Optimization", "Performance engineering"],
 } as const;
 
@@ -18,24 +18,24 @@ export interface AscentPillar {
 export const ASCENT_PILLARS: AscentPillar[] = [
   {
     title: "C++ under constraints",
-    body: "Modern C++, written against tight memory and time limits. The language of the systems that run markets.",
+    body: "Write modern C++ within defined memory and execution limits.",
   },
   {
     title: "Optimization",
-    body: "Algorithmic efficiency where the difference between passing and failing is a constant factor.",
+    body: "Choose algorithms and implementations that make efficient use of time and memory.",
   },
   {
     title: "Performance engineering",
-    body: "Cache behavior, allocation, throughput. Code that is measured, not admired.",
+    body: "Investigate cache behavior, memory allocation, and throughput to improve measured performance.",
   },
 ];
 
 export const ASCENT_STANDARD = {
-  eyebrow: "One standard",
-  title: "The same road Derive built.",
-  body: "Online rounds to earn a seat, then finals judged in person with the sponsor firms in the room. Derive '26 set the template: 2,500+ entered, 33 stood on stage at IIT Bombay.",
-  linkLabel: "See how Derive ran",
-  linkHref: "/derive",
+  eyebrow: "The contest format",
+  title: "Individual entry. Team rounds.",
+  body: "Ascent starts with an individual online qualifier, followed by team-based optimization rounds and a planned in-person finale in Mumbai. The contest platform has the full format, eligibility, and schedule.",
+  linkLabel: "Read the Ascent format",
+  linkHref: "https://ascent.amshq.in",
 } as const;
 
 export const ASCENT_CTA = {

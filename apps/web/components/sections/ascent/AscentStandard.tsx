@@ -16,7 +16,7 @@ export function AscentStandard() {
           <p className="mt-6 leading-relaxed">{ASCENT_STANDARD.body}</p>
           <Link
             href={ASCENT_STANDARD.linkHref}
-            className="mt-8 inline-flex items-center gap-1.5 text-sm font-medium text-burgundy hover:underline"
+            className="mt-8 inline-flex min-h-11 items-center gap-1.5 text-sm font-medium text-burgundy hover:underline"
           >
             {ASCENT_STANDARD.linkLabel}
             <span aria-hidden>→</span>
