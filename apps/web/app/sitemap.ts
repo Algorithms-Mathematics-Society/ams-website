@@ -1,7 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getAllPosts } from "@/lib/blog";
-
-const BASE = "https://amshq.in";
+import { SITE } from "@/content/site";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticPaths = [
@@ -13,11 +12,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/team",
     "/faq",
     "/blog",
-  ].map((path) => ({ url: `${BASE}${path}` }));
+  ].map((path) => ({ url: new URL(path || "/", SITE.url).toString() }));
 
   const posts = await getAllPosts();
   const postPaths = posts.map((post) => ({
-    url: `${BASE}/blog/${post.slug}`,
+    url: `${SITE.url}/blog/${post.slug}`,
     lastModified: post.pubDate,
   }));
 

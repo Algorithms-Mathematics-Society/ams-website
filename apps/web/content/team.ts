@@ -1,4 +1,5 @@
 export interface TeamMember {
+  id: string;
   name: string;
   role: string;
   affiliation?: string;
@@ -21,6 +22,7 @@ export const TEAM_PAGE = {
 
 export const TEAM: TeamMember[] = [
   {
+    id: "tilak-jain",
     name: "Tilak Jain",
     role: "Founder",
     affiliation: "University of Mumbai",
@@ -35,6 +37,7 @@ export const TEAM: TeamMember[] = [
     },
   },
   {
+    id: "kartik-agrawal",
     name: "Kartik Agrawal",
     role: "Head of Problem Design · AMS Derive 2026",
     affiliation: "IIT Kanpur",
@@ -44,6 +47,7 @@ export const TEAM: TeamMember[] = [
     },
   },
   {
+    id: "ayush-shukla",
     name: "Ayush Shukla",
     role: "Head of Community",
     affiliation: "University of Mumbai",
@@ -53,6 +57,7 @@ export const TEAM: TeamMember[] = [
     },
   },
   {
+    id: "quasar-chunawala",
     name: "Quasar Chunawala",
     role: "Head of Problem Design · AMS Ascent 2026",
     affiliation: "CME Group",
@@ -62,6 +67,7 @@ export const TEAM: TeamMember[] = [
     },
   },
   {
+    id: "sahil",
     name: "Sahil",
     role: "Head of Partnerships · AMS Derive 2026",
     profile: {

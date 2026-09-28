@@ -23,7 +23,7 @@ export function TeamGrid({ withHeading = true }: Props) {
         )}
         <ul className={`grid gap-x-16 gap-y-10 md:grid-cols-2 ${withHeading ? "mt-12" : ""}`}>
           {TEAM.map((member, index) => (
-            <li key={member.name} className="min-w-0">
+            <li key={member.id} id={member.id} className="min-w-0 scroll-mt-28">
               <Reveal delay={index * 60} className="flex h-full flex-col items-start py-2">
                 <div className="flex items-start gap-4">
                   {member.image && (

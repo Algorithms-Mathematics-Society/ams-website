@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
+import { createPageMetadata } from "@/lib/metadata";
 import { notFound } from "next/navigation";
 import { CtaBand } from "@/components/ui/CtaBand";
 import { Container } from "@/components/ui/Container";
@@ -31,29 +33,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = await getPostBySlug(slug);
   if (!post) return {};
 
-  return {
+  return createPageMetadata({
     title: post.title,
     description: post.description,
-    alternates: { canonical: `/blog/${post.slug}` },
-    openGraph: {
-      type: "article",
-      url: `/blog/${post.slug}`,
-      title: post.title,
-      description: post.description,
-      publishedTime: post.pubDate.toISOString(),
-      images: [{ url: post.cover.full, width: 1200, height: 630, alt: post.cover.alt }],
-    },
-    twitter: {
-      card: "summary_large_image",
-      images: [post.cover.full],
-    },
-  };
+    path: `/blog/${post.slug}`,
+    publishedTime: post.pubDate.toISOString(),
+    image: { url: post.cover.full, width: 1200, height: 630, alt: post.cover.alt },
+  });
 }
 
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;
   const post = await getPostBySlug(slug);
   if (!post) notFound();
+  const authorHref = post.author === "Tilak Jain"
+    ? "/team#tilak-jain"
+    : post.author === "AMS Team" ? "/team" : undefined;
 
   return (
     <>
@@ -75,7 +70,17 @@ export default async function BlogPostPage({ params }: Props) {
                 className="rounded-full"
               />
             )}
-            <span className="font-medium text-ink">{post.author}</span>
+            {authorHref ? (
+              <Link
+                href={authorHref}
+                rel="author"
+                className="inline-flex min-h-11 items-center font-medium text-burgundy hover:text-gold-deep focus-visible:outline-2 focus-visible:outline-offset-2"
+              >
+                {post.author}
+              </Link>
+            ) : (
+              <span className="font-medium text-ink">{post.author}</span>
+            )}
             <span aria-hidden>·</span>
             <time dateTime={post.pubDate.toISOString()}>
               {formatDate(post.pubDate)}

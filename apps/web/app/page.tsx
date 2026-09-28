@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/metadata";
 import { SITE } from "@/content/site";
 import { AboutSplit } from "@/components/sections/AboutSplit";
 import { ClosingCta } from "@/components/sections/ClosingCta";
@@ -8,11 +8,12 @@ import { Hero } from "@/components/sections/Hero";
 import { ProductCards } from "@/components/sections/ProductCards";
 import { StatsBand } from "@/components/sections/StatsBand";
 
-export const metadata: Metadata = {
-  title: { absolute: "AMS · Algorithms & Mathematics Society" },
+export const metadata = createPageMetadata({
+  title: "AMS · Algorithms & Mathematics Society",
+  absoluteTitle: true,
   description: SITE.description,
-  alternates: { canonical: "/" },
-};
+  path: "/",
+});
 
 export default function HomePage() {
   return (

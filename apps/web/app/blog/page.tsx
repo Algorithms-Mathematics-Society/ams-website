@@ -1,15 +1,15 @@
-import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/metadata";
 import { BlogGrid } from "@/components/sections/BlogGrid";
 import { CtaBand } from "@/components/ui/CtaBand";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { BLOG_PAGE } from "@/content/blog";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Notes from AMS",
   description:
     "Read about AMS, its competitions, and the work behind Derive, Ascent, and the Access assessment platform.",
-  alternates: { canonical: "/blog" },
-};
+  path: "/blog",
+});
 
 export default function BlogPage() {
   return (

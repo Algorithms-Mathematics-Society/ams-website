@@ -34,3 +34,7 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+### SEO verification
+
+After a production build, run `pnpm check:seo` from `apps/web`. The check reads generated HTML and validates page metadata, entity relationships, team and FAQ content, and discovery files. See [the SEO audit](../../docs/seo-2026-09-28.md) for old-domain migration and external profile follow-up.

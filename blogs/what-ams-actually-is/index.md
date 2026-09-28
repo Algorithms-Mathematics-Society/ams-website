@@ -46,7 +46,7 @@ was completed, alongside candidate results.
 
 An assessment is one part of a hiring decision. Teams should agree on what
 the problems measure, how results will be reviewed, and whether a relevant
-comparison group is available. Our [Access page](/access) explains the
+comparison group is available. Our [hiring assessments section](/access#assessments) explains the
 platform and how to discuss an assessment with AMS.
 
 ## The people involved

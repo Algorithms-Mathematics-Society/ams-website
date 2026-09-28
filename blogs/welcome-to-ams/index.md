@@ -38,7 +38,7 @@ partners who supported it.
   reasoning.
 * [Ascent](/ascent) focuses on C++, optimization, and performance
   engineering.
-* [Access](/access) supports proctored assessments for hiring teams, with
+* [Access](/access#assessments) supports proctored assessments for hiring teams, with
   results and session records that can inform further review.
 
 ## An example of the reasoning

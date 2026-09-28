@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { SITE } from "@/content/site";
 
 /**
  * Everything is public. AI crawlers are named explicitly so a future
@@ -25,6 +26,6 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: "*", allow: "/" },
       ...AI_CRAWLERS.map((userAgent) => ({ userAgent, allow: "/" })),
     ],
-    sitemap: "https://amshq.in/sitemap.xml",
+    sitemap: `${SITE.url}/sitemap.xml`,
   };
 }

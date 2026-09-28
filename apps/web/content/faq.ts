@@ -1,3 +1,5 @@
+import { OFFICIAL_PROFILES } from "@/content/site";
+
 export const FAQ_PAGE = {
   eyebrow: "FAQ",
   title: "About the contests and working with AMS.",
@@ -17,6 +19,18 @@ export const FAQ: FaqItem[] = [
     links: [{ label: "Meet the AMS team", href: "/team" }],
     answer:
       "AMS stands for Algorithms & Mathematics Society. It is an Indian organization that runs Derive, a quantitative reasoning contest, and Ascent, a systems engineering contest. AMS also builds Access, a desktop platform for proctored assessments.",
+  },
+  {
+    question: "Is this the AMS previously at amsociety.in?",
+    answer:
+      "Yes. AMS (Algorithms & Mathematics Society), previously at amsociety.in, now publishes its competitions, team, and partnership information at www.amshq.in. The Ascent registration platform is at ascent.amshq.in.",
+    links: [{ label: "AMS on LinkedIn", href: OFFICIAL_PROFILES.linkedin }],
+  },
+  {
+    question: "How do I register for AMS Ascent 2026?",
+    answer:
+      "Register individually at ascent.amshq.in/register by 20 October 2026. Entry is free, and no team is required for the online qualifier on 24 October 2026. Review the official eligibility requirements before registering.",
+    links: [{ label: "Register for Ascent", href: "https://ascent.amshq.in/register" }, { label: "Eligibility and preparation", href: "/ascent" }],
   },
   {
     question: "What is AMS Derive?",

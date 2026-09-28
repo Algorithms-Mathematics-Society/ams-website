@@ -8,7 +8,7 @@ export const INSTITUTIONAL_OVERVIEW = {
   eyebrow: "Why AMS",
   title: "Good problems bring capable people together.",
   definition:
-    "AMS brings students and early-career talent together through national contests in quantitative reasoning and systems engineering. Firms partner with AMS to take part in these contests and meet the people behind the work.",
+    "AMS (Algorithms & Mathematics Society) is an Indian organization running national competitions in quantitative reasoning and systems engineering. Our contests bring students and early-career talent together. Firms partner with AMS to take part in these contests and meet the people behind the work.",
   image: {
     src: "/images/derive26/hero/finalists-meet-the-interviewers.webp",
     alt: "Derive finalists meeting interviewers from partner firms at IIT Bombay",

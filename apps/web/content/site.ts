@@ -12,8 +12,14 @@ export const SITE = {
   description:
     "AMS (Algorithms & Mathematics Society) runs Derive and Ascent, competitions in quantitative finance and systems programming. Explore our contests, people, and sponsorship opportunities.",
   legalName: "Algorithms & Mathematics Society",
-  url: "https://amshq.in",
+  url: "https://www.amshq.in",
   copyright: "© 2026 AMS (Algorithms & Mathematics Society) · amshq.in",
+} as const;
+
+/** Verified through the former site's LinkedIn link and its current redirect. */
+export const OFFICIAL_PROFILES = {
+  linkedin: "https://www.linkedin.com/company/amshq/",
+  github: "https://github.com/Algorithms-Mathematics-Society",
 } as const;
 
 export const NAV_LINKS: NavLink[] = [
@@ -59,6 +65,8 @@ export const FOOTER_COLUMNS: Array<{ heading: string; links: NavLink[] }> = [
       { label: "Team", href: "/team" },
       { label: "Blog", href: "/blog" },
       { label: "FAQ", href: "/faq" },
+      { label: "LinkedIn", href: OFFICIAL_PROFILES.linkedin },
+      { label: "GitHub", href: OFFICIAL_PROFILES.github },
       { label: "Contact", href: "mailto:team@amshq.in" },
     ],
   },

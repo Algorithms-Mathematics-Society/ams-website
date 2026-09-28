@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { SITE } from "@/content/site";
+import { DEFAULT_SOCIAL_IMAGE } from "@/lib/metadata";
 import { Inter, Source_Serif_4 } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -21,28 +22,27 @@ const sourceSerif = Source_Serif_4({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://amshq.in"),
+  metadataBase: new URL(SITE.url),
   title: {
-    // The exact entity string Google must associate with the "ams" query.
+    // Keep the full organization name in the default page title.
     default: "AMS · Algorithms & Mathematics Society",
     template: "%s · AMS",
   },
   description: SITE.description,
   openGraph: {
-    siteName: "AMS",
+    title: "AMS · Algorithms & Mathematics Society",
+    description: SITE.description,
+    url: SITE.url,
+    siteName: SITE.name,
     type: "website",
     locale: "en_IN",
-    images: [
-      {
-        url: "/og.png",
-        width: 1200,
-        height: 630,
-        alt: "AMS · Algorithms & Mathematics Society",
-      },
-    ],
+    images: [DEFAULT_SOCIAL_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
+    title: "AMS · Algorithms & Mathematics Society",
+    description: SITE.description,
+    images: [DEFAULT_SOCIAL_IMAGE],
   },
 };
 

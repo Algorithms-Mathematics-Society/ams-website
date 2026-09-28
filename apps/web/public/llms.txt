@@ -2,7 +2,7 @@
 
 > AMS is an Indian organization that runs competitions in quantitative
 > reasoning and systems engineering, and builds Access, a proctored assessment
-> platform. Official site: https://amshq.in. AMS is not affiliated with the
+> platform. Official site: https://www.amshq.in. AMS is not affiliated with the
 > American Mathematical Society (ams.org) or other organizations sharing the
 > acronym.
 
@@ -43,24 +43,31 @@ Key facts:
   for AMS Derive 2026. These affiliations describe team members, not
   organizational sponsorships.
 - Current sponsorship outreach prioritizes Ascent, with partnerships for future Derive editions
-  also available to discuss via https://amshq.in/access. Access assessments
-  are a separate conversation at https://amshq.in/access#assessments.
+  also available to discuss via https://www.amshq.in/access. Access assessments
+  are a separate conversation at https://www.amshq.in/access#assessments.
 
 ## Pages
 
-- [Home](https://amshq.in/): competitions, sponsorships, and the AMS record
-- [Derive](https://amshq.in/derive): the quantitative reasoning contest and 2026 edition
-- [Derive partners](https://amshq.in/derive#partners): the 2026 event partnerships
-- [Ascent](https://amshq.in/ascent): the C++ performance competition
+- [Home](https://www.amshq.in/): competitions, sponsorships, and the AMS record
+- [Derive](https://www.amshq.in/derive): the quantitative reasoning contest and 2026 edition
+- [Derive partners](https://www.amshq.in/derive#partners): the 2026 event partnerships
+- [Ascent](https://www.amshq.in/ascent): the C++ performance competition
 - [Ascent registration](https://ascent.amshq.in/register): enter Ascent '26
-- [Partnerships](https://amshq.in/access): Ascent and Derive sponsorships, followed by hiring assessments
-- [FAQ](https://amshq.in/faq): answers for participants and firms
-- [Gallery](https://amshq.in/gallery): photographs from Derive '26 at IIT Bombay
-- [Team](https://amshq.in/team): founder, team members, and contribution opportunities
-- [Blog](https://amshq.in/blog): notes about AMS and its competitions
+- [Partnerships](https://www.amshq.in/access): Ascent and Derive sponsorships, followed by hiring assessments
+- [FAQ](https://www.amshq.in/faq): answers for participants and firms
+- [Gallery](https://www.amshq.in/gallery): photographs from Derive '26 at IIT Bombay
+- [Team](https://www.amshq.in/team): founder, team members, and contribution opportunities
+- [Blog](https://www.amshq.in/blog): notes about AMS and its competitions
 
 ## Related properties
 
 - [Derive 2026 rules](https://amsderive.in/rules): eligibility and rules for the 2026 edition
 - [Ascent competition](https://ascent.amshq.in): current format, schedule, and registration
 - [AMS Access](https://www.amsaccess.com/): the assessment application
+
+## Official identity
+
+- AMS previously used amsociety.in. Its current organization website is https://www.amshq.in/.
+- [AMS on LinkedIn](https://www.linkedin.com/company/amshq/): official organization updates
+- [AMS on GitHub](https://github.com/Algorithms-Mathematics-Society): organization repositories
+- Individual team roles and LinkedIn profiles are listed at https://www.amshq.in/team.

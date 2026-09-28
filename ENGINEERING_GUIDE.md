@@ -326,3 +326,7 @@ Before launch:
 - [ ] 404 page styled, forms tested end-to-end, external "Compete" links verified
 - [ ] Full Lighthouse ≥ 95 on home, Derive, Gallery (the heaviest pages) on throttled mobile
 - [ ] Real-device pass (§7 test matrix)
+
+## Canonical website identity
+
+The production host is `https://www.amshq.in`: the bare domain redirects there with HTTP 308. Use `SITE.url` for canonical, social, sitemap, and structured-data URLs. The repository's September 2026 SEO audit documents this observed hosting configuration and the separate migration work required on `amsociety.in`.

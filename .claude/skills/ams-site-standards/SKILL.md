@@ -70,7 +70,7 @@ Most traffic is phones from shared links. Full approach in ENGINEERING_GUIDE §7
 Strategy lives in `docs/superpowers/specs/2026-07-05-seo-rank-ams-design.md`: a brand-entity flywheel to rank amshq.in for "ams". The parts that apply to every code change:
 
 - **One canonical entity name, forever:** "AMS (Algorithms & Mathematics Society)". Banned variants: "AMS Society", "Algorithms and Maths Society". The footer carries the full name line on every page; never remove it.
-- **Every page ships:** a unique `metadata` export (title on the `%s · AMS` template, real description), a 1200×630 branded OG/Twitter card (link previews in college groups are brand impressions), and a canonical URL via `metadataBase` (https://amshq.in).
+- **Every page ships:** a unique `metadata` export (title on the `%s · AMS` template, real description), a 1200×630 branded OG/Twitter card (link previews in college groups are brand impressions), and a canonical URL via `metadataBase` (https://www.amshq.in, matching the live canonical host).
 - **JSON-LD is centralized:** objects live in `content/seo.ts`, rendered through `components/seo/JsonLd.tsx`. `Organization` + `WebSite` render site-wide from the layout; `Event` for contest editions (verified dates and location only); `FAQPage` generated from `content/faq.ts`. New structured data follows this pattern and passes Google's Rich Results test.
 - **New pages get discovered:** entry in `app/sitemap.ts`, at least one internal link from an existing page, and (operational, post-deploy) a Search Console indexing request.
 - **Only verified facts ship.** Placeholder stats, XX values, and unapproved sponsor logos never reach production; a wrong number costs more trust than no number.

@@ -279,3 +279,37 @@ Reviewed the live [Astryx component library](https://astryx.atmeta.com/component
 Verification: production build with TypeScript validation, ESLint, and whitespace checks passed. Rechecked the homepage, gallery, team, and shared mobile menu at 320, 375, 768, 1024, and 1440 pixels. All twelve full-size photographs loaded; forward and reverse focus wrapping, initial focus, Escape, touch-target sizes, labels, close-click behavior, and restoration of the previous scroll setting passed. The gallery remains visible without JavaScript. No browser errors were reported, and the mobile viewer was visually inspected.
 
 Gallery Lighthouse after this refinement: performance 99; accessibility 100; best practices 100; SEO 100. LCP was 1.984 seconds, CLS 0, and total blocking time 27 milliseconds. Existing site-wide JavaScript budget limitations remain documented above.
+
+## SEO, answer clarity, and official identity, 28 September 2026
+
+Used separate subagent reviews for technical SEO and AEO/entity decisions. Inspected the live old domain, the new host's redirect behavior, AMS's official LinkedIn profile and GitHub organization, and current Google Search Central guidance. The technical subagent implemented the shared metadata changes; the parent integrated content, schema, links, documentation and verification.
+
+### Website changes
+
+- Corrected the canonical host to `https://www.amshq.in`. The live bare domain already returns HTTP 308 to this host, so pointing canonical tags back to the bare domain sent conflicting signals. Canonicals, social URLs, structured data, sitemap, robots and supplemental `llms.txt` now agree.
+- Centralized page metadata generation. All ten content pages retain individual titles and descriptions, with explicit Open Graph URLs, site name, locale and complete Twitter previews. Existing real 1200-by-630 share images remain in use.
+- Added a plain visible definition of AMS (Algorithms & Mathematics Society) to the homepage's existing introduction. Kept the current visual hierarchy and avoided repetitive keyword additions.
+- Added visible FAQ answers for the move from `amsociety.in` and individual Ascent 2026 registration. FAQ structured data comes from those same answers.
+- Added stable Organization and WebSite identifiers and connected article publishers, event organizer and team identities to them. Removed the unsupported “AMS India” alias and legal-name assertion. Derive's separate contest site is no longer treated as an identical organization through `sameAs`.
+- Added Person data for the five visible team members, using their existing roles and LinkedIn URLs. Added stable team anchors without changing roster sizing. Inferred no degrees or employment details.
+- Corrected the “AMS Team” article author from Person to Organization. Named authors link to their team profiles; the organization byline links to the team page. Kept the organization homepage consistent in schema.
+- Added verified AMS LinkedIn and GitHub links to the footer and organization schema. The old website's LinkedIn link redirects to the current `/company/amshq/` profile, which was checked directly.
+- Added current website and contest links to the repository README, creating an owned GitHub backlink when pushed. Corrected assessment-specific article links to `/access#assessments`.
+- Escaped `<` in serialized JSON-LD to prevent content from terminating its script element. No runtime dependency, tracking script or client-side SEO code was introduced.
+- Added `pnpm check:seo`, a dependency-free check of generated HTML metadata, schema shapes, relationships, team identities, visible FAQ parity, article authorship, event dates, sitemap, robots and canonical links.
+
+### Migration and external profiles
+
+The old site still serves its own pages. Its `/about` page reuses homepage metadata and a homepage canonical; those patterns were not copied. The existing LinkedIn Website field still points to the old domain.
+
+[The SEO audit and migration notes](docs/seo-2026-09-28.md) include the observed evidence, a five-route starting redirect map, legacy resources that need an inventory before migration, exact LinkedIn/GitHub website-field values, contest organizer link updates, suggested correction wording for existing backlinks, and Search Console follow-up. These external changes are pending access to the respective accounts. No old-domain redirects, DNS changes, Search Console submissions, profile edits, or outreach messages were performed.
+
+Current Google guidance says no special AI markup or `llms.txt` file is needed for its AI search features. Google also retired FAQ rich results in May 2026. The FAQ remains useful visible content with matching schema; no ranking, rich-result, or assistant-citation outcome is promised. Source links are included in the audit.
+
+### Verification
+
+- Production build and TypeScript validation passed; all ten content pages remain static or statically generated blog pages.
+- ESLint, standalone TypeScript, generated-HTML SEO checks and whitespace checks passed.
+- All ten pages passed browser checks at 320, 375, 768, 1024 and 1440 pixels. Checked headings, canonical URLs, absence of em dashes, color photos, responsive overflow, reading widths, internal routes and fragments, FAQ journeys, member links, menu and gallery interactions, image loading and no-JavaScript content. No browser runtime errors were reported.
+- The homepage Lighthouse check scored performance 95, accessibility 100, best practices 100 and SEO 100. LCP was 2.9 seconds, CLS 0 and total blocking time 30 milliseconds. The previously documented homepage LCP and JavaScript-size limits remain open; this SEO update does not claim to resolve them.
+- Structured data passed local shape, relationship and content-parity checks. Google's live Rich Results Test and Search Console inspection remain post-deployment operational checks, not claimed results of the local validator.
