@@ -22,11 +22,11 @@ export function TeamGrid({ withHeading = true }: Props) {
           </Reveal>
         )}
 
-        <ul className={`grid gap-x-10 gap-y-10 lg:grid-cols-3 ${withHeading ? "mt-12" : ""}`}>
+        <ul className={`grid gap-x-10 gap-y-10 md:grid-cols-2 ${withHeading ? "mt-12" : ""}`}>
           {TEAM.map((member, index) => (
             <li
               key={member.name}
-              className={member.image ? "lg:col-span-3" : "min-w-0"}
+              className={member.image ? "col-span-full" : "min-w-0"}
             >
               <Reveal
                 delay={index * 70}
@@ -50,9 +50,11 @@ export function TeamGrid({ withHeading = true }: Props) {
                   <p className="mt-3 text-base font-medium leading-6 text-ink">
                     {member.role}
                   </p>
-                  <p className="mt-1 text-sm leading-6 text-ink/65">
-                    {member.affiliation}
-                  </p>
+                  {member.affiliation && (
+                    <p className="mt-1 text-sm leading-6 text-ink/65">
+                      {member.affiliation}
+                    </p>
+                  )}
                   {member.bio && <p className="mt-5 max-w-xl leading-7 text-ink/85">{member.bio}</p>}
                   {member.profile && (
                     <div className={member.image ? "mt-6" : "mt-auto pt-6"}>

@@ -220,3 +220,10 @@ Two design and content subagents reviewed the shared UI and sponsorship page. Th
 - Grounded Derive's invitation in its completed edition: 33 finalists at IIT Bombay, with Jane Street and QRT as partners. Kept Ascent as the current focus and Derive sponsorship tied to future editions.
 - Updated the homepage introduction, partnership card, closing invitation, footer tagline, and partnerships metadata for a consistent tone. Preserved the design, contact destinations, and final assessment section.
 - Verification: production build with TypeScript validation, ESLint, and whitespace checks passed. Homepage and partnerships page passed copy and layout checks at 320, 375, 768, 1024, and 1440 pixels. Confirmed the contact destination, absence of em dashes and removed phrases, and no browser errors. Visually checked the revised sponsorship section.
+
+## Team roster addition
+
+- Updated Quasar Chunawala's role to “Head of Problem Design · AMS Ascent 2026.”
+- Added Sahil as “Head of Partnerships · AMS Derive 2026,” linking to the supplied LinkedIn profile. Affiliation is optional and omitted where none was supplied.
+- Arranged the four profiles beneath Tilak in two columns on tablet and desktop, with a single column on phones. Updated the team introduction and `llms.txt` to include the partnerships role.
+- Verification: production build with TypeScript validation, ESLint, and whitespace checks passed. The team page passed at 320, 375, 768, 1024, and 1440 pixels, with the exact role text and Sahil's LinkedIn destination, no horizontal overflow or em dashes, and no browser errors. Visually checked the completed roster.

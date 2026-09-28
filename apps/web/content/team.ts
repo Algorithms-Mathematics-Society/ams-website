@@ -1,7 +1,7 @@
 export interface TeamMember {
   name: string;
   role: string;
-  affiliation: string;
+  affiliation?: string;
   bio?: string;
   profile?: { label: string; href: string };
   image?: { src: string; alt: string };
@@ -10,7 +10,7 @@ export interface TeamMember {
 export const TEAM_PAGE = {
   eyebrow: "The people behind AMS",
   title: "Built by competitors.",
-  body: "Meet the people behind our contests, problem design, and community. Together with our judges, volunteers, and contributors, they bring each edition of AMS to life.",
+  body: "Meet the people behind our contests, problem design, partnerships, and community. Together with our judges, volunteers, and contributors, they bring each edition of AMS to life.",
   cta: {
     title: "Contribute to the next edition.",
     body: "AMS works with problem setters, judges, operations volunteers, and platform contributors. Email us with your area of interest and a little about your experience.",
@@ -54,11 +54,19 @@ export const TEAM: TeamMember[] = [
   },
   {
     name: "Quasar Chunawala",
-    role: "Head of Problem Design · Ascent",
+    role: "Head of Problem Design · AMS Ascent 2026",
     affiliation: "CME Group",
     profile: {
       label: "Quasar on LinkedIn",
       href: "https://www.linkedin.com/in/quasar-chunawala/",
+    },
+  },
+  {
+    name: "Sahil",
+    role: "Head of Partnerships · AMS Derive 2026",
+    profile: {
+      label: "Sahil on LinkedIn",
+      href: "https://www.linkedin.com/in/sahil-4a7830281/",
     },
   },
 ];
