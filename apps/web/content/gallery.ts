@@ -1,6 +1,10 @@
 export const GALLERY_ACTIONS = {
   openPhoto: "Open photo",
   photo: "Photo",
+  close: "Close gallery",
+  previous: "Previous photo",
+  next: "Next photo",
+  navigation: "Photo navigation",
 } as const;
 
 export interface GalleryItem {

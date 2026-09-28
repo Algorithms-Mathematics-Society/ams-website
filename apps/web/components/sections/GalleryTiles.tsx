@@ -64,7 +64,7 @@ export function GalleryTiles({ items }: Props) {
             src: item.full,
             label: item.label,
           }))}
-          positionLabel={GALLERY_ACTIONS.photo}
+          labels={GALLERY_ACTIONS}
           index={openIndex}
           onClose={closeLightbox}
           onNavigate={setOpenIndex}

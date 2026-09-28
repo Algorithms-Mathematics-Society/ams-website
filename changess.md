@@ -264,3 +264,18 @@ There is no single gallery layout established as universally “most liked.” T
 - Opened and decoded all twelve full-size photographs. Verified the counter, previous/next wraparound, keyboard focus trapping, Escape, focus restoration, scroll unlocking, and that clicking the photograph itself does not close the viewer. Viewer controls retain 44-pixel targets.
 - Checked visible gallery content without JavaScript, all internal routes and anchors, image loading, mobile navigation, and JSON-LD parsing. No browser runtime errors were reported.
 - Final gallery Lighthouse: performance 99; accessibility, best practices, and SEO 100; displayed LCP 2.0 seconds; CLS 0; total blocking time 20 milliseconds. This is a gallery measurement, not a new site-wide performance guarantee. Previously recorded homepage and JavaScript budget limitations remain documented above.
+
+## Selective Astryx component refinements
+
+Reviewed the live [Astryx component library](https://astryx.atmeta.com/components), including the rendered [IconButton](https://astryx.atmeta.com/components/IconButton), [Lightbox](https://astryx.atmeta.com/components/Lightbox), and [ButtonGroup](https://astryx.atmeta.com/components/ButtonGroup) documentation, plus its [layout guidance](https://astryx.atmeta.com/docs/layout). Applied the compact-control and clear-action patterns using AMS's existing React and Tailwind components.
+
+- Added a shared, quiet `IconButton` with a 44-pixel target, a required accessible label, native hover hint, and consistent hover, pressed, and keyboard-focus states.
+- Added small SVG control icons with a consistent stroke and size. Replaced the gallery's text arrows and close glyph, and aligned the mobile menu's controls with the same treatment.
+- Moved the gallery close control to the upper-right corner beside the photo counter. Kept previous and next controls together below the image, with the descriptive caption separate from the controls.
+- Named the viewer's navigation group for assistive technology. Kept captions plain text and preserved the photo counter and keyboard navigation.
+- Scoped the lightbox focus query to its own dialog, prevented arrow-key page scrolling, and restored the body's previous scroll setting on close.
+- Preserved AMS's palette, photo grid, team hierarchy, and clear text labels for less obvious actions. No Astryx package or other dependency was installed.
+
+Verification: production build with TypeScript validation, ESLint, and whitespace checks passed. Rechecked the homepage, gallery, team, and shared mobile menu at 320, 375, 768, 1024, and 1440 pixels. All twelve full-size photographs loaded; forward and reverse focus wrapping, initial focus, Escape, touch-target sizes, labels, close-click behavior, and restoration of the previous scroll setting passed. The gallery remains visible without JavaScript. No browser errors were reported, and the mobile viewer was visually inspected.
+
+Gallery Lighthouse after this refinement: performance 99; accessibility 100; best practices 100; SEO 100. LCP was 1.984 seconds, CLS 0, and total blocking time 27 milliseconds. Existing site-wide JavaScript budget limitations remain documented above.

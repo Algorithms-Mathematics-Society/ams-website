@@ -4,6 +4,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/Button";
+import { ControlIcon } from "@/components/ui/ControlIcon";
+import { IconButton } from "@/components/ui/IconButton";
 import { cn } from "@/lib/cn";
 import { COMPETE_LINK, NAV_LINKS } from "@/content/site";
 
@@ -62,32 +64,16 @@ function MobileNavDisclosure({ pathname }: { pathname: string }) {
 
   return (
     <div className="lg:hidden">
-      <button
+      <IconButton
         ref={toggleRef}
-        type="button"
+        label={open ? "Close menu" : "Open menu"}
+        inverse
         aria-expanded={open}
         aria-controls="mobile-nav-panel"
-        onClick={() => setOpen((v) => !v)}
-        className="flex h-11 w-11 items-center justify-center text-cream-light transition-colors hover:bg-burgundy-deep focus-visible:transition-none focus-visible:outline-gold-bright"
+        onClick={() => setOpen((value) => !value)}
       >
-        <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
-        <svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          aria-hidden
-        >
-          {open ? (
-            <path d="M6 6l12 12M18 6L6 18" />
-          ) : (
-            <path d="M4 7h16M4 12h16M4 17h16" />
-          )}
-        </svg>
-      </button>
+        <ControlIcon name={open ? "close" : "menu"} />
+      </IconButton>
 
       {open && (
         <div
@@ -109,7 +95,7 @@ function MobileNavDisclosure({ pathname }: { pathname: string }) {
               onClick={() => closeMenu()}
               className="mb-4 flex min-h-11 items-center gap-2 rounded-control px-3 text-sm font-semibold text-cream-light hover:bg-burgundy-deep focus-visible:outline-gold-bright"
             >
-              Close menu <span aria-hidden>×</span>
+              Close menu <ControlIcon name="close" />
             </button>
             <nav aria-label="Main" className="flex flex-col border-t border-cream-light/20">
               {NAV_LINKS.map((link) => (

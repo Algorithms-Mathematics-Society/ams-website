@@ -2,11 +2,13 @@
 
 import Image from "next/image";
 import { useEffect, useRef } from "react";
+import { ControlIcon } from "@/components/ui/ControlIcon";
+import { IconButton } from "@/components/ui/IconButton";
 
 interface Props {
   items: { src: string; label: string }[];
   index: number;
-  positionLabel: string;
+  labels: { photo: string; close: string; previous: string; next: string; navigation: string };
   onClose: () => void;
   onNavigate: (index: number) => void;
 }
@@ -16,28 +18,31 @@ interface Props {
  * chrome kept minimal. Esc closes, arrow keys navigate, focus is trapped,
  * body scroll locks while open.
  */
-export function Lightbox({ items, index, positionLabel, onClose, onNavigate }: Props) {
+export function Lightbox({ items, index, labels, onClose, onNavigate }: Props) {
+  const dialogRef = useRef<HTMLDivElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
   const item = items[index];
 
   useEffect(() => {
+    const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     closeRef.current?.focus();
     return () => {
-      document.body.style.overflow = "";
+      document.body.style.overflow = previousOverflow;
     };
   }, []);
 
   useEffect(() => {
     function onKeyDown(e: KeyboardEvent) {
       if (e.key === "Escape") onClose();
-      if (e.key === "ArrowRight") onNavigate((index + 1) % items.length);
-      if (e.key === "ArrowLeft")
-        onNavigate((index - 1 + items.length) % items.length);
+      if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+        e.preventDefault();
+        onNavigate((index + (e.key === "ArrowRight" ? 1 : -1) + items.length) % items.length);
+      }
       if (e.key === "Tab") {
         // Three buttons only; keep focus among them.
         const focusables = Array.from(
-          document.querySelectorAll<HTMLElement>("[data-lightbox-control]"),
+          dialogRef.current?.querySelectorAll<HTMLElement>("[data-lightbox-control]") ?? [],
         );
         const first = focusables[0];
         const last = focusables[focusables.length - 1];
@@ -85,12 +90,21 @@ export function Lightbox({ items, index, positionLabel, onClose, onNavigate }: P
 
   return (
     <div
+      ref={dialogRef}
       role="dialog"
       aria-modal="true"
       aria-label={item.label}
       className="fixed inset-0 z-50 flex flex-col bg-black"
       onClick={onClose}
     >
+      <div className="flex shrink-0 items-center justify-between px-5 py-3 sm:px-8" onClick={(event) => event.stopPropagation()}>
+        <p className="text-sm tabular-nums text-cream-light/75">
+          {labels.photo} {index + 1} / {items.length}
+        </p>
+        <IconButton ref={closeRef} label={labels.close} inverse data-lightbox-control onClick={onClose}>
+          <ControlIcon name="close" />
+        </IconButton>
+      </div>
       <div className="relative min-h-0 flex-1" onClick={onStageClick}>
         <Image
           src={item.src}
@@ -105,43 +119,16 @@ export function Lightbox({ items, index, positionLabel, onClose, onNavigate }: P
         className="flex shrink-0 flex-col gap-3 px-5 py-4 sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:px-8"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="min-w-0" aria-live="polite" aria-atomic="true">
-          <p className="text-xs tabular-nums text-cream-light/60">
-            {positionLabel} {index + 1} / {items.length}
-          </p>
-          <p className="mt-1 text-sm leading-6 text-cream-light/90">{item.label}</p>
-        </div>
-        <div className="flex shrink-0 justify-end gap-2">
-          <button
-            type="button"
-            data-lightbox-control
-            onClick={() =>
-              onNavigate((index - 1 + items.length) % items.length)
-            }
-            className="flex h-11 w-11 items-center justify-center rounded-control text-cream-light/80 hover:text-cream-light"
-          >
-            <span className="sr-only">Previous photo</span>
-            <span aria-hidden>←</span>
-          </button>
-          <button
-            type="button"
-            data-lightbox-control
-            onClick={() => onNavigate((index + 1) % items.length)}
-            className="flex h-11 w-11 items-center justify-center rounded-control text-cream-light/80 hover:text-cream-light"
-          >
-            <span className="sr-only">Next photo</span>
-            <span aria-hidden>→</span>
-          </button>
-          <button
-            ref={closeRef}
-            type="button"
-            data-lightbox-control
-            onClick={onClose}
-            className="flex h-11 w-11 items-center justify-center rounded-control text-cream-light/80 hover:text-cream-light"
-          >
-            <span className="sr-only">Close</span>
-            <span aria-hidden>✕</span>
-          </button>
+        <p className="min-w-0 text-sm leading-6 text-cream-light/90" aria-live="polite" aria-atomic="true">
+          {item.label}
+        </p>
+        <div role="group" aria-label={labels.navigation} className="flex shrink-0 justify-end gap-2">
+          <IconButton label={labels.previous} inverse data-lightbox-control onClick={() => onNavigate((index - 1 + items.length) % items.length)}>
+            <ControlIcon name="previous" />
+          </IconButton>
+          <IconButton label={labels.next} inverse data-lightbox-control onClick={() => onNavigate((index + 1) % items.length)}>
+            <ControlIcon name="next" />
+          </IconButton>
         </div>
       </div>
     </div>
