@@ -8,9 +8,9 @@ export interface NavLink {
 export const SITE = {
   name: "AMS",
   tagline:
-    "Competitions in quantitative finance and systems programming. Assessments for technical hiring.",
+    "Competitions in quantitative finance and systems programming. Sponsorships that support the next generation of technical talent.",
   description:
-    "AMS (Algorithms & Mathematics Society) runs Derive and Ascent, competitions in quantitative finance and systems programming, and builds the Access assessment platform.",
+    "AMS (Algorithms & Mathematics Society) runs Derive and Ascent, competitions in quantitative finance and systems programming. Explore our contests, people, and sponsorship opportunities.",
   legalName: "Algorithms & Mathematics Society",
   url: "https://amshq.in",
   copyright: "© 2026 AMS (Algorithms & Mathematics Society) · amshq.in",
@@ -19,7 +19,7 @@ export const SITE = {
 export const NAV_LINKS: NavLink[] = [
   { label: "Derive", href: "/derive" },
   { label: "Ascent", href: "/ascent" },
-  { label: "For firms", href: "/access" },
+  { label: "Partnerships", href: "/access" },
   { label: "Gallery", href: "/gallery" },
   { label: "Team", href: "/team" },
   { label: "Blog", href: "/blog" },
@@ -45,11 +45,11 @@ export const FOOTER_COLUMNS: Array<{ heading: string; links: NavLink[] }> = [
     ],
   },
   {
-    heading: "Firms",
+    heading: "Partner with AMS",
     links: [
-      { label: "Assessments", href: "/access" },
-      { label: "Contest partnerships", href: "/access#sponsor" },
-      { label: "Discuss your hiring needs", href: "/access#contact" },
+      { label: "Sponsor a competition", href: "/access#sponsor" },
+      { label: "Discuss a partnership", href: "/access#contact" },
+      { label: "Hiring assessments", href: "/access#assessments" },
     ],
   },
   {

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import { TextLink } from "@/components/ui/TextLink";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/ui/Reveal";
@@ -24,12 +24,12 @@ export function GallerySpread() {
     >
       <Container>
         <Reveal>
-          <header className="grid gap-6 border-t-2 border-burgundy pt-6 lg:grid-cols-12 lg:items-end">
+          <header className="grid gap-6 lg:grid-cols-12 lg:items-end">
             <div className="lg:col-span-7">
               <Eyebrow>{GALLERY_HOME.eyebrow}</Eyebrow>
               <h2
                 id="documentary-record-heading"
-                className="mt-4 text-section font-semibold tracking-tight text-burgundy"
+                className="mt-4 text-section font-semibold tracking-[-0.035em] text-burgundy"
               >
                 {GALLERY_HOME.title}
               </h2>
@@ -38,12 +38,11 @@ export function GallerySpread() {
               <p className="max-w-xl leading-relaxed text-ink/80">
                 {GALLERY_HOME.body}
               </p>
-              <Link
-                href={GALLERY_HOME.link.href}
-                className="mt-3 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-burgundy underline-offset-4 hover:text-gold-deep hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-deep"
+              <TextLink
+                href={GALLERY_HOME.link.href} className="mt-3"
               >
-                {GALLERY_HOME.link.label} <span aria-hidden>→</span>
-              </Link>
+                {GALLERY_HOME.link.label}
+              </TextLink>
             </div>
           </header>
 

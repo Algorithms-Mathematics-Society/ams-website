@@ -22,7 +22,7 @@ export function Button({
 }: Props) {
   const isExternal = external ?? /^https?:\/\//.test(href);
   const styles = cn(
-    "inline-flex min-h-11 items-center justify-center rounded-control px-5 py-2.5 text-sm font-semibold transition-colors focus-visible:transition-none focus-visible:outline-2 focus-visible:outline-offset-2",
+    "inline-flex min-h-11 min-w-0 max-w-full items-center justify-center rounded-control px-5 py-2.5 text-center text-sm leading-6 font-semibold break-words no-underline transition-colors focus-visible:transition-none focus-visible:outline-2 focus-visible:outline-offset-2",
     variant === "solid" &&
       "bg-burgundy text-cream-light hover:bg-burgundy-deep focus-visible:outline-gold-deep",
     variant === "outline" &&

@@ -32,7 +32,7 @@ export const FAQ: FaqItem[] = [
   },
   {
     question: "What is AMS Access?",
-    links: [{ label: "Explore Access", href: "/access" }],
+    links: [{ label: "Hiring assessments", href: "/access#assessments" }],
     answer:
       "Access is AMS's desktop platform for proctored assessments. It combines timed problem solving with session checks and records that hiring teams can review alongside interviews. Contact AMS to discuss the assessment format, available features, and any benchmarking requirements.",
   },
@@ -50,9 +50,9 @@ export const FAQ: FaqItem[] = [
   },
   {
     question: "How can firms work with AMS?",
-    links: [{ label: "Discuss your hiring needs", href: "/access#contact" }, { label: "Contest partnerships", href: "/access#sponsor" }],
+    links: [{ label: "Sponsorship opportunities", href: "/access#sponsor" }, { label: "Discuss a partnership", href: "/access#contact" }],
     answer:
-      "Firms can discuss contest sponsorship, meeting competitors, or private assessments through Access. Contact AMS with your hiring or partnership goals to agree on the format, scope, and next steps.",
+      "The current partnership focus is sponsorship of Ascent, AMS's systems engineering competition. Firms can also discuss Derive sponsorship and ways to meet participants. For separate hiring assessments, AMS can discuss evaluation requirements through Access.",
   },
   {
     question: "Is AMS the same as the American Mathematical Society?",

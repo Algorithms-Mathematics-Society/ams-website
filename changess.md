@@ -169,3 +169,45 @@ The official Ascent site has a contradictory sentence in its timeline introducti
 The rebuilt Ascent page scored 96 for performance and 100 for accessibility, best practices, and SEO, with LCP 2.7 seconds and CLS 0. The homepage scored 88 while other visual checks were running, then 91 in an isolated repeat, with LCP 3.0 seconds, total blocking time 180 milliseconds, CLS 0, and 100 in the other three categories.
 
 The final homepage measurement does not meet the repository's 95 performance target or its two-second LCP target. A targeted review found no new hero animation, visibility gate, hydration dependency, or meaningful asset growth: request counts stayed the same and total transfer grew by 437 bytes relative to the earlier report. The LCP photograph, priority, dimensions, and primary framework scripts were unchanged. No clear source regression was identified, so speculative rendering changes were not introduced to chase a score. The latest lower measurement is retained here rather than presented as a passing performance check. The previously noted JavaScript budget also remains open.
+
+## Design, team, and sponsorship refinement
+
+### Design decisions
+
+- Standardized standalone section actions with a shared `TextLink` component. Arrow icons are separate SVGs, so the label and arrow cannot acquire the awkward continuous underline. Links retain visible keyboard focus and a minimum 44-pixel target.
+- Applied the link treatment to the homepage, FAQ, team profiles, Ascent information, Derive partners, gallery invitations, and assessment contact.
+- Removed ornamental gold rules, the unused underline-drawing animation, and redundant section borders. Kept separators where they organize distinct content.
+- Replaced desktop navigation's underline indicator with a compact filled active state. Aligned mobile menu rows and simplified the close control and footer headings.
+- Made buttons wrap safely on narrow screens. Retained conventional underlines within article paragraphs so reading links remain identifiable.
+- Preserved the supplied burgundy, antique gold, and cream palette and the original color photography. Event photographs retain captions identifying the actual Derive edition.
+
+### Team
+
+- Added Kartik Agrawal, Head of Problem Design for AMS Derive 2026, with IIT Kanpur affiliation and the supplied LinkedIn profile.
+- Added Ayush Shukla, Head of Community, with University of Mumbai affiliation and the supplied LinkedIn profile.
+- Added Quasar Chunawala, Head of Problem Design for Ascent, with CME Group affiliation and the supplied LinkedIn profile.
+- Added University of Mumbai to Tilak Jain's existing founder profile.
+- Kept Tilak's existing photograph and placed the three additional profiles beneath it in a clean responsive roster. Profile links use the shared text action. No portraits or biographies were invented for the new members.
+
+### Sponsorship and wording
+
+- Reworked `/access` around contest sponsorship, leading with “Sponsor Ascent.” and a direct sponsorship inquiry.
+- Made Ascent the current priority and described Derive opportunities as future editions. Jane Street and QRT references remain specific to Derive '26.
+- Added concise guidance for sponsors and recruiting teams without promising unconfirmed benefits, access to candidate data, or hiring outcomes.
+- Kept `partners@amshq.in` visible and copyable. Assessments now occupy a short final section with a separate inquiry to `team@amshq.in`.
+- Preserved `/access`, `#sponsor`, and `#contact`, and provided `#assessments` for links directly to the secondary offer.
+- Aligned homepage invitations, navigation, footer, FAQ links, metadata, organization description, and `llms.txt` with the sponsorship priority. Team affiliations in `llms.txt` are explicitly distinguished from institutional sponsorship.
+
+### Review process
+
+Two design and content subagents reviewed the shared UI and sponsorship page. Their changes were integrated with the team update and homepage copy review. The final review checks the actual production build, including responsive layouts, keyboard navigation, profile destinations, and sponsorship contact flow.
+
+### Final verification
+
+- Production build, ESLint, TypeScript, and whitespace checks passed. All content routes remain statically generated.
+- All ten content pages passed layout checks at 320, 375, 768, 1024, and 1440 pixels: one H1, correct canonical URL, no horizontal overflow, no em dashes, and no photo color filters.
+- Verified the four team names, affiliations, and exact LinkedIn destinations, the sponsorship-first section order, both inquiry email destinations, and the separate assessment anchor.
+- Verified internal routes and anchors, JSON-LD parsing, image loading, mobile-menu focus handling and Escape, gallery keyboard navigation, reduced-motion rendering, and homepage visibility with JavaScript disabled. No browser runtime errors were reported.
+- The design subagent visually reviewed the final production homepage, team page, and sponsorship page on desktop and mobile. It found no arrow collisions, awkward underlines, wrapping defects, or spacing issues. Sampled standalone text actions measured at least 44 pixels high.
+- The isolated homepage Lighthouse run scored 96 for performance and 100 for accessibility, best practices, and SEO. LCP was 2.8 seconds, CLS was 0, and total blocking time was 20 milliseconds.
+- The Lighthouse score meets the repository's 95 target. Its stricter two-second LCP target remains unmet, and this refinement does not resolve the previously documented JavaScript budget. No dependencies, image assets, or additional client-side interactions were added.

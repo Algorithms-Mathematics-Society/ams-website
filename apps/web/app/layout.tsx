@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE } from "@/content/site";
 import { Inter, Source_Serif_4 } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -26,8 +27,7 @@ export const metadata: Metadata = {
     default: "AMS · Algorithms & Mathematics Society",
     template: "%s · AMS",
   },
-  description:
-    "AMS is an Indian contest and assessment organization running national contests in quantitative finance and competitive programming, supported by the Access assessment platform.",
+  description: SITE.description,
   openGraph: {
     siteName: "AMS",
     type: "website",

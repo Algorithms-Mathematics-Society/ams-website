@@ -19,8 +19,7 @@ export function AscentPillars() {
           {ASCENT_PILLARS.map((pillar, index) => (
             <li key={pillar.title}>
               <Reveal delay={index * 100}>
-                <div className="h-0.5 w-9 bg-gold" aria-hidden />
-                <h3 className="mt-5 font-display text-lg font-semibold">
+                <h3 className="font-display text-xl font-semibold">
                   {pillar.title}
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-cream-light/85">

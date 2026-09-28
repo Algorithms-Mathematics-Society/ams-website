@@ -1,54 +1,37 @@
-import Image from "next/image";
-import Link from "next/link";
+import { TextLink } from "@/components/ui/TextLink";
 import { Container } from "@/components/ui/Container";
-import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/ui/Reveal";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ACCESS_FIRMS } from "@/content/access";
 
 export function AccessFirms() {
   return (
-    <section id={ACCESS_FIRMS.id} className="scroll-mt-24 py-section">
-      <Container className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-        <Reveal>
-          <Eyebrow>{ACCESS_FIRMS.eyebrow}</Eyebrow>
-          <h2 className="mt-4 font-sans text-section font-semibold tracking-[-0.035em] text-burgundy">
-            {ACCESS_FIRMS.title}
-          </h2>
-          <div className="mt-6 space-y-5 leading-relaxed">
-            {ACCESS_FIRMS.paragraphs.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
-            ))}
-          </div>
-          <ul className="mt-7 divide-y divide-burgundy/15 border-y border-burgundy/15">
-            {ACCESS_FIRMS.links.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="flex min-h-12 items-center justify-between gap-4 py-3 text-sm font-semibold text-burgundy hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-burgundy"
-                >
-                  {link.label}
-                  <span aria-hidden="true">↗</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
+    <section id={ACCESS_FIRMS.id} className="scroll-mt-24 bg-cream-light py-section">
+      <Container>
+        <Reveal className="grid gap-6 lg:grid-cols-2 lg:gap-16">
+          <SectionHeading eyebrow={ACCESS_FIRMS.eyebrow} title={ACCESS_FIRMS.title} />
+          <p className="max-w-lg self-end leading-relaxed text-ink/85">
+            {ACCESS_FIRMS.body}
+          </p>
         </Reveal>
-        <Reveal>
-          <figure>
-            <div className="relative aspect-[4/3] overflow-hidden bg-cream">
-              <Image
-                src={ACCESS_FIRMS.image.src}
-                alt={ACCESS_FIRMS.image.alt}
-                fill
-                sizes="(min-width: 1280px) 576px, (min-width: 1024px) 46vw, (min-width: 640px) calc(100vw - 64px), calc(100vw - 40px)"
-                className="object-cover"
-              />
-            </div>
-            <figcaption className="mt-3 text-sm leading-relaxed text-ink/80">
-              {ACCESS_FIRMS.image.caption}
-            </figcaption>
-          </figure>
-        </Reveal>
+        <div className="mt-8 divide-y divide-burgundy/15">
+          {ACCESS_FIRMS.opportunities.map((opportunity) => (
+            <Reveal key={opportunity.name}>
+              <article className="grid gap-5 py-8 md:grid-cols-[1fr_2fr] md:gap-12 lg:py-10">
+                <div>
+                  <h3 className="font-display text-3xl text-burgundy">{opportunity.name}</h3>
+                  <p className="mt-2 text-sm font-medium text-ink/75">{opportunity.status}</p>
+                </div>
+                <div className="max-w-2xl">
+                  <p className="leading-relaxed text-ink/85">{opportunity.body}</p>
+                  <TextLink href={opportunity.link.href} className="mt-3">
+                    {opportunity.link.label}
+                  </TextLink>
+                </div>
+              </article>
+            </Reveal>
+          ))}
+        </div>
       </Container>
     </section>
   );

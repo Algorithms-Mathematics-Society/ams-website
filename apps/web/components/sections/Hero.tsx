@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import { TextLink } from "@/components/ui/TextLink";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
@@ -25,12 +25,11 @@ export function Hero() {
               {HOME_HERO.secondaryAction.label}
             </Button>
           </div>
-          <Link
-            href={HOME_HERO.teamLink.href}
-            className="mt-6 inline-flex min-h-11 items-center gap-2 text-sm text-ink/75 underline underline-offset-4 hover:text-burgundy"
+          <TextLink
+            href={HOME_HERO.teamLink.href} className="mt-6"
           >
-            {HOME_HERO.teamLink.label} <span aria-hidden>→</span>
-          </Link>
+            {HOME_HERO.teamLink.label}
+          </TextLink>
         </div>
         <figure className="min-w-0 border border-burgundy/15 bg-cream-light">
           <div className="relative aspect-[4/3] overflow-hidden lg:aspect-[6/5]">
@@ -47,9 +46,9 @@ export function Hero() {
           </div>
           <figcaption className="flex flex-wrap items-center justify-between gap-x-4 gap-y-1 border-t border-burgundy/15 px-5 py-3 text-xs leading-5 text-ink/80">
             <span>{HOME_HERO.image.context}</span>
-            <Link href={HOME_HERO.galleryLink.href} className="inline-flex min-h-11 items-center gap-2 font-semibold text-burgundy underline underline-offset-4">
-              {HOME_HERO.galleryLink.label} <span aria-hidden>→</span>
-            </Link>
+            <TextLink href={HOME_HERO.galleryLink.href}>
+              {HOME_HERO.galleryLink.label}
+            </TextLink>
           </figcaption>
         </figure>
       </Container>

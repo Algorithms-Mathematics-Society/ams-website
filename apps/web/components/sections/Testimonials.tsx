@@ -15,12 +15,12 @@ export function Testimonials() {
     >
       <Container>
         <Reveal>
-          <header className="grid gap-6 border-t-2 border-burgundy pt-6 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,0.5fr)] lg:items-end">
+          <header className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,0.5fr)] lg:items-end">
             <div>
               <Eyebrow>{TESTIMONIALS_SECTION.eyebrow}</Eyebrow>
               <h2
                 id="participant-record-heading"
-                className="mt-4 max-w-3xl text-section font-semibold tracking-tight text-burgundy"
+                className="mt-4 max-w-3xl text-section font-semibold tracking-[-0.035em] text-burgundy"
               >
                 {TESTIMONIALS_SECTION.title}
               </h2>

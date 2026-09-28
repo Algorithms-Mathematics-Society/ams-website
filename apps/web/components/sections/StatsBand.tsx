@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { TextLink } from "@/components/ui/TextLink";
 import { Container } from "@/components/ui/Container";
 import { STATS, STATS_HEADING, STATS_LINK, STATS_NOTE } from "@/content/stats";
 
@@ -10,9 +10,9 @@ export function StatsBand() {
           <h2 id="stats-heading" className="text-sm font-semibold text-burgundy">
             {STATS_HEADING}
           </h2>
-          <Link href={STATS_LINK.href} className="inline-flex min-h-11 items-center gap-2 text-sm text-burgundy underline underline-offset-4">
-            {STATS_LINK.label} <span aria-hidden>→</span>
-          </Link>
+          <TextLink href={STATS_LINK.href}>
+            {STATS_LINK.label}
+          </TextLink>
         </div>
         <dl className="mt-6 grid grid-cols-2 gap-x-5 gap-y-8 sm:grid-cols-4 sm:gap-x-8">
           {STATS.map((stat) => (

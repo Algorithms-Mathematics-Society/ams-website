@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { TextLink } from "@/components/ui/TextLink";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
 import { FAQ } from "@/content/faq";
@@ -17,9 +17,9 @@ export function FaqList() {
                   <ul className="mt-3 flex flex-wrap gap-x-6">
                     {item.links.map((link) => (
                       <li key={link.href}>
-                        <Link href={link.href} className="inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-burgundy underline underline-offset-4">
-                          {link.label} <span aria-hidden>→</span>
-                        </Link>
+                        <TextLink href={link.href}>
+                          {link.label}
+                        </TextLink>
                       </li>
                     ))}
                   </ul>

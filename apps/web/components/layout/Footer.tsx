@@ -5,7 +5,7 @@ import { FOOTER_COLUMNS, SITE } from "@/content/site";
 
 export function Footer() {
   return (
-    <footer className="border-t-2 border-gold-bright bg-burgundy text-cream-light">
+    <footer className="border-t border-burgundy-deep bg-burgundy text-cream-light">
       <Container>
         <div className="grid gap-8 border-b border-cream-light/20 py-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-12 lg:py-12">
           <div>
@@ -22,7 +22,6 @@ export function Footer() {
                 height={36}
                 className="shrink-0"
               />
-
             </Link>
             <p className="mt-4 max-w-md break-words text-sm leading-6 text-cream-light/80">
               {SITE.tagline}
@@ -36,7 +35,7 @@ export function Footer() {
             <div className="grid grid-cols-2 gap-x-6 gap-y-7 sm:grid-cols-3">
               {FOOTER_COLUMNS.map((column) => (
                 <div key={column.heading} className="min-w-0">
-                  <h2 className="text-xs font-semibold tracking-[0.2em] text-gold-bright uppercase">
+                  <h2 className="text-sm font-semibold text-cream-light">
                     {column.heading}
                   </h2>
                   <ul className="mt-3">

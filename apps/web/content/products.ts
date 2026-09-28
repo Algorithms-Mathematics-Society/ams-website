@@ -8,7 +8,7 @@ export interface Product {
 }
 
 export const PRODUCTS_SECTION = {
-  eyebrow: "Contests and assessments",
+  eyebrow: "Competitions and partnerships",
   title: "Find your place at AMS.",
   action: { label: "How to take part", href: "/faq" },
 } as const;
@@ -33,10 +33,10 @@ export const PRODUCTS = [
   },
   {
     index: "03",
-    name: "Access",
-    classification: "Assessments for hiring teams",
-    purpose: "Proctored assessments with candidate results and session records for hiring teams.",
-    evidence: "Desktop application · readiness checks · session records",
+    name: "Partner with AMS",
+    classification: "Competition sponsorship",
+    purpose: "Support Ascent and Derive, and meet students working on systems and quantitative problems.",
+    evidence: "Current focus: Ascent '26 sponsorship",
     href: "/access",
   },
 ] satisfies readonly Product[];

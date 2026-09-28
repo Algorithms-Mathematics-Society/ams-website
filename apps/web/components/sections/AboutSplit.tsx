@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import { TextLink } from "@/components/ui/TextLink";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
@@ -27,7 +27,7 @@ export function AboutSplit() {
 
           <div>
             <Eyebrow>{INSTITUTIONAL_OVERVIEW.eyebrow}</Eyebrow>
-            <h2 className="mt-5 max-w-2xl font-sans text-section font-medium tracking-[-0.04em] text-burgundy">
+            <h2 className="mt-5 max-w-2xl font-sans text-section font-semibold tracking-[-0.035em] text-burgundy">
               {INSTITUTIONAL_OVERVIEW.title}
             </h2>
             <p className="mt-6 max-w-xl text-base leading-7 text-ink/80">
@@ -41,9 +41,9 @@ export function AboutSplit() {
             </Button>
             <div className="mt-4 flex flex-wrap gap-x-6">
               {INSTITUTIONAL_OVERVIEW.evidenceLinks.map((link) => (
-                <Link key={link.href} href={link.href} className="inline-flex min-h-11 items-center gap-2 text-sm text-burgundy underline underline-offset-4">
-                  {link.label} <span aria-hidden>→</span>
-                </Link>
+                <TextLink key={link.href} href={link.href}>
+                  {link.label}
+                </TextLink>
               ))}
             </div>
           </div>

@@ -24,7 +24,7 @@ export function PlateFrame({
       {caption ? (
         <figcaption
           className={cn(
-            "mt-3 border-l-2 border-gold pl-3 text-xs leading-5",
+            "mt-3 text-xs leading-5",
             captionTone === "dark" ? "text-cream-light/75" : "text-ink/70",
           )}
         >

@@ -116,26 +116,10 @@ html.js .reveal.is-visible {
   translate: 0 0;
 }
 
-/* Gold underline draw: left to right over 400ms once its Reveal wrapper
-   is visible. Per-instance timing via inline transition-delay. */
-html.js .underline-draw {
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.4s var(--ease-reveal);
-}
-html.js .reveal.is-visible .underline-draw {
-  transform: scaleX(1);
-}
-
 @media (prefers-reduced-motion: reduce) {
   html.js .reveal {
     opacity: 1;
     translate: 0 0;
-    transition: none;
-  }
-
-  html.js .underline-draw {
-    transform: scaleX(1);
     transition: none;
   }
 }
@@ -185,13 +169,17 @@ html.js .reveal.is-visible .underline-draw {
   margin-top: 2em;
   font-size: 1.25rem;
 }
-.blog-prose a {
-  color: var(--color-gold-deep);
-  text-decoration: underline;
-  text-underline-offset: 2px;
+/* Inline reading links keep a fine underline. Standalone navigation controls
+   explicitly opt out, so an arrow can never inherit text decoration. */
+.blog-prose a:not(.no-underline) {
+  color: var(--color-burgundy);
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  text-decoration-skip-ink: auto;
 }
 .blog-prose a:hover {
-  color: var(--color-burgundy);
+  color: var(--color-gold-deep);
 }
 .blog-prose strong {
   font-weight: 600;
@@ -224,7 +212,7 @@ html.js .reveal.is-visible .underline-draw {
 }
 .blog-prose pre {
   overflow-x: auto;
-  border-radius: 0.75rem;
+  border-radius: var(--radius-media);
   background-color: var(--color-paper);
   border: 1px solid rgb(0 0 0 / 12%);
   padding: 1.25em;
@@ -237,5 +225,5 @@ html.js .reveal.is-visible .underline-draw {
 .blog-prose img {
   max-width: 100%;
   height: auto;
-  border-radius: 0.75rem;
+  border-radius: var(--radius-media);
 }

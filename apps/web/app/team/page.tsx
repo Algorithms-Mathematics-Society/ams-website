@@ -7,7 +7,7 @@ import { TEAM_PAGE } from "@/content/team";
 export const metadata: Metadata = {
   title: "The people behind AMS",
   description:
-    "Meet Tilak Jain, founder of AMS, and learn how to contribute to its contests, problem setting, event operations, and assessment platform.",
+    "Meet the AMS team behind Ascent, Derive, and our community, and learn how to contribute to the next edition.",
   alternates: { canonical: "/team" },
 };
 

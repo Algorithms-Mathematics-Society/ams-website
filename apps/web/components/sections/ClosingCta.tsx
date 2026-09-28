@@ -21,7 +21,7 @@ export function ClosingCta() {
               </Eyebrow>
               <h2
                 id="next-edition-heading"
-                className="mt-4 max-w-3xl text-section font-medium tracking-[-0.04em]"
+                className="mt-4 max-w-3xl text-section font-semibold tracking-[-0.035em]"
               >
                 {CLOSING_CTA.headline}
               </h2>

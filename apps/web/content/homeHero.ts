@@ -10,7 +10,7 @@ export const HOME_HERO = {
     context: "Derive '26 national finals · IIT Bombay · July 2026",
   },
   primaryAction: DERIVE_OVERVIEW_LINK,
-  secondaryAction: { label: "Hiring and partnerships", href: "/access" },
+  secondaryAction: { label: "Sponsor Ascent", href: "/access" },
   teamLink: { label: "Meet the team", href: "/team" },
   galleryLink: { label: "See the Derive finals", href: "/gallery" },
 } as const;

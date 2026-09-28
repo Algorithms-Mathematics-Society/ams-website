@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE } from "@/content/site";
 import { AboutSplit } from "@/components/sections/AboutSplit";
 import { ClosingCta } from "@/components/sections/ClosingCta";
 import { ExperienceGrid } from "@/components/sections/ExperienceGrid";
@@ -9,8 +10,7 @@ import { StatsBand } from "@/components/sections/StatsBand";
 
 export const metadata: Metadata = {
   title: { absolute: "AMS · Algorithms & Mathematics Society" },
-  description:
-    "AMS runs Derive and Ascent, competitions in quantitative reasoning and systems engineering, and builds Access for proctored assessments.",
+  description: SITE.description,
   alternates: { canonical: "/" },
 };
 

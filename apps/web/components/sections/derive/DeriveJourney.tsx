@@ -26,7 +26,6 @@ export function DeriveJourney() {
                     {stage.statLabel}
                   </span>
                 </p>
-                <div className="mt-3 h-0.5 w-9 bg-gold" aria-hidden />
                 <h3 className="mt-5 font-display text-lg font-semibold">
                   {stage.title}
                 </h3>

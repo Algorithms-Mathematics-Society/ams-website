@@ -91,7 +91,7 @@ function MobileNavDisclosure({ pathname }: { pathname: string }) {
 
       {open && (
         <div
-          className="fixed inset-x-0 top-20 bottom-0 z-50 overflow-y-auto border-t border-gold-bright/35 bg-burgundy"
+          className="fixed inset-x-0 top-20 bottom-0 z-50 overflow-y-auto border-t border-cream-light/20 bg-burgundy"
           onMouseDown={(event) => {
             if (event.target === event.currentTarget) closeMenu();
           }}
@@ -107,7 +107,7 @@ function MobileNavDisclosure({ pathname }: { pathname: string }) {
             <button
               type="button"
               onClick={() => closeMenu()}
-              className="mb-4 flex min-h-11 items-center gap-2 text-sm text-cream-light underline underline-offset-4 focus-visible:outline-gold-bright"
+              className="mb-4 flex min-h-11 items-center gap-2 rounded-control px-3 text-sm font-semibold text-cream-light hover:bg-burgundy-deep focus-visible:outline-gold-bright"
             >
               Close menu <span aria-hidden>×</span>
             </button>
@@ -124,10 +124,10 @@ function MobileNavDisclosure({ pathname }: { pathname: string }) {
                   }
                   onClick={() => closeMenu()}
                   className={cn(
-                    "flex min-h-14 items-center border-b border-cream-light/20 px-1 py-3 text-base font-semibold transition-colors focus-visible:transition-none focus-visible:outline-gold-bright",
+                    "flex min-h-14 items-center border-b border-cream-light/20 px-3 py-3 text-base font-semibold transition-colors focus-visible:transition-none focus-visible:outline-gold-bright",
                     pathname === link.href ||
                       pathname.startsWith(`${link.href}/`)
-                      ? "border-l-2 border-l-gold-bright bg-burgundy-deep pl-4 text-cream-light"
+                      ? "bg-burgundy-deep text-cream-light"
                       : "text-cream-light/85 hover:bg-burgundy-deep/60 hover:text-cream-light",
                   )}
                 >

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { TextLink } from "@/components/ui/TextLink";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/ui/Reveal";
@@ -14,13 +14,11 @@ export function AscentStandard() {
             {ASCENT_STANDARD.title}
           </h2>
           <p className="mt-6 leading-relaxed">{ASCENT_STANDARD.body}</p>
-          <Link
-            href={ASCENT_STANDARD.linkHref}
-            className="mt-8 inline-flex min-h-11 items-center gap-1.5 text-sm font-medium text-burgundy hover:underline"
+          <TextLink
+            href={ASCENT_STANDARD.linkHref} className="mt-8"
           >
             {ASCENT_STANDARD.linkLabel}
-            <span aria-hidden>→</span>
-          </Link>
+          </TextLink>
         </Reveal>
       </Container>
     </section>

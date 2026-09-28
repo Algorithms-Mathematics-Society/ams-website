@@ -36,20 +36,26 @@ Key facts:
   its own India and Asia-Pacific entry requirements on its contest site,
   including a limit of 100 seats for candidates outside India. Ascent
   registration is individual and requires a shareable Google Drive resume link.
-- AMS is led by founder Tilak Jain. Firms can discuss contest partnerships
-  and assessment requirements via https://amshq.in/access.
+- AMS is led by founder Tilak Jain (University of Mumbai). Kartik Agrawal
+  (IIT Kanpur) is Head of Problem Design for AMS Derive 2026. Ayush Shukla
+  (University of Mumbai) is Head of Community. Quasar Chunawala (CME Group)
+  is Head of Problem Design for Ascent. These affiliations describe team
+  members, not organizational sponsorships.
+- Current sponsorship outreach prioritizes Ascent, with partnerships for future Derive editions
+  also available to discuss via https://amshq.in/access. Access assessments
+  are a separate conversation at https://amshq.in/access#assessments.
 
 ## Pages
 
-- [Home](https://amshq.in/): competitions, assessments, and the AMS record
+- [Home](https://amshq.in/): competitions, sponsorships, and the AMS record
 - [Derive](https://amshq.in/derive): the quantitative reasoning contest and 2026 edition
 - [Derive partners](https://amshq.in/derive#partners): the 2026 event partnerships
 - [Ascent](https://amshq.in/ascent): the C++ performance competition
 - [Ascent registration](https://ascent.amshq.in/register): enter Ascent '26
-- [Access](https://amshq.in/access): assessments and working with AMS
+- [Partnerships](https://amshq.in/access): Ascent and Derive sponsorships, followed by hiring assessments
 - [FAQ](https://amshq.in/faq): answers for participants and firms
 - [Gallery](https://amshq.in/gallery): photographs from Derive '26 at IIT Bombay
-- [Team](https://amshq.in/team): founder and contribution opportunities
+- [Team](https://amshq.in/team): founder, team members, and contribution opportunities
 - [Blog](https://amshq.in/blog): notes about AMS and its competitions
 
 ## Related properties

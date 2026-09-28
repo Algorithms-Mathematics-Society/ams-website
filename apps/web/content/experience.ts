@@ -31,7 +31,7 @@ export const EXPERIENCE = {
     {
       index: "04",
       title: "Continue the conversation",
-      body: "Firms can discuss sponsorship, candidate engagement, and private assessments through Access.",
+      body: "Firms can talk with AMS about sponsoring Ascent or getting involved in a future Derive edition.",
     },
   ] satisfies readonly OperatingStage[],
 } as const;

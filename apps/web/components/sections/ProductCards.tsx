@@ -5,7 +5,7 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/ui/Reveal";
 import { PRODUCTS, PRODUCTS_SECTION } from "@/content/products";
 
-/** Three routes through AMS: quantitative contests, systems contests, and assessments. */
+/** Three routes through AMS: quantitative contests, systems contests, and sponsorship. */
 export function ProductCards() {
   return (
     <section className="bg-cream-light py-section">
@@ -13,7 +13,7 @@ export function ProductCards() {
         <Reveal className="grid gap-7 border-b border-burgundy/15 pb-8 md:grid-cols-[minmax(0,1fr)_auto] md:items-end">
           <div>
             <Eyebrow>{PRODUCTS_SECTION.eyebrow}</Eyebrow>
-            <h2 className="mt-4 max-w-xl text-section font-medium tracking-[-0.04em] text-burgundy">
+            <h2 className="mt-4 max-w-xl text-section font-semibold tracking-[-0.035em] text-burgundy">
               {PRODUCTS_SECTION.title}
             </h2>
           </div>

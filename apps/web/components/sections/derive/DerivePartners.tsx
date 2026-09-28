@@ -1,3 +1,4 @@
+import { TextLink } from "@/components/ui/TextLink";
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
@@ -40,13 +41,12 @@ export function DerivePartners() {
                 <p className="mt-5 max-w-md text-sm leading-relaxed">
                   {partner.description}
                 </p>
-                <a
+                <TextLink
                   href={partner.href}
-                  className="mt-5 inline-flex min-h-11 w-fit items-center gap-2 text-sm font-semibold text-burgundy underline decoration-burgundy/35 underline-offset-4 hover:decoration-burgundy focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold-deep"
+                  className="mt-5 w-fit"
                 >
                   {partner.name}
-                  <span aria-hidden="true">↗</span>
-                </a>
+                </TextLink>
               </Reveal>
             </li>
           ))}
