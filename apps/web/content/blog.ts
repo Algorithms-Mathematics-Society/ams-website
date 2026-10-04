@@ -1,5 +1,6 @@
 export const BLOG_PAGE = {
   eyebrow: "Blog",
+  readLabel: "Read article",
   title: "Notes from AMS.",
   body: "Contest recaps, problem walkthroughs, and updates from the team.",
   cta: {

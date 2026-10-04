@@ -50,7 +50,7 @@ keyword stuffing; any of these can permanently end the goal via penalty.
 - JSON-LD structured data:
   - `Organization` on every page: name "AMS", legalName "Algorithms &
     Mathematics Society", url https://amshq.in, logo, foundingDate, location
-    (India), `sameAs`: LinkedIn, GitHub, Discord, Codeforces profile,
+    (India), `sameAs`: LinkedIn, YouTube, Discord, Codeforces profile,
     https://amsderive.in.
   - `Event` on /derive (Derive edition: dates, location IIT Bombay) and
     /ascent (winter edition when scheduled).
@@ -69,11 +69,11 @@ keyword stuffing; any of these can permanently end the goal via penalty.
 - One canonical name everywhere, forever: "AMS (Algorithms & Mathematics
   Society)". Banned variants: "AMS Society", "Algorithms and Maths Society".
 - Wikidata item: instance of student society / nonprofit, country India,
-  official website amshq.in, sameAs links (Codeforces, GitHub, LinkedIn).
+  official website amshq.in, sameAs links (Codeforces, YouTube, LinkedIn).
 - Knowledge Panel: expected to appear from Wikidata + schema + press; claim it
   through Search Console the moment it exists.
 - All owned profiles update their website field to amshq.in: LinkedIn org,
-  GitHub org, Discord, Codeforces, any listing sites.
+  YouTube channel, Discord, Codeforces, any listing sites.
 - No Wikipedia article attempt until independent press coverage exists;
   premature conflict-of-interest editing backfires.
 
@@ -101,7 +101,7 @@ keyword stuffing; any of these can permanently end the goal via penalty.
 - Press pitches after each finals: campus media (Insight IIT Bombay),
   YourStory, Analytics India Magazine. Story: national quant finals at IIT
   Bombay backed by the firms that hire this talent.
-- GitHub org profile and repo READMEs link amshq.in.
+- YouTube channel profile links amshq.in.
 
 ## 6. Brand-volume flywheel
 

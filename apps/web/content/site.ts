@@ -16,10 +16,10 @@ export const SITE = {
   copyright: "© 2026 AMS (Algorithms & Mathematics Society) · amshq.in",
 } as const;
 
-/** Verified through the former site's LinkedIn link and its current redirect. */
+/** Approved public profiles. LinkedIn verified via redirect; YouTube supplied by AMS. */
 export const OFFICIAL_PROFILES = {
   linkedin: "https://www.linkedin.com/company/amshq/",
-  github: "https://github.com/Algorithms-Mathematics-Society",
+  youtube: "https://www.youtube.com/@amsalphaofficial",
 } as const;
 
 export const NAV_LINKS: NavLink[] = [
@@ -65,9 +65,21 @@ export const FOOTER_COLUMNS: Array<{ heading: string; links: NavLink[] }> = [
       { label: "Team", href: "/team" },
       { label: "Blog", href: "/blog" },
       { label: "FAQ", href: "/faq" },
-      { label: "LinkedIn", href: OFFICIAL_PROFILES.linkedin },
-      { label: "GitHub", href: OFFICIAL_PROFILES.github },
-      { label: "Contact", href: "mailto:team@amshq.in" },
     ],
   },
 ];
+
+/** Footer-only contact and utility links, separate from site navigation. */
+export const FOOTER = {
+  contactLabel: "Get in touch",
+  contacts: [
+    { label: "team@amshq.in", href: "mailto:team@amshq.in" },
+    { label: "partners@amshq.in", href: "mailto:partners@amshq.in" },
+  ],
+  socialLabel: "AMS social profiles",
+  socialLinks: [
+    { label: "LinkedIn", href: OFFICIAL_PROFILES.linkedin },
+    { label: "YouTube", href: OFFICIAL_PROFILES.youtube },
+  ],
+  backToTop: "Back to top",
+} as const;

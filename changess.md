@@ -282,7 +282,7 @@ Gallery Lighthouse after this refinement: performance 99; accessibility 100; bes
 
 ## SEO, answer clarity, and official identity, 28 September 2026
 
-Used separate subagent reviews for technical SEO and AEO/entity decisions. Inspected the live old domain, the new host's redirect behavior, AMS's official LinkedIn profile and GitHub organization, and current Google Search Central guidance. The technical subagent implemented the shared metadata changes; the parent integrated content, schema, links, documentation and verification.
+Used separate subagent reviews for technical SEO and AEO/entity decisions. Inspected the live old domain, the new host's redirect behavior, AMS's official LinkedIn profile, and current Google Search Central guidance. The technical subagent implemented the shared metadata changes; the parent integrated content, schema, links, documentation and verification.
 
 ### Website changes
 
@@ -293,8 +293,8 @@ Used separate subagent reviews for technical SEO and AEO/entity decisions. Inspe
 - Added stable Organization and WebSite identifiers and connected article publishers, event organizer and team identities to them. Removed the unsupported “AMS India” alias and legal-name assertion. Derive's separate contest site is no longer treated as an identical organization through `sameAs`.
 - Added Person data for the five visible team members, using their existing roles and LinkedIn URLs. Added stable team anchors without changing roster sizing. Inferred no degrees or employment details.
 - Corrected the “AMS Team” article author from Person to Organization. Named authors link to their team profiles; the organization byline links to the team page. Kept the organization homepage consistent in schema.
-- Added verified AMS LinkedIn and GitHub links to the footer and organization schema. The old website's LinkedIn link redirects to the current `/company/amshq/` profile, which was checked directly.
-- Added current website and contest links to the repository README, creating an owned GitHub backlink when pushed. Corrected assessment-specific article links to `/access#assessments`.
+- Added verified AMS LinkedIn links to the footer and organization schema. The old website's LinkedIn link redirects to the current `/company/amshq/` profile, which was checked directly.
+- Added current website and contest links to the repository README. Corrected assessment-specific article links to `/access#assessments`.
 - Escaped `<` in serialized JSON-LD to prevent content from terminating its script element. No runtime dependency, tracking script or client-side SEO code was introduced.
 - Added `pnpm check:seo`, a dependency-free check of generated HTML metadata, schema shapes, relationships, team identities, visible FAQ parity, article authorship, event dates, sitemap, robots and canonical links.
 
@@ -302,7 +302,7 @@ Used separate subagent reviews for technical SEO and AEO/entity decisions. Inspe
 
 The old site still serves its own pages. Its `/about` page reuses homepage metadata and a homepage canonical; those patterns were not copied. The existing LinkedIn Website field still points to the old domain.
 
-[The SEO audit and migration notes](docs/seo-2026-09-28.md) include the observed evidence, a five-route starting redirect map, legacy resources that need an inventory before migration, exact LinkedIn/GitHub website-field values, contest organizer link updates, suggested correction wording for existing backlinks, and Search Console follow-up. These external changes are pending access to the respective accounts. No old-domain redirects, DNS changes, Search Console submissions, profile edits, or outreach messages were performed.
+[The SEO audit and migration notes](docs/seo-2026-09-28.md) include the observed evidence, a five-route starting redirect map, legacy resources that need an inventory before migration, public profile website-field values, contest organizer link updates, suggested correction wording for existing backlinks, and Search Console follow-up. These external changes are pending access to the respective accounts. No old-domain redirects, DNS changes, Search Console submissions, profile edits, or outreach messages were performed.
 
 Current Google guidance says no special AI markup or `llms.txt` file is needed for its AI search features. Google also retired FAQ rich results in May 2026. The FAQ remains useful visible content with matching schema; no ranking, rich-result, or assistant-citation outcome is promised. Source links are included in the audit.
 

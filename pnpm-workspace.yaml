@@ -2,5 +2,6 @@ packages:
   - apps/*
 
 allowBuilds:
+  "@astryxdesign/core": false
   sharp: true
   unrs-resolver: true

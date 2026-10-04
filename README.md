@@ -7,6 +7,7 @@ AMS runs national competitions in quantitative reasoning and systems engineering
 - [AMS Derive](https://www.amshq.in/derive)
 - [Partnerships](https://www.amshq.in/access)
 - [AMS on LinkedIn](https://www.linkedin.com/company/amshq/)
+- [AMS on YouTube](https://www.youtube.com/@amsalphaofficial)
 
 For local development, see [the web app README](apps/web/README.md) and [the engineering guide](ENGINEERING_GUIDE.md).
 

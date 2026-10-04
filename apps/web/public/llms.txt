@@ -69,5 +69,5 @@ Key facts:
 
 - AMS previously used amsociety.in. Its current organization website is https://www.amshq.in/.
 - [AMS on LinkedIn](https://www.linkedin.com/company/amshq/): official organization updates
-- [AMS on GitHub](https://github.com/Algorithms-Mathematics-Society): organization repositories
+- [AMS on YouTube](https://www.youtube.com/@amsalphaofficial): official AMS channel
 - Individual team roles and LinkedIn profiles are listed at https://www.amshq.in/team.

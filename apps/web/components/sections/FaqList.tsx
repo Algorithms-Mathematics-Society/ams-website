@@ -1,17 +1,22 @@
 import { TextLink } from "@/components/ui/TextLink";
 import { Container } from "@/components/ui/Container";
-import { Reveal } from "@/components/ui/Reveal";
+import { Disclosure } from "@/components/ui/Disclosure";
+import { DisclosureGroup } from "@/components/ui/DisclosureGroup";
 import { FAQ } from "@/content/faq";
 
 export function FaqList() {
   return (
     <section className="pt-8 pb-section">
       <Container size="reading">
-        <dl className="divide-y divide-burgundy/15 border-y border-burgundy/15">
-          {FAQ.map((item, index) => (
-            <Reveal key={item.question} delay={Math.min(index * 40, 200)} className="py-7">
-              <dt className="text-lg font-semibold text-burgundy">{item.question}</dt>
-              <dd className="mt-3 leading-relaxed">
+        <div className="divide-y divide-burgundy/15 border-y border-burgundy/15">
+          <DisclosureGroup defaultValue="faq-0">
+            {FAQ.map((item, index) => (
+              <Disclosure
+                key={item.question}
+                title={item.question}
+                value={`faq-${index}`}
+                groupName="ams-faq"
+              >
                 <p>{item.answer}</p>
                 {item.links && (
                   <ul className="mt-3 flex flex-wrap gap-x-6">
@@ -24,10 +29,10 @@ export function FaqList() {
                     ))}
                   </ul>
                 )}
-              </dd>
-            </Reveal>
-          ))}
-        </dl>
+              </Disclosure>
+            ))}
+          </DisclosureGroup>
+        </div>
       </Container>
     </section>
   );
