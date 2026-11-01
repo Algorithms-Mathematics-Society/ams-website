@@ -18,6 +18,7 @@ export function AccessFirms() {
             <article key={opportunity.name} className={styles.competition}>
               <p className={styles.kicker}>{opportunity.status}</p>
               <h3>{opportunity.name}</h3>
+              <p className={styles.competitionFocus}>{opportunity.focus}</p>
               <dl className={styles.details}>
                 {opportunity.details.map((detail) => (
                   <div key={detail.label}>

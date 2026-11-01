@@ -6,7 +6,9 @@ import { getAllPosts } from "@/lib/blog";
 import styles from "./Blog.module.css";
 
 export async function BlogGrid() {
-  const posts = await getAllPosts();
+  const allPosts = await getAllPosts();
+  const featured = allPosts.find(post => post.slug === BLOG_PAGE.featuredSlug);
+  const posts = featured ? [featured, ...allPosts.filter(post => post !== featured)] : allPosts;
   if (posts.length === 0) return null;
 
   return (
@@ -17,6 +19,8 @@ export async function BlogGrid() {
             const isFirstVisibleCard = index === 0;
             const card = (
               <BlogCard
+                featured={isFirstVisibleCard}
+                readingTime={`${post.readingMinutes} ${BLOG_PAGE.readingTimeLabel}`}
                 href={`/blog/${post.slug}`}
                 title={post.title}
                 description={post.description}

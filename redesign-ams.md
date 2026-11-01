@@ -1383,3 +1383,31 @@ attribution. Removed the redundant individual-experience disclaimer and the
 isolated criticism paragraph. Mixed feedback remains documented in the source
 review; a future public improvement account should connect it to verified
 actions and results. Quote text and attribution are unchanged.
+
+### Partnerships: selective UI audit follow-up
+
+- [x] Give Ascent and Derive matching, neutral comparison cards with visible technical-focus labels, consistent padding, and bottom-aligned links. This makes the real choice easier to scan without implying one option is preferred.
+- [x] Present assessment planning as three visible steps, followed by an enquiry action. Recruiters can assess the process without completing a wizard or revealing hidden content.
+- [x] Shorten repeated philosophy and enquiry copy using the sales guidance: understand the buyer's goals, explain concrete work, and agree scope before commitment.
+- [x] Retain the shared hero alignment, restrained black/white/red palette, authentic event photo, and attributed participant feedback. Participant opinion remains separate from evidence of partner outcomes.
+- [x] Reject unsupported trust badges, invented case studies, company-size segmentation, pulsing CTAs, card flips, and artificial choice pressure. The audit misidentified the feedback card and suggested a sticky header that already exists.
+- [x] Check five viewport widths, enlarged text, automated accessibility, no-JavaScript content, and assessment navigation. Fix grid overflow at 200% text size.
+
+Design rationale: these changes aim to reduce reading and comparison effort while letting sponsors and recruiters judge fit independently. They are UX judgments, not measured conversion or psychological outcomes. No new animation library or client-side interaction was introduced.
+
+Validation: lint, TypeScript, production build, and SEO checks passed. Local mobile Lighthouse for `/access`: performance 96, accessibility 100, CLS 0, LCP 2.8 seconds. The stricter 2-second LCP budget remains unmet; this pass adds no dependencies or image payload.
+
+Partnerships clarification: Derive is AMS’s summer cycle and Ascent its winter cycle. Present Derive first, then Ascent, with explicit seasonal labels. The section explains the annual rhythm and each cycle’s technical focus rather than asking sponsors to choose between simultaneous alternatives. Edition-specific availability remains visible.
+
+### Blog index: selective UI audit follow-up
+
+- [x] Lead with the founder's “Why AMS runs competitions” article in a full-width split card. Follow it with a smaller full-width guide card. Two articles do not justify filters or a three-column grid with empty slots.
+- [x] Add estimated reading time, calculated from rendered prose at build time at 200 words per minute, on index cards and article pages. This is a reading estimate, not a timing promise.
+- [x] Give existing topic labels subtle neutral backgrounds and preserve visible keyboard focus, full-card links, and reduced-motion support. Add a restrained image hover zoom without new dependencies.
+- [x] Replace the small closing strip with a spacious competition-updates invitation and a separate Derive link. Reuse the existing protected signup route; do not promise a blog newsletter that the current consent and subscription service do not offer.
+- [x] Keep the shared page title, monochrome palette, white canvas, and light closing surface distinct from the black footer. No decorative mesh, fabricated author portrait, or loading skeleton for already-rendered articles.
+- [x] Review desktop/mobile screenshots and check 320/375/768/1024/1440 widths, 200% text, automated accessibility, article navigation, and content without JavaScript. Fix tablet image overflow discovered in the first pass.
+
+Sales/UX rationale: explain the philosophy first, then offer a concrete guide and proportionate next steps. The hierarchy is intended to make reading choices easier, without assuming a universal F-shaped reading pattern or claiming measured engagement gains.
+
+Validation: lint, TypeScript, production build, SEO checks, and production browser checks passed. Mobile Lighthouse: performance 94, accessibility 100, CLS 0, LCP 3.0 seconds. This misses the project's 95 performance / 2-second LCP targets. The lead image is discovered in the initial HTML, eager/high-priority, and approximately 19.5 KB in the measured mobile request; Lighthouse flags shared render-blocking styles. No new client component or dependency was added. Shared asset delivery needs a separate performance pass; this result is not a claim of meeting the performance budget.

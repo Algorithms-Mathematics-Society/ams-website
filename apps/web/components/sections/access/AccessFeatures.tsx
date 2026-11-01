@@ -13,17 +13,21 @@ export function AccessFeatures() {
             <p className={styles.kicker}>{ACCESS_EVALUATION.eyebrow}</p>
             <h2 id="assessment-title" className={styles.heading}>{ACCESS_EVALUATION.title}</h2>
           </div>
-          <div>
-            <p className={styles.body}>{ACCESS_EVALUATION.body}</p>
-            <dl className={styles.topics}>
-              {ACCESS_EVALUATION.considerations.map(item => <div key={item.title}>
-                <dt>{item.title}</dt><dd className={styles.body}>{item.body}</dd>
-              </div>)}
-            </dl>
-            <p className={`${styles.body} ${styles.intro}`}>{ACCESS_EVALUATION.enquiry}</p>
-            <a href={ACCESS_EVALUATION.link.href} className={`${neutral.primary} ${styles.assessmentAction}`}>{ACCESS_EVALUATION.link.label}</a>
-          </div>
+          <p className={styles.body}>{ACCESS_EVALUATION.body}</p>
         </Reveal>
+        <ol className={styles.assessmentSteps}>
+          {ACCESS_EVALUATION.considerations.map((item, index) => (
+            <li key={item.title}>
+              <span className={styles.stepNumber} aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+              <h3>{item.title}</h3>
+              <p className={styles.body}>{item.body}</p>
+            </li>
+          ))}
+        </ol>
+        <div className={styles.assessmentEnquiry}>
+          <p className={styles.body}>{ACCESS_EVALUATION.enquiry}</p>
+          <a href={ACCESS_EVALUATION.link.href} className={`${neutral.primary} ${styles.button}`}>{ACCESS_EVALUATION.link.label}</a>
+        </div>
       </Container>
     </section>
   );

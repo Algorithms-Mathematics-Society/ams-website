@@ -35,6 +35,7 @@ export interface BlogPost {
     alt: string;
   };
   html: string;
+  readingMinutes: number;
 }
 
 interface RawFrontmatter {
@@ -183,7 +184,12 @@ async function loadPost(slug: string): Promise<BlogPost> {
 
   const html = await compileBody(content, { slug, postDir });
 
+  // Count rendered prose at build time, excluding markup and image attributes.
+  const plainText = html.replace(/<[^>]*>/g, " ").replace(/&[^;]+;/g, " ");
+  const readingMinutes = Math.max(1, Math.ceil((plainText.match(/\S+/g)?.length ?? 0) / 200));
+
   return {
+    readingMinutes,
     slug,
     title: data.title,
     pubDate,

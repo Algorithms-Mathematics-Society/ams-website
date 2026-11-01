@@ -16,5 +16,5 @@ export default function UpdatesPage() {
     process.env.NEXT_PUBLIC_FIREBASE_API_KEY &&
     process.env.NEXT_PUBLIC_FIREBASE_APP_ID
   );
-  return <UpdatesSignup endpoint={endpoint} configured={configured} />;
+  return <UpdatesSignup endpoint={endpoint} configured={configured} localSetup={process.env.NODE_ENV === "development" && !emulator} />;
 }

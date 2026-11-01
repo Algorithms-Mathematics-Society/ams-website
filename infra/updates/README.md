@@ -179,3 +179,25 @@ deploy the updated website. See [security review](../../docs/signup-security.md)
 for exact lookup bounds, test evidence, safeguards, and remaining limitations.
 For emulator tests, set `UPDATES_APP_ID=emulator-app` in
 `functions/.env.demo-ams-updates` (ignored).
+
+## Local preview says verification failed
+
+The live reCAPTCHA key and function are restricted to AMS production domains.
+Opening the website at `localhost:3100` does not make it an allowed production
+origin. Do not add localhost to production CORS or disable live App Check to fix
+local testing. Font/image preload notices are not signup verification results.
+
+The development page now shows a setup notice instead of a form when no local
+emulator endpoint is configured. To test locally:
+
+1. Start the emulators from `infra/updates` with
+   `firebase emulators:start --only functions,firestore --project demo-ams-updates`.
+   Use the dummy secret and emulator app ID described above.
+2. Set this line in `apps/web/.env.local`:
+   `UPDATES_SIGNUP_ENDPOINT=http://localhost:5001/demo-ams-updates/asia-south1/subscribeToUpdates`
+3. Restart the website development server, then open `/updates` on port 3100.
+
+These signups go to local test storage, not the live email list. Leave the endpoint
+override blank in Vercel. The local HTTP override is rejected in production builds.
+To join the real list, use `https://www.amshq.in/updates` instead. In development,
+verification exceptions log only the SDK error code, never email or token values.

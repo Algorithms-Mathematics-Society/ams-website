@@ -1,4 +1,10 @@
 export const UPDATES = {
+  localSetup: {
+    title: "Local signup testing needs the Firebase emulator.",
+    body: "This preview is not connected to local test storage. Production signup verification does not accept localhost. Follow the local testing steps in infra/updates/README.md, then restart the development server.",
+    liveLabel: "Open the live signup page",
+    liveHref: "https://www.amshq.in/updates",
+  },
   title: "Competition updates",
   description: "Choose the AMS competitions you want to hear about. Request email updates about future editions and registration announcements.",
   heading: "Hear about the next edition.",

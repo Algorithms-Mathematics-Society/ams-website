@@ -43,7 +43,13 @@ export function UpdatesForm({ endpoint }: Props) {
           }),
         ]);
       }
-      catch { setState("verification"); return; }
+      catch (error) {
+        if (process.env.NODE_ENV === "development") {
+          const code = error && typeof error === "object" && "code" in error && typeof error.code === "string" ? error.code : "verification-unavailable";
+          console.warn("AMS updates verification failed:", code);
+        }
+        setState("verification"); return;
+      }
       setState("saving");
       const headers: Record<string, string> = { "Content-Type": "application/json" };
       if (token) headers["X-Firebase-AppCheck"] = token;

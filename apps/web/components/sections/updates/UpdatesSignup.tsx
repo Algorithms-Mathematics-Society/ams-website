@@ -5,8 +5,8 @@ import { UPDATES } from "@/content/updates";
 import neutral from "@/components/ui/Neutral.module.css";
 import styles from "@/components/ui/UpdatesForm.module.css";
 
-interface Props { endpoint: string; configured: boolean; }
-export function UpdatesSignup({ endpoint, configured }: Props) {
+interface Props { endpoint: string; configured: boolean; localSetup?: boolean; }
+export function UpdatesSignup({ endpoint, configured, localSetup = false }: Props) {
   return (
     <section className={styles.section} aria-labelledby="updates-heading">
       <Container className={styles.layout}>
@@ -18,7 +18,11 @@ export function UpdatesSignup({ endpoint, configured }: Props) {
           <Link className={neutral.textLink} href={UPDATES.backHref}>{UPDATES.back}</Link>
         </div>
         <div className={styles.panel}>
-          {configured ? <UpdatesForm endpoint={endpoint} /> : <>
+          {localSetup ? <>
+            <h2>{UPDATES.localSetup.title}</h2>
+            <p className={styles.intro}>{UPDATES.localSetup.body}</p>
+            <a className={neutral.textLink} href={UPDATES.localSetup.liveHref}>{UPDATES.localSetup.liveLabel}</a>
+          </> : configured ? <UpdatesForm endpoint={endpoint} /> : <>
             <p className={styles.intro}>{UPDATES.unavailable}</p>
             <a className={`${neutral.primary} ${styles.submit}`} href={UPDATES.emailHref}>{UPDATES.emailLink}</a>
           </>}

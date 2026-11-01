@@ -17,6 +17,7 @@ export function BlogArticle({ post }: Props) {
         <div className={styles.meta}>
           {authorHref ? <Link href={authorHref} rel="author" className={`${neutral.textLink} ${styles.authorLink}`}>{post.author}</Link> : <span>{post.author}</span>}
           <time dateTime={post.pubDate.toISOString()}>{post.pubDate.toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" })}</time>
+          <span>{post.readingMinutes} {BLOG_PAGE.readingTimeLabel}</span>
           {post.updatedDate && <span>{BLOG_PAGE.updatedLabel} <time dateTime={post.updatedDate.toISOString()}>{post.updatedDate.toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" })}</time></span>}
         </div>
       </Container></header>

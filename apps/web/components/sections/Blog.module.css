@@ -6,8 +6,13 @@
 .gridSection { padding-block: 8px clamp(48px, 6vw, 80px); }
 .grid { display: grid; gap: 24px; }
 .grid > li { min-width: 0; }
-.closing { padding-block: 32px; border-top: 1px solid var(--shell-border); background: var(--shell-subtle); }
-.closingLayout { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 32px; }
+.closing { padding-block: var(--shell-space-section); border-top: 1px solid var(--shell-border); background: var(--shell-subtle); }
+.closingLayout { display: grid; gap: 32px; }
+.closingLayout > div { min-width: 0; }
+.closing h2 { max-width: 24ch; font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem); font-weight: 600; line-height: 1.25; letter-spacing: -.025em; text-wrap: balance; overflow-wrap: anywhere; }
+.closing p { margin-top: 16px; }
+.closing a { margin-top: 24px; }
+.exploreCallout { border-top: 1px solid var(--shell-border); padding-top: 32px; }
 .closing p { max-width: 60ch; color: var(--shell-muted); font-size: 1rem; line-height: 1.7; }
 .articleHeader { padding-block: clamp(24px, 4vw, 48px) 28px; }
 .articleTitle { max-width: 22ch; margin-top: 20px; font-size: var(--shell-text-article); font-weight: 600; line-height: 1.15; letter-spacing: -.035em; text-wrap: balance; overflow-wrap: anywhere; }
@@ -16,4 +21,7 @@
 .articleCover { position: relative; aspect-ratio: 1200 / 630; border-radius: var(--shell-panel-radius); overflow: hidden; background: var(--shell-subtle); }
 .articleCover img { object-fit: cover; }
 .reading { padding-block: 32px clamp(48px, 6vw, 80px); }
-@media (min-width: 768px) { .grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+@media (min-width: 768px) {
+  .closingLayout { grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: 48px; }
+  .exploreCallout { border-top: 0; border-left: 1px solid var(--shell-border); padding-top: 0; padding-left: 48px; }
+}
