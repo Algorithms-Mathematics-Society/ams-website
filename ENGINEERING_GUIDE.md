@@ -480,6 +480,11 @@ thumbnail selection, Escape and restored opener focus. Preview thumbnails remain
 visible during full-image loading or failure. Only opacity and transform animate;
 reduced motion disables them. Plain image links provide no-JavaScript access.
 Maintain 44px controls, real image sizes, reserved frames and neutral shell colors.
+Group previous/count/next below the caption; keep Close at the top right. Use
+factual edition/location/category context and a white active thumbnail border.
+After the active image loads, warm only the two adjacent optimized image URLs at
+low priority; skip this on save-data or reported 2G connections. The opaque dark
+viewer needs no backdrop blur or autoplay.
 
 ## Team purpose and people
 

@@ -49,7 +49,7 @@ export function GalleryBrowser({ items }: Props) {
           );
         })}
       </ul>
-      {openIndex !== null && <Lightbox items={photos.map(item => ({ src: item.full, thumb: item.src, label: item.label }))}
+      {openIndex !== null && <Lightbox items={photos.map(item => ({ src: item.full, thumb: item.src, label: item.label, category: GALLERY_FILTERS.find(option => option.id === item.category)?.label ?? GALLERY_PAGE.all }))}
         index={openIndex} labels={GALLERY_ACTIONS} onClose={close} onNavigate={setOpenIndex} />}
     </>
   );

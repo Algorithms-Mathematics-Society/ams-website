@@ -1442,3 +1442,15 @@ Article production checks: lint, typecheck, build, and SEO validation pass (12 p
 Article code update: C++17 now precedes Python 3. The comment-free C++ implementation uses GNU `__int128` intermediates and a bounded integer multiplication loop, with signed 64-bit output conversions justified by the statement. Extracted article code compiled cleanly with warnings enabled and matched Python on 13,751 valid cases under undefined-behavior sanitization. Metadata and the AI-facing article summary now mention both languages.
 
 Final article review: rechecked mathematical claims against the supplied statement and reran exact-reference checks. Rechecked mobile/desktop layouts, 200% text, code-block overflow containment, and automated accessibility after adding C++ first. Added a descriptive link from Derive's problem section and restrained emphasis on the core probability concepts. Canonical, social preview, BlogPosting schema, sitemap, and index discovery remain generated from the article's frontmatter; no keyword stuffing or ranking claims added.
+
+### Gallery lightbox: selective UI audit follow-up
+
+- [x] Group previous/next around the counter and center the thumbnail strip. Retain the conventional top-right close control and native dialog behavior.
+- [x] Add existing category labels and factual Derive ’26 / IIT Bombay / July 2026 context. Increase caption size and place the original-image link alongside it.
+- [x] Enlarge thumbnails to 88×60 desktop / 76×52 mobile with a stronger white active border, visible white focus rings, and automatic active-item centering.
+- [x] Warm adjacent optimized images after the current photo loads, at low priority, with a short cancellable delay. Skip warming for save-data and reported 2G connections. This reduces potential waiting without promising zero latency.
+- [x] Preserve swipe/pinch gestures, keyboard arrows, Escape, opener focus, reduced motion, and full-image loading/error previews. Allow vertical scrolling when enlarged controls need more room.
+- [x] Reject blur over an already opaque backdrop, autoplay, a floating glass toolbar, invented emotional captions, and a new animation dependency. These do not improve the demonstrated needs of this viewer.
+- [x] Verify six viewport configurations, phone landscape, 200% text, touch swipe, keyboard controls, active thumbnail centering, focus restoration, automated accessibility, and save-data behavior. Lint, typecheck, build, and SEO checks pass.
+
+Rationale: give visitors clear location and navigation cues while leaving the photographs and their real context in control of the story. No claimed psychological or conversion gains without measurement.

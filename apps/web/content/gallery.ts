@@ -1,4 +1,5 @@
 export const GALLERY_ACTIONS = {
+  context: "Derive ’26 · IIT Bombay · July 2026",
   openPhoto: "Open photo",
   photo: "Photo",
   close: "Close gallery",
