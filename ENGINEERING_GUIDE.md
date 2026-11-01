@@ -395,9 +395,9 @@ eyebrow/heading pair. Keep edition labels where they establish historical scope.
 Audience headings in the closing section identify the two routes without
 additional uppercase labels repeating them.
 
-On the home route with JS enabled, the shell is viewport-fixed and body top
-padding reserves its 64px/72px responsive height. Other routes and the no-JS
-fallback retain sticky positioning. Keep native document scroll and overscroll;
+On every route with JS enabled, the shell is viewport-fixed and body top
+padding reserves its shared 64px/72px responsive height token. The no-JS
+fallback retains sticky positioning to accommodate the expanded mobile links. Keep native document scroll and overscroll;
 do not add scroll handlers or a second scrolling container for this behavior.
 
 The homepage reading scale uses 16-17px body copy, 16-18px hero supporting

@@ -20,6 +20,7 @@
   --shell-text-label: .875rem;
   --shell-text-link: .9375rem;
   --shell-text-action: 1rem;
+  --shell-header-height: 64px;
   --shell-space-intro: clamp(36px, 5vw, 64px);
   --shell-space-section: clamp(48px, 5.5vw, 80px);
 }
@@ -321,17 +322,17 @@ html:has([data-home-page]), body:has([data-home-page]) {
 [data-home-page] { background: var(--shell-canvas); color: var(--shell-ink); overflow-wrap: anywhere; }
 [data-home-page] :focus-visible { outline: 2px solid var(--shell-accent); outline-offset: 3px; }
 
-/* Anchor home navigation to the viewport while the document scrolls naturally.
+/* Keep navigation anchored on every route while the document scrolls naturally.
    Without JS, keep the in-flow shell so the expanded fallback nav fits. */
-html.js body:has([data-home-page]) {
-  padding-top: 64px;
+html.js body {
+  padding-top: var(--shell-header-height);
 }
-html.js body:has([data-home-page]) > .site-header {
+html.js body > .site-header {
   position: fixed;
   inset: 0 0 auto;
 }
 @media (min-width: 1024px) {
-  html.js body:has([data-home-page]) { padding-top: 72px; }
+  :root { --shell-header-height: 72px; }
 }
 
 /* Ascent shares the neutral shell without changing other route palettes. */

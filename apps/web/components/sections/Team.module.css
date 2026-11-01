@@ -18,8 +18,7 @@
 .portrait img { object-fit: cover; object-position: top; }
 .bio { margin-top: 20px; max-width: 52ch; font-size: .9375rem; line-height: 1.7; color: var(--shell-muted); }
 .profileLink { margin-top: auto; padding-top: 16px; width: 100%; }
-.profileLink a { width: 100%; justify-content: space-between; text-decoration: none; font-size: .875rem; }
-.profileLink a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.profileLink a { width: 100%; justify-content: space-between; font-size: var(--shell-text-link); }
 .link { font-size: .9375rem; }
 .closing { padding-block: clamp(40px, 5vw, 64px); background: var(--shell-subtle); }
 .closingLayout { display: grid; gap: 28px; align-items: center; }
@@ -36,7 +35,7 @@
 .introLayout { display: grid; gap: 32px; align-items: start; }
 .workHeading { font-size: .875rem; color: var(--shell-muted); line-height: 1.6; margin-bottom: 12px; }
 .workRow { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0 16px; padding-block: 8px; border-top: 1px solid var(--shell-border); }
-.workLink { font-size: 1rem; }
+.workLink { font-size: var(--shell-text-link); }
 .workRow dd { color: var(--shell-muted); font-size: .875rem; line-height: 1.6; }
 .vision { padding-block: clamp(40px, 5vw, 64px); background: var(--shell-subtle); }
 .visionLayout { display: grid; gap: 24px; }

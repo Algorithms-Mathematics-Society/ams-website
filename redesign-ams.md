@@ -1411,3 +1411,11 @@ Partnerships clarification: Derive is AMS’s summer cycle and Ascent its winter
 Sales/UX rationale: explain the philosophy first, then offer a concrete guide and proportionate next steps. The hierarchy is intended to make reading choices easier, without assuming a universal F-shaped reading pattern or claiming measured engagement gains.
 
 Validation: lint, TypeScript, production build, SEO checks, and production browser checks passed. Mobile Lighthouse: performance 94, accessibility 100, CLS 0, LCP 3.0 seconds. This misses the project's 95 performance / 2-second LCP targets. The lead image is discovered in the initial HTML, eager/high-priority, and approximately 19.5 KB in the measured mobile request; Lighthouse flags shared render-blocking styles. No new client component or dependency was added. Shared asset delivery needs a separate performance pass; this result is not a claim of meeting the performance budget.
+
+### Shared navigation consistency follow-up
+
+- [x] Extend the viewport-fixed navbar from home to every route. Use a shared responsive height token for both the header and reserved page space so content does not jump or hide underneath it.
+- [x] Preserve the in-flow sticky fallback without JavaScript, which allows expanded mobile navigation links to occupy their full height. Native document scrolling remains intact.
+- [x] Align Ascent/Derive secondary links and Team profile/work links with the shared 15px text-link role. Keep primary buttons at 48px and text-link targets at least 44px. Restore persistent profile-link underlines.
+- [x] Use equivalent rem typography in the header/footer so text responds to reading preferences, preserving default visual sizes.
+- [x] Subagent review confirmed active navigation, mobile menu dismissal, focus restoration, and scroll unlocking; no changes needed to those behaviors.

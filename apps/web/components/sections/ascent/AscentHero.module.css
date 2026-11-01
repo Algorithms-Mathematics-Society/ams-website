@@ -24,7 +24,8 @@
   line-height: 1.7;
 }
 .actions { align-items: center; gap: 12px 24px; margin-top: 28px; }
-.primary, .secondary { min-height: 48px; font-size: 1rem; }
+.primary { min-height: 48px; font-size: var(--shell-text-action); }
+.secondary { font-size: var(--shell-text-link); }
 .panel {
   min-width: 0;
   border: 1px solid var(--shell-border);

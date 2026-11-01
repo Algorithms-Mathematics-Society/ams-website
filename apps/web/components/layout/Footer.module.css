@@ -27,7 +27,7 @@
 
 .name {
   margin-top: 20px;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 600;
   line-height: 1.5;
 }
@@ -35,7 +35,7 @@
 .description {
   margin-top: 12px;
   color: var(--footer-muted);
-  font-size: 14px;
+  font-size: 0.875rem;
   line-height: 1.75;
 }
 
@@ -45,7 +45,7 @@
 
 .heading {
   color: var(--footer-muted);
-  font-size: 13px;
+  font-size: 0.8125rem;
   font-weight: 600;
   line-height: 1.5;
 }
@@ -93,7 +93,7 @@
   padding-block: 10px;
   border-radius: var(--shell-radius, 6px);
   color: var(--footer-text);
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.5;
   text-decoration: none;
@@ -127,7 +127,7 @@
 .copyright {
   order: 1;
   color: var(--footer-muted);
-  font-size: 12px;
+  font-size: 0.75rem;
   line-height: 1.75;
 }
 
