@@ -15,7 +15,7 @@ export async function BlogGrid({ withHeading = true }: Props) {
   if (posts.length === 0) return null;
 
   return (
-    <section className="py-section">
+    <section className={withHeading ? "py-section" : "pt-6 pb-section"}>
       <Container>
         {withHeading && (
           <Reveal>
@@ -30,7 +30,7 @@ export async function BlogGrid({ withHeading = true }: Props) {
                 href={`/blog/${post.slug}`}
                 title={post.title}
                 description={post.description}
-                tags={post.tags}
+                tags={post.tags.slice(0, 2)}
                 image={{ src: post.cover.full, alt: post.cover.alt }}
                 author={post.author}
                 authorImage={post.authorImage}

@@ -1,5 +1,18 @@
 @import "tailwindcss";
 
+/* Neutral shell migration: navbar/footer share roles while page palettes migrate. */
+:root {
+  --shell-canvas: #ffffff;
+  --shell-surface: #f5f5f5;
+  --shell-ink: #171717;
+  --shell-muted: #5b5b5b;
+  --shell-border: #dedede;
+  --shell-accent: #b4232f;
+  --shell-radius: 6px;
+  --shell-panel-radius: 9px;
+  --shell-subtle: #fafafa;
+}
+
 @theme {
   /* AMS brand palette. Gold is reserved for accents; the darker and lighter
      variants keep small text legible on cream and burgundy surfaces. */
@@ -16,19 +29,19 @@
   --color-placeholder: #e7decd;
   --color-paper: #ede5d5;
 
-  --font-display: var(--font-source-serif);
+  --font-display: var(--font-inter);
   --font-sans: var(--font-inter);
 
   /* Institutional geometry: controls stay usable, major surfaces stay precise. */
   --radius-control: 0.25rem;
-  --radius-media: 0.125rem;
-  --radius-panel: 0.125rem;
+  --radius-media: 0.5rem;
+  --radius-panel: 0.5rem;
 
   /* Fluid type scale */
-  --text-hero: clamp(2.5rem, 4.8vw + 0.75rem, 4.75rem);
-  --text-hero--line-height: 1.02;
-  --text-section: clamp(1.9rem, 2.8vw + 0.75rem, 3.1rem);
-  --text-section--line-height: 1.08;
+  --text-hero: clamp(2.25rem, 4vw + 0.5rem, 4rem);
+  --text-hero--line-height: 1.1;
+  --text-section: clamp(1.75rem, 2.5vw + 0.5rem, 2.5rem);
+  --text-section--line-height: 1.15;
   --text-stat: clamp(2.1rem, 3vw + 0.9rem, 3.25rem);
   --text-stat--line-height: 1.1;
   /* The one lead stat on the band; sized above the hero headline so the
@@ -40,7 +53,7 @@
   --text-card-title--line-height: 1.25;
 
   /* Fluid section padding */
-  --spacing-section: clamp(3.75rem, 7vw, 6.5rem);
+  --spacing-section: clamp(3rem, 5.5vw, 5rem);
 
   /* Redesign motion grammar: single easing for every reveal (motion spec). */
   --ease-reveal: cubic-bezier(0.22, 1, 0.36, 1);
@@ -227,3 +240,93 @@ html.js .reveal.is-visible {
   height: auto;
   border-radius: var(--radius-media);
 }
+
+/* Astryx components share AMS tokens without importing a second CSS reset. */
+:root {
+  --color-accent: var(--color-burgundy);
+  --color-on-accent: var(--color-cream-light);
+  --color-text-accent: var(--color-burgundy);
+  --color-text-primary: var(--color-ink);
+  --color-text-secondary: #6b5f5b;
+  --color-background-card: var(--color-cream-light);
+  --color-background: var(--color-cream);
+  --color-neutral: var(--color-paper);
+  --color-border: rgb(87 28 36 / 18%);
+  --font-family-body: var(--font-sans), sans-serif;
+  --font-family-heading: var(--font-sans), sans-serif;
+  --radius-container: var(--radius-panel);
+  --radius-element: var(--radius-control);
+  --radius-inner: var(--radius-control);
+  --focus-outline-color: var(--color-gold-deep);
+  color-scheme: light;
+}
+
+.ams-button {
+  height: auto;
+  min-height: 44px;
+  max-width: 100%;
+  padding: 10px 20px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-control);
+  font-family: var(--font-sans), sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 22px;
+  white-space: normal;
+  text-align: center;
+  text-decoration: none;
+}
+.ams-button-solid { background-color: var(--color-burgundy); color: var(--color-cream-light); }
+.ams-button-solid:hover { background-color: var(--color-burgundy-deep); }
+.ams-button-outline { background-color: transparent; color: var(--color-burgundy); border-color: rgb(87 28 36 / 40%); }
+.ams-button-outline:hover { background-color: var(--color-paper); border-color: var(--color-burgundy); }
+.ams-button-inverse { background-color: var(--color-cream); color: var(--color-burgundy); }
+.ams-button-inverse:hover { background-color: var(--color-cream-light); }
+.ams-button:focus-visible { outline: 2px solid var(--color-gold-deep); outline-offset: 3px; }
+.ams-button-inverse:focus-visible { outline-color: var(--color-gold-bright); }
+
+.ams-card { border: 1px solid var(--color-border); border-radius: var(--radius-panel); background: var(--color-cream-light); }
+.ams-badge { color: var(--color-burgundy); background: var(--color-paper); font-family: var(--font-sans); }
+.ams-nav-item {
+  min-height: 44px;
+  padding: 10px 12px;
+  border-radius: var(--radius-control);
+  color: var(--color-cream-light);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  text-decoration: none;
+}
+.ams-nav-item:hover, .ams-nav-item[aria-current="page"] { color: var(--color-cream-light); background: var(--color-burgundy-deep); }
+.ams-nav-item:focus-visible { outline: 2px solid var(--color-gold-bright); outline-offset: 2px; }
+.ams-mobile-nav-item { display: flex; min-height: 52px; padding: 14px 12px; font-size: 16px; border-bottom: 1px solid rgb(255 252 245 / 15%); }
+
+/* Home migrates independently while other page palettes remain unchanged. */
+html:has([data-home-page]), body:has([data-home-page]) {
+  background: var(--shell-canvas);
+}
+[data-home-page] { background: var(--shell-canvas); color: var(--shell-ink); overflow-wrap: anywhere; }
+[data-home-page] :focus-visible { outline: 2px solid var(--shell-accent); outline-offset: 3px; }
+
+/* Anchor home navigation to the viewport while the document scrolls naturally.
+   Without JS, keep the in-flow shell so the expanded fallback nav fits. */
+html.js body:has([data-home-page]) {
+  padding-top: 64px;
+}
+html.js body:has([data-home-page]) > .site-header {
+  position: fixed;
+  inset: 0 0 auto;
+}
+@media (min-width: 1024px) {
+  html.js body:has([data-home-page]) { padding-top: 72px; }
+}
+
+/* Ascent shares the neutral shell without changing other route palettes. */
+html:has([data-ascent-page]), body:has([data-ascent-page]) { background: var(--shell-canvas); }
+[data-ascent-page] { color: var(--shell-ink); background: var(--shell-canvas); overflow-wrap: anywhere; }
+[data-ascent-page] :focus-visible { outline: 2px solid var(--shell-accent); outline-offset: 3px; }
+
+/* Derive's edition archive shares the neutral competition-page system. */
+html:has([data-derive-page]), body:has([data-derive-page]) { background: var(--shell-canvas); }
+[data-derive-page] { color: var(--shell-ink); background: var(--shell-canvas); overflow-wrap: anywhere; }
+[data-derive-page] :focus-visible { outline: 2px solid var(--shell-accent); outline-offset: 3px; }

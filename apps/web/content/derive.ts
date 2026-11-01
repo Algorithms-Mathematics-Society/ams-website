@@ -1,11 +1,12 @@
 export const DERIVE_HERO = {
-  eyebrow: "Derive",
+  eyebrow: "Derive · 2026 edition",
   title: "The quantitative reasoning contest.",
   body: "Probability, markets, and mathematical reasoning, tested through two online rounds and an in-person final. Explore the format and the participation from Derive '26.",
   image: {
     src: "/images/derive26/hero/the-hall-at-capacity.webp",
     alt: "Derive finalists working across the contest hall at IIT Bombay",
   },
+  primaryAction: { label: "See the 2026 format", href: "#derive-format" },
   archiveLink: {
     label: "Read the 2026 rules",
     href: "https://amsderive.in/rules",
@@ -25,19 +26,19 @@ export const DERIVE_STAGES: DeriveStage[] = [
   {
     stat: "2,500+",
     statLabel: "participants",
-    title: "Round 1: the opening round",
+    title: "PRIOR · Online qualifier",
     body: "The first online round tested probability, markets, and mathematical reasoning.",
   },
   {
     stat: "150",
     statLabel: "advanced",
-    title: "Round 2: the qualifying round",
+    title: "POSTERIOR · Online prelims",
     body: "The top 150 participants advanced to a second online round with a more demanding problem set.",
   },
   {
     stat: "50",
     statLabel: "qualified for finals",
-    title: "Finals: in person at IIT Bombay",
+    title: "CONVERGENCE · IIT Bombay",
     body: "Fifty participants qualified for the finals. Thirty-three competed in person at IIT Bombay in July 2026.",
   },
 ];
@@ -61,7 +62,7 @@ export interface DerivePartner {
 
 export const DERIVE_PARTNERS_SECTION = {
   eyebrow: "Derive '26 partners",
-  title: "Supporting the competition.",
+  title: "Partners for Derive ’26",
   body: "Jane Street and QRT supported the 2026 edition of Derive.",
 } as const;
 
@@ -95,10 +96,28 @@ export const DERIVE_PARTNERS: DerivePartner[] = [
 ];
 
 export const DERIVE_CTA = {
-  title: "Interested in the next Derive?",
-  body: "Email AMS to ask about the next edition and registration updates.",
+  title: "Future editions",
+  body: "Want to take part in a future Derive edition? Choose Derive updates to hear about announcements and registration.",
   buttonLabel: "Email about Derive",
-  /** TODO(launch): point at the registration/interest form when live. */
   buttonHref:
     "mailto:team@amshq.in?subject=Derive%20registration%20updates",
+  gallery: { label: "View the 2026 gallery", href: "/gallery" },
+} as const;
+
+/** Subject areas published on amsderive.in; this describes the 2026 edition. */
+export const DERIVE_SUBJECTS = {
+  title: "The problems",
+  items: [
+    { title: "Probability and inference", body: "Reason about uncertain outcomes using probability, expected value, and Bayesian inference." },
+    { title: "Markets and models", body: "Work with questions involving market microstructure, stochastic processes, and options pricing." },
+    { title: "Mathematical reasoning", body: "Develop solutions to unfamiliar puzzles and combinatorial problems, and explain the reasoning behind them." },
+  ],
+  note: "All three rounds were individual. The published 2026 rules describe eligibility, recording requirements, and solution verification.",
+  link: { label: "Read the 2026 rules", href: "https://amsderive.in/rules" },
+} as const;
+
+export const DERIVE_JOURNEY = {
+  title: "The 2026 competition",
+  body: "Two online rounds led to the finals at IIT Bombay. Qualification and attendance are recorded separately below.",
+  gallery: { label: "See photographs from the finals", href: "/gallery" },
 } as const;

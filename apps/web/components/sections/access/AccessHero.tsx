@@ -2,32 +2,32 @@ import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { Eyebrow } from "@/components/ui/Eyebrow";
-import { TextLink } from "@/components/ui/TextLink";
 import { ACCESS_HERO } from "@/content/access";
 
 export function AccessHero() {
   return (
-    <section className="py-section">
-      <Container className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+    <section className="py-10 sm:py-14 lg:py-16">
+      <Container className="grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
         <div>
           <Eyebrow>{ACCESS_HERO.eyebrow}</Eyebrow>
-          <h1 className="mt-6 font-display text-hero font-normal tracking-[-0.04em] text-burgundy">
+          <h1 className="mt-4 font-sans text-hero font-semibold tracking-[-0.04em] text-burgundy">
             {ACCESS_HERO.title}
           </h1>
-          <p className="mt-6 max-w-lg leading-relaxed">
+          <p className="mt-5 max-w-lg leading-relaxed text-ink/85">
             {ACCESS_HERO.body}
           </p>
-          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+          <div className="mt-6 flex flex-wrap gap-3">
             <Button href={ACCESS_HERO.primaryLink.href}>
               {ACCESS_HERO.primaryLink.label}
             </Button>
-            <TextLink href={ACCESS_HERO.secondaryLink.href}>
+            <Button href={ACCESS_HERO.secondaryLink.href} variant="outline">
               {ACCESS_HERO.secondaryLink.label}
-            </TextLink>
+            </Button>
           </div>
+          <p className="mt-4 text-sm text-ink/75">{ACCESS_HERO.note}</p>
         </div>
         <figure className="min-w-0">
-          <div className="relative aspect-[4/3] overflow-hidden bg-cream">
+          <div className="relative aspect-[4/3] overflow-hidden rounded-media bg-cream">
             <Image
               src={ACCESS_HERO.image.src}
               alt={ACCESS_HERO.image.alt}

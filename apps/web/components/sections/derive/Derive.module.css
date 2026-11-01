@@ -1,0 +1,26 @@
+.heading { max-width: 26ch; margin-top: 0; font-size: clamp(1.875rem, calc(1.5rem + 1vw), 2.75rem); overflow-wrap: anywhere; }
+.body { max-width: 60ch; font-size: clamp(1rem, calc(.95rem + .2vw), 1.0625rem); line-height: 1.7; }
+.intro { margin-top: 20px; }
+.grid { display: grid; gap: 28px; margin-top: 32px; }
+.subject { min-width: 0; border-top: 1px solid var(--shell-border); padding-top: 24px; }
+.subject h3, .stage h3 { font-size: 22px; font-weight: 600; line-height: 1.35; letter-spacing: -.02em; margin-bottom: 12px; }
+.note { margin-top: 28px; max-width: 70ch; font-size: 14px; color: var(--shell-muted); line-height: 1.7; }
+.link { margin-top: 12px; font-size: 15px; }
+.stage { min-width: 0; padding-top: 24px; border-top: 1px solid var(--shell-border); }
+.figure { display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; }
+.value { font-size: clamp(2rem, calc(1.5rem + 1.5vw), 3rem); font-weight: 500; line-height: 1.1; letter-spacing: -.04em; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.label { color: var(--shell-muted); font-size: 15px; line-height: 1.5; }
+.partners { display: grid; gap: 32px; margin-top: 32px; }
+.partner { display: flex; height: 100%; flex-direction: column; align-items: flex-start; min-width: 0; border-top: 1px solid var(--shell-border); padding-top: 24px; }
+.tier { color: var(--shell-muted); font-size: 14px; line-height: 1.6; }
+.partner h3 { margin-top: 8px; font-size: 24px; font-weight: 600; line-height: 1.3; }
+.logoPanel { width: 100%; display: flex; align-items: center; justify-content: center; height: 128px; margin-block: 24px; padding: 24px; background: var(--shell-ink); border-radius: var(--shell-panel-radius); }
+.partner .body { margin-bottom: 12px; }
+.partner a { margin-top: auto; }
+.closing { border-top: 1px solid var(--shell-border); }
+.closingLayout { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 28px 48px; }
+.closingCopy { flex: 1 1 320px; }
+.actions { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+.button { font-size: 16px; min-height: 48px; }
+@media (min-width: 768px) { .partners { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 48px; } }
+@media (min-width: 1024px) { .grid { grid-template-columns: repeat(3,minmax(0,1fr)); gap: 32px; } }

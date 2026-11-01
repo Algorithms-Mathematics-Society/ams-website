@@ -11,6 +11,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/gallery",
     "/team",
     "/faq",
+    "/updates",
     "/blog",
   ].map((path) => ({ url: new URL(path || "/", SITE.url).toString() }));
 

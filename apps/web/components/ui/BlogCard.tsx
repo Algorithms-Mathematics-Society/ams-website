@@ -4,7 +4,6 @@ import { AspectRatio } from "@astryxdesign/core/AspectRatio";
 import { Card } from "@astryxdesign/core/Card";
 import { Heading, Text } from "@astryxdesign/core/Text";
 import { Token } from "@astryxdesign/core/Token";
-import "@astryxdesign/core/astryx.css";
 import styles from "./BlogCard.module.css";
 
 interface Props {

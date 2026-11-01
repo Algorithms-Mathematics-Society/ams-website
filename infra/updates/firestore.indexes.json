@@ -1,0 +1,21 @@
+{
+  "indexes": [],
+  "fieldOverrides": [
+    {
+      "collectionGroup": "updateSubscribers",
+      "fieldPath": "*",
+      "indexes": []
+    },
+    {
+      "collectionGroup": "signupLimits",
+      "fieldPath": "*",
+      "indexes": []
+    },
+    {
+      "collectionGroup": "signupLimits",
+      "fieldPath": "expiresAt",
+      "ttl": true,
+      "indexes": []
+    }
+  ]
+}

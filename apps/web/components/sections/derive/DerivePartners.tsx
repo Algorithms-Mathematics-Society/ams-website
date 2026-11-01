@@ -1,52 +1,31 @@
-import { TextLink } from "@/components/ui/TextLink";
 import Image from "next/image";
+import Link from "next/link";
 import { Container } from "@/components/ui/Container";
-import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/ui/Reveal";
-import { SectionHeading } from "@/components/ui/SectionHeading";
 import { DERIVE_PARTNERS, DERIVE_PARTNERS_SECTION } from "@/content/derive";
+import neutral from "@/components/ui/Neutral.module.css";
+import styles from "./Derive.module.css";
 
 export function DerivePartners() {
   return (
-    <section id="partners" className="scroll-mt-20 py-section">
+    <section id="partners" className={neutral.section} aria-labelledby="derive-partners">
       <Container>
         <Reveal>
-          <SectionHeading
-            eyebrow={DERIVE_PARTNERS_SECTION.eyebrow}
-            title={DERIVE_PARTNERS_SECTION.title}
-          />
+          <h2 id="derive-partners" className={`${neutral.title} ${styles.heading}`}>{DERIVE_PARTNERS_SECTION.title}</h2>
+          <p className={`${neutral.body} ${styles.body} ${styles.intro}`}>{DERIVE_PARTNERS_SECTION.body}</p>
         </Reveal>
-
-        <ul className="mt-12 grid gap-6 lg:grid-cols-2">
-          {DERIVE_PARTNERS.map((partner, index) => (
-            <li key={partner.name} className="h-full">
-              <Reveal
-                delay={index * 90}
-                className="flex h-full flex-col rounded-panel border border-burgundy/20 bg-cream-light p-6 sm:p-8"
-              >
-                <Eyebrow>{partner.tier}</Eyebrow>
-                {/* Dark inset panel: the approved marks are built for a dark
-                    surface (Jane Street is a white wordmark, QRT a blue cube
-                    with white type), so they sit on burgundy to stay legible
-                    on the cream card. */}
-                <div className="mt-5 flex h-28 items-center justify-center rounded-media bg-burgundy-deep px-6">
-                  <Image
-                    src={partner.logo.src}
-                    alt={partner.name}
-                    width={partner.logo.width}
-                    height={partner.logo.height}
-                    className={partner.logo.className}
-                  />
+        <ul className={styles.partners}>
+          {DERIVE_PARTNERS.map((partner) => (
+            <li key={partner.name}>
+              <Reveal className={styles.partner}>
+                <p className={styles.tier}>{partner.tier}</p>
+                <h3>{partner.name}</h3>
+                <div className={styles.logoPanel}>
+                  <Image src={partner.logo.src} alt={partner.name} width={partner.logo.width} height={partner.logo.height}
+                    sizes={partner.name === "QRT" ? "74px" : "121px"} className={partner.logo.className} />
                 </div>
-                <p className="mt-5 max-w-md text-sm leading-relaxed">
-                  {partner.description}
-                </p>
-                <TextLink
-                  href={partner.href}
-                  className="mt-5 w-fit"
-                >
-                  {partner.name}
-                </TextLink>
+                <p className={`${neutral.body} ${styles.body}`}>{partner.description}</p>
+                <Link href={partner.href} className={neutral.textLink}>{partner.name}<span aria-hidden="true"> →</span></Link>
               </Reveal>
             </li>
           ))}

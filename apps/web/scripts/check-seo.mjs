@@ -8,7 +8,7 @@ const base = 'https://www.amshq.in';
 const built = resolve('.next/server/app');
 const posts = readdirSync(resolve('../../blogs'), { withFileTypes: true })
   .filter(entry => entry.isDirectory()).map(entry => `/blog/${entry.name}`);
-const routes = ['/', '/derive', '/ascent', '/access', '/gallery', '/team', '/faq', '/blog', ...posts];
+const routes = ['/', '/derive', '/ascent', '/access', '/gallery', '/team', '/faq', '/updates', '/blog', ...posts];
 const decode = text => text.replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#x27;|&#39;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>');
 const attributes = tag => Object.fromEntries([...tag.matchAll(/([\w:-]+)="([^"]*)"/g)].map(([, key, value]) => [key, decode(value)]));
 const titles = new Set();

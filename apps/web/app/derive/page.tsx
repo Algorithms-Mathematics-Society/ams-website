@@ -1,7 +1,7 @@
 import { createPageMetadata } from "@/lib/metadata";
-import { CtaBand } from "@/components/ui/CtaBand";
+import { DeriveSubjects } from "@/components/sections/derive/DeriveSubjects";
+import { DeriveClosing } from "@/components/sections/derive/DeriveClosing";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { DERIVE_CTA } from "@/content/derive";
 import { DERIVE_EVENT_JSONLD } from "@/content/seo";
 import { DeriveHero } from "@/components/sections/derive/DeriveHero";
 import { DeriveJourney } from "@/components/sections/derive/DeriveJourney";
@@ -16,12 +16,13 @@ export const metadata = createPageMetadata({
 
 export default function DerivePage() {
   return (
-    <>
+    <div data-derive-page>
       <JsonLd data={DERIVE_EVENT_JSONLD} />
       <DeriveHero />
+      <DeriveSubjects />
       <DeriveJourney />
       <DerivePartners />
-      <CtaBand {...DERIVE_CTA} />
-    </>
+      <DeriveClosing />
+    </div>
   );
 }

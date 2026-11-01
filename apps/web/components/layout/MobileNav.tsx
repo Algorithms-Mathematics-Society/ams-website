@@ -2,136 +2,110 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useCallback, useEffect, useRef, useState } from "react";
-import { Button } from "@/components/ui/Button";
+import { useEffect, useRef, useState } from "react";
 import { ControlIcon } from "@/components/ui/ControlIcon";
-import { IconButton } from "@/components/ui/IconButton";
-import { cn } from "@/lib/cn";
-import { COMPETE_LINK, NAV_LINKS } from "@/content/site";
+import { HEADER_ACTION, NAV_LINKS } from "@/content/site";
+import styles from "./Header.module.css";
 
-/**
- * Disclosure nav below lg. Client-component leaf so the rest of the header
- * ships as static HTML. Esc closes, body scroll locks, Tab stays inside.
- */
+interface Props {
+  pathname: string;
+}
+
 export function MobileNav() {
   const pathname = usePathname();
-
   return <MobileNavDisclosure key={pathname} pathname={pathname} />;
 }
 
-function MobileNavDisclosure({ pathname }: { pathname: string }) {
+/** Native modal supplies inert background and Escape dismissal. */
+function MobileNavDisclosure({ pathname }: Props) {
   const [open, setOpen] = useState(false);
-  const panelRef = useRef<HTMLDivElement>(null);
-  const toggleRef = useRef<HTMLButtonElement>(null);
-
-  const closeMenu = useCallback((returnFocus = true) => {
-    setOpen(false);
-    if (returnFocus) toggleRef.current?.focus();
-  }, []);
+  const dialogRef = useRef<HTMLDialogElement>(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     if (!open) return;
+    const dialog = dialogRef.current;
+    if (!dialog) return;
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
-    panelRef.current?.querySelector("a")?.focus();
+    dialog.showModal();
+    closeRef.current?.focus();
 
-    function onKeyDown(e: KeyboardEvent) {
-      if (e.key === "Escape") {
-        closeMenu();
-        return;
-      }
-      if (e.key !== "Tab") return;
-      const focusables = [
-        ...(panelRef.current?.querySelectorAll<HTMLElement>("a, button") ?? []),
-      ].filter((el): el is HTMLElement => el != null);
-      const first = focusables[0];
-      const last = focusables[focusables.length - 1];
-      if (e.shiftKey && document.activeElement === first) {
-        e.preventDefault();
-        last.focus();
-      } else if (!e.shiftKey && document.activeElement === last) {
-        e.preventDefault();
-        first.focus();
-      }
-    }
-
-    document.addEventListener("keydown", onKeyDown);
+    const desktop = window.matchMedia("(min-width: 1024px)");
+    const closeOnDesktop = () => { if (desktop.matches) dialog.close(); };
+    desktop.addEventListener("change", closeOnDesktop);
+    closeOnDesktop();
     return () => {
+      desktop.removeEventListener("change", closeOnDesktop);
       document.body.style.overflow = previousOverflow;
-      document.removeEventListener("keydown", onKeyDown);
+      if (dialog.open) dialog.close();
     };
-  }, [closeMenu, open]);
+  }, [open]);
 
   return (
-    <div className="lg:hidden">
-      <IconButton
-        ref={toggleRef}
-        label={open ? "Close menu" : "Open menu"}
-        inverse
+    <div className={styles.mobileNav}>
+      <button
+        type="button"
+        aria-label="Open menu"
         aria-expanded={open}
         aria-controls="mobile-nav-panel"
-        onClick={() => setOpen((value) => !value)}
+        aria-haspopup="dialog"
+        className={styles.menuButton}
+        onClick={() => setOpen(true)}
       >
-        <ControlIcon name={open ? "close" : "menu"} />
-      </IconButton>
-
-      {open && (
-        <div
-          className="fixed inset-x-0 top-20 bottom-0 z-50 overflow-y-auto border-t border-cream-light/20 bg-burgundy"
-          onMouseDown={(event) => {
-            if (event.target === event.currentTarget) closeMenu();
-          }}
-        >
-          <div
-            id="mobile-nav-panel"
-            ref={panelRef}
-            role="dialog"
-            aria-modal="true"
-            aria-label="Main navigation"
-            className="mx-auto w-full max-w-6xl px-5 py-5 sm:px-8"
-          >
+        <ControlIcon name="menu" />
+      </button>
+      <dialog
+        id="mobile-nav-panel"
+        ref={dialogRef}
+        aria-label="Main navigation"
+        className={styles.dialog}
+        onClose={() => setOpen(false)}
+        onKeyDown={(event) => {
+          if (event.key !== "Tab") return;
+          const elements = event.currentTarget.querySelectorAll<HTMLElement>("button, a[href]");
+          const first = elements[0];
+          const last = elements[elements.length - 1];
+          if (event.shiftKey && document.activeElement === first) {
+            event.preventDefault();
+            last?.focus();
+          } else if (!event.shiftKey && document.activeElement === last) {
+            event.preventDefault();
+            first?.focus();
+          }
+        }}
+      >
+        <div className={styles.dialogInner}>
+          <div className={styles.dialogHeader}>
+            <span className={styles.dialogTitle}>Main navigation</span>
             <button
               type="button"
-              onClick={() => closeMenu()}
-              className="mb-4 flex min-h-11 items-center gap-2 rounded-control px-3 text-sm font-semibold text-cream-light hover:bg-burgundy-deep focus-visible:outline-gold-bright"
+              ref={closeRef}
+              onClick={() => dialogRef.current?.close()}
+              className={styles.closeButton}
             >
               Close menu <ControlIcon name="close" />
             </button>
-            <nav aria-label="Main" className="flex flex-col border-t border-cream-light/20">
-              {NAV_LINKS.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  aria-current={
-                    pathname === link.href ||
-                    pathname.startsWith(`${link.href}/`)
-                      ? "page"
-                      : undefined
-                  }
-                  onClick={() => closeMenu()}
-                  className={cn(
-                    "flex min-h-14 items-center border-b border-cream-light/20 px-3 py-3 text-base font-semibold transition-colors focus-visible:transition-none focus-visible:outline-gold-bright",
-                    pathname === link.href ||
-                      pathname.startsWith(`${link.href}/`)
-                      ? "bg-burgundy-deep text-cream-light"
-                      : "text-cream-light/85 hover:bg-burgundy-deep/60 hover:text-cream-light",
-                  )}
-                >
-                  {link.label}
-                </Link>
-              ))}
-              <Button
-                href={COMPETE_LINK.href}
-                variant="inverse"
-                onClick={() => closeMenu()}
-                className="mt-5 w-full sm:w-auto"
-              >
-                {COMPETE_LINK.label}
-              </Button>
-            </nav>
           </div>
+          <nav aria-label="Main" className={styles.mobileLinks}>
+            {NAV_LINKS.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                aria-current={pathname === link.href || pathname.startsWith(`${link.href}/`) ? "page" : undefined}
+                onClick={() => dialogRef.current?.close()}
+                className={styles.mobileLink}
+              >
+                <span>{link.label}</span>
+                <ControlIcon name="next" />
+              </Link>
+            ))}
+            <Link href={HEADER_ACTION.href} onClick={() => dialogRef.current?.close()} className={styles.action}>
+              {HEADER_ACTION.label}
+            </Link>
+          </nav>
         </div>
-      )}
+      </dialog>
     </div>
   );
 }

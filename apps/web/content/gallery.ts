@@ -38,9 +38,8 @@ export const GALLERY_PAGE = {
  * GALLERY_PAGE because the archive page introduces the complete set.
  */
 export const GALLERY_HOME = {
-  eyebrow: "From the finals",
-  title: "A day at Derive '26.",
-  body: "The competitors and conversations behind Derive '26. Photographed at IIT Bombay in July 2026.",
+  title: "Derive '26, in pictures",
+  body: "Registration, discussions between rounds, and the finalists together at IIT Bombay in July 2026.",
   link: { label: "View the event gallery", href: "/gallery" },
 } as const;
 
@@ -59,6 +58,7 @@ export const GALLERY: GalleryItem[] = [
   { label: "A contestant working through the problem set", ...img("in-the-zone") },
   {
     label: "Debating the problem set between rounds",
+    homePlacement: "support-bottom",
     ...img("debating-the-problem-set"),
   },
   {
@@ -67,7 +67,6 @@ export const GALLERY: GalleryItem[] = [
   },
   {
     label: "Prize cheques on stage for the winners",
-    homePlacement: "support-bottom",
     ...img("prize-cheque-moment"),
   },
   {

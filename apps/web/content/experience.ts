@@ -5,33 +5,23 @@ export interface OperatingStage {
 }
 
 export const EXPERIENCE = {
-  eyebrow: "How Derive '26 worked",
-  title: "From the first round to the final room.",
-  image: {
-    src: "/images/derive26/thumb/the-hall-at-capacity.webp",
-    alt: "Contestants working in a full lecture hall during the Derive finals at IIT Bombay",
-    caption: "Derive '26 finals · IIT Bombay · July 2026",
-  },
+  eyebrow: "Derive '26",
+  title: "From online rounds to IIT Bombay",
   stages: [
     {
       index: "01",
       title: "Online qualifying rounds",
-      body: "Participants from across India tackled the same timed problems in the opening rounds.",
+      body: "Two online rounds tested probability, markets, and mathematical reasoning. The top 150 participants advanced to the second round.",
     },
     {
       index: "02",
-      title: "A place in the finals",
+      title: "The in-person finals",
       body: "Fifty participants qualified for the finals, and 33 competed in person at IIT Bombay.",
     },
     {
       index: "03",
-      title: "Meet the people behind the work",
-      body: "Finalists solved problems in person and met engineers and recruiters from partner firms.",
-    },
-    {
-      index: "04",
-      title: "Continue the conversation",
-      body: "Firms can talk with AMS about sponsoring Ascent or getting involved in a future Derive edition.",
+      title: "Meeting partner firms",
+      body: "Finalists met engineers and recruiters from partner firms alongside the in-person competition.",
     },
   ] satisfies readonly OperatingStage[],
 } as const;

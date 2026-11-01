@@ -1,24 +1,18 @@
 import type { Metadata } from "next";
 import { SITE } from "@/content/site";
 import { DEFAULT_SOCIAL_IMAGE } from "@/lib/metadata";
-import { Inter, Source_Serif_4 } from "next/font/google";
+import { Inter } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ORGANIZATION_JSONLD, WEBSITE_JSONLD } from "@/content/seo";
+import "@astryxdesign/core/astryx.css";
 import "./globals.css";
 
 const inter = Inter({
   variable: "--font-inter",
   display: "swap",
   subsets: ["latin"],
-});
-
-const sourceSerif = Source_Serif_4({
-  variable: "--font-source-serif",
-  subsets: ["latin"],
-  weight: "400",
-  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -54,7 +48,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${sourceSerif.variable}`}
+      className={inter.variable}
       suppressHydrationWarning
     >
       <body className="flex min-h-dvh flex-col">

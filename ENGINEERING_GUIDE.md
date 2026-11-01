@@ -330,3 +330,121 @@ Before launch:
 ## Canonical website identity
 
 The production host is `https://www.amshq.in`: the bare domain redirects there with HTTP 308. Use `SITE.url` for canonical, social, sitemap, and structured-data URLs. The repository's September 2026 SEO audit documents this observed hosting configuration and the separate migration work required on `amsociety.in`.
+
+
+## Navbar and footer visual system
+
+The first neutral redesign phase is scoped to the navbar and footer. Page bodies
+retain their existing palette until their planned migration. The shared shell
+roles live in `app/globals.css` as `--shell-*` tokens: white canvas, near-black
+text, neutral separators, red `#b4232f` active/focus accents, and 6px controls.
+Layout CSS modules consume those roles without overriding page-level tokens.
+
+The header is 64px on mobile and 72px from 1024px, with the supplied black AMS
+wordmark. The footer uses the supplied white wordmark on a near-black surface.
+Navigation links, contact links, and controls retain 44px targets. Primary shell
+actions are black; red is reserved for focus and current-route indicators.
+The mobile menu uses a native modal dialog for background inertness and focus
+containment, closes on Escape or desktop resizing, and restores body scrolling.
+The evergreen header action links to the home competition overview; edition
+registration actions remain owned by their competition content.
+
+
+## Home-page neutral design
+
+The home route now uses the neutral shell palette throughout its seven sections.
+`components/ui/Neutral.module.css` owns shared migrated-page typography, action,
+link, section, and accent-marker styles. `HomeTop.module.css` and
+`HomeStory.module.css` own section-specific layouts. Native server-rendered links
+provide home actions without the client Astryx Button dependency; the existing
+Button remains available to pages still awaiting migration.
+
+The home sequence is introduction, dated proof, discipline comparison, edition
+sequence, documentary gallery, society story, and audience-specific next steps
+above the dark footer.
+Controls use 6px radii; photo frames and program cards use 9px. Red is limited to
+small markers and focus. White/off-white surfaces and black headings share the
+header/footer's neutral roles. Existing factual counts and edition context remain
+intact; home actions explore competitions rather than assert registration status.
+The two competition choices use open editorial columns from 640px, with a
+separate partnership row beneath them. Photographs are documentary figures with
+external captions, not generic cards. The gallery uses one large lead photograph
+and two smaller supporting frames. The historical timeline is text-only and
+contains three actual stages, with partnership invitations kept separate.
+
+The opening hero uses a full-width documentary photograph with an integrated
+white headline, actions, and event-caption rail. Directional dark gradients
+protect readability while retaining the participant as the visual focus. Mobile
+uses an upper photographic area fading into a dark text area; desktop uses a
+left-to-right scrim. The image remains priority-loaded with `sizes="100vw"`;
+there is no animation, scroll handler, or added client dependency. A white
+competition action and underlined partner link work against the dark scene.
+The header and subsequent home sections retain their neutral styling.
+
+Hero focal positioning is responsive: desktop uses 64% 54%, ultrawide screens
+from 2200px use 64% 35% to retain headroom, and mobile keeps its dedicated crop.
+The hero uses the configured image quality of 75.
+
+Homepage image roles: one static focused-participant hero; a large cohort photo
+with arrival and problem-discussion supporting frames; a separately captioned
+partner-conversation image. Awards and social photographs remain in the archive.
+The homepage does not rotate hero images; further exploration uses the gallery.
+
+Home section headings use direct labels rather than a repeated promotional
+eyebrow/heading pair. Keep edition labels where they establish historical scope.
+Audience headings in the closing section identify the two routes without
+additional uppercase labels repeating them.
+
+On the home route with JS enabled, the shell is viewport-fixed and body top
+padding reserves its 64px/72px responsive height. Other routes and the no-JS
+fallback retain sticky positioning. Keep native document scroll and overscroll;
+do not add scroll handlers or a second scrolling container for this behavior.
+
+The homepage reading scale uses 16-17px body copy, 16-18px hero supporting
+copy, 16px action labels, 15px text links, and 14px evidence/captions (at the
+default browser font). Section headings are 30-44px and competition names
+28-36px; keep these roles distinct. Home overrides are scoped in Neutral.module.css.
+Headline spans and flexible section headings must wrap without clipping when
+visitors enlarge text or increase spacing.
+
+## Ascent neutral design
+
+The Ascent route is scoped by `data-ascent-page`. Its sections use the neutral
+shell tokens and shared link/button primitives; AscentHero.module.css and
+Ascent.module.css own responsive layouts. The sequence is overview/status,
+skills, rounds, participation details, and entry-status/support actions.
+Use official competition sources for status and dates, and synchronize the FAQ,
+metadata, shared competition action, and llms.txt when these change. Tentative
+finale details must remain labelled. Do not reuse Derive photography as Ascent
+evidence. Hero and closing actions remain server-rendered links.
+
+## Derive neutral archive
+
+The Derive route uses `data-derive-page`, neutral shared primitives, and
+DeriveHero.module.css / Derive.module.css for its layouts. It presents the 2026
+edition: introductory photo, subjects, verified round outcomes, historical
+partners, and future-edition enquiry. Keep qualification separate from attendance
+(50 qualified, 33 competed), and never interpret the legacy contest homepage's
+open-registration banner as evidence of a new edition. Approved white partner
+marks remain on a near-black surface for legibility.
+
+## Competition updates intake
+
+`/updates` is a static route with a small client form leaf. Contextual links appear
+on home, Derive, Ascent, and in the footer; the header retains its competition CTA.
+The separate Firebase project in `infra/updates` is the explicit intake exception
+to the no-database marketing architecture. It stores mailing-list requests only,
+never contest data. Direct Firestore client access is denied; a bounded HTTP
+function validates consent, rate-limits, and writes atomically. The requested
+Firebase web app SDK initializes lazily on submission; no Analytics is included.
+Web config lives in ignored `apps/web/.env.local`, template in `.env.example`.
+Unconfigured builds show a contact alternative. See `infra/updates/README.md` for
+deployment, privacy lifecycle, and tests. Sending and ownership confirmation are
+separate work before campaigns; do not describe a saved request as verified email.
+
+Signup hardening: App Check/reCAPTCHA Enterprise runs only when submitting.
+Production requires a consumed limited-use token for the configured app ID.
+Emulator-only bypass must never become a request/config switch on production.
+The server uses fixed document lookups and bounded retries; do not describe
+Firestore latency as guaranteed O(1). See docs/signup-security.md for quotas,
+operation counts, third-party disclosure, and abuse/availability tradeoffs.

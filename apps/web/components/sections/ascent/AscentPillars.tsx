@@ -1,34 +1,23 @@
+import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-import { ASCENT_PILLARS } from "@/content/ascent";
+import { ASCENT_PILLARS, ASCENT_PILLARS_HEADING, ASCENT_SYLLABUS } from "@/content/ascent";
+import neutral from "@/components/ui/Neutral.module.css";
+import styles from "./Ascent.module.css";
 
 export function AscentPillars() {
   return (
-    <section className="bg-espresso py-section text-cream-light">
+    <section className={neutral.section} aria-labelledby="ascent-skills">
       <Container>
-        <Reveal>
-          <SectionHeading
-            eyebrow="The discipline"
-            title="What Ascent measures."
-            inverse
-          />
-        </Reveal>
-
-        <ul className="mt-14 grid gap-12 lg:grid-cols-3 lg:gap-8">
-          {ASCENT_PILLARS.map((pillar, index) => (
-            <li key={pillar.title}>
-              <Reveal delay={index * 100}>
-                <h3 className="font-display text-xl font-semibold">
-                  {pillar.title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-cream-light/85">
-                  {pillar.body}
-                </p>
-              </Reveal>
+        <Reveal><h2 id="ascent-skills" className={`${neutral.title} ${styles.heading}`}>{ASCENT_PILLARS_HEADING}</h2></Reveal>
+        <ul className={styles.pillars}>
+          {ASCENT_PILLARS.map((pillar) => (
+            <li key={pillar.title} className={styles.pillar}>
+              <Reveal><h3>{pillar.title}</h3><p className={`${neutral.body} ${styles.body}`}>{pillar.body}</p></Reveal>
             </li>
           ))}
         </ul>
+        <Link className={`${neutral.textLink} ${styles.link}`} href={ASCENT_SYLLABUS.href}>{ASCENT_SYLLABUS.label}</Link>
       </Container>
     </section>
   );

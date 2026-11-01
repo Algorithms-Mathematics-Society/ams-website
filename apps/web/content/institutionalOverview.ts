@@ -5,19 +5,17 @@ export interface InstitutionalMandateItem {
 }
 
 export const INSTITUTIONAL_OVERVIEW = {
-  eyebrow: "Why AMS",
-  title: "Good problems bring capable people together.",
+  title: "About the society",
   definition:
-    "AMS (Algorithms & Mathematics Society) is an Indian organization running national competitions in quantitative reasoning and systems engineering. Our contests bring students and early-career talent together. Firms partner with AMS to take part in these contests and meet the people behind the work.",
+    "AMS is the Algorithms & Mathematics Society. We organize Derive, a quantitative reasoning contest, and Ascent, a systems engineering contest. Our events bring students, early-career participants, and partner firms together.",
   image: {
     src: "/images/derive26/hero/finalists-meet-the-interviewers.webp",
     alt: "Derive finalists meeting interviewers from partner firms at IIT Bombay",
     caption: "Conversations with partner firms · Derive '26 · IIT Bombay",
   },
-  action: { label: "Partner with AMS", href: "/access#sponsor" },
+  action: { label: "Meet the team", href: "/team" },
   evidenceLinks: [
-    { label: "Derive '26 edition and format", href: "/derive" },
-    { label: "Photographs from the finals", href: "/gallery" },
+    { label: "Read about AMS", href: "/blog/what-ams-actually-is" },
   ],
   mandate: [
     {

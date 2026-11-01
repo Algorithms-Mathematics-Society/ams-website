@@ -9,8 +9,8 @@
   --color-border: rgb(87 28 36 / 18%);
   --font-family-body: var(--font-sans), sans-serif;
   --font-family-heading: var(--font-sans), sans-serif;
-  --radius-container: 9px;
-  --radius-inner: 4px;
+  --radius-container: var(--radius-panel);
+  --radius-inner: var(--radius-control);
   --text-supporting-size: 12px;
   --text-supporting-leading: 1.5;
   color-scheme: light;
@@ -23,7 +23,6 @@
   flex-direction: column;
   height: 100%;
   padding: 0;
-  transition: border-color 150ms ease;
 }
 .card:hover {
   border-color: var(--color-burgundy);
@@ -49,7 +48,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  margin: 0 0 16px;
+  margin: 0 0 12px;
   padding: 0;
   list-style: none;
 }
@@ -93,7 +92,7 @@
   justify-content: space-between;
   gap: 16px;
   margin-top: auto;
-  padding-top: 24px;
+  padding-top: 20px;
 }
 .footer::before {
   content: "";
@@ -134,6 +133,3 @@
   line-height: 1.5;
 }
 .read svg { flex-shrink: 0; }
-@media (prefers-reduced-motion: reduce) {
-  .card { transition: none; }
-}

@@ -14,7 +14,7 @@ export function PageHeader({ eyebrow, title, body, compact = false }: Props) {
     <section className={compact ? "pt-12 pb-6 sm:pt-16" : "border-b border-burgundy/20 py-section"}>
       <Container>
         <Eyebrow>{eyebrow}</Eyebrow>
-        <h1 className={`mt-6 max-w-3xl font-display font-normal tracking-[-0.04em] text-burgundy ${compact ? "text-section" : "text-hero"}`}>
+        <h1 className={`mt-6 max-w-3xl font-sans font-semibold tracking-[-0.04em] text-burgundy ${compact ? "text-section" : "text-hero"}`}>
           {title}
         </h1>
         {body && (

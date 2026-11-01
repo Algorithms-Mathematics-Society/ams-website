@@ -1,0 +1,121 @@
+/* A readable sequence followed by documentary evidence, without nested cards. */
+.heading {
+  max-width: 20ch;
+}
+
+.experience {
+  display: grid;
+  align-items: start;
+  gap: 32px;
+}
+
+.experience > *,
+.galleryHeader > *,
+.galleryGrid > * {
+  min-width: 0;
+}
+
+.stages {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--shell-border);
+}
+
+.stages > li {
+  border-bottom: 1px solid var(--shell-border);
+}
+
+.stage {
+  display: grid;
+  grid-template-columns: 1.75em minmax(0, 1fr);
+  gap: 16px;
+  padding-block: 24px;
+}
+
+.stageNumber {
+  padding-top: 3px;
+  color: var(--shell-muted);
+  font-size: .875rem;
+  font-weight: 600;
+  line-height: 1.6;
+  font-variant-numeric: tabular-nums;
+}
+
+.stageTitle {
+  margin-bottom: 8px;
+  color: var(--shell-ink);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.galleryHeader {
+  display: grid;
+  gap: 24px;
+  align-items: end;
+}
+
+.galleryLink {
+  margin-top: 8px;
+}
+
+.galleryGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: 24px 16px;
+  margin-top: 32px;
+  padding: 0;
+  list-style: none;
+}
+
+.galleryLead {
+  grid-column: 1 / -1;
+}
+
+.image {
+  position: relative;
+  aspect-ratio: 1600 / 1067;
+  overflow: hidden;
+  border-radius: var(--shell-panel-radius);
+  background: var(--shell-surface);
+}
+
+.photograph {
+  object-fit: contain;
+}
+
+.caption {
+  margin-top: 12px;
+  color: var(--shell-muted);
+  font-size: .875rem;
+  line-height: 1.6;
+  overflow-wrap: break-word;
+}
+
+@media (min-width: 768px) {
+  .galleryHeader {
+    grid-template-columns: 1.2fr 1fr;
+    gap: 48px;
+  }
+
+  .galleryGrid {
+    grid-template-columns: minmax(0, 2.2fr) minmax(0, 1fr);
+    column-gap: 24px;
+  }
+
+  .galleryLead {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .experience {
+    grid-template-columns: minmax(0, 0.42fr) minmax(0, 0.58fr);
+    gap: 64px;
+  }
+}
+
+.galleryTitle { margin-top: 0; max-width: 24ch; }

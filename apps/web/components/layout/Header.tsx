@@ -3,40 +3,37 @@ import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { DesktopNav } from "@/components/layout/DesktopNav";
 import { MobileNav } from "@/components/layout/MobileNav";
-import { SITE } from "@/content/site";
+import { NAV_LINKS, SITE } from "@/content/site";
+import styles from "./Header.module.css";
 
 export function Header() {
   return (
-    <div className="site-header sticky top-0 z-40 w-full">
-      <a
-        href="#main-content"
-        className="fixed top-2 left-4 z-[60] flex min-h-11 -translate-y-20 items-center border border-gold-deep bg-cream px-4 text-sm font-semibold text-burgundy focus:translate-y-0"
-      >
+    <div className={`site-header ${styles.shell}`}>
+      <a href="#main-content" className={styles.skipLink}>
         Skip to content
       </a>
-      <header className="h-20 border-b border-cream/20 bg-burgundy text-cream">
-        <Container className="flex h-full items-center justify-between gap-4">
-          <Link
-            href="/"
-            className="inline-flex min-h-11 min-w-0 items-center gap-5 focus-visible:outline-gold-bright"
-            aria-label={`${SITE.name} home`}
-          >
+      <header className={styles.header}>
+        <Container className={styles.inner}>
+          <Link href="/" className={styles.brand} aria-label={`${SITE.name} home`}>
             <Image
-              src="/brand/wordmark-horizontal-inverse.svg"
+              src="/brand/wordmark-horizontal-black.svg"
               alt=""
               width={119}
               height={36}
               priority
-              className="shrink-0"
+              className={styles.wordmark}
             />
-            <span className="hidden max-w-40 border-l border-cream/25 pl-5 text-[11px] leading-4 text-cream/85 sm:block xl:max-w-none">
-              {SITE.legalName}
-            </span>
+            <span className={styles.legalName}>{SITE.legalName}</span>
           </Link>
           <DesktopNav />
           <MobileNav />
         </Container>
       </header>
+      <noscript>
+        <nav aria-label="Main" className={styles.fallbackNav}>
+          {NAV_LINKS.map((link) => <Link key={link.href} href={link.href}>{link.label}</Link>)}
+        </nav>
+      </noscript>
     </div>
   );
 }

@@ -1,0 +1,30 @@
+.heading { margin-top: 0; max-width: 24ch; font-size: clamp(1.875rem, calc(1.5rem + 1vw), 2.75rem); }
+.body { max-width: 60ch; font-size: clamp(1rem, calc(.95rem + .2vw), 1.0625rem); line-height: 1.7; }
+.intro { margin-top: 20px; }
+.pillars { display: grid; gap: 28px; margin-top: 32px; }
+.pillar { min-width: 0; padding-top: 24px; border-top: 1px solid var(--shell-border); }
+.pillar h3 { margin-bottom: 12px; font-size: 22px; font-weight: 600; line-height: 1.3; letter-spacing: -.025em; }
+.link { margin-top: 20px; font-size: 15px; }
+.format { display: grid; gap: 36px; }
+.rounds { list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--shell-border); }
+.round { display: grid; grid-template-columns: 1.75em minmax(0,1fr); gap: 16px; padding-block: 28px; border-bottom: 1px solid var(--shell-border); }
+.number { color: var(--shell-accent); padding-top: 5px; font-size: 14px; font-variant-numeric: tabular-nums; }
+.round h3 { font-size: 22px; font-weight: 600; line-height: 1.3; letter-spacing: -.02em; }
+.date { margin-top: 12px; font-size: 16px; font-weight: 500; line-height: 1.6; }
+.setting { margin: 4px 0 12px; color: var(--shell-muted); font-size: 14px; line-height: 1.6; }
+.note { margin-top: 24px; color: var(--shell-muted); font-size: 14px; line-height: 1.7; max-width: 60ch; }
+.scoring { margin-top: 28px; padding-left: 20px; border-left: 2px solid var(--shell-accent); }
+.facts { display: grid; gap: 28px 48px; margin-top: 32px; }
+.fact { border-top: 1px solid var(--shell-border); padding-top: 24px; min-width: 0; }
+.fact dt { margin-bottom: 12px; font-size: 18px; font-weight: 600; line-height: 1.4; }
+.links { display: flex; flex-wrap: wrap; gap: 8px 28px; margin-top: 24px; }
+.closing { border-top: 1px solid var(--shell-border); }
+.closingLayout { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 28px 48px; }
+.closingCopy { flex: 1 1 320px; }
+.actions { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+.button { min-height: 48px; font-size: 16px; }
+@media (min-width: 768px) {
+  .pillars { grid-template-columns: repeat(3,minmax(0,1fr)); gap: 32px; }
+  .facts { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+@media (min-width: 1024px) { .format { grid-template-columns: minmax(0,.8fr) minmax(0,1.2fr); gap: 64px; } }

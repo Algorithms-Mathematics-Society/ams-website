@@ -1,38 +1,43 @@
 import Image from "next/image";
-import { Button } from "@/components/ui/Button";
+import Link from "next/link";
 import { Container } from "@/components/ui/Container";
-import { Eyebrow } from "@/components/ui/Eyebrow";
 import { DERIVE_HERO } from "@/content/derive";
+import neutral from "@/components/ui/Neutral.module.css";
+import styles from "./DeriveHero.module.css";
 
 export function DeriveHero() {
   return (
-    <section className="py-section">
-      <Container className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-        <div>
-          <Eyebrow>{DERIVE_HERO.eyebrow}</Eyebrow>
-          <h1 className="mt-6 font-display text-hero font-normal tracking-[-0.04em] text-burgundy">
+    <section className={styles.hero} aria-labelledby="derive-heading">
+      <Container className={styles.layout}>
+        <div className={styles.copy}>
+          <p className={neutral.eyebrow}>{DERIVE_HERO.eyebrow}</p>
+          <h1 id="derive-heading" className={styles.title}>
             {DERIVE_HERO.title}
           </h1>
-          <p className="mt-6 max-w-md leading-relaxed">
-            {DERIVE_HERO.body}
-          </p>
-          <Button href={DERIVE_HERO.archiveLink.href} variant="outline" className="mt-7">
-            {DERIVE_HERO.archiveLink.label}
-          </Button>
+          <p className={styles.introduction}>{DERIVE_HERO.body}</p>
+          <div className={`${neutral.actions} ${styles.actions}`}>
+            <Link href={DERIVE_HERO.primaryAction.href} className={`${neutral.primary} ${styles.primary}`}>
+              {DERIVE_HERO.primaryAction.label}
+            </Link>
+            <a href={DERIVE_HERO.archiveLink.href} className={`${neutral.textLink} ${styles.secondary}`}>
+              {DERIVE_HERO.archiveLink.label}
+            </a>
+          </div>
         </div>
-
-        <figure>
-          <div className="relative aspect-[13/11] overflow-hidden border border-burgundy/20 bg-paper">
+        <figure className={styles.figure}>
+          <div className={styles.imageFrame}>
             <Image
               src={DERIVE_HERO.image.src}
               alt={DERIVE_HERO.image.alt}
               fill
               priority
-              sizes="(min-width: 1280px) 576px, (min-width: 1024px) 46vw, calc(100vw - 40px)"
-              className="object-cover"
+              fetchPriority="high"
+              quality={75}
+              sizes="(min-width: 1280px) 580px, (min-width: 1024px) calc(50vw - 60px), (min-width: 640px) calc(100vw - 64px), calc(100vw - 40px)"
+              className={styles.image}
             />
           </div>
-          <figcaption className="mt-3 text-sm text-ink/80">
+          <figcaption className={styles.caption}>
             {DERIVE_HERO.photoCaption}
           </figcaption>
         </figure>

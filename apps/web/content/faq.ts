@@ -27,10 +27,10 @@ export const FAQ: FaqItem[] = [
     links: [{ label: "AMS on LinkedIn", href: OFFICIAL_PROFILES.linkedin }],
   },
   {
-    question: "How do I register for AMS Ascent 2026?",
+    question: "Is registration open for AMS Ascent 2026?",
     answer:
-      "Register individually at ascent.amshq.in/register by 20 October 2026. Entry is free, and no team is required for the online qualifier on 24 October 2026. Review the official eligibility requirements before registering.",
-    links: [{ label: "Register for Ascent", href: "https://ascent.amshq.in/register" }, { label: "Eligibility and preparation", href: "/ascent" }],
+      "Registration for Ascent 2026 is closed. Existing applicants can check their entry decision at ascent.amshq.in/register/status. The official competition site publishes the schedule and entrant instructions.",
+    links: [{ label: "Check entry status", href: "https://ascent.amshq.in/register/status" }, { label: "Eligibility and preparation", href: "/ascent" }],
   },
   {
     question: "What is AMS Derive?",

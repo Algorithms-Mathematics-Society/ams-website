@@ -1,8 +1,16 @@
-/** Invitations for competitors and hiring teams. */
+/** Audience-specific invitations after the event story and society introduction. */
 export const CLOSING_CTA = {
-  eyebrow: "Take part",
-  headline: "Your next challenge starts here.",
-  body: "Enter Ascent as a competitor, or partner with AMS on the next edition.",
-  primary: { label: "Explore Ascent", href: "/ascent" },
-  secondary: { label: "Discuss a partnership", href: "/access#contact" },
+  headline: "Take part",
+  paths: [
+    {
+      title: "For participants",
+      body: "Explore the formats and eligibility requirements, or choose email updates for future editions.",
+      label: "Explore competitions", href: "#competitions", primary: true,
+    },
+    {
+      title: "For recruiters and sponsors",
+      body: "Contact us about competition sponsorship and recruiting opportunities.",
+      label: "Discuss a partnership", href: "/access#contact", primary: false,
+    },
+  ],
 } as const;

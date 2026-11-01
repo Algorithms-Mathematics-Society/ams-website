@@ -1,52 +1,33 @@
+"use client";
+
 import Link from "next/link";
+import { Button as AstryxButton } from "@astryxdesign/core/Button";
 import { cn } from "@/lib/cn";
 
 interface Props {
   href: string;
-  children: React.ReactNode;
-  /** inverse = cream button for use on burgundy bands. */
+  children: string;
+  /** Cream buttons are reserved for burgundy surfaces. */
   variant?: "solid" | "outline" | "inverse";
   external?: boolean;
   className?: string;
-  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
+  onClick?: () => void;
 }
 
-/** Navigation CTA rendered as a link. For in-page actions use a plain <button>. */
-export function Button({
-  href,
-  children,
-  variant = "solid",
-  external,
-  className,
-  onClick,
-}: Props) {
+/** Astryx action styling with native links and AMS's shared control dimensions. */
+export function Button({ href, children, variant = "solid", external, className, onClick }: Props) {
   const isExternal = external ?? /^https?:\/\//.test(href);
-  const styles = cn(
-    "inline-flex min-h-11 min-w-0 max-w-full items-center justify-center rounded-control px-5 py-2.5 text-center text-sm leading-6 font-semibold break-words no-underline transition-colors focus-visible:transition-none focus-visible:outline-2 focus-visible:outline-offset-2",
-    variant === "solid" &&
-      "bg-burgundy text-cream-light hover:bg-burgundy-deep focus-visible:outline-gold-deep",
-    variant === "outline" &&
-      "border border-burgundy/60 text-burgundy hover:border-burgundy hover:bg-burgundy/5 focus-visible:outline-gold-deep",
-    variant === "inverse" &&
-      "bg-cream text-burgundy hover:bg-cream-light focus-visible:outline-gold-bright",
-    className,
-  );
-  if (isExternal) {
-    return (
-      <a
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={styles}
-        onClick={onClick}
-      >
-        {children}
-      </a>
-    );
-  }
   return (
-    <Link href={href} className={styles} onClick={onClick}>
-      {children}
-    </Link>
+    <AstryxButton
+      href={href}
+      as={isExternal ? undefined : Link}
+      label={children}
+      variant={variant === "solid" ? "primary" : variant === "outline" ? "ghost" : "secondary"}
+      size="lg"
+      target={isExternal ? "_blank" : undefined}
+      rel={isExternal ? "noopener noreferrer" : undefined}
+      className={cn("ams-button", `ams-button-${variant}`, className)}
+      onClick={onClick}
+    />
   );
 }

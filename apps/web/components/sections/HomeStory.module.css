@@ -1,0 +1,18 @@
+.about { display: grid; align-items: center; gap: 32px; }
+.about > * { min-width: 0; }
+.image { position: relative; aspect-ratio: 4 / 3; overflow: hidden; border-radius: var(--shell-panel-radius); background: var(--shell-surface); }
+.caption { margin-top: 12px; color: var(--shell-muted); font-size: .875rem; line-height: 1.6; overflow-wrap: break-word; }
+.heading { margin-top: 0; max-width: 20ch; }
+.copy { margin-top: 20px; max-width: 52ch; }
+.actionSpace { margin-top: 24px; }
+.evidenceLinks { display: flex; flex-wrap: wrap; gap: 4px 24px; margin-top: 12px; }
+.closing { border-top: 1px solid var(--shell-border); }
+.nextSteps { display: grid; gap: 32px; margin-top: 32px; }
+.nextStep { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; padding-top: 24px; border-top: 1px solid var(--shell-border); }
+.nextStep h3 { color: var(--shell-ink); font-size: 22px; font-weight: 500; line-height: 1.3; letter-spacing: -0.02em; }
+.nextStep p { max-width: 48ch; margin-bottom: 8px; }
+.nextActions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; margin-top: auto; }
+@media (min-width: 768px) { .nextSteps { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 48px; } }
+@media (min-width: 1024px) {
+  .about { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 64px; }
+}

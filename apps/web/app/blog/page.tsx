@@ -18,6 +18,7 @@ export default function BlogPage() {
         eyebrow={BLOG_PAGE.eyebrow}
         title={BLOG_PAGE.title}
         body={BLOG_PAGE.body}
+        compact
       />
       <BlogGrid withHeading={false} />
       <CtaBand {...BLOG_PAGE.cta} />

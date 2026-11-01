@@ -1,30 +1,26 @@
-import { TextLink } from "@/components/ui/TextLink";
+import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
-import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ASCENT_REGISTRATION } from "@/content/ascent";
+import neutral from "@/components/ui/Neutral.module.css";
+import styles from "./Ascent.module.css";
 
 export function AscentRegistration() {
   return (
-    <section className="border-y border-burgundy/15 bg-cream-light py-section">
+    <section className={neutral.section} aria-labelledby="ascent-participation">
       <Container>
         <Reveal>
-          <SectionHeading eyebrow={ASCENT_REGISTRATION.eyebrow} title={ASCENT_REGISTRATION.title} />
-          <dl className="mt-9 grid gap-x-12 gap-y-7 md:grid-cols-2">
+          <h2 id="ascent-participation" className={`${neutral.title} ${styles.heading}`}>{ASCENT_REGISTRATION.title}</h2>
+          <dl className={styles.facts}>
             {ASCENT_REGISTRATION.facts.map((fact) => (
-              <div key={fact.label} className="border-t border-burgundy/20 pt-5">
-                <dt className="text-lg font-semibold text-burgundy">{fact.label}</dt>
-                <dd className="mt-2 max-w-xl leading-7 text-ink/85">{fact.detail}</dd>
+              <div key={fact.label} className={styles.fact}>
+                <dt>{fact.label}</dt><dd className={`${neutral.body} ${styles.body}`}>{fact.detail}</dd>
               </div>
             ))}
           </dl>
-          <ul className="mt-7 flex flex-wrap gap-x-8 gap-y-2">
+          <ul className={styles.links}>
             {ASCENT_REGISTRATION.links.map((link) => (
-              <li key={link.href}>
-                <TextLink href={link.href}>
-                  {link.label}
-                </TextLink>
-              </li>
+              <li key={link.href}><Link href={link.href} className={neutral.textLink}>{link.label}</Link></li>
             ))}
           </ul>
         </Reveal>

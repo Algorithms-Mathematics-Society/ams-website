@@ -23,8 +23,8 @@ export const OFFICIAL_PROFILES = {
 } as const;
 
 export const NAV_LINKS: NavLink[] = [
-  { label: "Derive", href: "/derive" },
   { label: "Ascent", href: "/ascent" },
+  { label: "Derive", href: "/derive" },
   { label: "Partnerships", href: "/access" },
   { label: "Gallery", href: "/gallery" },
   { label: "Team", href: "/team" },
@@ -36,10 +36,16 @@ export const DERIVE_OVERVIEW_LINK = {
   href: "/derive",
 } as const satisfies NavLink;
 
+/** Evergreen navigation action; registration availability belongs to each edition. */
+export const HEADER_ACTION = {
+  label: "Explore competitions",
+  href: "/#competitions",
+} as const satisfies NavLink;
+
 /** Primary CTA. Links out to the contest platform, never into this repo. */
 export const COMPETE_LINK: NavLink = {
-  label: "Compete",
-  href: "https://ascent.amshq.in",
+  label: "Check Ascent entry status",
+  href: "https://ascent.amshq.in/register/status",
 };
 
 export const FOOTER_COLUMNS: Array<{ heading: string; links: NavLink[] }> = [
@@ -48,6 +54,7 @@ export const FOOTER_COLUMNS: Array<{ heading: string; links: NavLink[] }> = [
     links: [
       { label: "Derive", href: "/derive" },
       { label: "Ascent", href: "/ascent" },
+      { label: "Competition updates", href: "/updates" },
     ],
   },
   {

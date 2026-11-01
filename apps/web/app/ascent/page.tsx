@@ -1,6 +1,5 @@
 import { createPageMetadata } from "@/lib/metadata";
-import { CtaBand } from "@/components/ui/CtaBand";
-import { ASCENT_CTA } from "@/content/ascent";
+import { AscentClosing } from "@/components/sections/ascent/AscentClosing";
 import { AscentRegistration } from "@/components/sections/ascent/AscentRegistration";
 import { AscentHero } from "@/components/sections/ascent/AscentHero";
 import { AscentPillars } from "@/components/sections/ascent/AscentPillars";
@@ -9,18 +8,18 @@ import { AscentStandard } from "@/components/sections/ascent/AscentStandard";
 export const metadata = createPageMetadata({
   title: "Ascent: the C++ performance competition",
   description:
-    "Ascent tests C++, optimization, and performance engineering. Register for the 2026 edition by 20 October. The online qualifier is on 24 October.",
+    "Explore the Ascent C++ performance competition, its three rounds, syllabus, and entry requirements. Registration for the 2026 edition is closed.",
   path: "/ascent",
 });
 
 export default function AscentPage() {
   return (
-    <>
+    <div data-ascent-page>
       <AscentHero />
-      <AscentRegistration />
       <AscentPillars />
       <AscentStandard />
-      <CtaBand {...ASCENT_CTA} />
-    </>
+      <AscentRegistration />
+      <AscentClosing />
+    </div>
   );
 }

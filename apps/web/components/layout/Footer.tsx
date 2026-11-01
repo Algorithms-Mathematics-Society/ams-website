@@ -1,72 +1,51 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
-import { TextLink } from "@/components/ui/TextLink";
 import { FOOTER, FOOTER_COLUMNS, SITE } from "@/content/site";
+import styles from "./Footer.module.css";
 
-/** Astryx's grouped-navigation pattern, using the existing AMS palette and primitives. */
+/** A quiet inverse anchor with distinct competition, partnership, and society paths. */
 export function Footer() {
   return (
-    <footer id="site-footer" className="border-t border-cream-light/20 bg-burgundy text-cream-light">
+    <footer id="site-footer" className={styles.footer}>
       <Container>
-        <div className="grid gap-10 py-12 sm:py-16 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.3fr)] lg:gap-20">
-          <div className="max-w-sm">
-            <Link
-              href="/"
-              aria-label="AMS home"
-              className="inline-flex min-h-11 items-center focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold-bright"
-            >
+        <div className={styles.main}>
+          <div className={styles.identity}>
+            <Link href="/" aria-label="AMS home" className={styles.brand}>
               <Image
-                src="/brand/wordmark-horizontal-inverse.svg"
+                src="/brand/wordmark-horizontal-white.svg"
                 alt=""
                 aria-hidden="true"
                 width={119}
                 height={36}
               />
             </Link>
-            <p className="mt-5 text-base font-semibold leading-6">
-              {SITE.legalName}
-            </p>
-            <p className="mt-3 text-sm leading-6 text-cream-light/80">
-              {SITE.tagline}
-            </p>
-            <div className="mt-6">
-              <p className="text-xs leading-5 text-cream-light/70">
-                {FOOTER.contactLabel}
-              </p>
-              <ul>
+            <p className={styles.name}>{SITE.legalName}</p>
+            <p className={styles.description}>{SITE.tagline}</p>
+            <div className={styles.contact}>
+              <p className={styles.heading}>{FOOTER.contactLabel}</p>
+              <ul className={styles.contactLinks}>
                 {FOOTER.contacts.map((contact) => (
                   <li key={contact.href}>
-                    <TextLink href={contact.href} inverse>
+                    <a href={contact.href} className={styles.link}>
                       {contact.label}
-                    </TextLink>
+                    </a>
                   </li>
                 ))}
               </ul>
             </div>
           </div>
 
-          <nav
-            aria-label="Footer"
-            className="border-t border-cream-light/20 pt-8 lg:border-t-0 lg:pt-2"
-          >
-            <div className="grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-[minmax(0,0.8fr)_minmax(0,1.4fr)_minmax(0,0.8fr)] sm:gap-x-8">
+          <nav aria-label="Footer" className={styles.navigation}>
+            <div className={styles.columns}>
               {FOOTER_COLUMNS.map((column) => (
-                <div
-                  key={column.heading}
-                  className="group/footer-column min-w-0 max-sm:last:col-span-2"
-                >
-                  <h2 className="text-sm font-semibold leading-6 text-cream-light/70">
-                    {column.heading}
-                  </h2>
-                  <ul className="mt-3 max-sm:group-last/footer-column:grid max-sm:group-last/footer-column:grid-cols-2">
+                <div key={column.heading} className={styles.column}>
+                  <h2 className={styles.heading}>{column.heading}</h2>
+                  <ul className={styles.links}>
                     {column.links.map((link) => (
                       <li key={link.label}>
-                        <Link
-                          href={link.href}
-                          className="inline-flex min-h-11 min-w-11 max-w-full items-center py-2 text-sm leading-5 text-cream-light transition-colors duration-150 hover:text-gold-bright focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold-bright motion-reduce:transition-none"
-                        >
-                          <span className="break-words">{link.label}</span>
+                        <Link href={link.href} className={styles.link}>
+                          {link.label}
                         </Link>
                       </li>
                     ))}
@@ -76,29 +55,22 @@ export function Footer() {
             </div>
           </nav>
         </div>
-      </Container>
 
-      <div className="border-t border-cream-light/15 bg-burgundy-deep">
-        <Container className="flex flex-col gap-3 py-5 lg:flex-row lg:items-center lg:justify-between lg:gap-8">
-          <p className="order-last text-xs leading-5 text-cream-light/75 lg:order-first">
-            {SITE.copyright}
-          </p>
-          <div className="flex flex-wrap items-center justify-between gap-x-8 gap-y-2">
+        <div className={styles.bottom}>
+          <p className={styles.copyright}>{SITE.copyright}</p>
+          <div className={styles.utilities}>
             <nav aria-label={FOOTER.socialLabel}>
-              <ul className="flex flex-wrap gap-x-6">
+              <ul className={styles.socialLinks}>
                 {FOOTER.socialLinks.map((link) => (
                   <li key={link.href}>
-                    <TextLink href={link.href} inverse>
+                    <a href={link.href} className={styles.link}>
                       {link.label}
-                    </TextLink>
+                    </a>
                   </li>
                 ))}
               </ul>
             </nav>
-            <a
-              href="#main-content"
-              className="inline-flex min-h-11 items-center gap-2 text-sm text-cream-light/80 hover:text-gold-bright focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold-bright"
-            >
+            <a href="#main-content" className={styles.link}>
               {FOOTER.backToTop}
               <svg
                 width="16"
@@ -116,8 +88,8 @@ export function Footer() {
               </svg>
             </a>
           </div>
-        </Container>
-      </div>
+        </div>
+      </Container>
     </footer>
   );
 }

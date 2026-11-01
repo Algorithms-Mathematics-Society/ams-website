@@ -1,68 +1,49 @@
 import Link from "next/link";
-import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/ui/Reveal";
 import { PRODUCTS, PRODUCTS_SECTION } from "@/content/products";
+import neutral from "@/components/ui/Neutral.module.css";
+import styles from "./HomeTop.module.css";
 
-/** Three routes through AMS: quantitative contests, systems contests, and sponsorship. */
+/** Compare the two disciplines; partnership is a separate audience path. */
 export function ProductCards() {
+  const competitions = PRODUCTS.filter((product) => product.audience === "competitor");
+  const partnership = PRODUCTS.find((product) => product.audience === "partner");
   return (
-    <section className="bg-cream-light py-section">
+    <section id="competitions" aria-labelledby="programs-heading" className={neutral.section}>
       <Container>
-        <Reveal className="grid gap-7 border-b border-burgundy/15 pb-8 md:grid-cols-[minmax(0,1fr)_auto] md:items-end">
+        <Reveal className={styles.programHeading}>
           <div>
-            <Eyebrow>{PRODUCTS_SECTION.eyebrow}</Eyebrow>
-            <h2 className="mt-4 max-w-xl text-section font-semibold tracking-[-0.035em] text-burgundy">
-              {PRODUCTS_SECTION.title}
-            </h2>
+            <h2 id="programs-heading" className={`${neutral.title} ${styles.sectionTitle}`}>{PRODUCTS_SECTION.title}</h2>
           </div>
-          <Button href={PRODUCTS_SECTION.action.href} variant="outline">
-            {PRODUCTS_SECTION.action.label}
-          </Button>
+          <Link className={neutral.textLink} href={PRODUCTS_SECTION.action.href}>{PRODUCTS_SECTION.action.label}</Link>
         </Reveal>
-
-        <ul className="grid border-b border-burgundy/15 md:grid-cols-3">
-          {PRODUCTS.map((product, index) => (
-            <li
-              key={product.name}
-              className="min-w-0 border-b border-burgundy/15 md:border-r md:border-b-0 md:last:border-r-0"
-            >
-              <Reveal delay={index * 80}>
-                <Link
-                  href={product.href}
-                  className="group flex min-h-[21rem] flex-col px-1 py-9 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-gold-deep md:px-8 "
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold tracking-[0.18em] text-gold-deep">
-                      {product.index}
-                    </span>
-                    <span
-                      aria-hidden="true"
-                      className="text-xl text-burgundy transition-transform duration-200 group-hover:translate-x-1 group-focus-visible:translate-x-1 motion-reduce:transition-none"
-                    >
-                      →
-                    </span>
-                  </div>
-                  <div className="mt-auto pt-9">
-                    <p className="text-xs font-bold tracking-[0.14em] text-ink/75 uppercase">
-                      {product.classification}
-                    </p>
-                    <h3 className="mt-4 text-3xl font-medium tracking-[-0.035em] text-burgundy">
-                      {product.name}
-                    </h3>
-                    <p className="mt-4 max-w-sm leading-7 text-ink/75">
-                      {product.purpose}
-                    </p>
-                    <p className="mt-7 border-t border-burgundy/15 pt-4 text-xs leading-5 text-ink/65">
-                      {product.evidence}
-                    </p>
-                  </div>
-                </Link>
+        <ul className={styles.programs}>
+          {competitions.map((product) => (
+            <li key={product.name} className={styles.programItem}>
+              <Reveal className={styles.programReveal}>
+                <article className={styles.program}>
+                  <p className={styles.classification}>{product.classification}</p>
+                  <h3 className={styles.programTitle}>{product.name}</h3>
+                  <p className={styles.programBody}>{product.purpose}</p>
+                  <p className={styles.evidence}>{product.evidence}</p>
+                  <Link href={product.href} className={neutral.textLink}>
+                    {product.actionLabel}<span aria-hidden="true"> →</span>
+                  </Link>
+                </article>
               </Reveal>
             </li>
           ))}
         </ul>
+        {partnership && (
+          <Reveal className={styles.partnerRoute}>
+            <div>
+              <h3 className={styles.partnerTitle}>{PRODUCTS_SECTION.partnerHeading}</h3>
+              <p className={neutral.body}>{PRODUCTS_SECTION.partnerBody}</p>
+            </div>
+            <Link href={partnership.href} className={neutral.textLink}>{partnership.actionLabel}<span aria-hidden="true"> →</span></Link>
+          </Reveal>
+        )}
       </Container>
     </section>
   );

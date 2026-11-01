@@ -5,3 +5,5 @@ allowBuilds:
   "@astryxdesign/core": false
   sharp: true
   unrs-resolver: true
+  "@firebase/util": false
+  protobufjs: false

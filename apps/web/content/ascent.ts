@@ -1,62 +1,56 @@
+/** Official competition information reviewed on 1 November 2026. */
 export const ASCENT_HERO = {
-  eyebrow: "Ascent",
-  title: "The systems engineering contest.",
-  body: "A competition in C++, optimization, and performance engineering. Solve problems where memory use, execution time, and implementation choices matter.",
-  statusLabel: "Competition status",
-  status: "Registration open",
-  statusDetail: "Free entry · Register by 20 October 2026",
-  focusLabel: "What you will work on",
-  focusAreas: ["C++", "Optimization", "Performance engineering"],
+  eyebrow: "Ascent · 2026",
+  title: "The C++ performance competition.",
+  body: "Test your C++ knowledge, debug unfamiliar code, and work on implementations where performance matters.",
+  statusLabel: "2026 edition",
+  status: "Registration closed",
+  statusDetail: "Existing applicants can check their entry decision on the competition site.",
+  focusLabel: "At a glance",
+  focusAreas: ["C++20", "Free entry", "Individual qualifier, then team rounds"],
+  secondaryAction: { label: "See the rounds", href: "#ascent-format" },
 } as const;
 
-export interface AscentPillar {
-  title: string;
-  body: string;
-}
-
-/** The three disciplines Ascent measures. */
-export const ASCENT_PILLARS: AscentPillar[] = [
-  {
-    title: "C++ under constraints",
-    body: "Write modern C++ within defined memory and execution limits.",
-  },
-  {
-    title: "Optimization",
-    body: "Choose algorithms and implementations that make efficient use of time and memory.",
-  },
-  {
-    title: "Performance engineering",
-    body: "Investigate cache behavior, memory allocation, and throughput to improve measured performance.",
-  },
-];
+export const ASCENT_PILLARS_HEADING = "What you will work on";
+export const ASCENT_PILLARS = [
+  { title: "C++ and correctness", body: "Reason about object lifetimes, memory, and library behaviour. Identify bugs and understand what a program will do." },
+  { title: "Implementation", body: "Work with a team to develop solutions within a time limit. Detailed topics for the later rounds are still to be announced." },
+  { title: "Profiling and tools", body: "The final-round outline covers live C++ work with build systems, profilers, and debuggers." },
+] as const;
+export const ASCENT_SYLLABUS = { label: "Read the official syllabus", href: "https://ascent.amshq.in/syllabus" } as const;
 
 export const ASCENT_STANDARD = {
-  eyebrow: "The contest format",
-  title: "Individual entry. Team rounds.",
-  body: "Ascent starts with an individual online qualifier, followed by team-based optimization rounds and a planned in-person finale in Mumbai. The contest platform has the full format, eligibility, and schedule.",
-  linkLabel: "Read the Ascent format",
-  linkHref: "https://ascent.amshq.in",
+  title: "Three rounds",
+  body: "The qualifier is individual. Competitors who advance move into team implementation, then a codebase finale.",
+  note: "Published schedule, checked 1 November 2026. The final date and Mumbai venue are tentative; partner campuses are yet to be announced.",
+  scoring: "Qualifier ranking considers correct answers and submission speed. From Round 2, valid solutions are ranked by improvement over a common performance baseline.",
+  linkLabel: "Check the official schedule",
+  linkHref: "https://ascent.amshq.in/#timeline",
+  rounds: [
+    { number: "01", title: "Online qualifier", date: "24 October 2026 · Published date", setting: "Individual · AMS Access", body: "A two-hour round covering C++ proficiency, puzzles, and debugging." },
+    { number: "02", title: "Team implementation", date: "6 December 2026", setting: "Teams · Partner campuses to be announced", body: "Implement and optimize solutions under shared constraints." },
+    { number: "03", title: "Codebase finale", date: "20 December 2026 · Tentative", setting: "On site · Mumbai, tentative", body: "Work on a real codebase while preserving its required behaviour." },
+  ],
+} as const;
+
+export const ASCENT_REGISTRATION = {
+  title: "Participation details",
+  facts: [
+    { label: "Who the edition is for", detail: "Candidates in India and the Asia-Pacific region. The published eligibility policy limits places outside India to 100." },
+    { label: "Entry routes", detail: "Listed campuses have a direct route to Round 1. Applicants from other institutions go through profile review. Review and waitlist decisions do not confirm a place." },
+    { label: "Registration status", detail: "Applications for 2026 are closed. If you applied, check your decision on the official site." },
+    { label: "Rules and preparation", detail: "Use the official syllabus and entrant instructions for your round. Check requirements before making travel or preparation plans." },
+  ],
+  links: [
+    { label: "Eligibility policy", href: "https://ascent.amshq.in/eligibility" },
+    { label: "Competition questions", href: "https://ascent.amshq.in/#faq" },
+  ],
 } as const;
 
 export const ASCENT_CTA = {
-  title: "Ascent '26 registration is open.",
-  body: "Entry is free and closes on 20 October 2026. Round 1 runs online on 24 October.",
-  buttonLabel: "Register for Ascent",
-  buttonHref: "https://ascent.amshq.in/register",
-} as const;
-
-/** Registration details checked against the official Ascent site on 28 September 2026. */
-export const ASCENT_REGISTRATION = {
-  eyebrow: "Before you register",
-  title: "Enter individually. Come prepared.",
-  facts: [
-    { label: "Who can enter", detail: "Candidates in India and across the Asia-Pacific region. This edition has 100 seats for candidates outside India." },
-    { label: "Entry and teams", detail: "Registration is free. You do not need a team for registration or the online qualifier." },
-    { label: "What to have ready", detail: "Your contact and education details, plus a shareable Google Drive resume link. A transcript and Codeforces handle are optional." },
-    { label: "The online qualifier", detail: "24 October 2026, 2:00 pm IST. The round lasts two hours and runs on AMS Access. Registration closes on 20 October." },
-  ],
-  links: [
-    { label: "Official eligibility and requirements", href: "https://ascent.amshq.in/#faq" },
-    { label: "Full contest schedule", href: "https://ascent.amshq.in/#timeline" },
-  ],
+  title: "Already applied?",
+  body: "View your entry decision on the Ascent site. For questions about your application, contact the competition team.",
+  buttonLabel: "Check entry status",
+  buttonHref: "https://ascent.amshq.in/register/status",
+  support: { label: "Email the competition team", href: "mailto:team@amshq.in" },
 } as const;

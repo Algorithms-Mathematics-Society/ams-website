@@ -1,48 +1,39 @@
-import { Button } from "@/components/ui/Button";
+import Link from "next/link";
 import { Container } from "@/components/ui/Container";
-import { Eyebrow } from "@/components/ui/Eyebrow";
 import { ASCENT_CTA, ASCENT_HERO } from "@/content/ascent";
+import neutral from "@/components/ui/Neutral.module.css";
+import styles from "./AscentHero.module.css";
 
 export function AscentHero() {
   return (
-    <section className="py-section">
-      <Container className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-        <div>
-          <Eyebrow>{ASCENT_HERO.eyebrow}</Eyebrow>
-          <h1 className="mt-6 font-display text-hero font-normal tracking-[-0.04em] text-burgundy">
+    <section className={styles.hero} aria-labelledby="ascent-heading">
+      <Container className={styles.layout}>
+        <div className={styles.copy}>
+          <p className={neutral.eyebrow}>{ASCENT_HERO.eyebrow}</p>
+          <h1 id="ascent-heading" className={styles.title}>
             {ASCENT_HERO.title}
           </h1>
-          <p className="mt-6 max-w-md leading-relaxed">
-            {ASCENT_HERO.body}
-          </p>
-          <Button href={ASCENT_CTA.buttonHref} className="mt-7">{ASCENT_CTA.buttonLabel}</Button>
-        </div>
-
-        <aside className="border-y border-burgundy/25 bg-cream-light">
-          <div className="border-b border-burgundy/20 px-6 py-7 sm:px-8">
-            <p className="text-[11px] font-bold tracking-[0.16em] text-gold-deep uppercase">
-              {ASCENT_HERO.statusLabel}
-            </p>
-            <p className="mt-5 text-3xl font-semibold tracking-[-0.035em] text-burgundy sm:text-4xl">
-              {ASCENT_HERO.status}
-            </p>
-            <p className="mt-2 text-sm text-ink/75">{ASCENT_HERO.statusDetail}</p>
+          <p className={styles.introduction}>{ASCENT_HERO.body}</p>
+          <div className={`${neutral.actions} ${styles.actions}`}>
+            <Link href={ASCENT_CTA.buttonHref} className={`${neutral.primary} ${styles.primary}`}>
+              {ASCENT_CTA.buttonLabel}
+            </Link>
+            <Link href={ASCENT_HERO.secondaryAction.href} className={`${neutral.textLink} ${styles.secondary}`}>
+              {ASCENT_HERO.secondaryAction.label}
+            </Link>
           </div>
-          <div className="px-6 py-7 sm:px-8">
-            <p className="text-[11px] font-bold tracking-[0.16em] text-gold-deep uppercase">
-              {ASCENT_HERO.focusLabel}
-            </p>
-            <ul className="mt-5 border-t border-burgundy/20">
-              {ASCENT_HERO.focusAreas.map((area, index) => (
-                <li
-                  key={area}
-                  className="grid grid-cols-[2.5rem_1fr] border-b border-burgundy/20 py-4 text-sm font-semibold text-burgundy"
-                >
-                  <span className="text-xs text-gold-deep tabular-nums">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  {area}
-                </li>
+        </div>
+        <aside className={styles.panel} aria-labelledby="ascent-status">
+          <div className={styles.status}>
+            <p className={styles.label}>{ASCENT_HERO.statusLabel}</p>
+            <h2 id="ascent-status" className={styles.statusTitle}>{ASCENT_HERO.status}</h2>
+            <p className={styles.detail}>{ASCENT_HERO.statusDetail}</p>
+          </div>
+          <div className={styles.focus}>
+            <h3 className={styles.label}>{ASCENT_HERO.focusLabel}</h3>
+            <ul className={styles.focusList}>
+              {ASCENT_HERO.focusAreas.map((area) => (
+                <li key={area}>{area}</li>
               ))}
             </ul>
           </div>

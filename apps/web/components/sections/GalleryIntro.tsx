@@ -11,7 +11,7 @@ export function GalleryIntro() {
     <section className="bg-cream-light pt-12 pb-8 sm:pt-16 sm:pb-10">
       <Container>
         <Eyebrow>{GALLERY_PAGE.eyebrow}</Eyebrow>
-        <h1 className="mt-4 max-w-4xl font-display text-[clamp(2.25rem,5vw,4rem)] leading-[1.1] tracking-[-0.035em] text-burgundy">
+        <h1 className="mt-4 max-w-4xl font-sans font-semibold text-hero tracking-[-0.035em] text-burgundy">
           {GALLERY_PAGE.title}
         </h1>
         <p className="mt-5 max-w-2xl leading-7 text-ink/80">

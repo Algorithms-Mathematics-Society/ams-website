@@ -17,14 +17,14 @@ export const metadata = createPageMetadata({
 
 export default function HomePage() {
   return (
-    <>
+    <div data-home-page>
       <Hero />
       <StatsBand />
-      <AboutSplit />
       <ProductCards />
-      <GallerySpread />
       <ExperienceGrid />
+      <GallerySpread />
+      <AboutSplit />
       <ClosingCta />
-    </>
+    </div>
   );
 }

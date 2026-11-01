@@ -126,7 +126,7 @@ export const DERIVE_EVENT_JSONLD = {
   "@id": `${SITE.url}/derive#event-2026`,
   name: "AMS Derive 2026",
   description:
-    "National quant contest: probability, markets, and mathematical reasoning. 2,500+ participants, 150 advanced to Round 2, 50 qualified for the finals, and 33 finalists competed on stage at IIT Bombay in July 2026.",
+    "National quant contest: probability, markets, and mathematical reasoning. 2,500+ participants, 150 advanced to Round 2, 50 qualified for the finals, and 33 finalists competed in person at IIT Bombay in July 2026.",
   startDate: "2026-05-23",
   endDate: "2026-07-11",
   eventAttendanceMode: "https://schema.org/MixedEventAttendanceMode",

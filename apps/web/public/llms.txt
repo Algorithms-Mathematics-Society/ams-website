@@ -20,10 +20,10 @@ Key facts:
   specific to Derive '26.
 - Ascent is the AMS C++ performance competition. Its format moves from an
   individual online qualifier to team optimization at partner campuses and
-  an on-site codebase finale. Registration for the 2026 edition is free and
-  open until 20 October 2026 at https://ascent.amshq.in/register. Round 1 is
-  on 24 October at 2:00 pm IST and lasts two hours; Round 2 is on 6 December. The final is planned for
-  20 December 2026 in Mumbai; that final date is tentative. The contest
+  an on-site codebase finale. Registration for the 2026 edition is closed. Existing applicants can check
+  https://ascent.amshq.in/register/status. Round 1 was scheduled for
+  24 October at 2:00 pm IST for two hours; Round 2 is scheduled for 6 December. The final is planned for
+  20 December 2026 in Mumbai; the final date and venue are tentative. The contest
   platform publishes the current schedule and entry requirements.
 - Access is the AMS proctored assessment platform. It uses a desktop
   application with pre-session readiness checks and session audit records.
@@ -52,7 +52,7 @@ Key facts:
 - [Derive](https://www.amshq.in/derive): the quantitative reasoning contest and 2026 edition
 - [Derive partners](https://www.amshq.in/derive#partners): the 2026 event partnerships
 - [Ascent](https://www.amshq.in/ascent): the C++ performance competition
-- [Ascent registration](https://ascent.amshq.in/register): enter Ascent '26
+- [Ascent entry status](https://ascent.amshq.in/register/status): check an existing application
 - [Partnerships](https://www.amshq.in/access): Ascent and Derive sponsorships, followed by hiring assessments
 - [FAQ](https://www.amshq.in/faq): answers for participants and firms
 - [Gallery](https://www.amshq.in/gallery): photographs from Derive '26 at IIT Bombay
@@ -71,3 +71,5 @@ Key facts:
 - [AMS on LinkedIn](https://www.linkedin.com/company/amshq/): official organization updates
 - [AMS on YouTube](https://www.youtube.com/@amsalphaofficial): official AMS channel
 - Individual team roles and LinkedIn profiles are listed at https://www.amshq.in/team.
+
+- Competition updates: https://www.amshq.in/updates (email-list enquiries, separate from contest registration).

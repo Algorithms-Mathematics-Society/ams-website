@@ -18,3 +18,9 @@ next-env.d.ts
 # Form exports: participant emails and other personal data. This remote is a
 # public repo, so these never get committed, not even by an accidental add -A.
 /media/*.csv
+
+# Local copy/paste deployment configuration.
+/vercel-env.txt
+
+# Firebase CLI debug output can contain local deployment details.
+firebase-debug.log*
