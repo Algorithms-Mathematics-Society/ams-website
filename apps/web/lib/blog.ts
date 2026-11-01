@@ -24,6 +24,7 @@ export interface BlogPost {
   slug: string;
   title: string;
   pubDate: Date;
+  updatedDate?: Date;
   description: string;
   author: string;
   authorImage: string | null;
@@ -39,6 +40,7 @@ export interface BlogPost {
 interface RawFrontmatter {
   title: string;
   pubDate: string | Date;
+  updatedDate?: string | Date;
   description: string;
   author: string;
   authorImage?: string;
@@ -159,6 +161,13 @@ async function loadPost(slug: string): Promise<BlogPost> {
     throw new Error(`Blog post "${slug}" frontmatter "image" needs both "url" and "alt".`);
   }
 
+  const pubDate = new Date(data.pubDate);
+  const updatedDate = data.updatedDate ? new Date(data.updatedDate) : undefined;
+  if (!Number.isFinite(pubDate.getTime()) || (updatedDate &&
+    (!Number.isFinite(updatedDate.getTime()) || updatedDate < pubDate))) {
+    throw new Error(`Blog post "${slug}" has invalid publication/update dates.`);
+  }
+
   const outDir = path.join(PUBLIC_BLOG_DIR, slug);
 
   const coverSrc = resolveLocalImage(postDir, data.image.url, slug);
@@ -177,7 +186,8 @@ async function loadPost(slug: string): Promise<BlogPost> {
   return {
     slug,
     title: data.title,
-    pubDate: data.pubDate instanceof Date ? data.pubDate : new Date(data.pubDate),
+    pubDate,
+    updatedDate,
     description: data.description,
     author: data.author,
     authorImage,

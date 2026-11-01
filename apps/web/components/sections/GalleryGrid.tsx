@@ -1,34 +1,14 @@
-import { GalleryTiles } from "@/components/sections/GalleryTiles";
+import { GalleryBrowser } from "@/components/ui/GalleryBrowser";
 import { Container } from "@/components/ui/Container";
-import { Reveal } from "@/components/ui/Reveal";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-import { GALLERY } from "@/content/gallery";
+import { GALLERY, GALLERY_PAGE, GALLERY_ARCHIVE_ORDER } from "@/content/gallery";
+import styles from "@/components/ui/GalleryBrowser.module.css";
 
-interface Props {
-  /** Optional cap on the number of tiles; currently no page passes it. */
-  limit?: number;
-  /** Off on /gallery, where the PageHeader already introduces the grid. */
-  withHeading?: boolean;
-}
-
-export function GalleryGrid({ limit, withHeading = true }: Props) {
-  const items = limit ? GALLERY.slice(0, limit) : GALLERY;
+/** Explicit editorial sequence; home placements remain independent. */
+const items = GALLERY_ARCHIVE_ORDER.flatMap(slug => GALLERY.filter(item => item.src?.endsWith(`/${slug}.webp`)));
+export function GalleryGrid() {
   return (
-    <section className={`bg-cream-light pb-section ${withHeading ? "pt-section" : ""}`}>
-      <Container>
-        {withHeading && (
-          <Reveal>
-            <SectionHeading
-              eyebrow="Event archive"
-              title="Documentary record from AMS."
-            />
-          </Reveal>
-        )}
-
-        <div className={withHeading ? "mt-12" : ""}>
-          <GalleryTiles items={items} />
-        </div>
-      </Container>
+    <section className={styles.photos} aria-label={GALLERY_PAGE.collectionLabel}>
+      <Container><GalleryBrowser items={items} /></Container>
     </section>
   );
 }

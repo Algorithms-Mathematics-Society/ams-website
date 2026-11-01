@@ -21,8 +21,8 @@ Key facts:
 - Ascent is the AMS C++ performance competition. Its format moves from an
   individual online qualifier to team optimization at partner campuses and
   an on-site codebase finale. Registration for the 2026 edition is closed. Existing applicants can check
-  https://ascent.amshq.in/register/status. Round 1 was scheduled for
-  24 October at 2:00 pm IST for two hours; Round 2 is scheduled for 6 December. The final is planned for
+  https://ascent.amshq.in/register/status. Following disruption to the 24 October attempt, the rescheduled qualifier
+  was held on 1 November 2026, confirmed by the AMS organizer. Round 2 is scheduled for 6 December. The final is planned for
   20 December 2026 in Mumbai; the final date and venue are tentative. The contest
   platform publishes the current schedule and entry requirements.
 - Access is the AMS proctored assessment platform. It uses a desktop
@@ -39,9 +39,11 @@ Key facts:
 - AMS is led by founder Tilak Jain (University of Mumbai). Kartik Agrawal
   (IIT Kanpur) is Head of Problem Design for AMS Derive 2026. Ayush Shukla
   (University of Mumbai) is Head of Community. Quasar Chunawala (CME Group)
-  is Head of Problem Design for AMS Ascent 2026. Sahil is Head of Partnerships
+  is Head of Problem Design for AMS Ascent 2026. Sahil (IIT Kharagpur) is Head of Partnerships
   for AMS Derive 2026. These affiliations describe team members, not
   organizational sponsorships.
+- Shubhranil Paul (University of Mumbai) and Rasesh Shetty (IIT (BHU) Varanasi)
+  are Winter 2026 software engineering interns contributing to AMS Access.
 - Current sponsorship outreach prioritizes Ascent, with partnerships for future Derive editions
   also available to discuss via https://www.amshq.in/access. Access assessments
   are a separate conversation at https://www.amshq.in/access#assessments.

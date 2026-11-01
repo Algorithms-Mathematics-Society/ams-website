@@ -1,29 +1,18 @@
+import Link from "next/link";
 import { Container } from "@/components/ui/Container";
-import { Eyebrow } from "@/components/ui/Eyebrow";
-import { TextLink } from "@/components/ui/TextLink";
-import { GALLERY, GALLERY_PAGE } from "@/content/gallery";
+import { GALLERY_PAGE } from "@/content/gallery";
+import neutral from "@/components/ui/Neutral.module.css";
+import styles from "@/components/ui/GalleryBrowser.module.css";
 
-/** A compact album introduction keeps the photographs close to the page title. */
 export function GalleryIntro() {
-  const photoCount = GALLERY.filter((item) => item.src && item.full).length;
-
   return (
-    <section className="bg-cream-light pt-12 pb-8 sm:pt-16 sm:pb-10">
+    <section className={styles.intro}>
       <Container>
-        <Eyebrow>{GALLERY_PAGE.eyebrow}</Eyebrow>
-        <h1 className="mt-4 max-w-4xl font-sans font-semibold text-hero tracking-[-0.035em] text-burgundy">
-          {GALLERY_PAGE.title}
-        </h1>
-        <p className="mt-5 max-w-2xl leading-7 text-ink/80">
-          {GALLERY_PAGE.body}
-        </p>
-        <div className="mt-6 flex flex-wrap items-center justify-between gap-x-8 gap-y-2">
-          <p className="text-sm leading-6 text-ink/70">
-            {photoCount} {GALLERY_PAGE.photoCountLabel} · {GALLERY_PAGE.viewHint}
-          </p>
-          <TextLink href={GALLERY_PAGE.editionLink.href}>
-            {GALLERY_PAGE.editionLink.label}
-          </TextLink>
+        <p className={styles.kicker}>{GALLERY_PAGE.eyebrow}</p>
+        <h1 className={styles.title}>{GALLERY_PAGE.title}</h1>
+        <div className={styles.details}>
+          <div><p className={styles.body}>{GALLERY_PAGE.body}</p><p className={styles.hint}>{GALLERY_PAGE.viewHint}</p></div>
+          <Link href={GALLERY_PAGE.editionLink.href} className={neutral.textLink}>{GALLERY_PAGE.editionLink.label}</Link>
         </div>
       </Container>
     </section>

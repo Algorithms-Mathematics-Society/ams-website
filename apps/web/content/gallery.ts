@@ -5,14 +5,20 @@ export const GALLERY_ACTIONS = {
   previous: "Previous photo",
   next: "Next photo",
   navigation: "Photo navigation",
+  thumbnails: "Choose a photograph",
+  hint: "Swipe or use arrow keys to browse. Esc closes.",
+  loading: "Loading photograph",
+  unavailable: "The full-size photo could not load. Showing the preview.",
+  original: "Open image file",
 } as const;
 
 export interface GalleryItem {
   /** Image alt text. */
   label: string;
+  category?: "competition" | "conversations" | "around";
   /** 640w thumbnail path under public/. */
   src?: string;
-  /** 1600w large view path under public/ (opened from the grid). */
+  /** 1600w source for featured frames and the full-size viewer. */
   full?: string;
   /** Explicit placement in the home-page proof spread. */
   homePlacement?: "lead" | "support-top" | "support-bottom";
@@ -22,12 +28,15 @@ export const GALLERY_PAGE = {
   eyebrow: "Derive '26 archive",
   title: "Inside the Derive '26 finals.",
   body: "IIT Bombay, July 2026. The competition and the people behind it.",
+  filtersLabel: "Browse photographs",
+  all: "All photographs",
+  collectionLabel: "Derive ’26 photographs",
   photoCountLabel: "photographs",
   viewHint: "Select a photograph to view full size.",
   editionLink: { label: "About Derive ’26", href: "/derive" },
   cta: {
-    title: "Prepare for the next edition.",
-    body: "Review the Derive format, follow the next registration window, or contact AMS about contributing to the event.",
+    title: "Explore the competition.",
+    body: "Read about the Derive ’26 format, the rounds, and the partners who supported the finals.",
     buttonLabel: "Explore Derive",
     buttonHref: "/derive",
   },
@@ -52,40 +61,55 @@ export const GALLERY: GalleryItem[] = [
   {
     label: "Participants collecting their Derive contest kits",
     homePlacement: "support-top",
-    ...img("goodies-distribution"),
+    category: "around", ...img("goodies-distribution"),
   },
-  { label: "Contest notebooks and T-shirts at the registration desk", ...img("swag-desk") },
-  { label: "A contestant working through the problem set", ...img("in-the-zone") },
+  { label: "Contest notebooks and T-shirts at the registration desk", category: "around", ...img("swag-desk") },
+  { label: "A contestant working through the problem set", category: "competition", ...img("in-the-zone") },
   {
     label: "Debating the problem set between rounds",
     homePlacement: "support-bottom",
-    ...img("debating-the-problem-set"),
+    category: "conversations", ...img("debating-the-problem-set"),
   },
   {
     label: "Finalists meet the partner interviewers",
-    ...img("finalists-meet-the-interviewers"),
+    category: "conversations", ...img("finalists-meet-the-interviewers"),
   },
   {
     label: "Prize cheques on stage for the winners",
-    ...img("prize-cheque-moment"),
+    category: "competition", ...img("prize-cheque-moment"),
   },
   {
     label: "The address before the final round",
-    ...img("address-before-the-final-round"),
+    category: "competition", ...img("address-before-the-final-round"),
   },
   {
     label: "Blitz chess huddle at the evening social",
-    ...img("blitz-chess-huddle"),
+    category: "around", ...img("blitz-chess-huddle"),
   },
-  { label: "The evening social from above", ...img("the-evening-social") },
-  { label: "The AMS deck, custom cards in play", ...img("the-ams-deck") },
+  { label: "The evening social from above", category: "around", ...img("the-evening-social") },
+  { label: "The AMS deck, custom cards in play", category: "around", ...img("the-ams-deck") },
   {
     label: "Finalists at the Convergence banner",
-    ...img("finalists-at-the-convergence-banner"),
+    category: "conversations", ...img("finalists-at-the-convergence-banner"),
   },
   {
     label: "Derive finalists and organizers together at IIT Bombay",
     homePlacement: "lead",
-    ...img("the-full-room"),
+    category: "around", ...img("the-full-room"),
   },
 ];
+
+export const GALLERY_FILTERS = [
+  { id: "all", label: "All photographs" },
+  { id: "competition", label: "The competition" },
+  { id: "conversations", label: "Conversations" },
+  { id: "around", label: "Around the event" },
+] as const;
+
+/** Archive order is independent of the home-page photo placements. */
+export const GALLERY_ARCHIVE_ORDER = [
+  "the-full-room", "goodies-distribution", "swag-desk",
+  "address-before-the-final-round", "in-the-zone", "debating-the-problem-set",
+  "finalists-meet-the-interviewers", "finalists-at-the-convergence-banner",
+  "blitz-chess-huddle", "the-ams-deck", "the-evening-social", "prize-cheque-moment",
+] as const;

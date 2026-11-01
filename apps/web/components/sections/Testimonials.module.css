@@ -1,0 +1,16 @@
+.section { padding-block: var(--shell-space-section); background: var(--shell-canvas); color: var(--shell-ink); }
+.header { display: grid; gap: 16px; align-items: end; }
+.kicker, .note, .detail { color: var(--shell-muted); font-size: var(--shell-text-label); line-height: 1.6; }
+.title { margin-top: 12px; max-width: 24ch; font-size: var(--shell-text-section); line-height: 1.2; letter-spacing: -.035em; font-weight: 600; text-wrap: balance; }
+.note { max-width: 42ch; }
+.quotes { display: grid; gap: 28px; margin-top: 32px; }
+.item { min-width: 0; border-top: 1px solid var(--shell-border); padding-top: 24px; }
+.figure { display: flex; flex-direction: column; height: 100%; }
+.quote { font-size: var(--shell-text-body); line-height: 1.7; overflow-wrap: anywhere; }
+.caption { margin-top: auto; padding-top: 24px; }
+.name { display: block; font-size: var(--shell-text-label); font-weight: 600; line-height: 1.6; }
+.detail { display: block; margin-top: 4px; }
+@media (min-width: 768px) { .quotes { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; } }
+@media (min-width: 1024px) { .header { grid-template-columns: minmax(0, 1fr) auto; gap: 40px; } }
+
+.editingNote { max-width: 75ch; margin-top: 28px; color: var(--shell-muted); font-size: var(--shell-text-label); line-height: 1.7; }

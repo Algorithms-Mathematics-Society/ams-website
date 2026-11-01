@@ -1,8 +1,8 @@
 import { createPageMetadata } from "@/lib/metadata";
 import { BlogGrid } from "@/components/sections/BlogGrid";
-import { CtaBand } from "@/components/ui/CtaBand";
-import { PageHeader } from "@/components/ui/PageHeader";
-import { BLOG_PAGE } from "@/content/blog";
+import { BlogClosing } from "@/components/sections/BlogClosing";
+import { BlogIntro } from "@/components/sections/BlogIntro";
+import styles from "@/components/sections/Blog.module.css";
 
 export const metadata = createPageMetadata({
   title: "Notes from AMS",
@@ -13,15 +13,10 @@ export const metadata = createPageMetadata({
 
 export default function BlogPage() {
   return (
-    <>
-      <PageHeader
-        eyebrow={BLOG_PAGE.eyebrow}
-        title={BLOG_PAGE.title}
-        body={BLOG_PAGE.body}
-        compact
-      />
-      <BlogGrid withHeading={false} />
-      <CtaBand {...BLOG_PAGE.cta} />
-    </>
+    <div data-blog-page className={styles.page}>
+      <BlogIntro />
+      <BlogGrid />
+      <BlogClosing />
+    </div>
   );
 }

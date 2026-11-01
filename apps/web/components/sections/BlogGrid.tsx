@@ -1,30 +1,20 @@
 import { BlogCard } from "@/components/ui/BlogCard";
 import { Container } from "@/components/ui/Container";
-import { Reveal } from "@/components/ui/Reveal";
-import { SectionHeading } from "@/components/ui/SectionHeading";
 import { BLOG_PAGE } from "@/content/blog";
 import { getAllPosts } from "@/lib/blog";
 
-interface Props {
-  /** Off on /blog, where the PageHeader already introduces the grid. */
-  withHeading?: boolean;
-}
+import styles from "./Blog.module.css";
 
-export async function BlogGrid({ withHeading = true }: Props) {
+export async function BlogGrid() {
   const posts = await getAllPosts();
   if (posts.length === 0) return null;
 
   return (
-    <section className={withHeading ? "py-section" : "pt-6 pb-section"}>
+    <section className={styles.gridSection} aria-label={BLOG_PAGE.articlesLabel}>
       <Container>
-        {withHeading && (
-          <Reveal>
-            <SectionHeading eyebrow={BLOG_PAGE.eyebrow} title={BLOG_PAGE.title} />
-          </Reveal>
-        )}
-        <ul className={`grid gap-6 sm:grid-cols-2 ${withHeading ? "mt-12" : ""}`}>
+        <ul className={styles.grid}>
           {posts.map((post, index) => {
-            const isFirstVisibleCard = !withHeading && index === 0;
+            const isFirstVisibleCard = index === 0;
             const card = (
               <BlogCard
                 href={`/blog/${post.slug}`}
@@ -40,18 +30,14 @@ export async function BlogGrid({ withHeading = true }: Props) {
                   month: "long",
                   year: "numeric",
                 })}
-                headingLevel={withHeading ? 3 : 2}
+                headingLevel={2}
                 readLabel={BLOG_PAGE.readLabel}
                 priority={isFirstVisibleCard}
               />
             );
             return (
               <li key={post.slug} className="min-w-0 h-full">
-                {isFirstVisibleCard ? card : (
-                  <Reveal delay={Math.min(index * 80, 240)} className="h-full">
-                    {card}
-                  </Reveal>
-                )}
+                {card}
               </li>
             );
           })}

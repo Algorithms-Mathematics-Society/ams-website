@@ -1,7 +1,8 @@
 ---
 title: "Why AMS runs competitions"
 pubDate: 2026-07-19
-description: "How timed problems, a shared scoring system, and in-person finals help AMS bring quantitative and systems talent together."
+updatedDate: 2026-11-01
+description: "Why AMS brings people together around demanding problems, and what competitors and partners can learn from the work."
 author: "Tilak Jain"
 image:
   url: "./cover.webp"
@@ -9,58 +10,65 @@ image:
 tags: ["about", "derive"]
 ---
 
+A good problem gives people something concrete to work on together. You have
+to decide where to begin, test your assumptions, and work through what happens
+when your first approach falls short. Those decisions are part of what makes
+mathematics and engineering worth pursuing.
 
-A good problem gives people something concrete to work on together. A
-competition adds a time limit, common rules, and a reason to test an idea
-carefully before submitting it.
+AMS (Algorithms & Mathematics Society) runs national competitions in
+quantitative reasoning and systems engineering. We want to give people a place
+to take that work seriously, test themselves, and meet others who share their
+interest.
 
-That is the starting point for AMS, the Algorithms & Mathematics Society.
-We run national contests in quantitative reasoning and systems engineering,
-and build Access for teams that want to assess candidates through timed
-problem solving.
+## A reason to put your skills to work
 
-## What a contest can show
+It is one thing to understand a technique while studying it. Applying it to an
+unfamiliar problem asks more of you: choosing an approach, checking whether it
+fits, and deciding how to use the time available.
 
-A result tells you how someone performed on a particular set of problems,
-under particular conditions. It can reveal mathematical reasoning,
-implementation skill, or the ability to make progress within a time limit.
-It is one useful part of understanding a candidate, alongside their other
-work and a conversation about how they think.
+A competition gives that effort a structure. There is a defined task, a time
+limit, and a scoring system. You can see how your work performs under those
+conditions and use the experience to decide what to practise next.
 
-Derive '26 brought together 2,500+ participants. The top 150 advanced to
-Round 2, 50 qualified for the finals, and 33 competed in person at IIT
-Bombay in July 2026. The [Derive page](/derive) records that format and the
-partners who supported it.
+The subject matters. [Derive](/derive) asks competitors to reason about
+probability, markets, and mathematics. [Ascent](/ascent) focuses on C++,
+optimization, and systems performance. They offer different ways to put
+technical interests into practice.
 
-## Different problems, different skills
+## What Derive brought together
 
-* [Derive](/derive) focuses on probability, markets, and mathematical
-  reasoning.
-* [Ascent](/ascent) focuses on C++, optimization, and performance
-  engineering.
-* [Access](/access#assessments) supports proctored assessments for hiring teams, with
-  results and session records that can inform further review.
+Derive '26 began with 2,500+ participants. The top 150 advanced to Round 2,
+50 qualified for the finals, and 33 competed in person at IIT Bombay in July
+2026.
 
-## An example of the reasoning
+Those rounds gave participants a shared challenge. The finals also made room
+for conversations with one another and with people from partner firms. The
+problems provided a starting point: something people had worked on, could
+discuss, and could learn from together.
 
-Suppose each independent round of a game has the same probability of a
-win. How many rounds should you expect to play before your first win?
+Jane Street was the Apex Partner of Derive '26, and QRT was the Convergence
+Partner for the finals. The [edition overview](/derive) records the format and
+partners; the [gallery](/gallery) shows the contest and the conversations
+around it.
 
-For a win probability `p`, where `0 < p <= 1`, the expected number of rounds
-is `1 / p`. For example, a one-in-four chance gives an expectation of four
-rounds. This depends on the probability staying fixed and the rounds being
-independent. It does not mean every player wins by the fourth round.
+## What the result tells us
 
-This is an introductory illustration, not a problem from the contest.
-Writing down the assumptions and distinguishing an expectation from a
-guarantee are both part of the reasoning we care about.
+A contest result is evidence of performance on a particular set of problems.
+The tasks and conditions determine what that evidence means. A strong result
+can be a useful starting point for a technical conversation, alongside a
+person's projects, experience, and explanation of their work.
 
-## Beyond the score
+For recruiting teams, the useful question is how closely the contest's demands
+relate to the skills they need. Quantitative reasoning and performance
+engineering call for different kinds of work. A partnership should begin with
+that fit, then define how the team will take part.
 
-The finals also give competitors time to meet one another and speak with
-people from partner firms. The [event gallery](/gallery) shows both the
-contest and the conversations around it.
+## What we want to keep building
 
-Jane Street was the Apex Partner of Derive '26, and QRT was the
-Convergence Partner for the finals. Firms interested in a future edition
-can [discuss a partnership with AMS](/access#sponsor).
+Our aim is to bring people back to challenging work and to one another.
+Thoughtful problems, clear rules, and opportunities to exchange ideas are the
+parts of that experience we want to develop.
+
+If you want to compete, explore [Derive](/derive) or [Ascent](/ascent) and see
+which problems interest you. If your team would like to support a competition,
+[start with the skills and audience you want to engage](/access#contact).

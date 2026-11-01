@@ -1,8 +1,8 @@
 import { createPageMetadata } from "@/lib/metadata";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { FaqList } from "@/components/sections/FaqList";
-import { PageHeader } from "@/components/ui/PageHeader";
-import { FAQ, FAQ_PAGE } from "@/content/faq";
+import { FaqIntro } from "@/components/sections/FaqIntro";
+import { FAQ } from "@/content/faq";
 import { faqPageJsonLd } from "@/content/seo";
 
 export const metadata = createPageMetadata({
@@ -16,11 +16,7 @@ export default function FaqPage() {
   return (
     <>
       <JsonLd data={faqPageJsonLd(FAQ)} />
-      <PageHeader
-        eyebrow={FAQ_PAGE.eyebrow}
-        title={FAQ_PAGE.title}
-        body={FAQ_PAGE.body}
-      />
+      <FaqIntro />
       <FaqList />
     </>
   );

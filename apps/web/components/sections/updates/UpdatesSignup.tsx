@@ -11,7 +11,7 @@ export function UpdatesSignup({ endpoint, configured }: Props) {
     <section className={styles.section} aria-labelledby="updates-heading">
       <Container className={styles.layout}>
         <div>
-          <p className={neutral.eyebrow}>{UPDATES.title}</p>
+          <p className={styles.kicker}>{UPDATES.title}</p>
           <h1 id="updates-heading" className={styles.heading}>{UPDATES.heading}</h1>
           <p className={styles.intro}>{UPDATES.intro}</p>
           <p className={styles.note}>{UPDATES.boundary}</p>

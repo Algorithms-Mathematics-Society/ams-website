@@ -14,6 +14,7 @@ export function AboutSplit() {
         <Reveal>
           <h2 id="society-heading" className={`${neutral.title} ${styles.heading}`}>{INSTITUTIONAL_OVERVIEW.title}</h2>
           <p className={`${neutral.body} ${styles.copy}`}>{INSTITUTIONAL_OVERVIEW.definition}</p>
+          <p className={`${neutral.body} ${styles.copy}`}>{INSTITUTIONAL_OVERVIEW.philosophy}</p>
           <div className={`${neutral.actions} ${styles.actionSpace}`}>
             <Link href={INSTITUTIONAL_OVERVIEW.action.href} className={neutral.secondary}>{INSTITUTIONAL_OVERVIEW.action.label}</Link>
           </div>

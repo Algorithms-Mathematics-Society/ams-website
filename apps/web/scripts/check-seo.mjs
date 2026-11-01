@@ -64,7 +64,7 @@ for (const route of routes) {
   assert.equal(data.find(node => node['@type'] === 'WebSite')['@id'], websiteId);
   if (route === '/team') {
     const team = data.find(node => node['@type'] === 'CollectionPage').mainEntity.itemListElement;
-    assert.equal(team.length, 5);
+    assert.equal(team.length, 7);
     team.forEach((entry, index) => {
       assert.equal(entry.position, index + 1);
       assert.equal(entry.item['@type'], 'Person');
@@ -93,6 +93,17 @@ for (const route of routes) {
     assert(!Number.isNaN(Date.parse(article.datePublished)));
     assert.equal(article.mainEntityOfPage.isPartOf['@id'], websiteId);
     const source = readFileSync(resolve('../../blogs', route.split('/').at(-1), 'index.md'), 'utf8');
+    const updated = source.match(/^updatedDate: (.+)$/m)?.[1];
+    if (updated) {
+      const iso = new Date(updated).toISOString();
+      assert.equal(article.dateModified, iso);
+      assert.equal(meta('article:modified_time'), iso);
+      assert(Date.parse(article.dateModified) >= Date.parse(article.datePublished));
+      assert(html.includes(`dateTime="${iso}"`) || html.includes(`datetime="${iso}"`), `${route}: visible updated date`);
+      const sitemapBody = readFileSync(resolve(built, 'sitemap.xml.body'), 'utf8');
+      assert(sitemapBody.includes(`<loc>${canonical}</loc>\n<lastmod>${iso}</lastmod>`) ||
+        new RegExp(`<loc>${canonical.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}</loc>\\s*<lastmod>${iso}</lastmod>`).test(sitemapBody), `${route}: updated sitemap date`);
+    }
     const authorName = source.match(/^author: "(.*?)"/m)?.[1];
     assert.equal(article.author['@type'], authorName === 'AMS Team' ? 'Organization' : 'Person');
     assert.equal(article.author.name, authorName === 'AMS Team' ? org.name : authorName);

@@ -1,65 +1,31 @@
-import Image from "next/image";
-import { TextLink } from "@/components/ui/TextLink";
 import { Container } from "@/components/ui/Container";
-import { Reveal } from "@/components/ui/Reveal";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-import { TEAM } from "@/content/team";
+import { TEAM, TEAM_PAGE, TEAM_STORY } from "@/content/team";
+import neutral from "@/components/ui/Neutral.module.css";
+import styles from "./Team.module.css";
 
-interface Props {
-  /** Off on /team, where the PageHeader already introduces the grid. */
-  withHeading?: boolean;
-}
-
-export function TeamGrid({ withHeading = true }: Props) {
-  const NameTag = withHeading ? "h3" : "h2";
-
+export function TeamGrid() {
   return (
-    <section className="pb-section pt-8 sm:pt-10">
+    <section className={styles.roster} aria-label={TEAM_PAGE.rosterLabel}>
       <Container>
-        {withHeading && (
-          <Reveal>
-            <SectionHeading eyebrow="The team" title="The people behind it." />
-          </Reveal>
-        )}
-        <ul className={`grid gap-x-16 gap-y-10 md:grid-cols-2 ${withHeading ? "mt-12" : ""}`}>
-          {TEAM.map((member, index) => (
-            <li key={member.id} id={member.id} className="min-w-0 scroll-mt-28">
-              <Reveal delay={index * 60} className="flex h-full flex-col items-start py-2">
-                <div className="flex items-start gap-4">
-                  {member.image && (
-                    <div className="relative h-[88px] w-[72px] shrink-0 overflow-hidden rounded-media">
-                      <Image
-                        src={member.image.src}
-                        alt={member.image.alt}
-                        fill
-                        sizes="72px"
-                        className="object-cover object-top"
-                      />
-                    </div>
-                  )}
-                  <div className="min-w-0">
-                    <NameTag className="text-2xl font-semibold tracking-[-0.025em] text-burgundy">
-                      {member.name}
-                    </NameTag>
-                    <p className="mt-3 text-base font-medium leading-6 text-ink">
-                      {member.role}
+        <h2 className={styles.rosterTitle}>{TEAM_STORY.teamTitle}</h2>
+        <p className={`${styles.body} ${styles.teamIntroduction}`}>{TEAM_STORY.teamBody}</p>
+        <ul className={styles.grid}>
+          {TEAM.filter(member => member.id !== TEAM_STORY.founderId).map(member => (
+            <li key={member.id} id={member.id} className={styles.member}>
+              <article className={styles.profile} aria-labelledby={`${member.id}-name`}>
+                <div className={styles.identityText}>
+                    <h3 id={`${member.id}-name`} className={styles.name}>{member.name}</h3>
+                    <p className={styles.role}>
+                      <span>{member.role.split(" · ")[0]}</span>
+                      {member.role.includes(" · ") && <> <span className={styles.scope}>{member.role.split(" · ").slice(1).join(" · ")}</span></>}
                     </p>
-                    {member.affiliation && (
-                      <p className="mt-1 text-sm leading-6 text-ink/65">
-                        {member.affiliation}
-                      </p>
-                    )}
-                  </div>
+                    {member.affiliation && <p className={styles.affiliation}>{member.affiliation}</p>}
                 </div>
-                {member.bio && (
-                  <p className="mt-4 max-w-md text-sm leading-6 text-ink/75">{member.bio}</p>
-                )}
-                {member.profile && (
-                  <div className="mt-auto pt-4">
-                    <TextLink href={member.profile.href}>{member.profile.label}</TextLink>
-                  </div>
-                )}
-              </Reveal>
+                {member.bio && <p className={styles.bio}>{member.bio}</p>}
+                {member.profile && <div className={styles.profileLink}>
+                  <a href={member.profile.href} className={`${neutral.textLink} ${styles.link}`}>{member.profile.label}<span aria-hidden="true"> ↗</span></a>
+                </div>}
+              </article>
             </li>
           ))}
         </ul>

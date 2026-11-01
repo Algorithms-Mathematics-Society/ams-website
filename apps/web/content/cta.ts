@@ -8,9 +8,10 @@ export const CLOSING_CTA = {
       label: "Explore competitions", href: "#competitions", primary: true,
     },
     {
-      title: "For recruiters and sponsors",
-      body: "Contact us about competition sponsorship and recruiting opportunities.",
-      label: "Discuss a partnership", href: "/access#contact", primary: false,
+      title: "For hiring teams and sponsors",
+      body: "Discuss the technical audience you want to meet, or a coding assessment your team needs to run.",
+      label: "Explore partnerships", href: "/access", primary: false,
+      assessment: { label: "Discuss an assessment", href: "/access#assessments" },
     },
   ],
 } as const;

@@ -1,26 +1,27 @@
-import { TextLink } from "@/components/ui/TextLink";
 import { Container } from "@/components/ui/Container";
-import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/ui/Reveal";
 import { ACCESS_EVALUATION } from "@/content/access";
+import neutral from "@/components/ui/Neutral.module.css";
+import styles from "./Access.module.css";
 
-/** A secondary offer, deliberately placed after the sponsorship conversation. */
 export function AccessFeatures() {
   return (
-    <section id="assessments" className="scroll-mt-24 bg-cream-light py-12 sm:py-16">
+    <section id="assessments" className={`${styles.section} ${styles.assessment}`} aria-labelledby="assessment-title">
       <Container>
-        <Reveal className="grid gap-6 lg:grid-cols-[1fr_2fr] lg:gap-12">
+        <Reveal className={styles.assessmentGrid}>
           <div>
-            <Eyebrow>{ACCESS_EVALUATION.eyebrow}</Eyebrow>
-            <h2 className="mt-4 text-2xl font-semibold tracking-tight text-burgundy">
-              {ACCESS_EVALUATION.title}
-            </h2>
+            <p className={styles.kicker}>{ACCESS_EVALUATION.eyebrow}</p>
+            <h2 id="assessment-title" className={styles.heading}>{ACCESS_EVALUATION.title}</h2>
           </div>
-          <div className="max-w-2xl">
-            <p className="leading-relaxed text-ink/85">{ACCESS_EVALUATION.body}</p>
-            <TextLink href={ACCESS_EVALUATION.link.href} className="mt-3">
-              {ACCESS_EVALUATION.link.label}
-            </TextLink>
+          <div>
+            <p className={styles.body}>{ACCESS_EVALUATION.body}</p>
+            <dl className={styles.topics}>
+              {ACCESS_EVALUATION.considerations.map(item => <div key={item.title}>
+                <dt>{item.title}</dt><dd className={styles.body}>{item.body}</dd>
+              </div>)}
+            </dl>
+            <p className={`${styles.body} ${styles.intro}`}>{ACCESS_EVALUATION.enquiry}</p>
+            <a href={ACCESS_EVALUATION.link.href} className={`${neutral.primary} ${styles.assessmentAction}`}>{ACCESS_EVALUATION.link.label}</a>
           </div>
         </Reveal>
       </Container>

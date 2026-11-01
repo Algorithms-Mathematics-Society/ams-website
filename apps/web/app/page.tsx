@@ -6,6 +6,7 @@ import { ExperienceGrid } from "@/components/sections/ExperienceGrid";
 import { GallerySpread } from "@/components/sections/GallerySpread";
 import { Hero } from "@/components/sections/Hero";
 import { ProductCards } from "@/components/sections/ProductCards";
+import { Testimonials } from "@/components/sections/Testimonials";
 import { StatsBand } from "@/components/sections/StatsBand";
 
 export const metadata = createPageMetadata({
@@ -21,9 +22,10 @@ export default function HomePage() {
       <Hero />
       <StatsBand />
       <ProductCards />
-      <ExperienceGrid />
-      <GallerySpread />
       <AboutSplit />
+      <ExperienceGrid />
+      <Testimonials />
+      <GallerySpread />
       <ClosingCta />
     </div>
   );

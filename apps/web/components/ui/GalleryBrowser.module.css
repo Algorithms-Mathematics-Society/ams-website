@@ -1,0 +1,60 @@
+.toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; margin-bottom: 28px; }
+.filters { display: flex; flex-wrap: wrap; gap: 4px 8px; }
+.filter { min-height: 44px; padding: 10px 14px; border: 1px solid var(--shell-border); border-radius: var(--shell-radius); color: var(--shell-muted); font-size: .9375rem; line-height: 1.5; cursor: pointer; }
+.filter[aria-pressed="true"] { background: var(--shell-ink); border-color: var(--shell-ink); color: white; }
+.count { color: var(--shell-muted); font-size: .875rem; font-variant-numeric: tabular-nums; }
+.grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 28px; }
+.tile { min-width: 0; }
+.photoLink { display: block; color: var(--shell-ink); text-decoration: none; border-radius: var(--shell-panel-radius); }
+.frame { display: block; position: relative; aspect-ratio: 3 / 2; overflow: hidden; border-radius: var(--shell-panel-radius); background: var(--shell-subtle); }
+.image { object-fit: cover; transition: transform 350ms ease-out; }
+.caption { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-top: 12px; font-size: .9375rem; line-height: 1.6; }
+.expand { display: inline-flex; flex-shrink: 0; align-self: flex-start; margin-top: 3px; color: var(--shell-muted); }
+.panorama .frame { aspect-ratio: 2 / 1; }
+.panorama .image { object-position: center 65%; }
+.filter:focus-visible, .photoLink:focus-visible { outline: 2px solid var(--shell-accent); outline-offset: 4px; }
+:global(html:not(.js)) .filters { display: none; }
+@media (hover: hover) {
+ .photoLink:hover .image { transform: scale(1.025); }
+ .photoLink:hover .caption { text-decoration: underline; text-underline-offset: 4px; }
+ .filter:hover:not([aria-pressed="true"]) { background: var(--shell-subtle); color: var(--shell-ink); }
+}
+@media (min-width: 640px) {
+ .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 24px; }
+ .featured { grid-column: 1 / -1; }
+ .featured .frame { aspect-ratio: 3 / 2; }
+ .panorama .frame { aspect-ratio: 2 / 1; }
+}
+@media (min-width: 1024px) {
+ .grid { grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 48px 28px; }
+ .tile { grid-column: span 6; }
+ .tile:nth-child(2), .tile:nth-child(7) { grid-column: span 7; }
+ .tile:nth-child(3), .tile:nth-child(8) { grid-column: span 5; align-self: center; }
+ .featured { grid-column: 1 / -1 !important; }
+ .panorama .frame { aspect-ratio: 2.25 / 1; }
+}
+@media (prefers-reduced-motion: reduce) { .image { transition: none; } .photoLink:hover .image { transform: none; } }
+
+/* Static gallery introduction and closing share the archive stylesheet. */
+.page { background: var(--shell-canvas); color: var(--shell-ink); }
+.intro { padding-block: var(--shell-space-intro) 28px; }
+.kicker { color: var(--shell-muted); font-size: .875rem; line-height: 1.6; }
+.title { margin-top: 12px; max-width: 24ch; font-size: var(--shell-text-page); font-weight: 600; line-height: 1.1; letter-spacing: -.04em; text-wrap: balance; }
+.details { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 32px; margin-top: 20px; }
+.body { color: var(--shell-muted); font-size: var(--shell-text-body); line-height: 1.7; max-width: 60ch; }
+.hint { margin-top: 4px; font-size: .875rem; color: var(--shell-muted); line-height: 1.6; }
+.photos { padding-bottom: clamp(48px, 6vw, 88px); }
+.closing { padding-block: clamp(40px, 5vw, 64px); background: var(--shell-subtle); }
+.closingLayout { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px 40px; }
+.closing h2 { font-size: var(--shell-text-section); font-weight: 600; line-height: 1.2; letter-spacing: -.03em; margin-bottom: 16px; }
+.button { font-size: 1rem; min-height: 48px; }
+
+/* Bring the first photograph into view sooner on narrow screens. */
+@media (max-width: 639px) {
+ .intro { padding-block: var(--shell-space-intro) 20px; }
+ .details { gap: 8px 24px; margin-top: 16px; }
+ .toolbar { margin-bottom: 20px; }
+}
+
+.title, .closing h2 { overflow-wrap: anywhere; }
+.closingLayout > * { min-width: 0; max-width: 100%; }

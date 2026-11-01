@@ -1,8 +1,8 @@
 import { createPageMetadata } from "@/lib/metadata";
 import { GalleryGrid } from "@/components/sections/GalleryGrid";
-import { CtaBand } from "@/components/ui/CtaBand";
+import { GalleryClosing } from "@/components/sections/GalleryClosing";
 import { GalleryIntro } from "@/components/sections/GalleryIntro";
-import { GALLERY_PAGE } from "@/content/gallery";
+import styles from "@/components/ui/GalleryBrowser.module.css";
 
 export const metadata = createPageMetadata({
   title: "Gallery: Derive '26 at IIT Bombay",
@@ -13,10 +13,10 @@ export const metadata = createPageMetadata({
 
 export default function GalleryPage() {
   return (
-    <>
+    <div data-gallery-page className={styles.page}>
       <GalleryIntro />
-      <GalleryGrid withHeading={false} />
-      <CtaBand {...GALLERY_PAGE.cta} />
-    </>
+      <GalleryGrid />
+      <GalleryClosing />
+    </div>
   );
 }

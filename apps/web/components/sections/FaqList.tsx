@@ -1,14 +1,16 @@
-import { TextLink } from "@/components/ui/TextLink";
+import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Disclosure } from "@/components/ui/Disclosure";
 import { DisclosureGroup } from "@/components/ui/DisclosureGroup";
 import { FAQ } from "@/content/faq";
+import neutral from "@/components/ui/Neutral.module.css";
+import styles from "./Faq.module.css";
 
 export function FaqList() {
   return (
-    <section className="pt-8 pb-section">
+    <section className={styles.section}>
       <Container size="reading">
-        <div className="divide-y divide-burgundy/15 border-y border-burgundy/15">
+        <div className={styles.list}>
           <DisclosureGroup defaultValue="faq-0">
             {FAQ.map((item, index) => (
               <Disclosure
@@ -19,12 +21,12 @@ export function FaqList() {
               >
                 <p>{item.answer}</p>
                 {item.links && (
-                  <ul className="mt-3 flex flex-wrap gap-x-6">
+                  <ul className={styles.links}>
                     {item.links.map((link) => (
                       <li key={link.href}>
-                        <TextLink href={link.href}>
+                        <Link className={neutral.textLink} href={link.href}>
                           {link.label}
-                        </TextLink>
+                        </Link>
                       </li>
                     ))}
                   </ul>

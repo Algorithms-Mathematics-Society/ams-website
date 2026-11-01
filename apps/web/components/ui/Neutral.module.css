@@ -1,6 +1,6 @@
 /* Shared neutral primitives for migrated public pages. */
 .section {
-  padding-block: clamp(48px, 5.5vw, 80px);
+  padding-block: var(--shell-space-section);
   background: var(--shell-canvas);
   color: var(--shell-ink);
 }
@@ -10,7 +10,7 @@
   align-items: center;
   gap: 10px;
   color: var(--shell-muted);
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 600;
   line-height: 1.5;
   letter-spacing: 0.08em;
@@ -27,7 +27,7 @@
   max-width: 22ch;
   margin-top: 16px;
   color: var(--shell-ink);
-  font-size: clamp(28px, 2.8vw, 40px);
+  font-size: var(--shell-text-section);
   font-weight: 600;
   line-height: 1.18;
   letter-spacing: -0.035em;
@@ -36,13 +36,13 @@
 .body {
   max-width: 60ch;
   color: var(--shell-muted);
-  font-size: 16px;
-  line-height: 1.75;
+  font-size: var(--shell-text-body);
+  line-height: 1.7;
 }
 .actions { display: flex; flex-wrap: wrap; gap: 12px; }
 .primary, .secondary {
   display: inline-flex;
-  min-height: 44px;
+  min-height: 48px;
   max-width: 100%;
   align-items: center;
   justify-content: center;
@@ -50,7 +50,7 @@
   padding: 10px 20px;
   border: 1px solid var(--shell-ink);
   border-radius: var(--shell-radius);
-  font-size: 14px;
+  font-size: var(--shell-text-action);
   font-weight: 600;
   line-height: 1.5;
   text-align: center;
@@ -67,11 +67,11 @@
   gap: 8px;
   padding-block: 10px;
   color: var(--shell-ink);
-  font-size: 14px;
+  font-size: var(--shell-text-link);
   font-weight: 500;
   line-height: 1.6;
   text-decoration: underline;
-  text-decoration-color: var(--shell-border);
+  text-decoration-color: #858585;
   text-underline-offset: 4px;
   overflow-wrap: anywhere;
 }
@@ -88,9 +88,7 @@
   .actions { flex-direction: column; align-items: stretch; }
 }
 
-/* Home reading scale: keep practical details legible beside large headings. */
-:global([data-home-page]) .title { overflow-wrap: anywhere; font-size: clamp(1.875rem, calc(1.5rem + 1vw), 2.75rem); }
-:global([data-home-page]) .body { font-size: clamp(1rem, calc(.95rem + .2vw), 1.0625rem); line-height: 1.7; }
-:global([data-home-page]) .primary,
-:global([data-home-page]) .secondary { min-height: 48px; font-size: 1rem; }
-:global([data-home-page]) .textLink { font-size: .9375rem; }
+.title { overflow-wrap: anywhere; }
+
+/* Interior-page identity sits on the same baseline across navigation destinations. */
+.pageKicker { color: var(--shell-muted); font-size: var(--shell-text-label); font-weight: 400; line-height: 1.6; }

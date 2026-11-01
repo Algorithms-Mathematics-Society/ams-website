@@ -238,7 +238,7 @@ Changes:
 - Keep the visible page and navigation label “Partnerships.” Retain `/access`, `#sponsor`, `#contact`, and `#assessments` to protect existing links.
 - Keep the real interview photograph and caption. Use black primary text and a small red marker, with sponsorship and recruiting paths clearly labeled.
 - Move the existing Derive evidence closer to the introduction. Clearly name the 2026 edition and the actual partner roles; do not imply current sponsorship of all AMS activity.
-- Keep Ascent and Derive opportunities in two equal white panels with neutral borders. Explain audience, demonstrated work, and involvement in parallel fields.
+- Keep Ascent and Derive opportunities in two open columns with subtle top rules. Explain audience, demonstrated work, and involvement in parallel fields.
 - Position the separate assessment option before the final contact section. Describe Access as a product, not another competition or a promised recruiting outcome.
 - Convert `AccessConversation` to a white/off-white section. Make the email selectable and keep the practical “what happens next” sequence. Use a black email action.
 - No new enquiry form is required for this redesign. The existing email path avoids unnecessary friction and infrastructure.
@@ -247,10 +247,10 @@ Changes:
 
 **Files:** all `sections/access/*`, `content/access.ts`, `app/access/page.tsx`.
 
-- [ ] Move edition-scoped proof upward and clarify the three engagement types.
-- [ ] Reorder the assessment and contact sections while preserving anchors.
-- [ ] Replace the red contact surface and unify action styling.
-- [ ] Check mail links, readable addresses, sponsor scope, and product naming.
+- [x] Move edition-scoped proof upward and clarify the three engagement types.
+- [x] Reorder the assessment and contact sections while preserving anchors.
+- [x] Replace the red contact surface and unify action styling.
+- [x] Check mail links, readable addresses, sponsor scope, and product naming.
 
 ### 5.5 Gallery `/gallery`
 
@@ -265,11 +265,11 @@ Changes:
 
 **Why / impact:** real participation supports student belonging and recruiter confidence. Accurate captions help newcomers distinguish documented events from generic promotional imagery.
 
-**Files:** `GalleryIntro`, `GalleryGrid`, `GalleryTiles`, `Lightbox`, `content/gallery.ts`.
+**Files:** `GalleryIntro`, `GalleryGrid`, `GalleryBrowser`, `GalleryClosing`, `Lightbox`, `LightboxPhoto`, `content/gallery.ts`.
 
-- [ ] Neutralize page chrome while retaining natural-color photography.
-- [ ] Verify crops, alt text, captions, image sizes, and lightbox states.
-- [ ] Verify keyboard/touch navigation and no layout shift as images load.
+- [x] Neutralize page chrome while retaining natural-color photography.
+- [x] Verify crops, alt text, captions, image sizes, and lightbox states.
+- [x] Verify keyboard/touch navigation and reserved image frames.
 
 ### 5.6 Team `/team`
 
@@ -284,11 +284,11 @@ Changes:
 
 **Why / impact:** students see an approachable organization; recruiting teams see identifiable responsibility; newcomers can connect the brand to actual people. A purely corporate monochrome treatment could feel remote, so preserve human photographs and plain language.
 
-**Files:** `TeamGrid`, `content/team.ts`, `app/team/page.tsx`, shared `PageHeader` and CTA.
+**Files:** `TeamIntro`, `TeamGrid`, `TeamClosing`, `Team.module.css`, `content/team.ts`, and `app/team/page.tsx`.
 
-- [ ] Apply consistent portrait/name/role hierarchy and neutral dividers.
-- [ ] Preserve person anchors, links, and accurate structured data.
-- [ ] Verify that contribution wording does not imply unconfirmed openings.
+- [x] Apply consistent portrait/name/role hierarchy and neutral dividers.
+- [x] Preserve person anchors, links, and accurate structured data.
+- [x] Verify that contribution wording does not imply unconfirmed openings.
 
 ### 5.7 FAQ `/faq`
 
@@ -324,9 +324,9 @@ Changes:
 
 **Files:** `BlogGrid`, `BlogCard.tsx`, `BlogCard.module.css`, `content/blog.ts`, `app/blog/page.tsx`.
 
-- [ ] Update card token mapping, image frames, metadata, hover, and focus states.
+- [x] Update card token mapping, image frames, metadata, hover, and focus states.
 - [ ] Check both existing article cards and variable-length future titles.
-- [ ] Keep the current small content collection easy to scan without empty UI.
+- [x] Keep the current small content collection easy to scan without empty UI.
 
 ### 5.9 Blog article template `/blog/[slug]`
 
@@ -344,9 +344,9 @@ Changes:
 
 **Files:** `app/blog/[slug]/page.tsx`, `.blog-prose` in `globals.css`, `lib/blog.ts` only if code rendering changes, and shared article primitives extracted as necessary. Preserve authored Markdown content.
 
-- [ ] Implement readable neutral prose, headings, links, quotes, tags, and code.
+- [x] Implement readable neutral prose, headings, links, quotes, tags, and code.
 - [ ] Check both current articles and a local long-content fixture with lists, code, images, and long URLs.
-- [ ] Preserve author links, canonical URLs, cover metadata, and BlogPosting JSON-LD.
+- [x] Preserve author links, canonical URLs, cover metadata, and BlogPosting JSON-LD.
 
 ### 5.10 Supporting surfaces
 
@@ -403,15 +403,15 @@ All unchecked boxes are future work. Mark a box complete only with a reviewed im
 - [ ] Gallery complete, including lightbox.
 - [ ] Team complete, including person anchors.
 - [ ] FAQ complete, including disclosure states and schema.
-- [ ] Blog index complete.
-- [ ] Article template and both current article routes complete.
+- [x] Blog index complete.
+- [x] Article template and both current article routes complete.
 - [ ] 404, OG images, and icon review complete.
 
 ### Phase 3: remove styling drift
 
 - [ ] Replace legacy palette classes in live components with semantic roles. Temporary aliases may support incremental migration but must not conceal missed inverse-surface changes.
 - [ ] Remove obsolete burgundy/cream/gold UI tokens once references are migrated; retain historical or approved brand assets when appropriate.
-- [ ] Consolidate `BlogCard` overrides and other duplicated theme values.
+- [x] Consolidate `BlogCard` overrides and other duplicated theme values.
 - [ ] Remove one-off radius, button, hover, and focus treatments unless documented exceptions are necessary.
 - [ ] Check current, hover, focused, expanded, disabled, and inverse variants across the component set.
 - [ ] Update `ENGINEERING_GUIDE.md` and the project skill where the approved visual rules change. Preserve architecture, performance, and SEO requirements.
@@ -857,3 +857,529 @@ live test credentials and records were removed. Lighthouse: 96 performance,
 100 accessibility, CLS 0, LCP 2.7s (2.0s target remains unmet). Attestation makes
 zero requests until interaction. Vercel code deployment and the new site-key
 setting remain the public-site rollout step.
+
+### Partnerships implementation review · 1 November 2026
+
+The `/access` route now follows the neutral design used by Home, Ascent, Derive,
+and the shared header/footer. Audience strategy and visual/frontend review were
+performed independently by subagents.
+
+Sources: `../sales/foundations.md` (buyer agency, proportional claims, sponsorship
+objectives and explicit scope), `../sales/AMS_ACCESS_AUDIENCE_PERSPECTIVE.md`
+(reader situation, mechanism, evidence and next action), and `../sales/citadel.md`
+(AMS context only). Internal commercial terms, contacts, relationship counts and
+unverified promises were not published. Existing verified Derive partner roles
+and attendance remain unchanged. Ascent's final date and venue remain tentative.
+
+Changes and intended audience effects:
+
+- **Opening:** one black partnership action and a quiet competition link replace
+  equal-weight buttons. This makes the next step easier to identify while leaving
+  visitors free to inspect the offer before contacting AMS.
+- **Evidence:** the original 3:2 conversation photograph retains the people at its
+  edges; a dated caption and Derive evidence appear before the offer comparison.
+  Recruiters can assess past delivery without assuming those partners endorse
+  every AMS activity. The photograph is static and has no overlay text.
+- **Comparison:** open Ascent/Derive columns replace cream cards. Parallel fields
+  describe participants, technical work and format. First-time visitors can
+  compare relevance without interpreting decorative badges or sales tiers.
+- **Assessment:** the separate Access workflow stays a secondary off-white section
+  before contact. It explains preparation, participation and review rather than
+  leading with proctoring or claiming measured hiring improvements.
+- **Contact:** a white closing section replaces the red band and boxed process.
+  A visible email address, a clear email action, and three scope-setting steps
+  explain what to send and what the conversation covers. Students are not
+  promised placements; sponsors are not promised unrestricted candidate records.
+- **Reading scale:** 40-72px fluid hero heading, 30-44px section headings,
+  16-17px body, 14px captions, 48px primary actions and 44px text-link targets.
+  Section spacing is 48-80px, with 6px controls and a 9px photo frame matching
+  the shared shell. Red is limited to existing focus/current-navigation roles.
+
+These psychological effects are design hypotheses, not measured conversion or
+engagement improvements.
+
+- [x] Preserve `/access`, `#sponsor`, `#contact`, and `#assessments`.
+- [x] Preserve dated partner roles, contact destinations and canonical metadata.
+- [x] Remove legacy burgundy/cream panels and legacy button dependencies here.
+- [x] Check 320/375/768/1024/1440px, enlarged text, and no-JavaScript contact.
+- [x] Verify one H1, visible content, 44px targets, unobscured anchors and no browser errors.
+- [x] Pass lint, TypeScript, production static build, SEO and whitespace checks.
+- [ ] Meet the repository's 2.0s mobile LCP target; see the lab measurement below.
+
+Real-device testing, field INP, and measured audience response remain unverified.
+
+Final production-build Lighthouse mobile spot-check: performance 95, accessibility
+100, LCP 2.8 s, CLS 0, TBT 20 ms. The score target is met; the 2.0s LCP
+target remains open. The hero receives an explicit high-priority request and
+responsive sizes matching its actual grid width. This is a local lab result.
+
+### Gallery implementation review · 1 November 2026
+
+The gallery is now a neutral editorial archive with user-controlled viewing.
+A panoramic cohort image establishes the event; staggered pairs, a full-frame
+discussion photograph, social scenes and the award presentation vary the reading
+rhythm. Featured discussions retain their original 3:2 composition to preserve
+faces. On phones, photographs occupy the full content width. Captions remain
+visible, and original labels and home-page photo placements are unchanged.
+
+The intended psychological effect is a stronger sense of people and place, with
+less repetitive scanning. Optional topic filters let visitors choose competition,
+conversation or social context; the visible count explains the result. These are
+design hypotheses, not measured engagement improvements. No autoplay, artificial
+scarcity, scroll interception, or unsolicited full-screen experience is used.
+
+The near-black native-dialog viewer provides previous/next controls, arrow keys,
+touch swipe, a selectable thumbnail strip, a photo count, a full-image file link,
+and Escape dismissal. Native modality makes background controls inactive; close
+restores the original photo's focus without scrolling the page. A thumbnail is
+shown while the full image loads; the full image fades in over 180ms. Failure
+retains the preview and shows an explanation. Reduced motion removes transitions.
+
+The route and sections remain server components. The browser and viewer are
+interactive UI leaves, the viewer is split into a separately loaded module, and
+no dependency was added. The gallery retains ordinary image links without
+JavaScript. Existing header/footer tokens, 9px photo corners, 6px controls, and
+readable captions replace legacy cream/burgundy surfaces. The closing section
+links to the documented edition rather than implying a new registration window.
+
+- [x] Preserve all 12 photographs, factual captions, metadata and home placements.
+- [x] Check 320/375/768/1024/1440px with no horizontal overflow.
+- [x] Test filters and counts, keyboard wraparound, thumbnail selection and swipe.
+- [x] Test Escape, focus restoration, scroll unlocking and inactive background.
+- [x] Check enlarged text, reduced motion, no-JavaScript links and landscape controls.
+- [x] Test image-load failure with preview retained and readable feedback.
+- [x] Pass lint, TypeScript, static production build and SEO checks.
+
+Physical-device gesture behavior and field INP remain unverified.
+
+Production-build mobile Lighthouse spot-check: performance 92, accessibility
+100, LCP 3.3 s, CLS 0. This local lab result does not establish field
+performance; the repository target is LCP <= 2.0s and performance >= 95.
+
+After consolidating stylesheets and correcting accessible photo labels, final
+production-build checks pass for all gallery interactions. The final mobile
+Lighthouse run reports performance 94, accessibility 100, LCP 3.1 s, CLS 0.
+Photo links now use their visible captions as accessible labels. The 2.0s LCP target remains open;
+shared render-blocking styles and font delivery remain optimization work.
+
+Final targeted axe checks report no accessible-label/control-name violations in
+archive links and no WCAG A/AA violations in the open viewer. The final caption
+label correction also passes lint, TypeScript, static build and SEO checks.
+Both the performance score target (95) and LCP target (2.0s) remain open; the
+latest measured values are 94 and 3.1s respectively, with CLS 0.
+
+### Gallery perception and color review · 1 November 2026
+
+Reviewed the implemented archive and viewer, including the mobile opening,
+photo crops, filter states, captions and the page's connection to the shared
+header/footer. Changes are intentionally small; the documentary images remain
+the dominant visual content.
+
+| Area | Decision and rationale |
+| --- | --- |
+| Color hierarchy | Keep white/off-white archive surfaces and near-black text. Natural photographic color distinguishes scenes; adding colored panels would compete with that information. Black identifies the chosen filter. Red remains a focus/current-navigation cue, not a decorative wash. |
+| Filter recognition | Give inactive filters subtle neutral borders. Previously they could resemble plain text or unavailable controls. Selected state still uses black fill plus `aria-pressed`, rather than relying only on hue. |
+| Opening on phones | Reduce introductory gaps and use a 2:1 cohort crop with a lower focal position. The photograph appears sooner and uses less space for the ceiling, while preserving the people. |
+| Photo affordance | Replace decorative sequence numbers with a small expand cue beside each caption. The caption supplies the accessible name; the graphic is decorative. Actual position remains available in the viewer's counter. |
+| Viewer recognition | Raise unselected thumbnail opacity from .6 to .85 so subjects remain recognizable. The selected photograph keeps its white frame; thumbnails do not need to look disabled to communicate selection. |
+| Reading rhythm | Keep asymmetric pairs and full-composition discussion frames, with single-column mobile browsing. Faces, conversation and context matter more than rigidly equal crops. |
+| Narrative | Keep the cohort first, then arrival, competition, discussions, social scenes and awards. This introduces the broader participant experience before emphasizing winners. Filters allow a different route. |
+| Control and motion | Retain explicit opening/closing, keyboard/swipe navigation, a thumbnail chooser, reduced-motion support and no autoplay. Opening a photo does not surrender the visitor's place in the archive. |
+
+Intended audience effects, not measured outcomes: students can see peers and
+participation beyond awards; recruiters can inspect dated evidence of the event
+without inferring hiring results; first-time visitors get context and recognizable
+controls. No universal emotional meaning is assigned to a color, and no increase
+in trust, belonging or conversion is claimed as a verified result.
+
+Validation: five viewport widths, enlarged text, filters, keyboard/swipe,
+focus restoration and no-JavaScript browsing passed. Targeted WCAG A/AA checks
+reported no violations. Lint, TypeScript, static build, SEO and whitespace checks
+passed. This refinement did not remeasure Lighthouse; the previously recorded
+performance limits remain open.
+
+### Team implementation review · 1 November 2026
+
+The Team page now uses the neutral shell palette and shared link/button styles.
+The introduction identifies the people behind AMS directly instead of implying
+that every listed member has a verified competition background. All five names,
+roles, affiliations, biographies, LinkedIn destinations and person anchors remain
+unchanged; `TEAM_JSONLD` continues to derive identities from the same source.
+
+Open two-column profiles replace legacy burgundy styling, collapsing to one
+column on mobile. Names have the strongest weight at 24-30px, roles use 16px,
+affiliations use 14px muted text, and profile links use 15px with 44px targets.
+The supplied founder photograph remains a modest 64x80px image within the same
+profile structure. Missing portraits and bios are not filled with invented
+content, stock images, or avatar placeholders.
+
+The intended effect is approachable, identifiable responsibility: students can
+see whom the organization comprises; recruiters can scan areas of responsibility;
+first-time visitors can connect names to public profiles. Neutral backgrounds
+keep attention on identities; red remains in shared focus/navigation states.
+These are design hypotheses, not measured trust or conversion outcomes.
+
+A light closing section invites a discussion about contributing and gives a
+visible email address. It does not claim that a particular role is open or imply
+a guaranteed place. All content is server-rendered without entrance animation,
+so names and links remain immediately available with or without JavaScript.
+
+Validation passed at 320/375/768/1024/1440px, including 200% text after correcting
+long-heading wrapping. Five profile links, 44px targets, the `#tilak-jain` author
+anchor, no-JavaScript content, WCAG A/AA checks, and absence of browser errors
+were verified. Lint, TypeScript, static build and SEO checks passed.
+
+Production-build Lighthouse spot-check before the final text-wrapping correction:
+performance 96, accessibility 100, LCP 2.7s and CLS 0. The 2.0s LCP target remains
+open; no field performance or physical-device result is claimed.
+
+### Team story refinement: vision, founder, then team · 1 November 2026
+
+The user requested a progression similar to https://iicpc.com/team. Reviewed its
+rendered desktop layout: introductory context, vision, leadership and core team.
+AMS adopts that progression, with its own neutral theme, factual content and
+smaller roster. Institution prestige blocks, institutional counts, employment
+claims and first-person introductions are not copied. This supersedes the earlier
+flat five-person directory arrangement while preserving all five identities.
+
+Sources for AMS wording: `../sales/AMS_ACCESS_AUDIENCE_PERSPECTIVE.md`,
+`../sales/foundations.md`, and public-context portions of `../sales/citadel.md`;
+corroborated against `blogs/welcome-to-ams/index.md` and existing institutional
+overview copy. Private outreach, pricing, contact records and unconfirmed
+university relationships remain excluded. The vision is editorial synthesis
+expressed as an aim, not a claim of delivered career outcomes.
+
+The sequence now answers five visitor questions:
+
+1. **What does AMS do?** The introduction pairs the team purpose with direct
+   Derive, Ascent and assessment links. It connects people with actual work.
+2. **Why does it matter?** A quiet off-white vision section articulates room to
+   test ideas, show work and meet peers. The limits of competition results remain
+   clear without turning the page into a disclaimer.
+3. **Who started it?** Tilak's feature retains the verified bio and affiliation,
+   shows the original event photograph without cropping hands or face, and links
+   to his published introduction. No personal quotation or origin anecdote is
+   invented. The photo sits to the right on desktop, facing toward the text.
+4. **Who makes it happen?** Four remaining profiles receive consistent names,
+   role hierarchy, affiliations and links in a balanced two-by-two roster.
+5. **How can I contribute?** The existing enquiry route remains explicit and
+   optional, with no implication of guaranteed membership or open roles.
+
+Intended psychological effects are comprehension, identifiable responsibility
+and room for self-directed exploration. These remain hypotheses; the page does
+not claim measured increases in trust, belonging or conversion. White/off-white
+sections create pacing, black text establishes hierarchy, and red stays limited
+to shared focus/current-navigation cues. No additional client code or library.
+
+Validation: all five widths, 200% text, profile links, 44px controls, the existing
+founder anchor, no-JavaScript visibility and WCAG A/AA checks passed. Lint,
+TypeScript, static build, SEO identity checks and whitespace checks passed.
+
+Expanded Team page mobile Lighthouse: performance 96, accessibility 100,
+LCP 2.7 s, CLS 0. This is a local production-build spot-check; the 2.0s
+LCP budget remains open.
+
+### Winter interns added · 1 November 2026
+
+Added Shubhranil Paul (University of Mumbai) and Rasesh Shetty (IIT (BHU)
+Varanasi), using the names, affiliations, winter internship and Access development
+work supplied by the user. Both use “Software Engineering Intern · Winter 2026”
+and the same concise, contribution-led description. No specific shipped features,
+awards, ownership or impact metrics are invented. Both have the supplied LinkedIn
+links and stable person anchors, with the same visual treatment as other members.
+The roster introduction now explicitly includes software development. Person
+schema derives from the seven-member content list; the AI summary and SEO identity
+count are synchronized. The intended emphasis is meaningful contribution with an
+accurate career-stage title, rather than inflated seniority or a lesser visual tier.
+
+### Team card refinement · 1 November 2026
+
+Replaced the loose ruled roster with minimal neutral cards, consistent 9px
+corners, 24px mobile padding and 28px/32px desktop top/side padding. Desktop
+uses three columns from 1200px, producing two balanced rows for the six wider
+team profiles; tablet uses two columns, phones one. Equal-height desktop cards
+align names and profile actions without inventing missing profile details.
+
+Simplified the heading to “Our team” with a shorter descriptive sentence. Names
+now use 22-26px type, roles 15px medium weight, and edition/internship context
+14px muted text on a separate line. Affiliations remain secondary. Links have a
+full-width 44px target and aligned external-link cue at the bottom. Cards do not
+lift on hover or imply that their whole surface is clickable. Red stays reserved
+for focus/navigation; no initials, trophy badges or fabricated portraits were added.
+
+The intended effect is easier comparison, clear grouping, and equal visual
+standing across members. It is a design judgment rather than a measured
+psychological outcome. Canonical role strings and all seven identities, links
+and author anchors remain unchanged.
+
+Validation: five viewport widths, enlarged text, keyboard targets, WCAG A/AA
+checks, no-JavaScript content, build, typecheck, lint and SEO checks. No new
+performance measurement is claimed for this card-only refinement.
+
+Team card compacting: removed the repeated Access-development biography from both
+intern cards at the user's request. Desktop padding is now 24px top/sides and
+16px bottom, mobile padding 20px, with a 16px gap before profile links. Cards
+retain equal-height desktop rows, readable roles and 44px link targets. Sahil's
+affiliation is IIT Kharagpur, as confirmed by the user.
+
+Founder card update: the founder feature remains between vision and the wider
+team, with the same `#tilak-jain` anchor. Removed its photograph and caption,
+including the image reference in the derived person schema. The feature now
+uses a neutral bordered card with 9px corners, 24px mobile/32px desktop padding,
+a restrained name heading, and a desktop identity/text split. Biography and
+essay/LinkedIn links remain intact. This supersedes the earlier photo treatment.
+
+## Blog implementation and shared canvas review
+
+The index now uses two neutral article cards with consistent image frames, quiet
+metadata, clear titles and bottom-aligned reading links. Cards render immediately;
+short hover transitions respect reduced motion. A restrained closing link replaces
+the promotional colored band. This keeps the small collection easy to scan and
+gives students, partners and new readers a direct route to the writing.
+
+Both article routes use a narrower reading column, 17px prose with generous line
+spacing, sans-serif headings and underlined links. Author/date details remain
+visible, with All notes links before and after the article. Code is intentionally
+monochrome on a neutral surface. Original Markdown, canonical metadata and
+BlogPosting structured data are preserved.
+
+The cream exposed during elastic scrolling came from html/body backgrounds. Both
+now use the white shell canvas. Native scrolling remains enabled. Computed-style
+checks found white document canvases and no visible legacy cream backgrounds
+on ten routes, including FAQ, Updates and a missing-page view. Browser automation
+does not reproduce physical trackpad elastic overscroll.
+
+Validation: lint, typecheck, production build and SEO checks passed. The index
+and both articles passed overflow and heading checks at 320, 375, 768, 1024 and
+1440px. Navigation, no-JavaScript reading, enlarged text and an article axe scan
+passed. Future-content stress fixtures remain a separate unchecked item above.
+
+Production mobile Lighthouse spot check on `/blog/what-ams-actually-is`: performance
+96, accessibility 100, LCP 2.8 seconds and CLS 0. The stricter project LCP target
+of 2 seconds remains unmet; this measurement is a local lab result.
+
+### Blog wording refinement from sales material
+
+Reframed both posts using `../sales/foundations.md` and
+`../sales/AMS_ACCESS_AUDIENCE_PERSPECTIVE.md`: start with a reader's reason to
+care, explain the concrete activity, support it with relevant evidence, and
+provide a proportionate next step. The founder article now develops the purpose
+of competition and the conversations around it. The society introduction helps
+readers distinguish Derive, Ascent, and Access before choosing where to begin.
+Removed the detached probability example and reduced repeated introductions.
+Updated article descriptions and index copy to match. Publication dates, authors,
+URLs, verified participation counts and edition-specific partner roles remain
+unchanged. Benefits are framed as opportunities or intentions; there are no
+promises of interviews, employment, validated fairness or measured hiring gains.
+
+## Cross-page consistency audit
+
+Design and frontend agents reviewed typography, spacing and rendered layouts;
+a separate audience review checked readable hierarchy, action clarity and color
+roles. The resulting changes consolidate existing visual roles rather than
+making every heading the same size.
+
+- [x] Centralize page/campaign/article/display, section and body type scales.
+- [x] Align equivalent Team and Gallery section headings and vision weight.
+- [x] Match Partnerships hero scale and spacing to the competition pages.
+- [x] Make shared content actions 16px/48px and text links 15px/44px, fixing
+      the Team button's CSS-order-dependent 14px rendering.
+- [x] Replace legacy gold fallback focus with red; preserve contrasting focus
+      outlines on dark photographic and footer surfaces.
+- [x] Strengthen neutral link underlines so affordances do not rely on hover.
+- [x] Migrate FAQ's remaining burgundy/gold presentation and align Updates.
+- [x] Convert fixed text sizes in affected section styles to rem and fix
+      Gallery's closing layout at enlarged text sizes.
+
+Reader rationale: equivalent headings and controls should carry equivalent
+visual importance between pages. Clear link affordances and predictable sizing
+help visitors choose their next action. Documentary home imagery and campaign
+headlines remain more prominent; articles keep a quieter reading hierarchy.
+These are usability judgments, not claims of measured psychological effects.
+
+Validation: lint, typecheck, production build and SEO checks passed. Fresh
+production checks covered 11 routes at 320, 375, 768, 1024 and 1440px, plus
+200% root text size at 320px: no horizontal overflow, one H1 per route and
+correctly resolved heading tokens. Axe scans with reduced motion passed on all
+11 routes; FAQ toggles and Updates topic selection also passed. Independent
+visual review covered seven main pages on desktop and phones. The local preview
+was restarted to clear stale global CSS and its resolved tokens were verified.
+
+Local mobile Lighthouse spot check on the home route: performance 94,
+accessibility 100, LCP 3.1 seconds, CLS 0. The performance95/LCP2s project gates
+remain unmet in this run; visual consistency validation does not clear those
+separate performance gates. No new runtime dependency was introduced.
+
+## Navigation rhythm follow-up
+
+The prior role audit allowed campaign pages a larger title scale. Clicking
+between destinations exposed a perceptual mismatch that isolated page checks
+missed: at 1440px, title tops varied from 170px to 239px, labels switched from
+uppercase red-rule treatment to plain muted text, and headline sizes switched
+from 71px to 60px. Vertical centering against different media was a major cause.
+
+- [x] Use one interior-page title scale and intro top spacing across Derive,
+      Ascent, Partnerships, Gallery, Team and Blog.
+- [x] Match label treatment and label/title/description spacing.
+- [x] Top-align split introductions and align competition/partnership columns.
+- [x] Keep home immersion, article reading width and content-specific layouts.
+- [x] Check actual navbar navigation and compare the openings side by side.
+
+After the change, all six titles start at the same Y coordinate and use the
+same font size at each of 320, 375, 768, 1024 and 1440px. At 1440px that is
+170.39px and 60.16px respectively. No horizontal overflow at those widths or
+with 200% text at 320px. This creates a stable visual reference when switching
+pages; it is a design judgment rather than a measured psychological outcome.
+
+## Trust before the first conversation: philosophy, judgment and proof
+
+### What the positioning advice gets right
+
+A description answers “What is this?” A buying decision also needs answers to
+“Is this relevant to my situation?”, “Will these people make good decisions?”,
+“What supports their claims?”, and “What will working together involve?”
+AMS should answer these questions before requesting a meeting. Clear subject
+matter and a polished interface are the foundation, but neither alone establishes
+that a sponsor or assessment owner should choose AMS.
+
+The luxury-vacation example is effective because it names a decision criterion:
+the quality and personal relevance of the experience matter more than the bill.
+The resort-versus-villa story then makes that criterion observable. Its persuasive
+force comes from the adviser understanding the client's situation and making a
+reasoned recommendation. The cheaper option is not automatically the better one;
+the evidence must explain why it fit this particular client.
+
+For AMS the corresponding principle is already present in the founder writing
+and team vision: meaningful technical work gives people something to attempt,
+discuss and learn from together. A partnership starts with the relevance of that
+work to the firm. An assessment starts with the task and the evidence reviewers
+need. These are stronger criteria than total exposure or a long feature list.
+
+### What should not be imported from the example
+
+Affluence is not a sufficient definition of a good AMS customer. The user has
+identified two priorities: sponsors/recruiting teams and organizations buying
+Access assessments. Useful fit depends on their technical needs, intended
+engagement, operational requirements and capacity to participate. A high budget
+cannot resolve an irrelevant audience or unsuitable assessment format.
+
+“High agency” is better translated into design requirements than a claim about a
+psychological category. Give visitors information they can inspect, distinguish
+facts from aspirations, and let them choose between relevant next steps. Do not
+make them book a call to understand the basics. Do not suggest that premium
+visual styling proves product reliability or that prestigious affiliations prove
+participant outcomes. Students remain participants with their own interests;
+they should not be portrayed merely as inventory for recruiting teams.
+
+### The trust sequence for AMS
+
+1. **Recognize the work.** Name the technical domains and distinguish a competition
+   partnership from running an assessment for the buyer's own candidates.
+2. **Understand the principle.** Explain why shared problems and discussion are
+   central to AMS, and what a useful engagement should be designed around.
+3. **Inspect what happened.** Show the dated Derive format, named partner roles,
+   documentary photographs and attributable feedback about problem quality.
+4. **Evaluate the judgment.** Explain how objectives, task relevance, participant
+   preparation and review criteria shape a proposed engagement. Add an actual
+   decision account when its facts are supplied; criteria alone do not prove
+   those decisions have already been made successfully.
+5. **Choose a next step.** Offer distinct sponsor and assessment enquiries, with
+   a short explanation of what information helps start each conversation.
+
+This sequence is intended to reduce uncertainty and help a visitor assess fit.
+It is not evidence of measured conversion gains or a promise about how every
+visitor will feel.
+
+### Evidence has different jobs
+
+| Evidence | What it supports | What it does not establish |
+| --- | --- | --- |
+| Derive rounds and final attendance | Delivery of a specific competition | Future reliability at any scale |
+| Edition-specific partner names | Participation in that edition | Endorsement of all AMS products |
+| Photographs of conversations | People met in that setting | Offers, hires or lasting relationships |
+| Approved participant feedback | Those participants' views of the problem experience | Representative satisfaction or improved ability |
+| An actual problem and design explanation | Technical choices a reader can inspect | Validity for every hiring role |
+| An approved help/decision account | What happened to a specific person or team | Typical results or sole causation by AMS |
+
+The existing feedback file records website-use disclosure and founder-confirmed
+names. Its exact quotes can be reused as question-quality evidence. A Google Form
+or WhatsApp export may supply richer accounts, but the review must preserve dates,
+context, authorship and the distinction between a private message and an approved
+public quotation. Selection should not turn mixed feedback into a claim that all
+participants had the same experience. Keep private source material outside public
+assets and committed content; publish only the agreed excerpt and attribution.
+
+### Implementation in this pass
+
+- [x] Move the existing home philosophy section after the competition choices,
+      before the event account. Give it a principle and a link to the founder essay.
+- [x] Follow the edition story with existing approved participant feedback,
+      rendered as quiet static quotations with a visible source note.
+- [x] Add a partnership section explaining relevant work, conversation context
+      and agreed success criteria, with a separately attributed problem-quality quote.
+- [x] Give Access equal consideration as a buyer path: direct hero link, expanded
+      task/preparation/review discussion, useful enquiry guidance and a clear CTA.
+- [x] Give the home firm invitation separate partnership and assessment routes.
+- [ ] Add a verified organizing or assessment-design decision story once supplied.
+- [ ] Review the user's feedback responses/chat export for specific help accounts
+      and confirm quotation permissions before public use.
+- [ ] Add an approved public problem with explanation of its purpose, evaluation
+      and limitations if suitable source material is available.
+
+No synthetic testimonial, customer outcome, fee-saving claim, support-resolution
+story or hiring guarantee was introduced. We have strengthened the explanation
+and surfaced existing evidence; the richest judgment and community-help stories
+still depend on the source material the user has offered.
+
+### How to judge whether this works
+
+Review whether a prospective sponsor can explain which competition fits and why,
+and whether an assessment owner can explain the workflow and what to discuss
+before committing. In actual enquiries, look for specificity of objectives,
+relevance of technical needs, follow-through and appropriate fit. Traffic,
+meeting count and average budget alone cannot tell whether the website is
+attracting the right engagements. No new tracking was added in this pass.
+
+Validation for this trust pass: lint, typecheck, static production build and SEO
+checks passed. Home and Partnerships passed five-width layout checks, 200% text,
+axe accessibility scans with reduced motion, assessment-anchor/contact checks
+and no-JavaScript rendering. Exact approved quote strings remain in their
+original content source. Visual review confirmed the new sections follow the
+neutral typography, spacing and surface system.
+
+Production mobile Lighthouse home spot check: performance 95, accessibility 100,
+LCP 2.9 seconds and CLS 0. The 2-second LCP target remains unresolved.
+
+### Supplied feedback verification
+
+Reviewed the supplied Derive workbook and Ascent chat export. The workbook has
+38 response rows dated 21–23 June 2026, before the finals. Existing testimonials
+were verified against review-field rows 39, 29 and 31; the field explicitly
+mentions website use. Source notes now identify June and disclose light editing.
+No new names were inferred from email addresses. Feedback also raises wording
+and implementation-friction concerns; the home section acknowledges that context.
+
+The Ascent export contains support exchanges during a disrupted start and ends
+before the official resolution. It does not substantiate a smooth-round or
+universal-recovery claim. No private messages, contact details or screenshots
+were published. A decision story remains pending the organizer's official
+resolution and evidence of completed changes. Detailed private review is in
+`/tmp/ams-feedback-review.md`; raw source files remain outside the repository.
+
+Organizer follow-up: the rescheduled Ascent round was conducted on 1 November
+2026 and, according to the organizer, ran smoothly. Updated Ascent round text
+and llms.txt with the confirmed date and completion. The FAQ, metadata, schema
+and blog surfaces do not contain the old qualifier date. No claim about technical
+fixes, universal access or measured reliability was inferred. The official
+resolution is now known at a high level; a detailed decision case still needs
+the actual reasoning and completed changes.
+
+### Testimonial note refinement
+
+Simplified source notes on Home and Partnerships to selected participant
+feedback with the June 2026 date. Home's editing disclosure now sits after the
+quotes; the partnership quote keeps it within the small source note below
+attribution. Removed the redundant individual-experience disclaimer and the
+isolated criticism paragraph. Mixed feedback remains documented in the source
+review; a future public improvement account should connect it to verified
+actions and results. Quote text and attribution are unchanged.

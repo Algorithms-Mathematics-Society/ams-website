@@ -1,4 +1,4 @@
-/** Official competition information reviewed on 1 November 2026. */
+/** Schedule reviewed 1 November 2026; rescheduled qualifier completion confirmed by AMS organizer. */
 export const ASCENT_HERO = {
   eyebrow: "Ascent · 2026",
   title: "The C++ performance competition.",
@@ -22,12 +22,12 @@ export const ASCENT_SYLLABUS = { label: "Read the official syllabus", href: "htt
 export const ASCENT_STANDARD = {
   title: "Three rounds",
   body: "The qualifier is individual. Competitors who advance move into team implementation, then a codebase finale.",
-  note: "Published schedule, checked 1 November 2026. The final date and Mumbai venue are tentative; partner campuses are yet to be announced.",
+  note: "The rescheduled qualifier was held on 1 November 2026, confirmed by the AMS team. Later-round dates follow the published schedule; the final date and Mumbai venue remain tentative.",
   scoring: "Qualifier ranking considers correct answers and submission speed. From Round 2, valid solutions are ranked by improvement over a common performance baseline.",
   linkLabel: "Check the official schedule",
   linkHref: "https://ascent.amshq.in/#timeline",
   rounds: [
-    { number: "01", title: "Online qualifier", date: "24 October 2026 · Published date", setting: "Individual · AMS Access", body: "A two-hour round covering C++ proficiency, puzzles, and debugging." },
+    { number: "01", title: "Online qualifier", date: "1 November 2026 · Rescheduled round held", setting: "Individual · AMS Access", body: "The qualifier covers C++ proficiency, puzzles, and debugging. After disruption to the 24 October attempt, the rescheduled round was held on 1 November." },
     { number: "02", title: "Team implementation", date: "6 December 2026", setting: "Teams · Partner campuses to be announced", body: "Implement and optimize solutions under shared constraints." },
     { number: "03", title: "Codebase finale", date: "20 December 2026 · Tentative", setting: "On site · Mumbai, tentative", body: "Work on a real codebase while preserving its required behaviour." },
   ],

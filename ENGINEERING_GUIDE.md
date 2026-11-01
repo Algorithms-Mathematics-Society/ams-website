@@ -448,3 +448,103 @@ Emulator-only bypass must never become a request/config switch on production.
 The server uses fixed document lookups and bounded retries; do not describe
 Firestore latency as guaranteed O(1). See docs/signup-security.md for quotas,
 operation counts, third-party disclosure, and abuse/availability tradeoffs.
+
+## Partnerships neutral design
+
+The Partnerships destination remains `/access`, scoped with
+`data-partnerships-page` and `Access.module.css`. Its reading order is a white
+introduction, edition-scoped Derive evidence, open competition comparison,
+secondary Access assessment offer, and a white contact section above the shared
+dark footer. Preserve `#sponsor`, `#assessments`, and `#contact`.
+
+Use the original 3:2 documentary conversation photograph, an external caption,
+and one primary hero action. Black actions, 6px controls, 9px photo corners,
+16-17px body text, and 14px captions follow the neutral shell. Red stays in focus
+and active navigation. Existing dated partner roles establish organizing history,
+not hiring outcomes or unrestricted access to participant information. Contact
+uses email and an open scope-setting sequence; no new form or dependency.
+
+## Gallery neutral experience
+
+`/gallery` uses server-rendered introduction, archive and closing sections.
+`GalleryBrowser` is the interactive leaf for topic filters and opening photos;
+`Lightbox` is loaded on demand and uses a native modal dialog. Preserve captions
+and explicit archive order in `content/gallery.ts` independently of home photo
+placements. Layout uses a panoramic group frame, full-composition featured
+photographs and asymmetric pairs; phones use a single readable column.
+
+No autoplay or scroll interception. The viewer supports arrow keys, touch swipe,
+thumbnail selection, Escape and restored opener focus. Preview thumbnails remain
+visible during full-image loading or failure. Only opacity and transform animate;
+reduced motion disables them. Plain image links provide no-JavaScript access.
+Maintain 44px controls, real image sizes, reserved frames and neutral shell colors.
+
+## Team purpose and people
+
+`/team` composes `TeamIntro`, `TeamVision`, `TeamFounder`, `TeamGrid` and
+`TeamClosing` with scoped `Team.module.css`. The introduction explains the work;
+vision is clearly aspirational; the founder feature is a photo-free bordered
+card linking to existing published writing. Do not fabricate personal
+quotes, career results, advisors or institutional endorsements. The wider team
+uses neutral bordered profiles: three columns from 1200px, two from 768px and
+one on phones. Cards share padding, restrained name sizing and bottom-aligned
+profile links; role and edition context have separate typographic levels. Keep all person IDs and
+content identities intact because article bylines and structured data use them.
+The founder remains in the canonical TEAM data and is rendered once, separately
+from the other profiles. The contribution invitation is an email enquiry, not a
+claim of open positions. Sections render immediately without client animation.
+
+## Blog reading layouts and document canvas
+
+Blog routes compose server-rendered BlogIntro, BlogGrid, BlogArticle and
+BlogClosing sections. BlogCard uses native semantic markup with one stretched
+article link; do not add nested interactive controls inside that hit area. Keep
+metadata visible, cover frames reserved and prose in the reading container.
+Blog.module.css owns section layouts; BlogCard.module.css owns card styles.
+Global .blog-prose styles deliberately use monochrome code, neutral surfaces,
+sans-serif headings and visibly underlined links. Preserve authored Markdown
+and article metadata. No entrance animation or client state is needed here.
+
+Both html and body use --shell-canvas so native elastic overscroll reveals white
+on every route. Do not restore the legacy cream document background or intercept
+scrolling to hide it. Individual neutral section surfaces remain scoped.
+
+## Shared typography and consistency roles
+
+Use the `--shell-text-*` and `--shell-space-*` tokens in globals.css for page
+roles rather than copying fluid formulas into each module. Display (home),
+interior page and article titles have intentionally distinct scales. All main
+interior destinations, including Ascent, Derive and Partnerships, use the same
+page-title scale and introductory top spacing. Full section headings
+share the 30–44px scale; body text uses 16–17px with 1.7 line height. Article
+prose keeps its separate reading treatment. Compact evidence labels, person
+names and card titles remain subordinate roles, not full section headings.
+
+Neutral primary/secondary actions use 16px text and at least 48px height;
+standalone text links use 15px and at least 44px height. The compact navigation
+and metadata retain smaller text. Use rem for text-size limits so browser text
+preferences apply. Light-surface keyboard focus uses the red accent; white or
+lighter outlines on dark surfaces are deliberate contrast exceptions. Underlines
+must remain visible without hover. FAQ and Updates use these same neutral roles.
+
+Interior navigation rhythm: align intro content to the top, not vertically to
+the adjacent photo or panel. Use a muted 14px sentence-case label, a 12px gap
+to the page title and a 20px gap to the description. Ascent, Derive and
+Partnerships share equal desktop columns and a 56px gap. Keep the home display
+and article reading layout distinct. Do not restore separate campaign heading
+sizing on interior destinations merely because they have a CTA or photograph.
+
+## Philosophy and evidence in buyer journeys
+
+Home now introduces the competition choices, then AMS's philosophy, the Derive
+edition account, approved participant feedback, photographs and audience-specific
+next steps. Testimonials render statically from content/testimonials.ts, whose
+source comments document website-use disclosure. Keep exact approved quote text,
+attribution and edition context; do not infer employment or measured skill gains.
+
+Partnerships includes AccessApproach between edition evidence and competition
+selection. Its decision criteria describe how to evaluate fit, not fabricated
+historical case studies. Access assessments have a direct hero anchor and a
+separate preparation/review explanation with their own enquiry CTA. Keep the
+assessment workflow and sponsorship offer distinct. Private messages and raw
+feedback exports must not become public assets or committed evidence by default.

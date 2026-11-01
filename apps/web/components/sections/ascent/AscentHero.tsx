@@ -9,7 +9,7 @@ export function AscentHero() {
     <section className={styles.hero} aria-labelledby="ascent-heading">
       <Container className={styles.layout}>
         <div className={styles.copy}>
-          <p className={neutral.eyebrow}>{ASCENT_HERO.eyebrow}</p>
+          <p className={neutral.pageKicker}>{ASCENT_HERO.eyebrow}</p>
           <h1 id="ascent-heading" className={styles.title}>
             {ASCENT_HERO.title}
           </h1>

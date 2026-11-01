@@ -1,8 +1,10 @@
 import { createPageMetadata } from "@/lib/metadata";
+import { TeamVision } from "@/components/sections/TeamVision";
+import { TeamFounder } from "@/components/sections/TeamFounder";
 import { TeamGrid } from "@/components/sections/TeamGrid";
-import { CtaBand } from "@/components/ui/CtaBand";
-import { PageHeader } from "@/components/ui/PageHeader";
-import { TEAM_PAGE } from "@/content/team";
+import { TeamClosing } from "@/components/sections/TeamClosing";
+import { TeamIntro } from "@/components/sections/TeamIntro";
+import styles from "@/components/sections/Team.module.css";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { TEAM_JSONLD } from "@/content/seo";
 
@@ -15,16 +17,13 @@ export const metadata = createPageMetadata({
 
 export default function TeamPage() {
   return (
-    <>
+    <div data-team-page className={styles.page}>
       <JsonLd data={TEAM_JSONLD} />
-      <PageHeader
-        compact
-        eyebrow={TEAM_PAGE.eyebrow}
-        title={TEAM_PAGE.title}
-        body={TEAM_PAGE.body}
-      />
-      <TeamGrid withHeading={false} />
-      <CtaBand {...TEAM_PAGE.cta} />
-    </>
+      <TeamIntro />
+      <TeamVision />
+      <TeamFounder />
+      <TeamGrid />
+      <TeamClosing />
+    </div>
   );
 }

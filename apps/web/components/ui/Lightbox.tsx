@@ -3,134 +3,76 @@
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { ControlIcon } from "@/components/ui/ControlIcon";
-import { IconButton } from "@/components/ui/IconButton";
+import { LightboxPhoto } from "@/components/ui/LightboxPhoto";
+import styles from "./Lightbox.module.css";
 
 interface Props {
-  items: { src: string; label: string }[];
+  items: { src: string; thumb: string; label: string }[];
   index: number;
-  labels: { photo: string; close: string; previous: string; next: string; navigation: string };
+  labels: { photo: string; close: string; previous: string; next: string; navigation: string; thumbnails: string; hint: string; loading: string; unavailable: string; original: string };
   onClose: () => void;
   onNavigate: (index: number) => void;
 }
 
-/**
- * Full-bleed gallery lightbox on black: the immersive payoff,
- * chrome kept minimal. Esc closes, arrow keys navigate, focus is trapped,
- * body scroll locks while open.
- */
 export function Lightbox({ items, index, labels, onClose, onNavigate }: Props) {
-  const dialogRef = useRef<HTMLDivElement>(null);
-  const closeRef = useRef<HTMLButtonElement>(null);
+  const dialogRef = useRef<HTMLDialogElement>(null);
+  const stripRef = useRef<HTMLDivElement>(null);
+  const start = useRef<{ x: number; y: number; id: number } | null>(null);
   const item = items[index];
-
+  const move = (delta: number) => onNavigate((index + delta + items.length) % items.length);
   useEffect(() => {
-    const previousOverflow = document.body.style.overflow;
+    const dialog = dialogRef.current;
+    const overflow = document.body.style.overflow;
+    dialog?.showModal();
     document.body.style.overflow = "hidden";
-    closeRef.current?.focus();
-    return () => {
-      document.body.style.overflow = previousOverflow;
-    };
+    return () => { dialog?.close(); document.body.style.overflow = overflow; };
   }, []);
-
   useEffect(() => {
-    function onKeyDown(e: KeyboardEvent) {
-      if (e.key === "Escape") onClose();
-      if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
-        e.preventDefault();
-        onNavigate((index + (e.key === "ArrowRight" ? 1 : -1) + items.length) % items.length);
-      }
-      if (e.key === "Tab") {
-        // Three buttons only; keep focus among them.
-        const focusables = Array.from(
-          dialogRef.current?.querySelectorAll<HTMLElement>("[data-lightbox-control]") ?? [],
-        );
-        const first = focusables[0];
-        const last = focusables[focusables.length - 1];
-        if (e.shiftKey && document.activeElement === first) {
-          e.preventDefault();
-          last.focus();
-        } else if (!e.shiftKey && document.activeElement === last) {
-          e.preventDefault();
-          first.focus();
-        }
-      }
-    }
-    document.addEventListener("keydown", onKeyDown);
-    return () => document.removeEventListener("keydown", onKeyDown);
-  }, [index, items.length, onClose, onNavigate]);
-
-  /**
-   * The fill img element spans the whole stage, so e.target cannot tell the
-   * letterbox margin from the photo. Hit-test the click against the
-   * object-contain photo rect: the margin is backdrop and closes, the photo
-   * pixels do nothing (pausing on the image must not dismiss it).
-   */
-  function onStageClick(e: React.MouseEvent<HTMLDivElement>) {
-    e.stopPropagation();
-    const img = e.currentTarget.querySelector("img");
-    if (img && img.naturalWidth > 0 && img.naturalHeight > 0) {
-      const rect = img.getBoundingClientRect();
-      const scale = Math.min(
-        rect.width / img.naturalWidth,
-        rect.height / img.naturalHeight,
-      );
-      const photoWidth = img.naturalWidth * scale;
-      const photoHeight = img.naturalHeight * scale;
-      const photoLeft = rect.left + (rect.width - photoWidth) / 2;
-      const photoTop = rect.top + (rect.height - photoHeight) / 2;
-      const onPhoto =
-        e.clientX >= photoLeft &&
-        e.clientX <= photoLeft + photoWidth &&
-        e.clientY >= photoTop &&
-        e.clientY <= photoTop + photoHeight;
-      if (onPhoto) return;
-    }
-    onClose();
-  }
-
+    const strip = stripRef.current;
+    const active = strip?.querySelector<HTMLElement>('[aria-current="true"]');
+    if (strip && active) strip.scrollTo({ left: active.offsetLeft - strip.offsetLeft - strip.clientWidth / 2 + active.clientWidth / 2,
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
+  }, [index]);
   return (
-    <div
-      ref={dialogRef}
-      role="dialog"
-      aria-modal="true"
-      aria-label={item.label}
-      className="fixed inset-0 z-50 flex flex-col bg-black"
-      onClick={onClose}
-    >
-      <div className="flex shrink-0 items-center justify-between px-5 py-3 sm:px-8" onClick={(event) => event.stopPropagation()}>
-        <p className="text-sm tabular-nums text-cream-light/75">
-          {labels.photo} {index + 1} / {items.length}
-        </p>
-        <IconButton ref={closeRef} label={labels.close} inverse data-lightbox-control onClick={onClose}>
-          <ControlIcon name="close" />
-        </IconButton>
+    <dialog ref={dialogRef} className={styles.dialog} aria-label={labels.navigation} aria-describedby="lightbox-caption"
+      onCancel={event => { event.preventDefault(); onClose(); }}
+      onKeyDown={event => {
+        if (event.key === "ArrowRight" || event.key === "ArrowLeft") { event.preventDefault(); move(event.key === "ArrowRight" ? 1 : -1); }
+      }}>
+      <div className={styles.top}>
+        <p className={styles.count}>{labels.photo} {index + 1} / {items.length}</p>
+        <button type="button" className={styles.control} aria-label={labels.close} onClick={onClose} autoFocus><ControlIcon name="close" /></button>
       </div>
-      <div className="relative min-h-0 flex-1" onClick={onStageClick}>
-        <Image
-          src={item.src}
-          alt={item.label}
-          fill
-          sizes="100vw"
-          className="object-contain"
-        />
+      <div className={styles.stage} onPointerDown={event => {
+        if (!event.isPrimary || event.pointerType === "mouse") return;
+        start.current = { x: event.clientX, y: event.clientY, id: event.pointerId };
+      }} onPointerCancel={() => { start.current = null; }} onPointerUp={event => {
+        const origin = start.current; start.current = null;
+        if (!origin || origin.id !== event.pointerId) return;
+        const dx = event.clientX - origin.x; const dy = event.clientY - origin.y;
+        if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) move(dx < 0 ? 1 : -1);
+      }}>
+        <LightboxPhoto key={item.src} {...item} loading={labels.loading} unavailable={labels.unavailable} />
       </div>
-
-      <div
-        className="flex shrink-0 flex-col gap-3 px-5 py-4 sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:px-8"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <p className="min-w-0 text-sm leading-6 text-cream-light/90" aria-live="polite" aria-atomic="true">
-          {item.label}
-        </p>
-        <div role="group" aria-label={labels.navigation} className="flex shrink-0 justify-end gap-2">
-          <IconButton label={labels.previous} inverse data-lightbox-control onClick={() => onNavigate((index - 1 + items.length) % items.length)}>
-            <ControlIcon name="previous" />
-          </IconButton>
-          <IconButton label={labels.next} inverse data-lightbox-control onClick={() => onNavigate((index + 1) % items.length)}>
-            <ControlIcon name="next" />
-          </IconButton>
+      <div className={styles.bottom}>
+        <div className={styles.captionRow}>
+          <div>
+            <p id="lightbox-caption" className={styles.caption} aria-live="polite" aria-atomic="true">{item.label}</p>
+            <p className={styles.hint}>{labels.hint}</p>
+          </div>
+          <div className={styles.navigation} role="group" aria-label={labels.navigation}>
+            <button type="button" className={styles.control} aria-label={labels.previous} onClick={() => move(-1)}><ControlIcon name="previous" /></button>
+            <button type="button" className={styles.control} aria-label={labels.next} onClick={() => move(1)}><ControlIcon name="next" /></button>
+          </div>
         </div>
+        <div ref={stripRef} className={styles.strip} role="group" aria-label={labels.thumbnails}>
+          {items.map((photo, i) => <button type="button" key={photo.src} className={styles.thumbnail} aria-label={`${labels.photo} ${i + 1}: ${photo.label}`}
+            aria-current={i === index ? "true" : undefined} onClick={() => onNavigate(i)}>
+            <Image src={photo.thumb} alt="" fill sizes="72px" />
+          </button>)}
+        </div>
+        <a className={styles.original} href={item.src} target="_blank" rel="noopener noreferrer">{labels.original} ↗</a>
       </div>
-    </div>
+    </dialog>
   );
 }

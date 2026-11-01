@@ -16,32 +16,30 @@ interface PartnershipOpportunity {
 }
 
 export const ACCESS_HERO = {
-  eyebrow: "Hiring & partnerships",
+  eyebrow: "Competition partnerships",
   title: "Partner with AMS.",
-  body: "AMS runs competitions in quantitative reasoning and systems engineering. Support a contest, meet its participants, or discuss a technical assessment for your hiring process.",
+  body: "Meet people through the quantitative and systems work they choose to take on. Explore a competition partnership, or discuss a coding assessment for your own candidates.",
   image: {
     src: "/images/derive26/full/finalists-meet-the-interviewers.webp",
     alt: "Derive finalists in conversation with interviewers at the IIT Bombay finals",
   },
   photoCaption: "Derive ’26 finals · IIT Bombay · July 2026",
-  primaryLink: { label: "Explore sponsorship", href: "#sponsor" },
-  secondaryLink: { label: "For recruiting teams", href: "#contact" },
-  note: "Ascent is our current sponsorship focus.",
+  primaryLink: { label: "Discuss a partnership", href: "#contact" },
+  secondaryLink: { label: "Explore hiring assessments", href: "#assessments" },
 } as const;
 
 export const ACCESS_FIRMS = {
   id: "sponsor",
-  eyebrow: "The competitions",
-  title: "Find the right fit for your team.",
-  body: "Two contests, with different technical demands. Sponsorship and participant involvement are scoped with each partner.",
+  title: "Which competition fits your team?",
+  body: "Explore the formats and participant profiles below. Activities and partner involvement are agreed for each edition.",
   opportunities: [
     {
       name: "Ascent",
-      status: "Current sponsorship focus",
+      status: "2026 edition · Sponsorship enquiries",
       details: [
         { label: "Who takes part", body: "Systems programmers working in C++, optimization, and performance engineering." },
-        { label: "What the work shows", body: "Algorithm and implementation choices under execution time and memory constraints." },
-        { label: "How it works", body: "An individual online qualifier, followed by team optimization rounds and a planned in-person finale in Mumbai." },
+        { label: "The technical work", body: "Algorithm and implementation choices under execution time and memory constraints." },
+        { label: "How it works", body: "An individual qualifier, followed by team implementation and a codebase finale. The final date and Mumbai venue remain tentative." },
       ],
       link: { label: "Explore Ascent", href: "/ascent" },
     },
@@ -50,7 +48,7 @@ export const ACCESS_FIRMS = {
       status: "Discuss future editions",
       details: [
         { label: "Who took part in 2026", body: "The Derive ’26 rules covered students in technical degree programs in India and recent alumni." },
-        { label: "What the work shows", body: "Probability, market reasoning, and mathematical problem solving under timed conditions." },
+        { label: "The technical work", body: "Probability, market reasoning, and mathematical problem solving under timed conditions." },
         { label: "How the 2026 edition worked", body: "Two online rounds led to an in-person final at IIT Bombay. Future edition details will be confirmed separately." },
       ],
       link: { label: "See Derive ’26", href: "/derive" },
@@ -68,8 +66,9 @@ export const ACCESS_CONVERSATION = {
   id: "contact",
   eyebrow: "Start a conversation",
   title: "Tell us what your team needs.",
-  body: "Email partners@amshq.in with your firm, timeline, and the competition or skills you are interested in.",
+  body: "Tell us what you want the partnership to achieve, the skills or audience relevant to your team, and your timeline. A short email is enough to begin.",
   contact: {
+    label: "Email the partnerships team",
     email: "partners@amshq.in",
     href: "mailto:partners@amshq.in?subject=AMS%20partnership%20enquiry",
   },
@@ -87,16 +86,36 @@ export const ACCESS_CONVERSATION = {
   nextSteps: [
     { title: "Review the fit", body: "Discuss your goals alongside the contest format and participant profile." },
     { title: "Define the involvement", body: "Work through the activities, timing, and responsibilities for your team and AMS." },
-    { title: "Agree the next steps", body: "Confirm the partnership scope together before making commitments." },
+    { title: "Agree the scope", body: "Confirm activities, responsibilities, and commercial terms together before committing." },
   ],
 } as const;
 
 export const ACCESS_EVALUATION = {
   eyebrow: "Technical hiring assessments",
-  title: "Have a separate hiring process?",
-  body: "AMS Access is our desktop assessment platform for timed problem solving, readiness checks, and configurable proctoring. Discuss the skills you need to assess, the format, and the features available for your process.",
+  title: "Build the assessment around the work.",
+  body: "AMS Access is a coding-assessment platform. Organisers prepare a round, candidates work in a desktop app, and reviewers inspect results. Start with the skills you need to assess and the evidence your reviewers need to make a decision.",
+  considerations: [
+    { title: "Define the task", body: "Discuss the role, problem format, and criteria you want to assess." },
+    { title: "Prepare candidates", body: "Confirm device requirements, setup instructions, and the support needed for the round." },
+    { title: "Plan the review", body: "Agree how results and session records will be interpreted alongside the other evidence in your hiring process." },
+  ],
+  enquiry: "For an assessment enquiry, include your intended format, approximate participant count, and timing. We can work through the setup and review requirements together.",
   link: {
     label: "Discuss an assessment",
     href: "mailto:team@amshq.in?subject=AMS%20assessment%20enquiry",
   },
+} as const;
+
+/** Published philosophy and evaluation criteria, not a claim of measured outcomes. */
+export const ACCESS_APPROACH = {
+  title: "Start with the work you want to understand.",
+  body: "A useful partnership gives your team a reason to engage with participants. The problems, the people working on them, and the conversations around that work should be relevant to your objectives.",
+  criteria: [
+    { title: "Choose the relevant challenge", body: "Probability and market reasoning call for different work from C++ performance engineering. Begin with the skills that matter to your team." },
+    { title: "Give the conversation context", body: "Shared problems give participants and firms something specific to discuss. At Derive ’26, finalists met partner interviewers alongside the competition." },
+    { title: "Decide what success would mean", body: "Agree the activities and the outcomes you want to review before defining the scope. A contest result is one part of understanding someone’s work." },
+  ],
+  evidenceLabel: "On the Derive ’26 problems",
+  evidenceNote: "Selected participant feedback · June 2026",
+  link: { label: "See the Derive ’26 format", href: "/derive" },
 } as const;

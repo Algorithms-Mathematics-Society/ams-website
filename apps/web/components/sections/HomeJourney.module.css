@@ -45,7 +45,7 @@
 .stageTitle {
   margin-bottom: 8px;
   color: var(--shell-ink);
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: 600;
   line-height: 1.4;
 }

@@ -1,0 +1,60 @@
+.page { background: var(--shell-canvas); color: var(--shell-ink); }
+.intro { padding-block: var(--shell-space-intro) 32px; }
+.kicker { color: var(--shell-muted); font-size: .875rem; line-height: 1.6; }
+.title { max-width: 20ch; margin-top: 12px; font-size: var(--shell-text-page); font-weight: 600; line-height: 1.1; letter-spacing: -.04em; text-wrap: balance; }
+.body { max-width: 62ch; color: var(--shell-muted); font-size: var(--shell-text-body); line-height: 1.7; }
+.intro .body { margin-top: 20px; }
+.roster { padding-block: 8px clamp(48px, 6vw, 80px); }
+.grid { display: grid; gap: 20px; }
+.member { min-width: 0; scroll-margin-top: 100px; border: 1px solid var(--shell-border); border-radius: var(--shell-panel-radius); background: var(--shell-canvas); }
+.profile { display: flex; flex-direction: column; align-items: flex-start; height: 100%; padding: 20px; }
+.identity { display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; width: 100%; }
+.identityText { min-width: 0; }
+.name { font-size: clamp(1.375rem, calc(1.2rem + .4vw), 1.625rem); font-weight: 600; line-height: 1.25; letter-spacing: -.025em; overflow-wrap: break-word; }
+.role { margin-top: 12px; max-width: 36ch; font-size: .9375rem; font-weight: 500; line-height: 1.6; }
+.scope { display: block; margin-top: 4px; color: var(--shell-muted); font-size: .875rem; font-weight: 400; }
+.affiliation { margin-top: 6px; color: var(--shell-muted); font-size: .875rem; line-height: 1.6; }
+.portrait { position: relative; flex-shrink: 0; width: 64px; height: 80px; border-radius: var(--shell-panel-radius); overflow: hidden; background: var(--shell-subtle); }
+.portrait img { object-fit: cover; object-position: top; }
+.bio { margin-top: 20px; max-width: 52ch; font-size: .9375rem; line-height: 1.7; color: var(--shell-muted); }
+.profileLink { margin-top: auto; padding-top: 16px; width: 100%; }
+.profileLink a { width: 100%; justify-content: space-between; text-decoration: none; font-size: .875rem; }
+.profileLink a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.link { font-size: .9375rem; }
+.closing { padding-block: clamp(40px, 5vw, 64px); background: var(--shell-subtle); }
+.closingLayout { display: grid; gap: 28px; align-items: center; }
+.heading { font-size: var(--shell-text-section); max-width: 24ch; font-weight: 600; line-height: 1.2; letter-spacing: -.035em; text-wrap: balance; margin-bottom: 16px; }
+.actions { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+.button { min-height: 48px; font-size: 1rem; }
+@media (min-width: 768px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 1fr; gap: 24px; } .profile { padding: 24px 24px 16px; } }
+@media (min-width: 1024px) { .closingLayout { grid-template-columns: minmax(0, 1fr) auto; gap: 64px; } }
+.title, .heading { overflow-wrap: anywhere; }
+.closingLayout > * { min-width: 0; }
+
+/* Purpose first, then the founder and the wider team. */
+.intro { padding-bottom: clamp(40px, 5vw, 64px); }
+.introLayout { display: grid; gap: 32px; align-items: start; }
+.workHeading { font-size: .875rem; color: var(--shell-muted); line-height: 1.6; margin-bottom: 12px; }
+.workRow { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0 16px; padding-block: 8px; border-top: 1px solid var(--shell-border); }
+.workLink { font-size: 1rem; }
+.workRow dd { color: var(--shell-muted); font-size: .875rem; line-height: 1.6; }
+.vision { padding-block: clamp(40px, 5vw, 64px); background: var(--shell-subtle); }
+.visionLayout { display: grid; gap: 24px; }
+.visionTitle { max-width: 18ch; margin-top: 12px; font-size: var(--shell-text-section); font-weight: 600; letter-spacing: -.035em; line-height: 1.2; text-wrap: balance; overflow-wrap: anywhere; }
+.visionCopy { display: grid; gap: 20px; }
+.founder { padding-block: clamp(48px, 6vw, 88px); scroll-margin-top: 100px; }
+.founderLayout { display: grid; align-items: start; gap: 24px; padding: 24px; border: 1px solid var(--shell-border); border-radius: var(--shell-panel-radius); background: var(--shell-canvas); }
+.founderCopy { min-width: 0; }
+.founderName { margin-top: 12px; font-size: clamp(1.75rem, calc(1.5rem + .7vw), 2.25rem); font-weight: 600; line-height: 1.15; letter-spacing: -.035em; }
+.founderBio { margin-top: 0; }
+.founderContext { margin-top: 16px; }
+.founderLinks { display: flex; flex-wrap: wrap; gap: 4px 24px; margin-top: 24px; }
+.teamIntroduction { margin-bottom: 32px; }
+@media (min-width: 768px) { .visionLayout { grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: 56px; } }
+@media (min-width: 1024px) {
+ .introLayout { grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); gap: 80px; }
+ .founderLayout { grid-template-columns: minmax(0, .7fr) minmax(0, 1.3fr); gap: 48px; padding: 32px; }
+}
+
+.rosterTitle { font-size: var(--shell-text-section); font-weight: 600; line-height: 1.2; letter-spacing: -.03em; margin-bottom: 12px; overflow-wrap: anywhere; }
+@media (min-width: 1200px) { .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }

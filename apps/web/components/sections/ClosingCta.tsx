@@ -20,6 +20,7 @@ export function ClosingCta() {
               <h3>{path.title}</h3>
               <p className={neutral.body}>{path.body}</p>
               <div className={styles.nextActions}><Link href={path.href} className={path.primary ? neutral.primary : neutral.secondary}>{path.label}</Link>
+              {"assessment" in path && <Link href={path.assessment.href} className={neutral.textLink}>{path.assessment.label}</Link>}
               {path.primary && <Link href={UPDATES_LINK.href} className={neutral.textLink}>{UPDATES_LINK.label}</Link>}</div>
             </Reveal>
           ))}

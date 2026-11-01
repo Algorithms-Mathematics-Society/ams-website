@@ -15,6 +15,7 @@ interface PageMetadataOptions {
   absoluteTitle?: boolean;
   image?: { url: string; width: number; height: number; alt: string };
   publishedTime?: string;
+  modifiedTime?: string;
 }
 
 /** Keep canonical URLs and share previews consistent across public pages. */
@@ -25,6 +26,7 @@ export function createPageMetadata({
   absoluteTitle = false,
   image = DEFAULT_SOCIAL_IMAGE,
   publishedTime,
+  modifiedTime,
 }: PageMetadataOptions): Metadata {
   const url = new URL(path, SITE.url).toString();
   const shareTitle = absoluteTitle ? title : `${title} · ${SITE.name}`;
@@ -42,7 +44,7 @@ export function createPageMetadata({
       locale: "en_IN",
       images: [socialImage],
       ...(publishedTime
-        ? { type: "article" as const, publishedTime }
+        ? { type: "article" as const, publishedTime, ...(modifiedTime ? { modifiedTime } : {}) }
         : { type: "website" as const }),
     },
     twitter: {

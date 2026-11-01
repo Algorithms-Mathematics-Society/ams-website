@@ -1,27 +1,13 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
-import { createPageMetadata } from "@/lib/metadata";
 import { notFound } from "next/navigation";
-import { CtaBand } from "@/components/ui/CtaBand";
-import { Container } from "@/components/ui/Container";
-import { Eyebrow } from "@/components/ui/Eyebrow";
+import { createPageMetadata } from "@/lib/metadata";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { BLOG_PAGE } from "@/content/blog";
+import { BlogArticle } from "@/components/sections/BlogArticle";
+import { BlogClosing } from "@/components/sections/BlogClosing";
 import { blogPostingJsonLd } from "@/content/seo";
 import { getAllPosts, getPostBySlug } from "@/lib/blog";
-
-interface Props {
-  params: Promise<{ slug: string }>;
-}
-
-function formatDate(date: Date) {
-  return date.toLocaleDateString("en-IN", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  });
-}
+import styles from "@/components/sections/Blog.module.css";
+interface Props { params: Promise<{ slug: string }>; }
 
 export async function generateStaticParams() {
   const posts = await getAllPosts();
@@ -38,6 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: post.description,
     path: `/blog/${post.slug}`,
     publishedTime: post.pubDate.toISOString(),
+    modifiedTime: post.updatedDate?.toISOString(),
     image: { url: post.cover.full, width: 1200, height: 630, alt: post.cover.alt },
   });
 }
@@ -46,82 +33,9 @@ export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;
   const post = await getPostBySlug(slug);
   if (!post) notFound();
-  const authorHref = post.author === "Tilak Jain"
-    ? "/team#tilak-jain"
-    : post.author === "AMS Team" ? "/team" : undefined;
-
-  return (
-    <>
-      <JsonLd data={blogPostingJsonLd(post)} />
-
-      <section className="pt-section pb-4">
-        <Container size="reading">
-          <Eyebrow>{BLOG_PAGE.eyebrow}</Eyebrow>
-          <h1 className="mt-6 font-sans text-hero font-semibold tracking-[-0.04em] text-burgundy">
-            {post.title}
-          </h1>
-          <div className="mt-6 flex flex-wrap items-center gap-3 text-sm text-ink/70">
-            {post.authorImage && (
-              <Image
-                src={post.authorImage}
-                alt=""
-                width={32}
-                height={32}
-                className="rounded-full"
-              />
-            )}
-            {authorHref ? (
-              <Link
-                href={authorHref}
-                rel="author"
-                className="inline-flex min-h-11 items-center font-medium text-burgundy hover:text-gold-deep focus-visible:outline-2 focus-visible:outline-offset-2"
-              >
-                {post.author}
-              </Link>
-            ) : (
-              <span className="font-medium text-ink">{post.author}</span>
-            )}
-            <span aria-hidden>·</span>
-            <time dateTime={post.pubDate.toISOString()}>
-              {formatDate(post.pubDate)}
-            </time>
-            {post.tags.map((tag) => (
-              <span
-                key={tag}
-                className="rounded-control border border-gold-deep/30 px-2.5 py-1 text-xs font-semibold tracking-wide text-gold-deep uppercase"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      <section className="pb-4">
-        <Container size="reading">
-          <div className="relative aspect-[1200/630] w-full overflow-hidden rounded-media border border-burgundy/20">
-            <Image
-              src={post.cover.full}
-              alt={post.cover.alt}
-              fill
-              priority
-              sizes="(min-width: 768px) 704px, (min-width: 640px) calc(100vw - 64px), calc(100vw - 40px)"
-              className="object-cover"
-            />
-          </div>
-        </Container>
-      </section>
-
-      <section className="pt-8 pb-section">
-        <Container size="reading">
-          <div
-            className="blog-prose"
-            dangerouslySetInnerHTML={{ __html: post.html }}
-          />
-        </Container>
-      </section>
-
-      <CtaBand {...BLOG_PAGE.cta} />
-    </>
-  );
+  return <div data-blog-page className={styles.page}>
+    <JsonLd data={blogPostingJsonLd(post)} />
+    <BlogArticle post={post} />
+    <BlogClosing />
+  </div>;
 }

@@ -5,9 +5,10 @@ export interface InstitutionalMandateItem {
 }
 
 export const INSTITUTIONAL_OVERVIEW = {
-  title: "About the society",
+  title: "Good problems give people a reason to meet.",
   definition:
-    "AMS is the Algorithms & Mathematics Society. We organize Derive, a quantitative reasoning contest, and Ascent, a systems engineering contest. Our events bring students, early-career participants, and partner firms together.",
+    "AMS is the Algorithms & Mathematics Society. We bring people together around quantitative and systems problems, with shared rules and time to discuss the work.",
+  philosophy: "We want a competition to give participants something worth thinking about and people worth learning from. For firms, that shared work can be the starting point for a more specific technical conversation.",
   image: {
     src: "/images/derive26/hero/finalists-meet-the-interviewers.webp",
     alt: "Derive finalists meeting interviewers from partner firms at IIT Bombay",
@@ -15,7 +16,7 @@ export const INSTITUTIONAL_OVERVIEW = {
   },
   action: { label: "Meet the team", href: "/team" },
   evidenceLinks: [
-    { label: "Read about AMS", href: "/blog/what-ams-actually-is" },
+    { label: "Why we run competitions", href: "/blog/welcome-to-ams" },
   ],
   mandate: [
     {

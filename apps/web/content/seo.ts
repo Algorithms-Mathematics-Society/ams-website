@@ -83,6 +83,7 @@ export function blogPostingJsonLd(post: {
   title: string;
   description: string;
   pubDate: Date;
+  updatedDate?: Date;
   author: string;
   cover: { full: string; alt: string };
 }) {
@@ -106,6 +107,7 @@ export function blogPostingJsonLd(post: {
     headline: post.title,
     description: post.description,
     datePublished: post.pubDate.toISOString(),
+    ...(post.updatedDate ? { dateModified: post.updatedDate.toISOString() } : {}),
     inLanguage: "en-IN",
     author,
     publisher: { "@id": ORGANIZATION_ID },

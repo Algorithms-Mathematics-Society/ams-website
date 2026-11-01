@@ -10,7 +10,7 @@ export function DeriveHero() {
     <section className={styles.hero} aria-labelledby="derive-heading">
       <Container className={styles.layout}>
         <div className={styles.copy}>
-          <p className={neutral.eyebrow}>{DERIVE_HERO.eyebrow}</p>
+          <p className={neutral.pageKicker}>{DERIVE_HERO.eyebrow}</p>
           <h1 id="derive-heading" className={styles.title}>
             {DERIVE_HERO.title}
           </h1>

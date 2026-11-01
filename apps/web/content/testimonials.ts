@@ -9,12 +9,15 @@ export interface Testimonial {
 export const TESTIMONIALS_SECTION = {
   eyebrow: "Participant feedback",
   title: "In the competitors' words.",
-  note: "Selected responses from the Derive '26 post-event feedback form.",
+  note: "Selected participant feedback · Derive ’26 · June 2026",
+  editingNote: "Quotes shortened and lightly edited.",
 } as const;
 
 /**
- * Quotes are real, from the Derive '26 post-event feedback form, whose own
- * field said the review would be used on the website. Lightly edited for
+ * Quotes were checked against the supplied June 2026 response workbook; its review
+ * field said the review would be used on the website. These responses predate
+ * the July finals. Source worksheet rows: Prabhu 39, Shane 29, Abhishek 31.
+ * Lightly edited for
  * grammar and length only; no claim was added that the participant did not
  * make.
  *
@@ -41,12 +44,12 @@ export const TESTIMONIALS: Testimonial[] = [
     detail: "Derive '26 participant",
     featured: true,
     quote:
-      "A really well designed contest: the problems are a mixture of probability, game theory, ad hoc, math and quant. The style is unique, mainly in how the problem statements are designed.",
+      "A well-designed contest: the problems are a mixture of probability, game theory, ad hoc problems, mathematics and quant. The style of the problem statements is unique.",
   },
   {
     name: "Abhishek Yasraj",
     detail: "Derive '26 participant",
     quote:
-      "Just right for those who love the mathematics part of programming and want to avoid the implementation-heavy stuff. A crazy platform for math lovers.",
+      "Just right for those who love the mathematics part of programming and want to avoid other implementation work.",
   },
 ];

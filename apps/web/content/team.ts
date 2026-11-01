@@ -9,14 +9,17 @@ export interface TeamMember {
 }
 
 export const TEAM_PAGE = {
-  eyebrow: "The people behind AMS",
-  title: "Built by competitors.",
-  body: "Meet the people behind our contests, problem design, partnerships, and community. Together with our judges, volunteers, and contributors, they bring each edition of AMS to life.",
+  eyebrow: "Team",
+  title: "The people behind AMS.",
+  rosterLabel: "AMS team members",
+  body: "AMS brings people together through quantitative and systems competitions. Meet the people building the contests, assessment tools, partnerships, and community around that work.",
   cta: {
-    title: "Contribute to the next edition.",
+    title: "Interested in contributing?",
     body: "AMS works with problem setters, judges, operations volunteers, and platform contributors. Email us with your area of interest and a little about your experience.",
-    buttonLabel: "Contact AMS",
+    buttonLabel: "Discuss contributing",
     buttonHref: "mailto:team@amshq.in?subject=Volunteering%20with%20AMS",
+    emailLabel: "team@amshq.in",
+    emailHref: "mailto:team@amshq.in",
   },
 } as const;
 
@@ -30,10 +33,6 @@ export const TEAM: TeamMember[] = [
     profile: {
       label: "Tilak on LinkedIn",
       href: "https://www.linkedin.com/in/tilak-jain-521913328/",
-    },
-    image: {
-      src: "/images/founder.webp",
-      alt: "Tilak Jain addressing participants at the Derive finals",
     },
   },
   {
@@ -70,9 +69,53 @@ export const TEAM: TeamMember[] = [
     id: "sahil",
     name: "Sahil",
     role: "Head of Partnerships · AMS Derive 2026",
+    affiliation: "IIT Kharagpur",
     profile: {
       label: "Sahil on LinkedIn",
       href: "https://www.linkedin.com/in/sahil-4a7830281/",
     },
   },
+  {
+    id: "shubhranil-paul",
+    name: "Shubhranil Paul",
+    role: "Software Engineering Intern · Winter 2026",
+    affiliation: "University of Mumbai",
+    profile: {
+      label: "Shubhranil on LinkedIn",
+      href: "https://www.linkedin.com/in/shubhranil-paul/",
+    },
+  },
+  {
+    id: "rasesh-shetty",
+    name: "Rasesh Shetty",
+    role: "Software Engineering Intern · Winter 2026",
+    affiliation: "IIT (BHU) Varanasi",
+    profile: {
+      label: "Rasesh on LinkedIn",
+      href: "https://www.linkedin.com/in/rasesh-shetty/",
+    },
+  },
 ];
+
+/** Editorial purpose, grounded in the sales audience brief and published AMS introduction. */
+export const TEAM_STORY = {
+  workLabel: "What we work on",
+  work: [
+    { name: "Derive", detail: "Quantitative reasoning", href: "/derive" },
+    { name: "Ascent", detail: "Systems engineering", href: "/ascent" },
+    { name: "AMS Access", detail: "Coding assessments", href: "/access#assessments" },
+  ],
+  vision: {
+    label: "Our vision",
+    title: "Give ability a place to be seen.",
+    paragraphs: [
+      "We want people to have meaningful opportunities to test their ideas, show their work, and meet others who take the same problems seriously.",
+      "For AMS, that starts with competitions in quantitative reasoning and systems engineering: shared problems, clear rules, and room for discussion beyond the score. A contest result is a starting point for understanding someone’s work, alongside their other experience and a conversation about how they think.",
+    ],
+  },
+  founderId: "tilak-jain",
+  founderContext: "In his introduction to AMS, Tilak describes the starting point: a good problem gives people something concrete to work on together. The competitions put that idea into practice through timed rounds, shared rules, and in-person finals.",
+  founderEssay: { label: "Read why AMS runs competitions", href: "/blog/welcome-to-ams" },
+  teamTitle: "Our team",
+  teamBody: "Working across problem design, software development, partnerships, and community.",
+} as const;
