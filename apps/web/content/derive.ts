@@ -107,6 +107,7 @@ export const DERIVE_CTA = {
 /** Subject areas published on amsderive.in; this describes the 2026 edition. */
 export const DERIVE_SUBJECTS = {
   title: "The problems",
+  walkthrough: { label: "Work through a Derive probability problem", href: "/blog/expected-value-vs-most-likely-outcome" },
   items: [
     { title: "Probability and inference", body: "Reason about uncertain outcomes using probability, expected value, and Bayesian inference." },
     { title: "Markets and models", body: "Work with questions involving market microstructure, stochastic processes, and options pricing." },

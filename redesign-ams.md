@@ -1426,3 +1426,19 @@ Validation: lint, TypeScript, production build, SEO checks, and production brows
 - [x] Use the supplied solo chevron for favicon, Apple touch icon, and organization logo, with white square backing for legibility across browser surfaces.
 - [x] Preserve the supplied burgundy/gold and cream/gold artwork. Do not recolor the page theme or add a footer logo badge.
 - [x] Review screenshots at 320/375/768/1024/1440px; verify image loading, proportions, navigation space, at least 44px link targets, and no horizontal overflow. Automated accessibility, lint, typecheck, build, and SEO checks pass.
+
+### Third article: demonstrate the work
+
+- [x] Select Posterior Problem A for its accessible distinction between expectation and mode; the separate-bond experiment remains clearly distinct from compounding.
+- [x] Publish an AMS Team explanation with derivation, exact Python, a generated binomial chart, source attribution, and the existing Shane Christian review clearly labelled as contest-wide feedback.
+- [x] Use sales guidance to lead with useful work, explain assumptions, and offer relevant next steps without invented setter commentary, hiring outcomes, or SEO guarantees.
+- [x] Feature the article on the index. The existing pipeline generates canonical metadata, social previews, BlogPosting schema, reading time, and sitemap entry; add its link to llms.txt.
+- [x] Verify all 3 supplied examples, 871 unique modes, 20 excluded ties, and 163 additional exact path-enumeration cases. Browser checks pass at five widths and 200% text; automated accessibility passes.
+
+The supplied PDF is the factual source for the task. The article is an independently checked explanation, not represented as a setter-authored editorial. The company scenario is explicitly fictional. Publication date: 2 November 2026.
+
+Article production checks: lint, typecheck, build, and SEO validation pass (12 pages). Local mobile Lighthouse: performance 95, accessibility 100, CLS 0, LCP 2.9 seconds. The site's stricter 2-second LCP target remains unmet.
+
+Article code update: C++17 now precedes Python 3. The comment-free C++ implementation uses GNU `__int128` intermediates and a bounded integer multiplication loop, with signed 64-bit output conversions justified by the statement. Extracted article code compiled cleanly with warnings enabled and matched Python on 13,751 valid cases under undefined-behavior sanitization. Metadata and the AI-facing article summary now mention both languages.
+
+Final article review: rechecked mathematical claims against the supplied statement and reran exact-reference checks. Rechecked mobile/desktop layouts, 200% text, code-block overflow containment, and automated accessibility after adding C++ first. Added a descriptive link from Derive's problem section and restrained emphasis on the core probability concepts. Canonical, social preview, BlogPosting schema, sitemap, and index discovery remain generated from the article's frontmatter; no keyword stuffing or ranking claims added.

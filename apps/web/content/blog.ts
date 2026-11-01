@@ -1,6 +1,6 @@
 export const BLOG_PAGE = {
   eyebrow: "Blog",
-  featuredSlug: "welcome-to-ams",
+  featuredSlug: "expected-value-vs-most-likely-outcome",
   readingTimeLabel: "min read",
   updatedLabel: "Updated",
   backLabel: "All notes",

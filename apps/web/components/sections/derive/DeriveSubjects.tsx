@@ -17,6 +17,7 @@ export function DeriveSubjects() {
             </li>
           ))}
         </ul>
+        <p><Link href={DERIVE_SUBJECTS.walkthrough.href} className={`${neutral.textLink} ${styles.link}`}>{DERIVE_SUBJECTS.walkthrough.label}</Link></p>
         <p className={styles.note}>{DERIVE_SUBJECTS.note}</p>
         <Link href={DERIVE_SUBJECTS.link.href} className={`${neutral.textLink} ${styles.link}`}>{DERIVE_SUBJECTS.link.label}</Link>
       </Container>

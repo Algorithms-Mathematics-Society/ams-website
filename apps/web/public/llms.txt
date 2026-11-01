@@ -61,6 +61,8 @@ Key facts:
 - [Team](https://www.amshq.in/team): founder, team members, and contribution opportunities
 - [Blog](https://www.amshq.in/blog): notes about AMS and its competitions
 
+- [Expected value vs most likely outcome](https://www.amshq.in/blog/expected-value-vs-most-likely-outcome): a worked Derive Posterior probability problem, with binomial mode derivation and exact C++ and Python implementations
+
 ## Related properties
 
 - [Derive 2026 rules](https://amsderive.in/rules): eligibility and rules for the 2026 edition
