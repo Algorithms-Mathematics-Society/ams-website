@@ -13,11 +13,11 @@ export function Footer() {
           <div className={styles.identity}>
             <Link href="/" aria-label="AMS home" className={styles.brand}>
               <Image
-                src="/brand/wordmark-horizontal-white.svg"
+                src="/brand/ams-foot.svg"
                 alt=""
                 aria-hidden="true"
                 width={119}
-                height={36}
+                height={40}
               />
             </Link>
             <p className={styles.name}>{SITE.legalName}</p>

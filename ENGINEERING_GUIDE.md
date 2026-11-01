@@ -340,8 +340,10 @@ roles live in `app/globals.css` as `--shell-*` tokens: white canvas, near-black
 text, neutral separators, red `#b4232f` active/focus accents, and 6px controls.
 Layout CSS modules consume those roles without overriding page-level tokens.
 
-The header is 64px on mobile and 72px from 1024px, with the supplied black AMS
-wordmark. The footer uses the supplied white wordmark on a near-black surface.
+The header is 64px on mobile and 72px from 1024px, with the supplied `ams-nav.svg`
+wordmark (119 by 40). The footer uses the supplied `ams-foot.svg` (119 by 40) directly on
+its near-black surface. Use `ams-chevron-logo-solo.svg` for icon-only identity;
+the favicon, Apple touch icon, and structured-data logo are rasterized from it.
 Navigation links, contact links, and controls retain 44px targets. Primary shell
 actions are black; red is reserved for focus and current-route indicators.
 The mobile menu uses a native modal dialog for background inertness and focus

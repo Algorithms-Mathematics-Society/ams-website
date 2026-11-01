@@ -29,7 +29,7 @@
   border-radius: 3px;
 }
 
-.wordmark { width: 119px; height: 36px; flex-shrink: 0; }
+.wordmark { width: 119px; height: 40px; flex-shrink: 0; }
 
 .legalName {
   display: none;

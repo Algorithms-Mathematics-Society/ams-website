@@ -1419,3 +1419,10 @@ Validation: lint, TypeScript, production build, SEO checks, and production brows
 - [x] Align Ascent/Derive secondary links and Team profile/work links with the shared 15px text-link role. Keep primary buttons at 48px and text-link targets at least 44px. Restore persistent profile-link underlines.
 - [x] Use equivalent rem typography in the header/footer so text responds to reading preferences, preserving default visual sizes.
 - [x] Subagent review confirmed active navigation, mobile menu dismissal, focus restoration, and scroll unlocking; no changes needed to those behaviors.
+
+### Supplied logo assets
+
+- [x] Use `ams-nav.svg` in the shared navbar and `ams-foot.svg` directly on the dark footer, both at their native 119 × 40 aspect ratio.
+- [x] Use the supplied solo chevron for favicon, Apple touch icon, and organization logo, with white square backing for legibility across browser surfaces.
+- [x] Preserve the supplied burgundy/gold and cream/gold artwork. Do not recolor the page theme or add a footer logo badge.
+- [x] Review screenshots at 320/375/768/1024/1440px; verify image loading, proportions, navigation space, at least 44px link targets, and no horizontal overflow. Automated accessibility, lint, typecheck, build, and SEO checks pass.

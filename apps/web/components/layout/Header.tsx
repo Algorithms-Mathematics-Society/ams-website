@@ -16,10 +16,10 @@ export function Header() {
         <Container className={styles.inner}>
           <Link href="/" className={styles.brand} aria-label={`${SITE.name} home`}>
             <Image
-              src="/brand/wordmark-horizontal-black.svg"
+              src="/brand/ams-nav.svg"
               alt=""
               width={119}
-              height={36}
+              height={40}
               priority
               className={styles.wordmark}
             />
