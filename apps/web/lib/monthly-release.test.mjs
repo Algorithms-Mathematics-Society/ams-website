@@ -81,3 +81,17 @@ test("dates are formatted in IST", () => {
     "1 January 2027",
   );
 });
+
+test('build clock rejects local-time ambiguity and calendar rollover', () => {
+  for (const value of ['2027-02-30T00:00:00Z', '2027-01-01T18:00:00', '2027-01-01']) {
+    assert.throws(() => getBuildNow({ AMS_BUILD_NOW: value }), /AMS_BUILD_NOW/);
+  }
+});
+test('release schedule preserves IST cadence across a complete leap-year cycle', () => {
+  for (let month = 0; month < 24; month += 1) {
+    const now = new Date(Date.UTC(2027, month, 15));
+    const next = nextDropAt(now, launch);
+    assert.equal(next.toISOString(), new Date(Date.UTC(2027, month + 1, 1, 12, 30)).toISOString());
+    assert.ok(next > now);
+  }
+});

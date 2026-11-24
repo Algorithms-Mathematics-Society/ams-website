@@ -2,6 +2,9 @@ import fs from "fs";
 import path from "path";
 import { cache } from "react";
 import matter from "gray-matter";
+import { unified } from "unified";
+import remarkParse from "remark-parse";
+import { createMonthlyCard } from "./monthly-card";
 import { compileMarkdown } from "./markdown";
 import {
   fail,
@@ -83,9 +86,10 @@ function formUrl(value: string, field: string, file: string): string {
     !url ||
     url.protocol !== "https:" ||
     url.hostname !== "docs.google.com" ||
-    !url.pathname.startsWith("/forms/")
+    url.username !== "" || url.password !== "" || url.port !== "" ||
+    !/^\/forms\/d\/(?:e\/)?[A-Za-z0-9_-]+\/viewform\/?$/.test(url.pathname)
   ) {
-    fail(file, field, "must be an https://docs.google.com/forms/ link");
+    fail(file, field, "must be an https://docs.google.com/forms/ respondent viewform link");
   }
   return value;
 }
@@ -95,18 +99,29 @@ function splitBody(
   body: string,
   file: string,
 ): { intro: string; warmup: string; main: string } {
-  const warmAt = body.indexOf(`\n${SECTION.warmup}\n`);
-  const mainAt = body.indexOf(`\n${SECTION.main}\n`);
-  if (warmAt === -1 || mainAt === -1 || mainAt < warmAt) {
-    throw new Error(
-      `${file}: body needs a "${SECTION.warmup}" section followed by a "${SECTION.main}" section.`,
-    );
+  const sections = unified().use(remarkParse).parse(body).children
+    .filter((node) => node.type === "heading" && node.depth === 2)
+    .map((node) => ({
+      label: node.type === "heading" ? node.children.map((child) => child.type === "text" ? child.value : "").join("") : "",
+      start: node.position!.start.offset!,
+      end: node.position!.end.offset!,
+    }));
+  const warmups = sections.filter((section) => section.label === "Warm-up");
+  const mains = sections.filter((section) => section.label === "Main");
+  const warm = warmups[0];
+  const main = mains[0];
+  if (warmups.length !== 1 || mains.length !== 1 || warm.start >= main.start) {
+    throw new Error(`${file}: body needs exactly one "${SECTION.warmup}" section followed by one "${SECTION.main}" section.`);
   }
-  return {
-    intro: body.slice(0, warmAt).trim(),
-    warmup: body.slice(warmAt + SECTION.warmup.length + 2, mainAt).trim(),
-    main: body.slice(mainAt + SECTION.main.length + 2).trim(),
+  const result = {
+    intro: body.slice(0, warm.start).trim(),
+    warmup: body.slice(warm.end, main.start).trim(),
+    main: body.slice(main.end).trim(),
   };
+  if (!result.warmup || !result.main) {
+    throw new Error(`${file}: Warm-up and Main sections must both contain a question.`);
+  }
+  return result;
 }
 
 function readFrontmatter(file: string): {
@@ -149,6 +164,7 @@ async function loadSolution(
   number: number,
   deadline: Date,
   now: Date,
+  title: string,
 ): Promise<MonthlySolution | null> {
   const file = path.join(folder, "solution.md");
   if (!fs.existsSync(file)) return null;
@@ -163,6 +179,7 @@ async function loadSolution(
   const slug = data.editorialSlug;
   if (slug !== null && slug !== undefined && typeof slug !== "string")
     fail(label, "editorialSlug", "must be a post slug or null");
+  await createMonthlyCard(number, title, solutionAt, true);
   return {
     solutionAt,
     answers: tierStrings(data, "answers", label),
@@ -188,13 +205,15 @@ async function loadProblem(
     fail(label, "deadline", "must be after releaseAt");
   const urls = tierStrings(data, "formUrls", label);
   const body = splitBody(content, label);
+  const title = reqString(data, "title", label);
+  await createMonthlyCard(number, title, releaseAt);
 
   return {
     number,
     releaseAt,
     deadline,
     track: oneOf(data.track, TRACKS, "track", label),
-    title: reqString(data, "title", label),
+    title,
     description: reqString(data, "description", label),
     answerFormat: tierStrings(data, "answerFormat", label),
     formUrls: {
@@ -206,7 +225,7 @@ async function loadProblem(
       warmup: await compile(body.warmup, folder, number),
       main: await compile(body.main, folder, number),
     },
-    solution: await loadSolution(folder, number, deadline, now),
+    solution: await loadSolution(folder, number, deadline, now, title),
   };
 }
 

@@ -5,14 +5,31 @@
 const IST_OFFSET_MS = (5 * 60 + 30) * 60 * 1000;
 const DROP_HOUR_IST = 18;
 
+/** Parse an explicit ISO instant without JavaScript's calendar rollover coercion. */
+export function parseIsoInstant(value: unknown): Date | null {
+  if (typeof value !== "string") return null;
+  const match = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})(?:\.\d{1,3})?(Z|[+-]\d{2}:\d{2})$/.exec(value);
+  if (!match) return null;
+  const [, yearText, monthText, dayText, hourText, minuteText, secondText, offset] = match;
+  const [year, month, day, hour, minute, second] =
+    [yearText, monthText, dayText, hourText, minuteText, secondText].map(Number);
+  const leap = year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0);
+  const days = [31, leap ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+  if (month < 1 || month > 12 || day < 1 || day > days[month - 1] ||
+      hour > 23 || minute > 59 || second > 59) return null;
+  if (offset !== "Z" && (Number(offset.slice(1, 3)) > 23 || Number(offset.slice(4)) > 59)) return null;
+  const date = new Date(value);
+  return Number.isFinite(date.getTime()) ? date : null;
+}
+
 /** Build-time "now". AMS_BUILD_NOW (ISO) pins it for tests and preflight builds. */
 export function getBuildNow(
   env: Record<string, string | undefined> = process.env,
 ): Date {
   const pinned = env.AMS_BUILD_NOW;
   if (!pinned) return new Date();
-  const date = new Date(pinned);
-  if (!Number.isFinite(date.getTime())) {
+  const date = parseIsoInstant(pinned);
+  if (!date) {
     throw new Error(`AMS_BUILD_NOW is not a valid ISO date: "${pinned}"`);
   }
   return date;

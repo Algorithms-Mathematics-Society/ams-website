@@ -31,6 +31,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `Solution: ${problem.title} · ${MONTHLY.name} #${problem.number}`,
     description: `The solution to ${MONTHLY.name} #${problem.number}, "${problem.title}", with the correct solvers who chose to be listed.`,
     path: `/monthly/${problem.number}/solution`,
+    image: { url: `/monthly-assets/${problem.number}/solution.png`, width: 1200, height: 630, alt: problem.title },
     publishedTime: problem.solution.solutionAt.toISOString(),
   });
 }

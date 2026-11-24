@@ -24,3 +24,9 @@ next-env.d.ts
 
 # Firebase CLI debug output can contain local deployment details.
 firebase-debug.log*
+
+# Monthly intake exports and private planning never belong in this public repo.
+*.csv
+*.xlsx
+/exports/
+/docs/blog-plan.md

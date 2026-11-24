@@ -33,7 +33,7 @@ export const MONTHLY = {
     contributeLabel: "Write up your solution",
     contributeHref: "/blog/contribute",
     archiveTitle: "Archive",
-    solvedByLabel: "correct solvers",
+    solvedByLabel: "listed solves across both parts",
   },
 
   problem: {

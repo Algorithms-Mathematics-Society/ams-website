@@ -33,8 +33,7 @@ export function MonthlyArchive({ problems }: Props) {
               ? getSolverList(problem.number)
               : null;
             const count = solvers
-              ? new Set([...solvers.warmup, ...solvers.main].map((s) => s.name))
-                  .size
+              ? solvers.warmup.length + solvers.main.length
               : null;
             return (
               <li key={problem.number} className={styles.row}>

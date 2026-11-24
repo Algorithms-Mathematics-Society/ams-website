@@ -7,8 +7,10 @@
 // fails to load or parse stops the build, so the last good deployment stays live.
 // With no MONTHLY_SOLVERS_FEED_URL set, it writes `null` (local and preview builds).
 
-import { mkdirSync, writeFileSync } from "node:fs";
+import { mkdirSync, writeFileSync, rmSync } from "node:fs";
 import { dirname, resolve } from "node:path";
+import { randomUUID } from "node:crypto";
+import { spawnSync } from "node:child_process";
 
 const OUT = resolve(import.meta.dirname, "../.generated/monthly-solvers.json");
 const HEADER = ["number", "tier", "display_name", "institution", "grad_year"];
@@ -19,27 +21,38 @@ export function parseCsv(text) {
   let row = [];
   let field = "";
   let quoted = false;
+  let closedQuote = false;
   for (let i = 0; i < text.length; i += 1) {
     const char = text[i];
     if (quoted) {
       if (char === '"' && text[i + 1] === '"') {
         field += '"';
         i += 1;
-      } else if (char === '"') quoted = false;
-      else field += char;
-    } else if (char === '"') quoted = true;
-    else if (char === ",") {
+      } else if (char === '"') {
+        quoted = false;
+        closedQuote = true;
+      } else field += char;
+    } else if (char === '"') {
+      if (field !== "" || closedQuote) throw new Error("Solver feed: unexpected quote.");
+      quoted = true;
+    } else if (char === ",") {
       row.push(field);
       field = "";
+      closedQuote = false;
     } else if (char === "\n" || char === "\r") {
       if (char === "\r" && text[i + 1] === "\n") i += 1;
       row.push(field);
       rows.push(row);
       row = [];
       field = "";
-    } else field += char;
+      closedQuote = false;
+    } else {
+      if (closedQuote) throw new Error("Solver feed: text after closing quote.");
+      field += char;
+    }
   }
-  if (field !== "" || row.length > 0) {
+  if (quoted) throw new Error("Solver feed: unterminated quoted field.");
+  if (field !== "" || row.length > 0 || closedQuote) {
     row.push(field);
     rows.push(row);
   }
@@ -69,7 +82,7 @@ export function toSolverLists(rows) {
       cell.trim(),
     );
     const number = Number(numberCell);
-    if (!Number.isInteger(number) || number < 1)
+    if (!/^[1-9]\d*$/.test(numberCell) || !Number.isSafeInteger(number))
       throw new Error(`Solver feed line ${line}: bad problem number.`);
     if (tier !== "warmup" && tier !== "main")
       throw new Error(`Solver feed line ${line}: tier must be warmup or main.`);
@@ -88,7 +101,7 @@ export function toSolverLists(rows) {
   return lists;
 }
 
-async function load(url) {
+export async function loadSolverFeed(url, fetchImpl = fetch) {
   const parsed = new URL(url);
   if (parsed.protocol !== "https:" || parsed.hostname !== "docs.google.com") {
     throw new Error(
@@ -98,7 +111,7 @@ async function load(url) {
   let lastError;
   for (let attempt = 1; attempt <= 3; attempt += 1) {
     try {
-      const response = await fetch(url, {
+      const response = await fetchImpl(url, {
         signal: AbortSignal.timeout(20_000),
       });
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
@@ -116,8 +129,10 @@ if (
   process.argv[1] &&
   resolve(process.argv[1]) === resolve(import.meta.filename)
 ) {
+  // Remove previous snapshots before fetching, including on a failed fetch.
+  rmSync(OUT, { force: true });
   const url = process.env.MONTHLY_SOLVERS_FEED_URL;
-  const lists = url ? await load(url) : null;
+  const lists = url ? await loadSolverFeed(url) : null;
   mkdirSync(dirname(OUT), { recursive: true });
   writeFileSync(OUT, JSON.stringify(lists));
   const count = lists
@@ -131,4 +146,16 @@ if (
       ? `Monthly solver feed: ${count} rows.`
       : "Monthly solver feed: not configured, writing null.",
   );
+  // This token prevents a direct Next build from reusing an older snapshot.
+  if (process.argv.includes("--build")) {
+    const token = randomUUID();
+    writeFileSync(resolve(dirname(OUT), "build-token"), token);
+    rmSync(resolve(import.meta.dirname, "../public/monthly-assets"), { recursive: true, force: true });
+    const result = spawnSync(process.execPath, [resolve(import.meta.dirname, "../node_modules/next/dist/bin/next"), "build"], {
+      stdio: "inherit",
+      env: { ...process.env, AMS_PREPARED_BUILD: token },
+    });
+    if (result.error) throw result.error;
+    process.exitCode = result.status ?? 1;
+  }
 }

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { Button as AstryxButton } from "@astryxdesign/core/Button";
+import "@astryxdesign/core/astryx.css";
 import { cn } from "@/lib/cn";
 
 interface Props {

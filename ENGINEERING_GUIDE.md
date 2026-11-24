@@ -566,15 +566,36 @@ about an unreleased month into this repo, including commit messages and PR title
   a configured feed that fails stops the build. Names are never committed, so
   deletion is "remove the row, rebuild". Production requires the feed once a
   solution is released. The Vercel build must run `pnpm build`, not bare `next build`.
+  The build wrapper fetches a fresh snapshot, clears generated Monthly assets, and
+  passes a per-run token to Next. The Next config rejects builds without that token,
+  even if an old snapshot exists. No feed failure falls back to cached names.
+- Released problems and solutions generate individual 1200x630 share cards inside
+  `public/monthly-assets/`; solution cards contain no answers.
+- The archive counts listed solves across tiers, not unique people: the public feed
+  has no stable identifier and display names must not be used as identity keys.
 - Community posts use optional frontmatter in `blogs/`: `authorType`
   (ams/community/practitioner), `affiliation`, `aiUse` (none/editing/drafting;
   "substantial" is rejected), `explainerVerified` (requires `reviewedBy`),
   `reviewedBy` {name?, role}, `explainerUrl`, `monthly`. `contribute` is a reserved
   slug.
 - Solver lists are plain tables: alphabetical, no ranks, times, medals or streaks.
-- Checks: `pnpm --filter web test:monthly` (date gate, Node 24) and
-  `pnpm --filter web check:monthly-leak` (two real builds against synthetic
-  fixtures; unreleased canaries must appear nowhere). Rebuild normally afterwards.
+- Schedule timestamps must be quoted ISO strings with seconds and an explicit
+  offset. Unquoted YAML timestamps are rejected because YAML may normalize an
+  impossible calendar date before validation. Forms must use respondent `viewform`
+  URLs, not editor links. Tier headings are parsed as Markdown, including CRLF input.
+- Checks: `pnpm --filter web test:monthly` (unit and loader integration tests, Node
+  24), `pnpm --filter web check:monthly-leak` (two real secrecy builds), and
+  `pnpm --filter web check:monthly-system` (synthetic production feed, withdrawals,
+  deadline transitions, HTTP checks and failure paths). System tests restore the
+  normal prelaunch build. Do not run build-based checks concurrently in one checkout.
+  The optional browser pass is enabled with `AMS_TEST_BROWSER=1`, an externally
+  installed `PLAYWRIGHT_MODULE`, `CHROME_PATH`, and `AXE_SCRIPT`; no browser testing
+  dependency is shipped to site visitors.
+- Astryx's component stylesheet is imported by `components/ui/Button.tsx`, its
+  styled consumer, instead of the root layout. Plain Monthly and contributor pages
+  do not download the full component library's styles. The disclosure uses Astryx's
+  headless hook and has its own existing styles.
+
 
 ## Philosophy and evidence in buyer journeys
 

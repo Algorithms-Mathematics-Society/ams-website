@@ -6,7 +6,7 @@ import matter from "gray-matter";
 // takes the same untyped-require approach.
 import sharp from "sharp";
 import { compileMarkdown, resolveLocalImage as resolveImage } from "./markdown";
-import { fail, oneOf, optBoolean, optHttpsUrl, optString } from "./frontmatter";
+import { fail, oneOf, optBoolean, optHttpsUrl, optString, reqRecord } from "./frontmatter";
 
 // blogs/ lives at the repo root, next to media/ and docs/: source content that
 // a build step turns into site output, same shape as media/photos -> public/images.
@@ -108,9 +108,10 @@ function readProvenance(data: RawFrontmatter, slug: string): PostProvenance {
   const explainerVerified = optBoolean(record, "explainerVerified", file);
   let reviewedBy: PostProvenance["reviewedBy"];
   if (data.reviewedBy !== undefined) {
-    const role = optString(data.reviewedBy as Record<string, unknown>, "role", file);
+    const reviewer = reqRecord(record, "reviewedBy", file);
+    const role = optString(reviewer, "role", file);
     if (!role) fail(file, "reviewedBy.role", "is required when reviewedBy is set");
-    reviewedBy = { role, name: optString(data.reviewedBy as Record<string, unknown>, "name", file) };
+    reviewedBy = { role, name: optString(reviewer, "name", file) };
   }
   if (explainerVerified && !reviewedBy) fail(file, "reviewedBy", "is required when explainerVerified is true");
   const monthly = data.monthly;

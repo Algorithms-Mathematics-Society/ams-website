@@ -1,4 +1,6 @@
 import path from "path";
+import fs from "node:fs";
+import { PHASE_PRODUCTION_BUILD } from "next/constants";
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
@@ -21,4 +23,13 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+export default function config(phase: string): NextConfig {
+  if (phase === PHASE_PRODUCTION_BUILD) {
+    const tokenFile = path.join(__dirname, ".generated/build-token");
+    if (!process.env.AMS_PREPARED_BUILD || !fs.existsSync(tokenFile) ||
+        fs.readFileSync(tokenFile, "utf8") !== process.env.AMS_PREPARED_BUILD) {
+      throw new Error("Run pnpm build: Monthly requires a fresh solver feed and asset cleanup before every build.");
+    }
+  }
+  return nextConfig;
+}

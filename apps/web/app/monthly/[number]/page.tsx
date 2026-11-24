@@ -27,6 +27,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${problem.title} · ${MONTHLY.name} #${problem.number}`,
     description: problem.description,
     path: `/monthly/${problem.number}`,
+    image: { url: `/monthly-assets/${problem.number}/problem.png`, width: 1200, height: 630, alt: problem.title },
     publishedTime: problem.releaseAt.toISOString(),
   });
 }

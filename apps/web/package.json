@@ -4,12 +4,13 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "node scripts/fetch-monthly-solvers.mjs && next build",
+    "build": "node scripts/fetch-monthly-solvers.mjs --build",
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
     "check:seo": "node scripts/check-seo.mjs",
-    "test:monthly": "node --test lib/monthly-release.test.mjs",
+    "test:monthly": "node --import ./tests/support/register-typescript.mjs --test lib/*.test.mjs scripts/*.test.mjs",
+    "check:monthly-system": "node scripts/check-monthly-system.mjs",
     "check:monthly-leak": "node scripts/check-monthly-leak.mjs"
   },
   "dependencies": {

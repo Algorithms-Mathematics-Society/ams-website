@@ -37,13 +37,19 @@ export function resolveLocalImage(
   ref: string,
   label: string,
 ): string {
-  if (/^https?:\/\//.test(ref) || ref.startsWith("/")) {
+  if (/^[a-z][a-z0-9+.-]*:/i.test(ref) || path.isAbsolute(ref)) {
     throw new Error(
       `${label}: image paths must be relative to the file's own folder ` +
         `(e.g. "./cover.jpg"), got "${ref}". Place the file inside ${label}/.`,
     );
   }
-  return path.resolve(sourceDir, ref);
+  const root = fs.realpathSync(sourceDir);
+  const resolved = fs.realpathSync(path.resolve(root, ref));
+  const relative = path.relative(root, resolved);
+  if (relative === ".." || relative.startsWith(`..${path.sep}`) || path.isAbsolute(relative)) {
+    throw new Error(`${label}: image must stay inside its own folder.`);
+  }
+  return resolved;
 }
 
 /** Copies an inline body image as-is (no crop) so it keeps its native aspect ratio. */
@@ -63,6 +69,18 @@ function rehypeLocalImages(context: MarkdownContext) {
   return async function transformer(tree: HastNode): Promise<HastNode> {
     const imgNodes: HastNode[] = [];
     const walk = (node: HastNode) => {
+      if (node.type === "element" && node.tagName === "a") {
+        const href = node.properties?.href;
+        if (typeof href === "string") {
+          // Author-supplied Markdown must not create executable link schemes.
+          try {
+            const url = new URL(href, "https://www.amshq.in");
+            if (!["https:", "http:", "mailto:", "tel:"].includes(url.protocol)) {
+              delete node.properties!.href;
+            }
+          } catch { delete node.properties!.href; }
+        }
+      }
       if (node.type === "element" && node.tagName === "img")
         imgNodes.push(node);
       node.children?.forEach(walk);
@@ -74,14 +92,15 @@ function rehypeLocalImages(context: MarkdownContext) {
       if (typeof src !== "string" || /^https?:\/\//.test(src)) continue;
 
       const resolved = resolveLocalImage(context.sourceDir, src, context.label);
-      const filename = path.basename(resolved);
+      const filename = path.relative(fs.realpathSync(context.sourceDir), resolved);
+      const publicName = filename.split(path.sep).map(encodeURIComponent).join("/");
       const outPath = path.join(context.publicDir, "inline", filename);
       copyInlineImage(resolved, outPath);
       const meta = await sharp(outPath).metadata();
 
       node.properties = {
         ...node.properties,
-        src: `${context.publicPrefix}/inline/${filename}`,
+        src: `${context.publicPrefix}/inline/${publicName}`,
         width: meta.width,
         height: meta.height,
         loading: "lazy",

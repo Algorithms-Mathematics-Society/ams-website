@@ -2,6 +2,8 @@
 // Each failure names the file and the field so `next build` fails with a
 // message an editor can act on. Deliberately dependency-free.
 
+import { parseIsoInstant } from "./monthly-release";
+
 type Data = Record<string, unknown>;
 
 export function fail(file: string, field: string, problem: string): never {
@@ -29,7 +31,7 @@ export function optString(
 
 export function reqInt(data: Data, field: string, file: string): number {
   const value = data[field];
-  if (typeof value !== "number" || !Number.isInteger(value) || value < 1)
+  if (typeof value !== "number" || !Number.isSafeInteger(value) || value < 1)
     fail(file, field, "must be a positive whole number");
   return value;
 }
@@ -43,18 +45,12 @@ export function optBoolean(data: Data, field: string, file: string): boolean {
 
 /** ISO date with an explicit offset, so a schedule can never drift with the build machine's zone. */
 export function reqIsoDate(data: Data, field: string, file: string): Date {
-  const value = data[field];
-  const text = value instanceof Date ? value.toISOString() : value;
-  if (typeof text !== "string" || !/([+-]\d{2}:\d{2}|Z)$/.test(text)) {
-    fail(
-      file,
-      field,
-      'must be an ISO date with an offset, for example "2027-01-01T18:00:00+05:30"',
-    );
+  // YAML timestamp coercion can normalize an impossible date before validation.
+  // Require quoted strings so the exact authored calendar date is checked.
+  const date = parseIsoInstant(data[field]);
+  if (!date) {
+    fail(file, field, 'must be a valid quoted ISO date with an explicit offset, for example "2027-01-01T18:00:00+05:30"');
   }
-  const date = new Date(text);
-  if (!Number.isFinite(date.getTime()))
-    fail(file, field, "is not a valid date");
   return date;
 }
 
@@ -77,7 +73,11 @@ export function optHttpsUrl(
 ): string | undefined {
   const value = optString(data, field, file);
   if (value === undefined) return undefined;
-  if (!/^https:\/\//.test(value)) fail(file, field, "must be an https URL");
+  let url: URL;
+  try { url = new URL(value); }
+  catch { fail(file, field, "must be a valid https URL"); }
+  if (url.protocol !== "https:" || !url.hostname || url.username || url.password)
+    fail(file, field, "must be an https URL without credentials");
   return value;
 }
 

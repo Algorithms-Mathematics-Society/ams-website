@@ -6,7 +6,6 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ORGANIZATION_JSONLD, WEBSITE_JSONLD } from "@/content/seo";
-import "@astryxdesign/core/astryx.css";
 import "./globals.css";
 
 const inter = Inter({

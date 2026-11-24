@@ -17,6 +17,8 @@ import {
   readFileSync,
   rmSync,
   statSync,
+  mkdirSync,
+  writeFileSync,
 } from "node:fs";
 import { join, resolve } from "node:path";
 
@@ -40,14 +42,17 @@ const UNRELEASED = [
 const SEARCH = [".next/server", ".next/static", "public"];
 
 function build(extraEnv) {
-  rmSync("public/monthly-assets", { recursive: true, force: true });
-  return spawnSync("node", ["node_modules/next/dist/bin/next", "build"], {
+  // Seed stale output to ensure the real build pipeline removes it.
+  mkdirSync("public/monthly-assets/3", { recursive: true });
+  writeFileSync("public/monthly-assets/3/stale.txt", "UNRELEASEDCANARYBODYTHREE");
+  return spawnSync("node", ["scripts/fetch-monthly-solvers.mjs", "--build"], {
     encoding: "utf8",
     env: {
       ...process.env,
       AMS_MONTHLY_DIR: "tests/fixtures/monthly",
       AMS_BUILD_NOW: NOW,
       MONTHLY_SOLVERS_FEED_URL: "",
+      VERCEL_ENV: "preview",
       NEXT_TELEMETRY_DISABLED: "1",
       ...extraEnv,
     },
