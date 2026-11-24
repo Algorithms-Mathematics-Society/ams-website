@@ -53,4 +53,5 @@ export const ASCENT_CTA = {
   buttonLabel: "Check entry status",
   buttonHref: "https://ascent.amshq.in/register/status",
   support: { label: "Email the competition team", href: "mailto:team@amshq.in" },
+  monthly: { label: "Practise with AMS Monthly between editions", href: "/monthly" },
 } as const;

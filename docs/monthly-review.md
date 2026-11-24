@@ -101,6 +101,27 @@ Browser checks used installed Chrome, not Safari/Firefox or physical phones. Liv
 Google submission/consent flows and remote Vercel settings remain untested because
 Phase 2 is not configured. The existing human and launch prerequisites below remain.
 
+## LCP follow-up (Claude, 24 November 2026)
+
+Same build, same local server, Lighthouse 13.5 mobile, two runs each:
+
+| Route | Performance | LCP | FCP |
+| --- | --- | --- | --- |
+| `/faq` (existing) | 99, 99 | 1.96 s, 1.96 s | 0.91 s |
+| `/blog` (existing) | 97, 99 | 2.55 s, 2.18 s | 0.91 s |
+| `/monthly` | 99, 98 | 1.96 s, 2.48 s | 0.90 s |
+| `/blog/contribute` | 98, 98 | 2.47 s, 2.42 s | 0.91 s |
+
+All four routes load identical CSS (two blocking files, 15 KB), JavaScript and the
+same preloaded Inter font. The LCP element on `/blog/contribute` is the intro
+paragraph (text), with an observed render delay of 71 ms. The simulated gap comes
+from whether that text paints before or after the web font arrives, which is why
+`/monthly` passed on one run and missed on the next with identical bytes, and why the
+existing `/blog` index misses too. It is a site-wide font-timing characteristic, not
+something the Monthly pages add. The candidate fix, `display: "optional"` for Inter in
+the root layout, changes how text looks on slow connections across every page, so it
+is a separate site-wide decision. Field data after deployment should decide it.
+
 ## Findings fixed
 
 - **High: stale build data could bypass the intake preparation.** A direct

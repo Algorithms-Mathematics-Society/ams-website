@@ -102,6 +102,7 @@ export const DERIVE_CTA = {
   buttonHref:
     "mailto:team@amshq.in?subject=Derive%20registration%20updates",
   gallery: { label: "View the 2026 gallery", href: "/gallery" },
+  monthly: { label: "Practise with AMS Monthly between editions", href: "/monthly" },
 } as const;
 
 /** Subject areas published on amsderive.in; this describes the 2026 edition. */

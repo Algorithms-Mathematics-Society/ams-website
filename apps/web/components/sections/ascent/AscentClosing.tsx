@@ -16,6 +16,7 @@ export function AscentClosing() {
         <div className={styles.actions}>
           <Link className={`${neutral.primary} ${styles.button}`} href={ASCENT_CTA.buttonHref}>{ASCENT_CTA.buttonLabel}</Link>
           <Link className={neutral.textLink} href={`${UPDATES_LINK.href}?topic=ascent`}>{UPDATES_LINK.label}</Link>
+          <Link className={neutral.textLink} href={ASCENT_CTA.monthly.href}>{ASCENT_CTA.monthly.label}</Link>
           <a className={neutral.textLink} href={ASCENT_CTA.support.href}>{ASCENT_CTA.support.label}</a>
         </div>
       </Container>

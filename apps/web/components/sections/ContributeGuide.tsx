@@ -7,7 +7,7 @@ import styles from "./Monthly.module.css";
 
 /** The bar, the defence, the AI policy and the timelines, all server-rendered. */
 export function ContributeGuide() {
-  const { ways, bar, defence, ai, next, privacy } = CONTRIBUTE;
+  const { ways, bar, example, defence, ai, next, privacy } = CONTRIBUTE;
   return (
     <section className={styles.section}>
       <Container>
@@ -36,6 +36,15 @@ export function ContributeGuide() {
               <li key={item}>{item}</li>
             ))}
           </ul>
+        </div>
+
+        <div className={styles.block}>
+          <h2 className={styles.heading}>{example.title}</h2>
+          <p className={blog.body}>{example.body}</p>
+          <Link href={example.href} className={neutral.textLink}>
+            {example.linkLabel}
+            <span aria-hidden="true"> →</span>
+          </Link>
         </div>
 
         <div className={styles.block}>

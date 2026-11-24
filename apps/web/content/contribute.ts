@@ -104,6 +104,14 @@ export const CONTRIBUTE = {
     ],
   },
 
+  example: {
+    title: "The bar, in one post",
+    body:
+      "Our Derive walkthrough shows what we look for: a real problem, a model stated before it is used, a derivation a reader can check, and code tested against the examples.",
+    linkLabel: "Read the example",
+    href: "/blog/expected-value-vs-most-likely-outcome",
+  },
+
   privacy: {
     title: "Nothing is rejected in public",
     body:

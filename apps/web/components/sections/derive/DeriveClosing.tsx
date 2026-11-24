@@ -16,6 +16,7 @@ export function DeriveClosing() {
         <div className={styles.actions}>
           <Link href={`${UPDATES_LINK.href}?topic=derive`} className={`${neutral.primary} ${styles.button}`}>{UPDATES_LINK.label}</Link>
           <Link href={DERIVE_CTA.gallery.href} className={neutral.textLink}>{DERIVE_CTA.gallery.label}</Link>
+          <Link href={DERIVE_CTA.monthly.href} className={neutral.textLink}>{DERIVE_CTA.monthly.label}</Link>
         </div>
       </Container>
     </section>
