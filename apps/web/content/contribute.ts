@@ -14,7 +14,8 @@ export const CONTRIBUTE = {
   status: {
     /** Set to the Google Form link once it exists. */
     formUrl: null as string | null,
-    open: false,
+    /** Intake opens at this instant, and only if formUrl is set. */
+    opensAt: "2027-01-01T18:00:00+05:30",
     openLine: "Pitches are open.",
     closedLine:
       "Pitches open with the first AMS Monthly problem on 1 January 2027.",

@@ -5,6 +5,8 @@ import {
   formatIstDate,
   getBuildNow,
   isDue,
+  isGoogleFormUrl,
+  isIntakeOpen,
   isOpen,
   nextDropAt,
 } from "./monthly-release.ts";
@@ -94,4 +96,32 @@ test('release schedule preserves IST cadence across a complete leap-year cycle',
     assert.equal(next.toISOString(), new Date(Date.UTC(2027, month + 1, 1, 12, 30)).toISOString());
     assert.ok(next > now);
   }
+});
+
+const goodForm = "https://docs.google.com/forms/d/e/1FAIpQLSabc_-123/viewform";
+const opensAt = "2027-01-01T18:00:00+05:30";
+
+test("intake is closed without a valid Form link, whatever the time", () => {
+  const after = new Date("2027-02-01T00:00:00+05:30");
+  assert.equal(isIntakeOpen(null, opensAt, after), false);
+  assert.equal(isIntakeOpen("http://docs.google.com/forms/d/abc/viewform", opensAt, after), false);
+  assert.equal(isIntakeOpen("https://evil.example/forms/d/abc/viewform", opensAt, after), false);
+  assert.equal(isIntakeOpen("not a url", opensAt, after), false);
+});
+
+test("intake with a valid link opens exactly at opensAt", () => {
+  assert.equal(isIntakeOpen(goodForm, opensAt, new Date("2027-01-01T17:59:59+05:30")), false);
+  assert.equal(isIntakeOpen(goodForm, opensAt, new Date("2027-01-01T18:00:00+05:30")), true);
+  assert.equal(isIntakeOpen(goodForm, opensAt, new Date("2027-03-01T00:00:00+05:30")), true);
+});
+
+test("intake is closed when opensAt is not a valid instant", () => {
+  assert.equal(isIntakeOpen(goodForm, "2027-13-01T18:00:00+05:30", new Date("2028-01-01T00:00:00Z")), false);
+});
+
+test("Form link rule rejects credentials, ports and edit links", () => {
+  assert.equal(isGoogleFormUrl(goodForm), true);
+  assert.equal(isGoogleFormUrl("https://u:p@docs.google.com/forms/d/abc/viewform"), false);
+  assert.equal(isGoogleFormUrl("https://docs.google.com:444/forms/d/abc/viewform"), false);
+  assert.equal(isGoogleFormUrl("https://docs.google.com/forms/d/abc/edit"), false);
 });

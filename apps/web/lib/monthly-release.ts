@@ -80,3 +80,31 @@ export function formatIstDate(date: Date): string {
     timeZone: "Asia/Kolkata",
   });
 }
+
+/** Constraint 11: an https docs.google.com respondent (viewform) link only. */
+export function isGoogleFormUrl(value: unknown): value is string {
+  if (typeof value !== "string") return false;
+  let url: URL;
+  try {
+    url = new URL(value);
+  } catch {
+    return false;
+  }
+  return (
+    url.protocol === "https:" &&
+    url.hostname === "docs.google.com" &&
+    url.username === "" && url.password === "" && url.port === "" &&
+    /^\/forms\/d\/(?:e\/)?[A-Za-z0-9_-]+\/viewform\/?$/.test(url.pathname)
+  );
+}
+
+/** Intake is open only with a valid Form link and a build at or after `opensAt`. */
+export function isIntakeOpen(
+  formUrl: string | null,
+  opensAt: string,
+  now: Date,
+): boolean {
+  if (!isGoogleFormUrl(formUrl)) return false;
+  const at = parseIsoInstant(opensAt);
+  return at !== null && isDue(at, now);
+}

@@ -14,7 +14,7 @@ import {
   reqRecord,
   reqString,
 } from "./frontmatter";
-import { getBuildNow, isDue, isOpen } from "./monthly-release";
+import { getBuildNow, isDue, isGoogleFormUrl, isOpen } from "./monthly-release";
 
 // AMS Monthly loader. Problems live in the repo-root `monthly/<number>/` folder,
 // copied there by the private vault's release workflow only once they are due.
@@ -76,19 +76,7 @@ function tierStrings(
 }
 
 function formUrl(value: string, field: string, file: string): string {
-  let url: URL | null = null;
-  try {
-    url = new URL(value);
-  } catch {
-    url = null;
-  }
-  if (
-    !url ||
-    url.protocol !== "https:" ||
-    url.hostname !== "docs.google.com" ||
-    url.username !== "" || url.password !== "" || url.port !== "" ||
-    !/^\/forms\/d\/(?:e\/)?[A-Za-z0-9_-]+\/viewform\/?$/.test(url.pathname)
-  ) {
+  if (!isGoogleFormUrl(value)) {
     fail(file, field, "must be an https://docs.google.com/forms/ respondent viewform link");
   }
   return value;

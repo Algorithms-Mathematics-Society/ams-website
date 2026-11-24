@@ -1,5 +1,6 @@
 import { Container } from "@/components/ui/Container";
 import { CONTRIBUTE } from "@/content/contribute";
+import { getBuildNow, isIntakeOpen } from "@/lib/monthly-release";
 import neutral from "@/components/ui/Neutral.module.css";
 import blog from "./Blog.module.css";
 import styles from "./Monthly.module.css";
@@ -7,7 +8,7 @@ import styles from "./Monthly.module.css";
 /** Intro plus the open or closed intake line; the form opens in a new tab. */
 export function ContributeIntro() {
   const { status } = CONTRIBUTE;
-  const open = status.open && status.formUrl !== null;
+  const open = isIntakeOpen(status.formUrl, status.opensAt, getBuildNow());
   return (
     <section className={blog.intro}>
       <Container>
