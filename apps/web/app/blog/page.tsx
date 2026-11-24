@@ -2,6 +2,7 @@ import { createPageMetadata } from "@/lib/metadata";
 import { BlogGrid } from "@/components/sections/BlogGrid";
 import { BlogClosing } from "@/components/sections/BlogClosing";
 import { BlogIntro } from "@/components/sections/BlogIntro";
+import { BlogMonthlyNotice } from "@/components/sections/BlogMonthlyNotice";
 import styles from "@/components/sections/Blog.module.css";
 
 export const metadata = createPageMetadata({
@@ -15,6 +16,7 @@ export default function BlogPage() {
   return (
     <div data-blog-page className={styles.page}>
       <BlogIntro />
+      <BlogMonthlyNotice />
       <BlogGrid />
       <BlogClosing />
     </div>

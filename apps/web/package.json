@@ -4,11 +4,13 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "node scripts/fetch-monthly-solvers.mjs && next build",
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
-    "check:seo": "node scripts/check-seo.mjs"
+    "check:seo": "node scripts/check-seo.mjs",
+    "test:monthly": "node --test lib/monthly-release.test.mjs",
+    "check:monthly-leak": "node scripts/check-monthly-leak.mjs"
   },
   "dependencies": {
     "@astryxdesign/core": "0.6.5",

@@ -1,13 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
-import { BLOG_PAGE } from "@/content/blog";
+import { PostBadges } from "@/components/ui/PostBadges";
+import { BLOG_PAGE, POST_PROVENANCE } from "@/content/blog";
 import type { BlogPost } from "@/lib/blog";
 import neutral from "@/components/ui/Neutral.module.css";
 import styles from "./Blog.module.css";
 interface Props { post: BlogPost; }
 export function BlogArticle({ post }: Props) {
   const authorHref = post.author === "Tilak Jain" ? "/team#tilak-jain" : post.author === "AMS Team" ? "/team" : undefined;
+  const { authorType, affiliation } = post.provenance;
+  const byline = authorType === "ams" ? post.author
+    : `${post.author} · ${authorType === "practitioner" ? affiliation ?? POST_PROVENANCE.practitioner : affiliation ?? ""}`.replace(/ · $/, "");
   return (
     <article aria-labelledby="article-title">
       <header className={styles.articleHeader}><Container size="reading">
@@ -15,11 +19,12 @@ export function BlogArticle({ post }: Props) {
         <h1 id="article-title" className={styles.articleTitle}>{post.title}</h1>
         <p className={styles.body}>{post.description}</p>
         <div className={styles.meta}>
-          {authorHref ? <Link href={authorHref} rel="author" className={`${neutral.textLink} ${styles.authorLink}`}>{post.author}</Link> : <span>{post.author}</span>}
+          {authorHref && authorType === "ams" ? <Link href={authorHref} rel="author" className={`${neutral.textLink} ${styles.authorLink}`}>{post.author}</Link> : <span>{byline}</span>}
           <time dateTime={post.pubDate.toISOString()}>{post.pubDate.toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" })}</time>
           <span>{post.readingMinutes} {BLOG_PAGE.readingTimeLabel}</span>
           {post.updatedDate && <span>{BLOG_PAGE.updatedLabel} <time dateTime={post.updatedDate.toISOString()}>{post.updatedDate.toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" })}</time></span>}
         </div>
+        <PostBadges provenance={post.provenance} labels={POST_PROVENANCE} />
       </Container></header>
       <Container size="reading"><div className={styles.articleCover}>
         <Image src={post.cover.full} alt={post.cover.alt} fill priority fetchPriority="high"

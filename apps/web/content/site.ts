@@ -54,6 +54,7 @@ export const FOOTER_COLUMNS: Array<{ heading: string; links: NavLink[] }> = [
     links: [
       { label: "Derive", href: "/derive" },
       { label: "Ascent", href: "/ascent" },
+      { label: "AMS Monthly", href: "/monthly" },
       { label: "Competition updates", href: "/updates" },
     ],
   },
@@ -71,6 +72,7 @@ export const FOOTER_COLUMNS: Array<{ heading: string; links: NavLink[] }> = [
       { label: "Gallery", href: "/gallery" },
       { label: "Team", href: "/team" },
       { label: "Blog", href: "/blog" },
+      { label: "Write for AMS", href: "/blog/contribute" },
       { label: "FAQ", href: "/faq" },
     ],
   },

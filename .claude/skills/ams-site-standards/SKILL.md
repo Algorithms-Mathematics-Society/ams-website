@@ -98,6 +98,8 @@ One verified fact lives on many surfaces. When a stat, winner, sponsor, date, or
 | Structured data             | `content/seo.ts` (Event dates, stats in descriptions) |
 | Meta descriptions / OG copy | the page's `metadata` export                          |
 | Sitemap (new pages)         | `app/sitemap.ts`                                      |
+| AMS Monthly copy, launch date | `content/monthly.ts` (never a future topic)         |
+| Contributor intake status   | `content/contribute.ts` (`status.open`, `formUrl`)    |
 
 ## Verification before done
 

@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getAllPosts } from "@/lib/blog";
+import { getReleasedProblems } from "@/lib/monthly";
 import { SITE } from "@/content/site";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -13,6 +14,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/faq",
     "/updates",
     "/blog",
+    "/blog/contribute",
+    "/monthly",
   ].map((path) => ({ url: new URL(path || "/", SITE.url).toString() }));
 
   const posts = await getAllPosts();
@@ -21,5 +24,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: post.updatedDate ?? post.pubDate,
   }));
 
-  return [...staticPaths, ...postPaths];
+  // Released problems only: the loader drops or rejects anything not yet due.
+  const problems = await getReleasedProblems();
+  const monthlyPaths = problems.flatMap((problem) => [
+    { url: `${SITE.url}/monthly/${problem.number}`, lastModified: problem.releaseAt },
+    ...(problem.solution
+      ? [{ url: `${SITE.url}/monthly/${problem.number}/solution`, lastModified: problem.solution.solutionAt }]
+      : []),
+  ]);
+
+  return [...staticPaths, ...postPaths, ...monthlyPaths];
 }

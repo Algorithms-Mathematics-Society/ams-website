@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { readFileSync, readdirSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 // Run after next build. Checks the HTML crawlers receive.
@@ -8,14 +8,23 @@ const base = 'https://www.amshq.in';
 const built = resolve('.next/server/app');
 const posts = readdirSync(resolve('../../blogs'), { withFileTypes: true })
   .filter(entry => entry.isDirectory()).map(entry => `/blog/${entry.name}`);
-const routes = ['/', '/derive', '/ascent', '/access', '/gallery', '/team', '/faq', '/updates', '/blog', ...posts];
+// Released Monthly pages are whatever the build emitted under app/monthly.
+const monthlyDir = resolve(built, 'monthly');
+const monthly = existsSync(monthlyDir) ? readdirSync(monthlyDir, { withFileTypes: true }).flatMap(entry => {
+  if (entry.isFile() && /^\d+\.html$/.test(entry.name)) return [`/monthly/${entry.name.slice(0, -5)}`];
+  if (entry.isDirectory() && /^\d+$/.test(entry.name) && existsSync(resolve(monthlyDir, entry.name, 'solution.html'))) {
+    return [`/monthly/${entry.name}/solution`];
+  }
+  return [];
+}) : [];
+const routes = ['/', '/derive', '/ascent', '/access', '/gallery', '/team', '/faq', '/updates', '/blog', '/blog/contribute', '/monthly', ...posts, ...monthly];
 const decode = text => text.replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#x27;|&#39;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>');
 const attributes = tag => Object.fromEntries([...tag.matchAll(/([\w:-]+)="([^"]*)"/g)].map(([, key, value]) => [key, decode(value)]));
 const titles = new Set();
 const descriptions = new Set();
 const organizationId = `${base}/#organization`;
 const websiteId = `${base}/#website`;
-const allowedTypes = new Set(['Organization', 'Country', 'WebSite', 'CollectionPage', 'ItemList', 'ListItem', 'Person', 'FAQPage', 'Question', 'Answer', 'BlogPosting', 'WebPage', 'Event', 'Place', 'PostalAddress']);
+const allowedTypes = new Set(['Organization', 'Country', 'WebSite', 'CollectionPage', 'ItemList', 'ListItem', 'Person', 'FAQPage', 'Question', 'Answer', 'BlogPosting', 'WebPage', 'Event', 'Place', 'PostalAddress', 'CreativeWorkSeries', 'LearningResource', 'Article']);
 function validateNode(node) {
   if (!node || typeof node !== 'object') return;
   if (node['@type']) assert(allowedTypes.has(node['@type']), `Unknown schema type: ${node['@type']}`);
@@ -86,7 +95,7 @@ for (const route of routes) {
       assert(visible.includes(question.acceptedAnswer.text));
     });
   }
-  if (route.startsWith('/blog/')) {
+  if (route.startsWith('/blog/') && route !== '/blog/contribute') {
     const article = data.find(node => node['@type'] === 'BlogPosting');
     assert.equal(article.publisher['@id'], organizationId);
     assert.equal(article.url, canonical);

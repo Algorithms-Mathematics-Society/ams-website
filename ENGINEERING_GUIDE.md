@@ -541,6 +541,41 @@ Partnerships share equal desktop columns and a 56px gap. Keep the home display
 and article reading layout distinct. Do not restore separate campaign heading
 sizing on interior destinations merely because they have a CTA or photograph.
 
+## AMS Monthly and contributions
+
+`/monthly` is a monthly problem series; `/blog/contribute` explains how outside
+writers pitch posts. Both are static and add no client JavaScript.
+
+**Secrecy is structural, not a filter.** Future problems, solutions and answers live
+only in the private `ams-monthly-vault` repo. Its release workflow copies each item
+into the repo-root `monthly/<number>/` folder when it is due, and the push deploys.
+`lib/monthly.ts` reads frontmatter and checks the date before compiling Markdown or
+writing images; an unreleased file in this repo **fails the build** (someone
+committed early). Only `AMS_MONTHLY_ALLOW_UNRELEASED=1`, used by the leak test and
+the vault preflight, skips such files instead. Never write a topic, title or hint
+about an unreleased month into this repo, including commit messages and PR titles.
+
+- URLs are numbers only (`/monthly/7`, `/monthly/7/solution`). Dynamic routes set
+  `dynamicParams = false`, so an unreleased number is a 404, never rendered on demand.
+- The index states only the next drop date (`lib/monthly-release.ts`), never a topic;
+  "next" links point to `/monthly`, never to `/monthly/N+1`.
+- Answers are collected by Google Forms (linked, never embedded). Grading happens in
+  a private Sheet, never in this repo.
+- Solver names come from a published, pre-filtered Sheet tab. `scripts/fetch-monthly-
+  solvers.mjs` fetches it before `next build` into the gitignored `.generated/`;
+  a configured feed that fails stops the build. Names are never committed, so
+  deletion is "remove the row, rebuild". Production requires the feed once a
+  solution is released. The Vercel build must run `pnpm build`, not bare `next build`.
+- Community posts use optional frontmatter in `blogs/`: `authorType`
+  (ams/community/practitioner), `affiliation`, `aiUse` (none/editing/drafting;
+  "substantial" is rejected), `explainerVerified` (requires `reviewedBy`),
+  `reviewedBy` {name?, role}, `explainerUrl`, `monthly`. `contribute` is a reserved
+  slug.
+- Solver lists are plain tables: alphabetical, no ranks, times, medals or streaks.
+- Checks: `pnpm --filter web test:monthly` (date gate, Node 24) and
+  `pnpm --filter web check:monthly-leak` (two real builds against synthetic
+  fixtures; unreleased canaries must appear nowhere). Rebuild normally afterwards.
+
 ## Philosophy and evidence in buyer journeys
 
 Home now introduces the competition choices, then AMS's philosophy, the Derive

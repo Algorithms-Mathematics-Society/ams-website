@@ -1,0 +1,4 @@
+/* One quiet provenance line under a post's meta. Shell tokens only. */
+.provenance { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 16px; margin-top: 12px; font-size: var(--shell-text-label); line-height: 1.6; color: var(--shell-muted); }
+.badge { padding: 3px 9px; border-radius: var(--shell-radius); background: var(--shell-subtle); color: var(--shell-ink); font-size: .8125rem; }
+.provenance a { font-size: var(--shell-text-label); }

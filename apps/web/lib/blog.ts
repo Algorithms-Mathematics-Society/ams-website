@@ -2,15 +2,11 @@ import fs from "fs";
 import path from "path";
 import { cache } from "react";
 import matter from "gray-matter";
-import { unified } from "unified";
-import remarkParse from "remark-parse";
-import remarkGfm from "remark-gfm";
-import remarkRehype from "remark-rehype";
-import rehypePrettyCode from "rehype-pretty-code";
-import rehypeStringify from "rehype-stringify";
 // sharp has no bundled types; the site's photo pipeline (scripts/optimize-photos.mjs)
 // takes the same untyped-require approach.
 import sharp from "sharp";
+import { compileMarkdown, resolveLocalImage as resolveImage } from "./markdown";
+import { fail, oneOf, optBoolean, optHttpsUrl, optString } from "./frontmatter";
 
 // blogs/ lives at the repo root, next to media/ and docs/: source content that
 // a build step turns into site output, same shape as media/photos -> public/images.
@@ -36,7 +32,28 @@ export interface BlogPost {
   };
   html: string;
   readingMinutes: number;
+  provenance: PostProvenance;
 }
+
+export type AuthorType = "ams" | "community" | "practitioner";
+export type AiUse = "none" | "editing" | "drafting";
+
+/** Who wrote a post and how it was checked. Community fields are all optional. */
+export interface PostProvenance {
+  authorType: AuthorType;
+  /** Institution for community authors, generic role for practitioners. */
+  affiliation?: string;
+  aiUse?: AiUse;
+  explainerVerified: boolean;
+  reviewedBy?: { name?: string; role: string };
+  explainerUrl?: string;
+  /** AMS Monthly problem number this post is the editorial for. */
+  monthly?: number;
+}
+
+const AUTHOR_TYPES = ["ams", "community", "practitioner"] as const;
+const AI_USES = ["none", "editing", "drafting"] as const;
+const RESERVED_SLUGS = new Set(["contribute"]);
 
 interface RawFrontmatter {
   title: string;
@@ -47,24 +64,18 @@ interface RawFrontmatter {
   authorImage?: string;
   image: { url: string; alt: string };
   tags?: string[];
-}
-
-interface HastNode {
-  type: string;
-  tagName?: string;
-  properties?: Record<string, unknown>;
-  children?: HastNode[];
+  authorType?: string;
+  affiliation?: string;
+  aiUse?: string;
+  explainerVerified?: boolean;
+  reviewedBy?: { name?: string; role?: string };
+  explainerUrl?: string;
+  monthly?: number;
 }
 
 /** Resolves a frontmatter-relative image path against the post's own folder. */
 function resolveLocalImage(postDir: string, ref: string, slug: string): string {
-  if (/^https?:\/\//.test(ref) || ref.startsWith("/")) {
-    throw new Error(
-      `Blog post "${slug}": image paths must be relative to the post's own folder ` +
-        `(e.g. "./cover.jpg"), got "${ref}". Place the file inside blogs/${slug}/.`,
-    );
-  }
-  return path.resolve(postDir, ref);
+  return resolveImage(postDir, ref, `blogs/${slug}`);
 }
 
 /** Idempotent: skips reprocessing when the output is newer than the source. */
@@ -84,64 +95,37 @@ async function processFixedCrop(
     .toFile(outPath);
 }
 
-/** Copies an inline body image as-is (no crop) so it keeps its native aspect ratio. */
-function copyInlineImage(srcPath: string, outPath: string): void {
-  fs.mkdirSync(path.dirname(outPath), { recursive: true });
-  const srcMtime = fs.statSync(srcPath).mtimeMs;
-  if (fs.existsSync(outPath) && fs.statSync(outPath).mtimeMs > srcMtime) return;
-  fs.copyFileSync(srcPath, outPath);
-}
-
-/**
- * rehype plugin: rewrites relative <img> src in the post body to the copied
- * public path and stamps real width/height (read via sharp) so inline images
- * never cause layout shift, without needing next/image inside raw HTML.
- */
-function rehypeLocalImages(context: { slug: string; postDir: string }) {
-  return async function transformer(tree: HastNode): Promise<HastNode> {
-    const imgNodes: HastNode[] = [];
-    const walk = (node: HastNode) => {
-      if (node.type === "element" && node.tagName === "img") imgNodes.push(node);
-      node.children?.forEach(walk);
-    };
-    walk(tree);
-
-    for (const node of imgNodes) {
-      const src = node.properties?.src;
-      if (typeof src !== "string" || /^https?:\/\//.test(src)) continue;
-
-      const resolved = resolveLocalImage(context.postDir, src, context.slug);
-      const filename = path.basename(resolved);
-      const outPath = path.join(PUBLIC_BLOG_DIR, context.slug, "inline", filename);
-      copyInlineImage(resolved, outPath);
-      const meta = await sharp(outPath).metadata();
-
-      node.properties = {
-        ...node.properties,
-        src: `/blog/${context.slug}/inline/${filename}`,
-        width: meta.width,
-        height: meta.height,
-        loading: "lazy",
-        decoding: "async",
-      };
-    }
-    return tree;
+/** Validates the optional contributor fields; AMS posts need none of them. */
+function readProvenance(data: RawFrontmatter, slug: string): PostProvenance {
+  const file = `blogs/${slug}/index.md`;
+  const record = data as unknown as Record<string, unknown>;
+  const authorType = data.authorType === undefined ? "ams" : oneOf(data.authorType, AUTHOR_TYPES, "authorType", file);
+  if (data.aiUse === "substantial") {
+    fail(file, "aiUse", 'is "substantial"; substantially AI-generated work is not published as a community post');
+  }
+  const aiUse = data.aiUse === undefined ? undefined : oneOf(data.aiUse, AI_USES, "aiUse", file);
+  if (authorType !== "ams" && aiUse === undefined) fail(file, "aiUse", "is required for community and practitioner posts");
+  const explainerVerified = optBoolean(record, "explainerVerified", file);
+  let reviewedBy: PostProvenance["reviewedBy"];
+  if (data.reviewedBy !== undefined) {
+    const role = optString(data.reviewedBy as Record<string, unknown>, "role", file);
+    if (!role) fail(file, "reviewedBy.role", "is required when reviewedBy is set");
+    reviewedBy = { role, name: optString(data.reviewedBy as Record<string, unknown>, "name", file) };
+  }
+  if (explainerVerified && !reviewedBy) fail(file, "reviewedBy", "is required when explainerVerified is true");
+  const monthly = data.monthly;
+  if (monthly !== undefined && (typeof monthly !== "number" || !Number.isInteger(monthly) || monthly < 1)) {
+    fail(file, "monthly", "must be a positive whole number");
+  }
+  return {
+    authorType,
+    affiliation: optString(record, "affiliation", file),
+    aiUse,
+    explainerVerified,
+    reviewedBy,
+    explainerUrl: optHttpsUrl(record, "explainerUrl", file),
+    monthly,
   };
-}
-
-async function compileBody(
-  body: string,
-  context: { slug: string; postDir: string },
-): Promise<string> {
-  const file = await unified()
-    .use(remarkParse)
-    .use(remarkGfm)
-    .use(remarkRehype)
-    .use(rehypePrettyCode, { theme: "github-light", keepBackground: false })
-    .use(rehypeLocalImages, context)
-    .use(rehypeStringify)
-    .process(body);
-  return String(file);
 }
 
 async function loadPost(slug: string): Promise<BlogPost> {
@@ -182,7 +166,12 @@ async function loadPost(slug: string): Promise<BlogPost> {
     authorImage = `/blog/${slug}/author.webp`;
   }
 
-  const html = await compileBody(content, { slug, postDir });
+  const html = await compileMarkdown(content, {
+    sourceDir: postDir,
+    label: `blogs/${slug}`,
+    publicDir: outDir,
+    publicPrefix: `/blog/${slug}`,
+  });
 
   // Count rendered prose at build time, excluding markup and image attributes.
   const plainText = html.replace(/<[^>]*>/g, " ").replace(/&[^;]+;/g, " ");
@@ -204,6 +193,7 @@ async function loadPost(slug: string): Promise<BlogPost> {
       alt: data.image.alt,
     },
     html,
+    provenance: readProvenance(data, slug),
   };
 }
 
@@ -219,6 +209,9 @@ export const getAllPosts = cache(async (): Promise<BlogPost[]> => {
 
   const posts: BlogPost[] = [];
   for (const slug of slugs) {
+    if (RESERVED_SLUGS.has(slug)) {
+      throw new Error(`blogs/${slug}/: "${slug}" is a reserved route under /blog; rename the folder.`);
+    }
     const mdPath = path.join(BLOGS_DIR, slug, "index.md");
     if (!fs.existsSync(mdPath)) {
       console.warn(`Skipping blogs/${slug}/: no index.md found.`);

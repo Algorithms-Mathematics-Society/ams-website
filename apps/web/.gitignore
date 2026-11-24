@@ -40,3 +40,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# AMS Monthly build outputs (solver feed snapshot, copied problem images)
+/.generated/
+/public/monthly-assets/

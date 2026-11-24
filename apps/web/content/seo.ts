@@ -145,3 +145,60 @@ export const DERIVE_EVENT_JSONLD = {
   organizer: { "@id": ORGANIZATION_ID },
   url: `${SITE.url}/derive`,
 } as const;
+
+const MONTHLY_SERIES_ID = `${SITE.url}/monthly#series`;
+
+/** AMS Monthly as a series; problems and solutions point back to it. */
+export function monthlySeriesJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "CreativeWorkSeries",
+    "@id": MONTHLY_SERIES_ID,
+    name: "AMS Monthly",
+    description:
+      "A free monthly problem from AMS (Algorithms & Mathematics Society), alternating quantitative reasoning and systems engineering.",
+    url: `${SITE.url}/monthly`,
+    inLanguage: "en-IN",
+    publisher: { "@id": ORGANIZATION_ID },
+  };
+}
+
+/** A released Monthly problem. Only ever called for released problems. */
+export function monthlyProblemJsonLd(problem: { number: number; title: string; description: string; releaseAt: Date }) {
+  const url = `${SITE.url}/monthly/${problem.number}`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "LearningResource",
+    "@id": `${url}#problem`,
+    name: problem.title,
+    description: problem.description,
+    learningResourceType: "Problem",
+    datePublished: problem.releaseAt.toISOString(),
+    inLanguage: "en-IN",
+    url,
+    isPartOf: { "@id": MONTHLY_SERIES_ID },
+    publisher: { "@id": ORGANIZATION_ID },
+  };
+}
+
+/** The solution article for a released problem, published at the next drop. */
+export function monthlySolutionJsonLd(
+  problem: { number: number; title: string },
+  solution: { solutionAt: Date },
+) {
+  const url = `${SITE.url}/monthly/${problem.number}/solution`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "@id": `${url}#article`,
+    headline: `Solution: ${problem.title}`,
+    datePublished: solution.solutionAt.toISOString(),
+    inLanguage: "en-IN",
+    url,
+    about: { "@id": `${SITE.url}/monthly/${problem.number}#problem` },
+    author: { "@id": ORGANIZATION_ID },
+    publisher: { "@id": ORGANIZATION_ID },
+    isPartOf: { "@id": MONTHLY_SERIES_ID },
+    mainEntityOfPage: { "@type": "WebPage", "@id": url, isPartOf: { "@id": WEBSITE_ID } },
+  };
+}

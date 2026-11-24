@@ -22,3 +22,14 @@ export const BLOG_PAGE = {
     buttonHref: "/derive",
   },
 } as const;
+
+/** Labels for the provenance line on community and practitioner posts. */
+export const POST_PROVENANCE = {
+  aiUse: "AI use",
+  aiLevels: { none: "None", editing: "Editing", drafting: "Drafting help" },
+  reviewedBy: "Reviewed by",
+  verified: "Explainer verified · Reviewed by AMS",
+  explainer: "Listen to the author's explainer",
+  editorialFor: "Editorial for AMS Monthly",
+  practitioner: "Practitioner",
+} as const;

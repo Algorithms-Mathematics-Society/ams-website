@@ -9,6 +9,9 @@ import { getAllPosts, getPostBySlug } from "@/lib/blog";
 import styles from "@/components/sections/Blog.module.css";
 interface Props { params: Promise<{ slug: string }>; }
 
+// Only real posts are pre-rendered; unknown slugs 404 instead of rendering on demand.
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   const posts = await getAllPosts();
   return posts.map((post) => ({ slug: post.slug }));
