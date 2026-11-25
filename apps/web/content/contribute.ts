@@ -1,3 +1,5 @@
+import { parseIsoInstant } from "../lib/monthly-release";
+
 // Copy for /blog/contribute. The pitch form URL is set once the Google Form
 // exists (phase 2); until then the page states when pitches open.
 
@@ -121,3 +123,11 @@ export const CONTRIBUTE = {
     email: "team@amshq.in",
   },
 } as const;
+
+// Validate content even while intake has no Form link, so a typo cannot silently
+// keep pitches closed after launch.
+if (!parseIsoInstant(CONTRIBUTE.status.opensAt)) {
+  throw new Error(
+    `CONTRIBUTE.status.opensAt must be a valid ISO instant with an explicit offset: "${CONTRIBUTE.status.opensAt}"`,
+  );
+}

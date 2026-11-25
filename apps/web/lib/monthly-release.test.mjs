@@ -125,3 +125,14 @@ test("Form link rule rejects credentials, ports and edit links", () => {
   assert.equal(isGoogleFormUrl("https://docs.google.com:444/forms/d/abc/viewform"), false);
   assert.equal(isGoogleFormUrl("https://docs.google.com/forms/d/abc/edit"), false);
 });
+
+for (const [label, form] of [
+  ["trailing slash", `${goodForm}/`],
+  ["non-e form ID", "https://docs.google.com/forms/d/abc_-123/viewform"],
+]) {
+  test(`intake opens with a valid ${label} respondent link`, () => {
+    assert.equal(isIntakeOpen(form, opensAt, new Date("2027-01-01T17:59:59+05:30")), false);
+    assert.equal(isIntakeOpen(form, opensAt, new Date(opensAt)), true);
+    assert.equal(isIntakeOpen(form, opensAt, new Date("2027-02-01T00:00:00Z")), true);
+  });
+}
